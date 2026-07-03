@@ -8,6 +8,9 @@
   "%1 Sessions": {
     "%1 Sessions": "%1 הפעלות"
   },
+  "%1 Startup Failed": {
+    "%1 Startup Failed": "הפעלת %1 נכשלה"
+  },
   "%1 active session": {
     "%1 active session": "%1 הפעלה פעילה"
   },
@@ -33,7 +36,7 @@
     "%1 copied": "%1 הועתק/ו"
   },
   "%1 custom animation duration": {
-    "%1 custom animation duration": "משך אנימציה מותאם אישית %1"
+    "%1 custom animation duration": "משך אנימציה מותאם אישית ל%1"
   },
   "%1 disconnected": {
     "%1 disconnected": "%1 מנותק"
@@ -108,7 +111,7 @@
     "%1 windows": "%1 חלונות"
   },
   "%1: %2": {
-    "%1: %2": ""
+    "%1: %2": "%1: %2"
   },
   "%1m ago": {
     "%1m ago": "לפני %1 דקות"
@@ -327,7 +330,7 @@
     "A user with that name already exists.": "כבר קיים משתמש/ת עם השם זה."
   },
   "AC Adapter (Plugged In)": {
-    "AC Adapter (Plugged In)": ""
+    "AC Adapter (Plugged In)": "מתאם AC (מחובר לחשמל)"
   },
   "AC Power": {
     "AC Power": "חשמל AC"
@@ -503,6 +506,9 @@
   "Adjusts contrast of generated colors (-100 = minimum, 0 = standard, 100 = maximum)": {
     "Adjusts contrast of generated colors (-100 = minimum, 0 = standard, 100 = maximum)": "כוונן/י את הניגודיות של הצבעים שנוצרו (100- = מינימום, 0 = סטנדרטי, 100 = מקסימום)"
   },
+  "Administrator access is required. Use the Sync button in Settings → Greeter to apply.": {
+    "Administrator access is required. Use the Sync button in Settings → Greeter to apply.": ""
+  },
   "Administrator group:": {
     "Administrator group:": "קבוצת מנהלים:"
   },
@@ -531,7 +537,7 @@
     "Allow": "אפשר/י"
   },
   "Allow LAN access": {
-    "Allow LAN access": ""
+    "Allow LAN access": "אפשר/י גישה לLAN"
   },
   "Allow adjusting device volume by scrolling on the right half of items in the device list": {
     "Allow adjusting device volume by scrolling on the right half of items in the device list": "אפשר/י התאמת עוצמת קול של ההתקן על ידי גלילה בחצי הימני של הפריטים ברשימת ההתקנים"
@@ -563,6 +569,9 @@
   "Always Show Percentage": {
     "Always Show Percentage": "הצגה תמידית של אחוזים"
   },
+  "Always blur against the wallpaper, even with Xray off": {
+    "Always blur against the wallpaper, even with Xray off": ""
+  },
   "Always hide the dock and reveal it when hovering near the dock area": {
     "Always hide the dock and reveal it when hovering near the dock area": "הסתר/י תמיד את הDock והצג/י אותו בעת ריחוף ליד האזור שלו"
   },
@@ -573,7 +582,7 @@
     "Always show a minimum of 3 workspaces, even if fewer are available": "הצג/י תמיד לפחות 3 סביבות עבודה, גם אם קיימות פחות סביבות פעילות"
   },
   "Always show the dock when niri's overview is open": {
-    "Always show the dock when niri's overview is open": "הצג/י תמיד את הDock כאשר הסקירה של Niri פתוחה"
+    "Always show the dock when niri's overview is open": "הצג/י תמיד את הDock כאשר הסקירה של niri פתוחה"
   },
   "Always show when there's only one connected display": {
     "Always show when there's only one connected display": "הצג/י תמיד כשיש רק מסך אחד מחובר"
@@ -583,6 +592,9 @@
   },
   "Amount": {
     "Amount": "כמות"
+  },
+  "An xray rule at %1 may conflict with the Xray settings below": {
+    "An xray rule at %1 may conflict with the Xray settings below": "חוק רנטגן (xray) ב%1 עשוי להתנגש עם הגדרות הרנטגן (xray) למטה"
   },
   "Analog": {
     "Analog": "אנלוגי"
@@ -641,6 +653,9 @@
   "App Theming": {
     "App Theming": "עיצוב לאפליקציות"
   },
+  "App name or identity (e.g., firefox)": {
+    "App name or identity (e.g., firefox)": "שם האפליקציה או זהות (לדוגמה firefox)"
+  },
   "Appearance": {
     "Appearance": "מראה"
   },
@@ -675,7 +690,7 @@
     "Apply inverse concave corner cutouts to the bar": "החל/י חיתוכי פינות קעורים הפוכים על הסרגל"
   },
   "Apply to Hardware": {
-    "Apply to Hardware": ""
+    "Apply to Hardware": "החל/י על החומרה"
   },
   "Apply warm color temperature to reduce eye strain. Use automation settings below to control when it activates.": {
     "Apply warm color temperature to reduce eye strain. Use automation settings below to control when it activates.": "הגדרת טמפרטורת צבע חמה כדי להפחית מאמץ בעיניים. השתמש/י בהגדרות האוטומציה למטה כדי לשלוט מתי ההגדרה מופעלת."
@@ -831,7 +846,16 @@
     "Auto Popup Gaps": "מרווחי חלוניות קופצות אוטומטיים"
   },
   "Auto Power Saver": {
-    "Auto Power Saver": ""
+    "Auto Power Saver": "חיסכון אוטומטי בחשמל"
+  },
+  "Auto matches bar spacing; Off leaves gaps to your Hyprland config": {
+    "Auto matches bar spacing; Off leaves gaps to your Hyprland config": ""
+  },
+  "Auto matches bar spacing; Off leaves gaps to your MangoWC config": {
+    "Auto matches bar spacing; Off leaves gaps to your MangoWC config": ""
+  },
+  "Auto matches bar spacing; Off leaves gaps to your niri config": {
+    "Auto matches bar spacing; Off leaves gaps to your niri config": ""
   },
   "Auto mode is on. Manual profile selection is disabled.": {
     "Auto mode is on. Manual profile selection is disabled.": "מצב אוטומטי מופעל. בחירת פרופיל ידנית מושבתת."
@@ -846,7 +870,7 @@
     "Auto-Hide Timeout": "זמן קצוב להסתרה אוטומטית"
   },
   "Auto-close Niri overview when launching apps.": {
-    "Auto-close Niri overview when launching apps.": "סגור/י אוטומטית את הסקירה של Niri כשמופעלות אפליקציות."
+    "Auto-close Niri overview when launching apps.": "סגור/י אוטומטית את הסקירה של niri כשמופעלות אפליקציות."
   },
   "Auto-delete notifications older than this": {
     "Auto-delete notifications older than this": "מחק/י אוטומטית התראות שהן ישנות יותר מהזמן המצוין"
@@ -860,6 +884,9 @@
   "Auto-login": {
     "Auto-login": "התחברות אוטומטית"
   },
+  "Auto-login change needs a sync": {
+    "Auto-login change needs a sync": ""
+  },
   "Auto-login disabled": {
     "Auto-login disabled": "התחברות אוטומטית מושבתת"
   },
@@ -871,9 +898,6 @@
   },
   "Auto-save to disk": {
     "Auto-save to disk": "שמירה אוטומטית לדיסק"
-  },
-  "Auto-saving...": {
-    "Auto-saving...": "שומר אוטומטית..."
   },
   "Autoconnect": {
     "Autoconnect": "התחברות אוטומטית"
@@ -927,7 +951,7 @@
     "Automatically save changes to opened files as you type": "שמור/שמרי שינויים בקבצים פתוחים אוטומטית בעת ההקלדה"
   },
   "Automatically turn on Power Saver profile when battery is low.": {
-    "Automatically turn on Power Saver profile when battery is low.": ""
+    "Automatically turn on Power Saver profile when battery is low.": "הפעל/י אוטומטית פרופיל חיסכון בחשמל כאשר הסוללה חלשה."
   },
   "Automation": {
     "Automation": "אוטומציה"
@@ -981,7 +1005,7 @@
     "Background Blur": "טשטוש רקע"
   },
   "Background Color": {
-    "Background Color": ""
+    "Background Color": "צבע רקע"
   },
   "Background Effect": {
     "Background Effect": "אפקט רקע"
@@ -1017,7 +1041,7 @@
     "Bar Configurations": "תצורות סרגלים"
   },
   "Bar Inset Padding": {
-    "Bar Inset Padding": ""
+    "Bar Inset Padding": "ריווח פנימי של הסרגל"
   },
   "Bar Opacity": {
     "Bar Opacity": "שקיפות הסרגל"
@@ -1026,10 +1050,7 @@
     "Bar Shadows": "הצללות סרגל"
   },
   "Bar Spacing": {
-    "Bar Spacing": ""
-  },
-  "Bar Transparency": {
-    "Bar Transparency": "שקיפות סרגל"
+    "Bar Spacing": "ריווח הסרגל"
   },
   "Bar corners and background": {
     "Bar corners and background": "פינות ורקע הסרגל"
@@ -1056,34 +1077,34 @@
     "Battery Charge Limit": "מגבלה טעינה לסוללה"
   },
   "Battery Health": {
-    "Battery Health": ""
+    "Battery Health": "בריאות הסוללה"
   },
   "Battery Power": {
-    "Battery Power": ""
+    "Battery Power": "מתח סוללה"
   },
   "Battery Protection & Charging": {
-    "Battery Protection & Charging": ""
+    "Battery Protection & Charging": "הגנה וטעינת סוללה"
   },
   "Battery Status": {
-    "Battery Status": ""
+    "Battery Status": "מצב סוללה"
   },
   "Battery and power management": {
     "Battery and power management": "ניהול סוללה וחשמל"
   },
   "Battery has charged to your set limit of %1%": {
-    "Battery has charged to your set limit of %1%": ""
+    "Battery has charged to your set limit of %1%": "הסוללה נטענה למגבלה שהוגדרה (%1%)"
   },
   "Battery is at %1% - Connect charger immediately!": {
-    "Battery is at %1% - Connect charger immediately!": ""
+    "Battery is at %1% - Connect charger immediately!": "הסוללה עומדת על %1% - חבר/י את המטען מיד!"
   },
   "Battery is at %1% - Consider charging soon": {
-    "Battery is at %1% - Consider charging soon": ""
+    "Battery is at %1% - Consider charging soon": "הסוללה עומדת על %1% - כדאי להטעין בקרוב"
   },
   "Battery level and power management": {
     "Battery level and power management": "רמת סוללה וניהול חשמל"
   },
   "Battery percentage to trigger a critical alert.": {
-    "Battery percentage to trigger a critical alert.": ""
+    "Battery percentage to trigger a critical alert.": "אחוז סוללה להפעלת התראה קריטית."
   },
   "Behavior": {
     "Behavior": "התנהגות"
@@ -1097,9 +1118,6 @@
   "Bind the spotlight-bar IPC action in your compositor config.": {
     "Bind the spotlight-bar IPC action in your compositor config.": "קשר/י את פעולת הIPC של spotlight-bar בהגדרות הקומפוזיטור שלך."
   },
-  "Binds Include Missing": {
-    "Binds Include Missing": "קובץ includes של קיצורי מקלדת חסר"
-  },
   "Binds include added": {
     "Binds include added": "קובץ includes של קיצורי מקלדת נוסף"
   },
@@ -1110,7 +1128,7 @@
     "Black": "שחור"
   },
   "Blend between Surface High and the selected custom color": {
-    "Blend between Surface High and the selected custom color": ""
+    "Blend between Surface High and the selected custom color": "מיזוג בין צבע המשטח הגבוה (Surface High) לצבע המותאם אישית שנבחר"
   },
   "Block Out": {
     "Block Out": "חסימה החוצה"
@@ -1158,7 +1176,10 @@
     "Blur the background behind bars, popouts, modals, and notifications. Requires compositor support. Adjust Opacity accordingly.": "טשטש/י את הרקע מאחורי סרגלים, חלונות קופצים, מודלים והתראות. דורש תמיכה של הקומפוזיטור. התאם/י את השקיפות בהתאם."
   },
   "Blur wallpaper when niri overview is open": {
-    "Blur wallpaper when niri overview is open": "טשטש/י את הרקע כאשר הסקירה של Niri פתוחה"
+    "Blur wallpaper when niri overview is open": "טשטש/י את הרקע כאשר הסקירה של niri פתוחה"
+  },
+  "Blurred surfaces show the wallpaper instead of the content beneath": {
+    "Blurred surfaces show the wallpaper instead of the content beneath": "משטחים מטושטשים מציגים את תמונת הרקע במקום את התוכן שמתחת"
   },
   "Body": {
     "Body": "גוף"
@@ -1195,6 +1216,9 @@
   },
   "Border color around blurred surfaces": {
     "Border color around blurred surfaces": "צבע המסגרת סביב משטחים מטושטשים"
+  },
+  "Border color around popouts, modals, and other shell surfaces": {
+    "Border color around popouts, modals, and other shell surfaces": ""
   },
   "Border w/ Bg": {
     "Border w/ Bg": "מסגרת עם רקע"
@@ -1244,6 +1268,9 @@
   "Browse Themes": {
     "Browse Themes": "עיין/י בערכות נושא"
   },
+  "Browse and set wallpapers": {
+    "Browse and set wallpapers": "עיין/י והגדר/י רקעים"
+  },
   "Browse or search plugins": {
     "Browse or search plugins": "עיין/י או חפש/י תוספים"
   },
@@ -1287,7 +1314,7 @@
     "Calendar": "יומן"
   },
   "Calendar Backend": {
-    "Calendar Backend": "Backend של היומן"
+    "Calendar Backend": "הBackend של היומן"
   },
   "Camera": {
     "Camera": "מצלמה"
@@ -1358,9 +1385,6 @@
   "Change Volume": {
     "Change Volume": "שינוי עוצמה"
   },
-  "Change bar appearance": {
-    "Change bar appearance": "שנה/י את מראה הסרגל"
-  },
   "Change the locale used by the DMS interface.": {
     "Change the locale used by the DMS interface.": "שנה/י את השפה שנעשה בה שימוש בממשק של DMS."
   },
@@ -1371,13 +1395,13 @@
     "Channel": "ערוץ"
   },
   "Charge Level": {
-    "Charge Level": ""
+    "Charge Level": "רמת טעינה"
   },
   "Charge Limit Reached": {
-    "Charge Limit Reached": ""
+    "Charge Limit Reached": "הגעה למגבלת הטעינה"
   },
   "Charge limit applied successfully": {
-    "Charge limit applied successfully": ""
+    "Charge limit applied successfully": "מגבלת הטעינה הוחלה בהצלחה"
   },
   "Charging": {
     "Charging": "בטעינה"
@@ -1440,7 +1464,7 @@
     "Choose how this bar resolves shadow direction": "בחר/י לאיזה כיוון יופנה הצל על הסרגל הזה"
   },
   "Choose how to be notified about battery alerts.": {
-    "Choose how to be notified about battery alerts.": ""
+    "Choose how to be notified about battery alerts.": "בחר/י כיצד לקבל התראות על הסוללה."
   },
   "Choose icon": {
     "Choose icon": "בחר/י סמל"
@@ -1449,7 +1473,7 @@
     "Choose monochrome or a theme color tint for system tray icons": "בחר/י גוון מונוכרומטי או צבע של ערכת הנושא עבור סמלי מגש המערכת"
   },
   "Choose neutral or accent-colored widget text": {
-    "Choose neutral or accent-colored widget text": ""
+    "Choose neutral or accent-colored widget text": "בחר/י טקסט ווידג׳ט נייטרלי או בצבע ההדגשה"
   },
   "Choose the background color for widgets": {
     "Choose the background color for widgets": "בחר/י את צבע הרקע לווידג׳טים"
@@ -1459,6 +1483,9 @@
   },
   "Choose the logo displayed on the launcher button in DankBar": {
     "Choose the logo displayed on the launcher button in DankBar": "בחר/י את הלוגו המוצג על כפתור המשגר בDank Bar"
+  },
+  "Choose wallpaper folder": {
+    "Choose wallpaper folder": "בחר/י תיקיית רקעים"
   },
   "Choose where notification popups appear on screen": {
     "Choose where notification popups appear on screen": "בחר/י היכן יופיעו התראות קופצות על המסך"
@@ -1520,9 +1547,6 @@
   "Click 'Setup' to create %1 and add include to your compositor config.": {
     "Click 'Setup' to create %1 and add include to your compositor config.": "לחץ/י על 'התקנה' כדי ליצור את %1 ולכלול אותו בהגדרות הקומפוזיטור שלך."
   },
-  "Click 'Setup' to create cursor config and add include to your compositor config.": {
-    "Click 'Setup' to create cursor config and add include to your compositor config.": "לחץ/י על 'התקנה' כדי ליצור קובץ הגדרה לסמן העכבר ולכלול אותו בהגדרות הקומפוזיטור שלך."
-  },
   "Click 'Setup' to create the outputs config and add include to your compositor config.": {
     "Click 'Setup' to create the outputs config and add include to your compositor config.": "לחץ/י על 'התקנה' כדי ליצור קובץ הגדרה לפלט התצוגה ולכול אותו בהגדרות הקומפוזיטור שלך."
   },
@@ -1536,13 +1560,13 @@
     "Click Through": "לחיצה מבעד לווידג׳ט"
   },
   "Click an entry to paste directly instead of copying": {
-    "Click an entry to paste directly instead of copying": ""
+    "Click an entry to paste directly instead of copying": "לחץ/י על רשומה כדי להדביק ישירות במקום להעתיק"
   },
   "Click any shortcut to edit. Changes save to %1": {
     "Click any shortcut to edit. Changes save to %1": "לחץ/י על כל קיצור דרך כדי לערוך. השינויים נשמרים ב-%1"
   },
   "Click to Paste": {
-    "Click to Paste": ""
+    "Click to Paste": "לחיצה להדבקה"
   },
   "Click to capture": {
     "Click to capture": "לחץ/י ללכידה"
@@ -1579,6 +1603,9 @@
   },
   "Clock Style": {
     "Clock Style": "סגנון השעון"
+  },
+  "Clock, calendar, system info and profile": {
+    "Clock, calendar, system info and profile": "שעון, יומן, מידע מערכת ופרופיל"
   },
   "Close": {
     "Close": "סגירה"
@@ -1622,8 +1649,11 @@
   "Color for primary action buttons": {
     "Color for primary action buttons": "צבע לכפתורי פעולה ראשיים"
   },
+  "Color shown for areas not covered by wallpaper": {
+    "Color shown for areas not covered by wallpaper": "הצבע שמוצג באזורים שאינם מכוסים על ידי תמונת הרקע"
+  },
   "Color shown for areas not covered by wallpaper (e.g. Fit or Pad modes)": {
-    "Color shown for areas not covered by wallpaper (e.g. Fit or Pad modes)": ""
+    "Color shown for areas not covered by wallpaper (e.g. Fit or Pad modes)": "הצבע שמוצג באזורים שאינם מכוסים על ידי תמונת הרקע (לדוגמה במצבי 'התאמה' או 'ריפוד')"
   },
   "Color temperature for day time": {
     "Color temperature for day time": "טמפרטורת צבע לשעות היום"
@@ -1662,7 +1692,7 @@
     "Column Width": "רוחב עמודה"
   },
   "Comma-separated list of session names to hide. Wrap in slashes for regex (e.g., /^_.*/).": {
-    "Comma-separated list of session names to hide. Wrap in slashes for regex (e.g., /^_.*/).": "רשימה מופרדת בפסיקים של שמות הפעלות להסתרה. עטוף/עטפי בלוכסניות עבור regex (לדוגמה, /^_.*/)."
+    "Comma-separated list of session names to hide. Wrap in slashes for regex (e.g., /^_.*/).": "רשימה מופרדת בפסיקים של שמות ההפעלות להסתרה. עטוף/עטפי בלוכסן עבור regex (לדוגמה, /^_.*/)."
   },
   "Command": {
     "Command": "פקודה"
@@ -1794,7 +1824,7 @@
     "Connecting...": "מתחבר..."
   },
   "Connecting…": {
-    "Connecting…": ""
+    "Connecting…": "מתחבר…"
   },
   "Connection failed": {
     "Connection failed": "החיבור נכשל"
@@ -1841,9 +1871,6 @@
   "Controls how strongly the selected tint color is applied": {
     "Controls how strongly the selected tint color is applied": "שולט במידת העוצמה שבה מוחל גוון הצבע שנבחר"
   },
-  "Controls opacity of all popouts, modals, and their content layers": {
-    "Controls opacity of all popouts, modals, and their content layers": "שולט בשקיפות של כל החלונות הקופצים, המודלים ושכבות התוכן שלהם"
-  },
   "Controls opacity of shell surfaces, popouts, and modals": {
     "Controls opacity of shell surfaces, popouts, and modals": "שולט בשקיפות של משטחי המעטפת, חלונות קופצים ומודלים"
   },
@@ -1865,6 +1892,9 @@
   "Controls outlines around blurred foreground cards, pills, and notification cards": {
     "Controls outlines around blurred foreground cards, pills, and notification cards": "שולט בקווי המתאר מסביב לכרטיסי רקע קדמי מטושטשים, כפתורים וכרטיסי התראות"
   },
+  "Controls outlines around foreground cards, pills, and notification cards": {
+    "Controls outlines around foreground cards, pills, and notification cards": "שולט בקווי המתאר מסביב לכרטיסי רקע קדמי, כפתורים וכרטיסי התראות"
+  },
   "Controls shadow cast direction for elevation layers": {
     "Controls shadow cast direction for elevation layers": "שולט בכיוון הטלת הצל עבור שכבות הגבהה"
   },
@@ -1876,6 +1906,9 @@
   },
   "Controls the outer edge of protocol-blurred windows": {
     "Controls the outer edge of protocol-blurred windows": "שולט בקצה החיצוני של חלונות המטושטשים על ידי הפרוטוקול"
+  },
+  "Controls the outline of popouts, modals, and other shell surfaces": {
+    "Controls the outline of popouts, modals, and other shell surfaces": ""
   },
   "Controls the transparency of the shadow": {
     "Controls the transparency of the shadow": "שולט בשקיפות הצל"
@@ -1961,6 +1994,9 @@
   "Create Window Rule": {
     "Create Window Rule": "צור/צרי חוק לחלון"
   },
+  "Create a new %1 session (^N)": {
+    "Create a new %1 session (^N)": ""
+  },
   "Create a new %1 session (n)": {
     "Create a new %1 session (n)": "צור/צרי הפעלה חדשה של %1 (n)"
   },
@@ -1977,22 +2013,22 @@
     "Creating...": "יוצר..."
   },
   "Credentials": {
-    "Credentials": ""
+    "Credentials": "אישורי גישה"
   },
   "Critical Battery": {
-    "Critical Battery": ""
+    "Critical Battery": "סוללה קריטית"
   },
   "Critical Battery Alert": {
-    "Critical Battery Alert": ""
+    "Critical Battery Alert": "התראת סוללה קריטית"
   },
   "Critical Battery Notifications": {
-    "Critical Battery Notifications": ""
+    "Critical Battery Notifications": "התראות סוללה קריטית"
   },
   "Critical Priority": {
     "Critical Priority": "עדיפות קריטית"
   },
   "Critical Threshold": {
-    "Critical Threshold": ""
+    "Critical Threshold": "סף קריטי"
   },
   "Ctrl+A: Select All • Ctrl+P: Preview • Enter/Shift+Enter: Find Next/Previous • Esc: Close": {
     "Ctrl+A: Select All • Ctrl+P: Preview • Enter/Shift+Enter: Find Next/Previous • Esc: Close": "Ctrl+A: בחירת הכל • Ctrl+P: תצוגה מקדימה • Enter/Shift+Enter: חיפוש הבא/הקודם • Esc: סגירה"
@@ -2070,7 +2106,7 @@
     "Custom": "מותאם אישית"
   },
   "Custom Blend": {
-    "Custom Blend": ""
+    "Custom Blend": "מיזוג מותאם אישית"
   },
   "Custom Color": {
     "Custom Color": "צבע מותאם אישית"
@@ -2111,11 +2147,8 @@
   "Custom Suspend Command": {
     "Custom Suspend Command": "פקודת השהיה מותאמת אישית"
   },
-  "Custom Transparency": {
-    "Custom Transparency": "שקיפות מותאמת אישית"
-  },
   "Custom command and terminal params are split on whitespace; paths with spaces will break.": {
-    "Custom command and terminal params are split on whitespace; paths with spaces will break.": "פקודה מותאמת אישית ופרמטרים של המסוף מפוצלים על ידי רווחים; נתיבים הכוללים רווחים ישברו."
+    "Custom command and terminal params are split on whitespace; paths with spaces will break.": "פקודה מותאמת אישית ופרמטרים של המסוף מפוצלים על ידי רווחים, נתיבים הכוללים רווחים ישברו."
   },
   "Custom open-trash command": {
     "Custom open-trash command": "פקודה מותאמת אישית לפתיחת האשפה"
@@ -2137,6 +2170,9 @@
   },
   "Customizable empty space": {
     "Customizable empty space": "רווח ריק הניתן להתאמה"
+  },
+  "Customize the font and background of the lock screen, or leave empty to use your theme font and desktop wallpaper. Changes apply instantly.": {
+    "Customize the font and background of the lock screen, or leave empty to use your theme font and desktop wallpaper. Changes apply instantly.": ""
   },
   "Customize which actions appear in the power menu": {
     "Customize which actions appear in the power menu": "התאם/י אישית אילו פעולות יופיעו בתפריט הכיבוי"
@@ -2195,6 +2231,12 @@
   "Dank Bar": {
     "Dank Bar": "Dank Bar"
   },
+  "Dank Bar Xray": {
+    "Dank Bar Xray": ""
+  },
+  "Dank Dash": {
+    "Dank Dash": "Dank Dash"
+  },
   "DankBar": {
     "DankBar": "Dank Bar"
   },
@@ -2217,7 +2259,7 @@
     "Dark Mode": "מצב כהה"
   },
   "Dark Mode Icon Theme": {
-    "Dark Mode Icon Theme": ""
+    "Dark Mode Icon Theme": "ערכת נושא של סמלים למצב כהה"
   },
   "Dark mode base": {
     "Dark mode base": "בסיס למצב כהה"
@@ -2385,7 +2427,7 @@
     "Details for \"%1\"": "פרטים עבור \"%1\""
   },
   "Detected backends: %1": {
-    "Detected backends: %1": "Backends שזוהו: %1"
+    "Detected backends: %1": "הBackends שזוהו: %1"
   },
   "Development": {
     "Development": "פיתוח"
@@ -2576,9 +2618,6 @@
   "Dock Opacity": {
     "Dock Opacity": "שקיפות הDock"
   },
-  "Dock Transparency": {
-    "Dock Transparency": "שקיפות הDock"
-  },
   "Dock Visibility": {
     "Dock Visibility": "נראות הDock"
   },
@@ -2589,7 +2628,7 @@
     "Dock margin, transparency, and border": "שוליים, שקיפות ומסגרת הDock"
   },
   "Dock window": {
-    "Dock window": ""
+    "Dock window": "עגן/י חלון"
   },
   "Docs": {
     "Docs": "דוקיומנטציה"
@@ -2612,8 +2651,14 @@
   "Downloads": {
     "Downloads": "הורדות"
   },
+  "Drag a widget by its handle here to reorder it or drop it into another group": {
+    "Drag a widget by its handle here to reorder it or drop it into another group": "גרור/גררי ווידג׳ט באמצעות הידית שלו לכאן כדי לסדר אותו מחדש או לשחרר אותו לקבוצה אחרת"
+  },
   "Drag to Reorder": {
     "Drag to Reorder": "גרירה בכדי לסדר מחדש"
+  },
+  "Drag to reorder or click to hide tabs. Use ↑/↓ to highlight a tab and Ctrl+↑/↓ to move it.": {
+    "Drag to reorder or click to hide tabs. Use ↑/↓ to highlight a tab and Ctrl+↑/↓ to move it.": "גרור/גררי כדי לסדר מחדש או לחץ/י כדי להסתיר כרטיסיות. השתמש/י ב↑/↓ כדי לסמן כרטיסייה ובCtrl+↑/↓ כדי להזיז אותה."
   },
   "Drag widgets to reorder within sections. Use the eye icon to hide/show widgets (maintains spacing), or X to remove them completely.": {
     "Drag widgets to reorder within sections. Use the eye icon to hide/show widgets (maintains spacing), or X to remove them completely.": "גרור/גררי ווידג׳טים כדי לשנות את סדרם בתוך מקטעים. השתמש/י בסמל העין כדי להסתיר/להציג ווידג׳טים (שומר על המרווח), או בX כדי להסיר אותם לחלוטין."
@@ -2629,6 +2674,9 @@
   },
   "Drizzle": {
     "Drizzle": "טפטוף"
+  },
+  "Drop here": {
+    "Drop here": "שחרר/י כאן"
   },
   "Drop your override for %1 so the DMS default action re-applies?": {
     "Drop your override for %1 so the DMS default action re-applies?": "לבטל את הדריסה שלך עבור %1 כך שפעולת ברירת המחדל של DMS תחול מחדש?"
@@ -2660,6 +2708,9 @@
   "Dynamic Theming": {
     "Dynamic Theming": "עיצוב דינמי"
   },
+  "Dynamic Width": {
+    "Dynamic Width": ""
+  },
   "Dynamic colors from wallpaper": {
     "Dynamic colors from wallpaper": "צבעים דינמיים מתמונת הרקע"
   },
@@ -2670,13 +2721,16 @@
     "Dynamic colors, presets": "צבעים דינמיים, הגדרות מוכנות"
   },
   "Dynamic: Spring bezier with overshoot — entry briefly exceeds its target then settles. Expressive and alive.": {
-    "Dynamic: Spring bezier with overshoot — entry briefly exceeds its target then settles. Expressive and alive.": "דינמי: עקומת Spring Bezier עם חריגה - הכניסה חורגת לרגע מהיעד ואז מתייצבת. אקספרסיבי ומלא חיים."
+    "Dynamic: Spring bezier with overshoot — entry briefly exceeds its target then settles. Expressive and alive.": "דינמי: עקומת Bezier של קפיץ עם חריגה - הכניסה חורגת לרגע מהיעד ואז מתייצבת. אקספרסיבי ומלא חיים."
+  },
+  "Edge Hover Reveal": {
+    "Edge Hover Reveal": "חשיפה בריחוף על הקצה"
   },
   "Edge Spacing": {
     "Edge Spacing": "ריווח קצוות"
   },
   "Edge spacing, exclusive zone, and popup gaps are managed by Frame": {
-    "Edge spacing, exclusive zone, and popup gaps are managed by Frame": ""
+    "Edge spacing, exclusive zone, and popup gaps are managed by Frame": "ריווח קצוות, אזור בלעדי, ומרווחי חלונות קופצים מנוהלים על ידי המסגרת (Frame)"
   },
   "Edge the launcher slides from": {
     "Edge the launcher slides from": "הקצה שממנו המשגר מחליק"
@@ -2760,7 +2814,7 @@
     "Enable a custom override below to set per-bar shadow intensity, opacity, and color.": "הפעל/י דריסה מותאמת אישית למטה כדי להגדיר עוצמת צל, שקיפות וצבע עבור כל סרגל בנפרד."
   },
   "Enable compositor-targetable blur layer (namespace: dms:blurwallpaper). Requires manual niri configuration.": {
-    "Enable compositor-targetable blur layer (namespace: dms:blurwallpaper). Requires manual niri configuration.": "הפעל/י שכבת טשטוש הניתנת לזיהוי על ידי הקומפוזיטור (namespace: dms:blurwallpaper). דורש הגדרה ידנית של Niri."
+    "Enable compositor-targetable blur layer (namespace: dms:blurwallpaper). Requires manual niri configuration.": "הפעל/י שכבת טשטוש הניתנת לזיהוי על ידי הקומפוזיטור (namespace: dms:blurwallpaper). דורש הגדרה ידנית של niri."
   },
   "Enable fingerprint at login": {
     "Enable fingerprint at login": "הפעלת הזדהות עם טביעת אצבע"
@@ -2838,7 +2892,7 @@
     "Enter PIN for ": "הזן/י קוד PIN עבור "
   },
   "Enter URI or text to share": {
-    "Enter URI or text to share": ""
+    "Enter URI or text to share": "הזן/י URI או טקסט לשיתוף"
   },
   "Enter URL or text to share": {
     "Enter URL or text to share": "הזן/י קישור (URL) או טקסט לשיתוף"
@@ -2907,7 +2961,7 @@
     "Errors": "שגיאות"
   },
   "Estimated Time": {
-    "Estimated Time": ""
+    "Estimated Time": "זמן משוער"
   },
   "Ethernet": {
     "Ethernet": "Ethernet"
@@ -2930,6 +2984,9 @@
   "Exact": {
     "Exact": "מדויק"
   },
+  "Excluded Media Players": {
+    "Excluded Media Players": "נגני מדיה לא נכללים"
+  },
   "Exclusive Zone Offset": {
     "Exclusive Zone Offset": "היסט האזור הבלעדי"
   },
@@ -2937,7 +2994,7 @@
     "Existing Users": "משתמשים קיימים"
   },
   "Exit node": {
-    "Exit node": ""
+    "Exit node": "נקודת יציאה"
   },
   "Experimental Feature": {
     "Experimental Feature": "תכונה ניסיונית"
@@ -3003,7 +3060,7 @@
     "Failed to apply Qt colors": "החלת צבעי Qt נכשלה"
   },
   "Failed to apply charge limit to system": {
-    "Failed to apply charge limit to system": ""
+    "Failed to apply charge limit to system": "החלת מגבלת הטעינה על המערכת נכשלה"
   },
   "Failed to apply profile": {
     "Failed to apply profile": "החלת הפרופיל נכשלה"
@@ -3159,7 +3216,7 @@
     "Failed to run 'dms greeter status'. Ensure DMS is installed and dms is in PATH.": "הרצת הפקודה 'dms greeter status' נכשלה. ודא/י שDMS מותקן ו-dms נמצא בPATH."
   },
   "Failed to save VPN credentials": {
-    "Failed to save VPN credentials": ""
+    "Failed to save VPN credentials": "שמירת אישורי הגישה לVPN נכשלה"
   },
   "Failed to save audio config": {
     "Failed to save audio config": "שמירת הגדרות שמע נכשלה"
@@ -3174,7 +3231,7 @@
     "Failed to save profile": "שמירת הפרופיל נכשלה"
   },
   "Failed to send SMS": {
-    "Failed to send SMS": ""
+    "Failed to send SMS": "שליחת הSMS נכשלה"
   },
   "Failed to send clipboard": {
     "Failed to send clipboard": "שליחת לוח ההעתקה נכשלה"
@@ -3303,7 +3360,7 @@
     "Filter": "סינון"
   },
   "Filter by type": {
-    "Filter by type": ""
+    "Filter by type": "סנן/י לפי סוג"
   },
   "Find in Text": {
     "Find in Text": "חפש/י בטקסט"
@@ -3341,12 +3398,6 @@
   "Fit": {
     "Fit": "התאמה"
   },
-  "Fix Now": {
-    "Fix Now": "תקן/י עכשיו"
-  },
-  "Fixing...": {
-    "Fixing...": "מתקן..."
-  },
   "Flags": {
     "Flags": "דגלים"
   },
@@ -3381,10 +3432,10 @@
     "Floating Position": "מיקום צף"
   },
   "Fluent": {
-    "Fluent": "Fluent"
+    "Fluent": "שוטף"
   },
   "Fluent: Smooth cubic deceleration in, quick snap out — clean, elegant curves.": {
-    "Fluent: Smooth cubic deceleration in, quick snap out — clean, elegant curves.": "Fluent: האטה חלקה פנימה, יציאה מהירה - עקומות נקיות ואלגנטיות."
+    "Fluent: Smooth cubic deceleration in, quick snap out — clean, elegant curves.": "שוטף: האטה חלקה פנימה, יציאה מהירה - עקומות נקיות ואלגנטיות."
   },
   "Focus": {
     "Focus": "מיקוד"
@@ -3406,6 +3457,9 @@
   },
   "Focused Color": {
     "Focused Color": "צבע ממוקד"
+  },
+  "Focused Display": {
+    "Focused Display": "מסך ממוקד"
   },
   "Focused Monitor Only": {
     "Focused Monitor Only": "מסך ממוקד בלבד"
@@ -3449,6 +3503,9 @@
   "Font Weight": {
     "Font Weight": "משקל הגופן"
   },
+  "Font used for the clock and date on the lock screen": {
+    "Font used for the clock and date on the lock screen": ""
+  },
   "Font used on the login screen": {
     "Font used on the login screen": "הגופן שנעשה בו שימוש במסך ההתחברות"
   },
@@ -3479,6 +3536,9 @@
   "Force Kill (SIGKILL)": {
     "Force Kill (SIGKILL)": "כפה/י סגירה (SIGKILL)"
   },
+  "Force Padding": {
+    "Force Padding": ""
+  },
   "Force RGBX": {
     "Force RGBX": "אלץ/י RGBX"
   },
@@ -3496,6 +3556,9 @@
   },
   "Forecast Not Available": {
     "Forecast Not Available": "תחזית לא זמינה"
+  },
+  "Forecast and conditions": {
+    "Forecast and conditions": "תחזית ותנאים"
   },
   "Foreground Layers": {
     "Foreground Layers": "שכבות קדמיות"
@@ -3522,7 +3585,7 @@
     "Format Legend": "מקרא תבניות"
   },
   "Forward 10s": {
-    "Forward 10s": ""
+    "Forward 10s": "קדימה 10 שניות"
   },
   "Frame": {
     "Frame": "מסגרת"
@@ -3535,6 +3598,9 @@
   },
   "Frame Border Color": {
     "Frame Border Color": "צבע הגבול של המסגרת"
+  },
+  "Frame Xray": {
+    "Frame Xray": ""
   },
   "Free VRAM/memory when the launcher is closed. May cause a slight delay when reopening.": {
     "Free VRAM/memory when the launcher is closed. May cause a slight delay when reopening.": "שחרר/י את הזיכרון (VRAM) כאשר המשגר נסגר. עלול לגרום לעיכוב קל בפתיחה מחדש."
@@ -3559,6 +3625,9 @@
   },
   "Full Day & Month": {
     "Full Day & Month": "יום וחודש מלאים"
+  },
+  "Full Size": {
+    "Full Size": ""
   },
   "Full command to execute": {
     "Full command to execute": "פקודה מלאה לביצוע"
@@ -3609,7 +3678,10 @@
     "Gamma control not available. Requires DMS API v6+.": "בקרת גאמה אינה זמינה. נדרש API של DMS גרסה 6 ומעלה."
   },
   "Gap between the end widgets and the bar ends (0 = edge-to-edge)": {
-    "Gap between the end widgets and the bar ends (0 = edge-to-edge)": ""
+    "Gap between the end widgets and the bar ends (0 = edge-to-edge)": "המרווח בין ווידג׳טי הקצה לקצוות הסרגל (0 = מקצה לקצה)"
+  },
+  "Gaps": {
+    "Gaps": ""
   },
   "Generate Override": {
     "Generate Override": "צור/צרי דריסה"
@@ -3700,6 +3772,9 @@
   },
   "Greeter only — format for the date on the login screen": {
     "Greeter only — format for the date on the login screen": "במסך ההתחברות בלבד - תבנית לתאריך שמופיע בכניסה"
+  },
+  "Greeter sync complete": {
+    "Greeter sync complete": ""
   },
   "Grid": {
     "Grid": "רשת"
@@ -3806,6 +3881,9 @@
   "Hidden apps won't appear in the launcher. Right-click an app and select 'Hide App' to hide it.": {
     "Hidden apps won't appear in the launcher. Right-click an app and select 'Hide App' to hide it.": "אפליקציות מוסתרות לא יופיעו במשגר. לחץ/י לחיצה ימנית על האפליקציה ובחר/י 'הסתר/י אפליקציה' כדי להסתיר אותה."
   },
+  "Hidden until weather is enabled": {
+    "Hidden until weather is enabled": "מוסתר עד שמזג האוויר מופעל"
+  },
   "Hide": {
     "Hide": "הסתר/י"
   },
@@ -3840,7 +3918,7 @@
     "Hide device": "הסתר/י התקן"
   },
   "Hide installed": {
-    "Hide installed": ""
+    "Hide installed": "הסתר/י תוספים מותקנים"
   },
   "Hide notification content until expanded": {
     "Hide notification content until expanded": "הסתר/י את תוכן ההתראה עד להרחבה"
@@ -3853,6 +3931,12 @@
   },
   "Hide the bar when the pointer leaves even if a popout is still open": {
     "Hide the bar when the pointer leaves even if a popout is still open": "הסתר/י את הסרגל כשמצביע העכבר עוזב גם אם חלון קופץ עדיין פתוח"
+  },
+  "Hide when no updates: OFF": {
+    "Hide when no updates: OFF": ""
+  },
+  "Hide when no updates: ON": {
+    "Hide when no updates: ON": ""
   },
   "High": {
     "High": "גבוה"
@@ -3920,6 +4004,9 @@
   "Hourly Forecast Count": {
     "Hourly Forecast Count": "מספר תחזיות שעתיות"
   },
+  "Hover Popouts": {
+    "Hover Popouts": "חלונות קופצים בריחוף"
+  },
   "How often the server polls for new updates.": {
     "How often the server polls for new updates.": "באיזו תדירות השרת בודק אם יש עדכונים חדשים."
   },
@@ -3984,7 +4071,7 @@
     "Icon Theme": "ערכת נושא של סמלים"
   },
   "Icon theme changed outside DMS; switched to System Default": {
-    "Icon theme changed outside DMS; switched to System Default": ""
+    "Icon theme changed outside DMS; switched to System Default": "ערכת הנושא של הסמלים שונתה מחוץ לDMS; בוצעה החלפה לברירת המחדל של המערכת"
   },
   "Identical alerts show as one popup instead of stacking": {
     "Identical alerts show as one popup instead of stacking": "התראות זהות מוצגות כחלון קופץ אחד במקום להיערם"
@@ -4091,6 +4178,9 @@
   "Initialised": {
     "Initialised": "אותחל"
   },
+  "Inner Gaps": {
+    "Inner Gaps": ""
+  },
   "Inner padding applied to each widget": {
     "Inner padding applied to each widget": "ריווח פנימי שמוחל על כל ווידג׳ט"
   },
@@ -4152,7 +4242,7 @@
     "Installed": "מותקן"
   },
   "Installed first": {
-    "Installed first": ""
+    "Installed first": "מותקנים תחילה"
   },
   "Installed: %1": {
     "Installed: %1": "הותקן: %1"
@@ -4211,6 +4301,12 @@
   "Jobs: ": {
     "Jobs: ": "עבודות: "
   },
+  "Jump to page": {
+    "Jump to page": "מעבר לעמוד"
+  },
+  "Jump to page (1 - %1)": {
+    "Jump to page (1 - %1)": "מעבר לעמוד (1 - %1)"
+  },
   "Keep Awake": {
     "Keep Awake": "מניעת שינה"
   },
@@ -4224,7 +4320,7 @@
     "Keep in Bar": "השאר/י בסרגל"
   },
   "Keep the clipboard type filter when reopening history": {
-    "Keep the clipboard type filter when reopening history": ""
+    "Keep the clipboard type filter when reopening history": "שמור/שמרי את מסנן הסוגים של לוח ההעתקה בפתיחה מחדש של ההיסטוריה"
   },
   "Keep typing": {
     "Keep typing": "המשך/המשיכי להקליד"
@@ -4290,7 +4386,7 @@
     "Last hour": "בשעה האחרונה"
   },
   "Last launched %1": {
-    "Last launched %1": "ההפעלה האחרונה הייתה %1"
+    "Last launched %1": "ההפעלה האחרונה הייתה ב%1"
   },
   "Last launched %1 day ago": {
     "Last launched %1 day ago": "ההפעלה האחרונה הייתה לפני יום %1"
@@ -4368,7 +4464,7 @@
     "Light Mode": "מצב בהיר"
   },
   "Light Mode Icon Theme": {
-    "Light Mode Icon Theme": ""
+    "Light Mode Icon Theme": "ערכת נושא של סמלים למצב בהיר"
   },
   "Light Rain": {
     "Light Rain": "גשם קל"
@@ -4386,10 +4482,10 @@
     "Light mode harmony": "הרמוניה במצב בהיר"
   },
   "Limit set to %1%": {
-    "Limit set to %1%": ""
+    "Limit set to %1%": "המגבלה הוגדרה ל%1%"
   },
   "Limit the maximum battery charge level to extend lifespan.": {
-    "Limit the maximum battery charge level to extend lifespan.": ""
+    "Limit the maximum battery charge level to extend lifespan.": "הגבל/י את רמת הטעינה המקסימלית של הסוללה כדי להאריך את תוחלת החיים שלה."
   },
   "Line": {
     "Line": "קו"
@@ -4428,7 +4524,7 @@
     "Local": "מקומי"
   },
   "Local Weather": {
-    "Local Weather": ""
+    "Local Weather": "מזג אוויר מקומי"
   },
   "Locale": {
     "Locale": "שפה ואזור"
@@ -4447,6 +4543,9 @@
   },
   "Lock Screen": {
     "Lock Screen": "מסך הנעילה"
+  },
+  "Lock Screen Appearance": {
+    "Lock Screen Appearance": ""
   },
   "Lock Screen Display": {
     "Lock Screen Display": "תצוגת מסך הנעילה"
@@ -4471,6 +4570,9 @@
   },
   "Lock screen authentication changes apply automatically and may open a terminal when sudo authentication is required.": {
     "Lock screen authentication changes apply automatically and may open a terminal when sudo authentication is required.": "שינויי אימות למסך הנעילה מוחלים באופן אוטומטי ועשויים לפתוח מסוף כאשר נדרש אימות עם sudo."
+  },
+  "Lock screen font": {
+    "Lock screen font": ""
   },
   "Locked": {
     "Locked": "נעול"
@@ -4503,13 +4605,13 @@
     "Low": "נמוך"
   },
   "Low Battery": {
-    "Low Battery": ""
+    "Low Battery": "סוללה חלשה"
   },
   "Low Battery Notifications": {
-    "Low Battery Notifications": ""
+    "Low Battery Notifications": "התראות סוללה חלשה"
   },
   "Low Battery Threshold": {
-    "Low Battery Threshold": ""
+    "Low Battery Threshold": "סף סוללה חלשה"
   },
   "Low Priority": {
     "Low Priority": "עדיפות נמוכה"
@@ -4551,7 +4653,7 @@
     "Manages calendar events": "לניהול אירועים ביומן"
   },
   "Manages files and directories": {
-    "Manages files and directories": "מנהל קבצים ותיקיות"
+    "Manages files and directories": "לניהול קבצים ותיקיות"
   },
   "Mango Options": {
     "Mango Options": "אפשרויות Mango"
@@ -4611,7 +4713,7 @@
     "Match Criteria": "קריטריוני התאמה"
   },
   "Material": {
-    "Material": "Material"
+    "Material": "חומרי"
   },
   "Material Colors": {
     "Material Colors": "צבעי Material"
@@ -4914,7 +5016,7 @@
     "Music Player": "נגן מוזיקה"
   },
   "Mute During Playback": {
-    "Mute During Playback": ""
+    "Mute During Playback": "השתק/י בזמן השמעה"
   },
   "Mute Popups": {
     "Mute Popups": "השתק/י חלונות קופצים"
@@ -4980,7 +5082,7 @@
     "Network Status": "מצב רשת"
   },
   "Network Type": {
-    "Network Type": ""
+    "Network Type": "סוג רשת"
   },
   "Network download and upload speed display": {
     "Network download and upload speed display": "תצוגת מהירות הורדה והעלאה ברשת"
@@ -5030,6 +5132,9 @@
   "Next Transition": {
     "Next Transition": "המעבר הבא"
   },
+  "Next page": {
+    "Next page": "העמוד הבא"
+  },
   "Night": {
     "Night": "לילה"
   },
@@ -5046,13 +5151,13 @@
     "Night mode failed: DMS gamma control not available": "מצב לילה נכשל: בקרת גאמה של DMS אינה זמינה"
   },
   "Niri Integration": {
-    "Niri Integration": "אינטגרציה עם Niri"
+    "Niri Integration": "אינטגרציה עם niri"
   },
   "Niri Layout Overrides": {
-    "Niri Layout Overrides": "דריסות פריסה של Niri"
+    "Niri Layout Overrides": "דריסות פריסה של niri"
   },
   "Niri compositor actions (focus, move, etc.)": {
-    "Niri compositor actions (focus, move, etc.)": "פעולות קומפוזיטור של Niri (מיקוד, הזזה וכו')"
+    "Niri compositor actions (focus, move, etc.)": "פעולות קומפוזיטור של niri (מיקוד, הזזה וכו')"
   },
   "No": {
     "No": "לא"
@@ -5192,6 +5297,9 @@
   "No errors": {
     "No errors": "אין שגיאות"
   },
+  "No excluded players configured": {
+    "No excluded players configured": "לא הוגדרו נגנים שלא נכללים"
+  },
   "No features enabled": {
     "No features enabled": "אין תכונות מופעלות"
   },
@@ -5211,7 +5319,7 @@
     "No human user accounts found.": "לא נמצאו חשבונות משתמש אנושיים."
   },
   "No images found": {
-    "No images found": ""
+    "No images found": "לא נמצאו תמונות"
   },
   "No info items": {
     "No info items": "אין פריטי מידע"
@@ -5299,6 +5407,9 @@
   },
   "No saved clipboard entries": {
     "No saved clipboard entries": "אין רשומות לוח ההעתקה שמורות"
+  },
+  "No screenshot provided": {
+    "No screenshot provided": "לא סופק צילום מסך"
   },
   "No session selected": {
     "No session selected": "לא נבחרה הפעלה"
@@ -5408,14 +5519,8 @@
   "Not set": {
     "Not set": "לא מוגדר"
   },
-  "Note: this only changes the percentage, it does not actually limit charging.": {
-    "Note: this only changes the percentage, it does not actually limit charging.": "הערה: זה רק משנה את האחוזים, זה לא באמת מגביל את הטעינה."
-  },
   "Notepad": {
     "Notepad": "פנקס"
-  },
-  "Notepad Font Settings": {
-    "Notepad Font Settings": "הגדרות גופן של הפנקס"
   },
   "Notepad Settings": {
     "Notepad Settings": "הגדרות פנקס"
@@ -5433,7 +5538,7 @@
     "Nothing to see here": "אין מה לראות כאן"
   },
   "Notification": {
-    "Notification": ""
+    "Notification": "התראה"
   },
   "Notification Center": {
     "Notification Center": "מרכז ההתראות"
@@ -5457,7 +5562,7 @@
     "Notification Timeouts": "הקצבת זמן להתראות"
   },
   "Notification Type": {
-    "Notification Type": ""
+    "Notification Type": "סוג התראה"
   },
   "Notification toast popups": {
     "Notification toast popups": "התראות קופצות"
@@ -5466,7 +5571,10 @@
     "Notifications": "התראות"
   },
   "Notify when limit is reached": {
-    "Notify when limit is reached": ""
+    "Notify when limit is reached": "שלח/י התראה בעת ההגעה למגבלה"
+  },
+  "Now playing and media controls": {
+    "Now playing and media controls": "מתנגן כעת ופקדי מדיה"
   },
   "Numbers": {
     "Numbers": "מספרים"
@@ -5529,7 +5637,7 @@
     "Only affects DMS-managed PAM. If greetd already includes pam_fprintd, fingerprint stays enabled.": "משפיע רק על PAM המנוהל על ידי DMS. אם greetd כבר כולל את pam_fprintd, טביעת האצבע תישאר מופעלת."
   },
   "Only on Battery": {
-    "Only on Battery": ""
+    "Only on Battery": "רק בעת שימוש בסוללה"
   },
   "Only show windows from the current monitor on each dock": {
     "Only show windows from the current monitor on each dock": "הצג/י רק חלונות מהמסך הנוכחי בכל Dock"
@@ -5554,6 +5662,9 @@
   },
   "Open App": {
     "Open App": "פתח/י אפליקציה"
+  },
+  "Open Delay": {
+    "Open Delay": "עיכוב פתיחה"
   },
   "Open Dir": {
     "Open Dir": "פתיחת תיקייה"
@@ -5583,7 +5694,7 @@
     "Open a terminal and run a custom command instead of the in-shell upgrade flow.": "פתח/י מסוף והרץ/י פקודה מותאמת אישית במקום תהליך השדרוג המובנה במעטפת."
   },
   "Open as window": {
-    "Open as window": ""
+    "Open as window": "פתח/י כחלון"
   },
   "Open folder": {
     "Open folder": "פתח/י תיקייה"
@@ -5596,6 +5707,12 @@
   },
   "Open search bar to find text": {
     "Open search bar to find text": "פתח/י שורת חיפוש כדי למצוא טקסט"
+  },
+  "Open the launcher by hovering the emerge edge (when free of bar and dock)": {
+    "Open the launcher by hovering the emerge edge (when free of bar and dock)": "פתח/י את המשגר על ידי ריחוף על קצה ההופעה (כאשר פנוי מסרגל וDock)"
+  },
+  "Open widget popouts by hovering over the bar. Moving to another widget switches the popout.": {
+    "Open widget popouts by hovering over the bar. Moving to another widget switches the popout.": "פתח/י חלונות קופצים של ווידג׳טים על ידי ריחוף מעל הסרגל. מעבר לווידג׳ט אחר מחליף את החלון הקופץ."
   },
   "Open with...": {
     "Open with...": "פתח/י עם..."
@@ -5648,6 +5765,9 @@
   "Other": {
     "Other": "אחר"
   },
+  "Outer Gaps": {
+    "Outer Gaps": ""
+  },
   "Outline": {
     "Outline": "מתאר"
   },
@@ -5666,14 +5786,14 @@
   "Output Tray Missing": {
     "Output Tray Missing": "מגש הפלט חסר"
   },
-  "Outputs Include Missing": {
-    "Outputs Include Missing": "קובץ includes של פלטי תצוגה חסר"
-  },
   "Overcast": {
     "Overcast": "מעונן"
   },
   "Overflow": {
     "Overflow": "גלישה"
+  },
+  "Overlay": {
+    "Overlay": ""
   },
   "Overridden by config": {
     "Overridden by config": "נדרס על ידי config"
@@ -5922,7 +6042,7 @@
     "Place the dock on the Wayland overlay layer": "הצב/י את הDock בשכבת הכיסוי העליונה (overlay layer) של Wayland"
   },
   "Play": {
-    "Play": ""
+    "Play": "נגן"
   },
   "Play a video when the screen locks.": {
     "Play a video when the screen locks.": "נגן/י וידאו כאשר המסך ננעל."
@@ -5974,6 +6094,9 @@
   },
   "Plugin Visibility": {
     "Plugin Visibility": "נראות תוסף"
+  },
+  "Plugin dependency missing": {
+    "Plugin dependency missing": "חסרה חבילה נדרשת לתוסף"
   },
   "Plugin disabled: %1": {
     "Plugin disabled: %1": "התוסף הושבת: %1"
@@ -6072,7 +6195,7 @@
     "Power Profile Degradation": "ירידת ביצועים בפרופיל צריכת החשמל"
   },
   "Power Profiles Auto-Switching": {
-    "Power Profiles Auto-Switching": ""
+    "Power Profiles Auto-Switching": "החלפה אוטומטית של פרופילי חשמל"
   },
   "Power Saver": {
     "Power Saver": "חיסכון בחשמל"
@@ -6084,10 +6207,10 @@
     "Power profile management available": "ניהול פרופיל חשמל זמין"
   },
   "Power profile to use when AC power is connected.": {
-    "Power profile to use when AC power is connected.": ""
+    "Power profile to use when AC power is connected.": "פרופיל החשמל שבו ייעשה שימוש כאשר מחובר לחשמל (AC)."
   },
   "Power profile to use when running on battery power.": {
-    "Power profile to use when running on battery power.": ""
+    "Power profile to use when running on battery power.": "פרופיל החשמל שבו ייעשה שימוש כאשר פועל על סוללה."
   },
   "Power source": {
     "Power source": "מקור חשמל"
@@ -6116,6 +6239,9 @@
   "Press 'n' or click 'New Session' to create one": {
     "Press 'n' or click 'New Session' to create one": "לחץ/י על 'n' במקלדת או על הכפתור 'הפעלה חדשה' כדי ליצור אחת"
   },
+  "Press Ctrl+N or click 'New Session' to create one": {
+    "Press Ctrl+N or click 'New Session' to create one": ""
+  },
   "Press Enter and the audio system will restart to apply the change": {
     "Press Enter and the audio system will restart to apply the change": "לחץ/י Enter ומערכת השמע תופעל מחדש כדי להחיל את השינוי"
   },
@@ -6131,14 +6257,20 @@
   "Prevent screen timeout": {
     "Prevent screen timeout": "מנע/י כיבוי מסך אוטומטי"
   },
+  "Prevent specific applications from displaying in the media controllers (e.g., browser audio streams, background tools). Matches player identity or desktop file name case-insensitively.": {
+    "Prevent specific applications from displaying in the media controllers (e.g., browser audio streams, background tools). Matches player identity or desktop file name case-insensitively.": "מנע/י מאפליקציות מסוימות מלהופיע בפקדי המדיה (לדוגמה, הזרמת שמע מהדפדפן, כלי רקע). האפשרות מתאימה לזהות הנגן או לשם קובץ שולחן העבודה ללא הבחנה בין אותיות רישיות לקטנות."
+  },
   "Preview": {
     "Preview": "תצוגה מקדימה"
   },
   "Preview: %1": {
-    "Preview: %1": ""
+    "Preview: %1": "תצוגה מקדימה: %1"
   },
   "Previous": {
-    "Previous": ""
+    "Previous": "הקודם"
+  },
+  "Previous page": {
+    "Previous page": "העמוד הקודם"
   },
   "Primary": {
     "Primary": "ראשי"
@@ -6147,7 +6279,7 @@
     "Primary Container": "מיכל ראשי"
   },
   "Primary Theme Color": {
-    "Primary Theme Color": ""
+    "Primary Theme Color": "צבע ערכת הנושא הראשי"
   },
   "Print Server Management": {
     "Print Server Management": "ניהול שרת הדפסה"
@@ -6198,7 +6330,7 @@
     "Process Count": "מספר תהליכים"
   },
   "Process exited with code %1": {
-    "Process exited with code %1": ""
+    "Process exited with code %1": "התהליך הסתיים עם קוד %1"
   },
   "Processes": {
     "Processes": "תהליכים"
@@ -6237,10 +6369,10 @@
     "Profile saved: %1": "פרופיל נשמר: %1"
   },
   "Profile when Plugged In (AC)": {
-    "Profile when Plugged In (AC)": ""
+    "Profile when Plugged In (AC)": "פרופיל בעת חיבור לחשמל (AC)"
   },
   "Profile when on Battery": {
-    "Profile when on Battery": ""
+    "Profile when on Battery": "פרופיל בעת שימוש בסוללה"
   },
   "Protocol": {
     "Protocol": "פרוטוקול"
@@ -6306,7 +6438,7 @@
     "Re-enter password": "הזן/י סיסמה מחדש"
   },
   "Reach local network devices while using an exit node": {
-    "Reach local network devices while using an exit node": ""
+    "Reach local network devices while using an exit node": "אפשר/י גישה להתקני רשת מקומית בעת שימוש בנקודת יציאה (Exit node)"
   },
   "Read-only legacy config": {
     "Read-only legacy config": "תצורת מורשת לקריאה בלבד"
@@ -6327,7 +6459,7 @@
     "Recent Colors": "צבעים אחרונים"
   },
   "Recent Images": {
-    "Recent Images": ""
+    "Recent Images": "תמונות אחרונות"
   },
   "Recently Used Apps": {
     "Recently Used Apps": "אפליקציות שהיו בשימוש לאחרונה"
@@ -6356,6 +6488,9 @@
   "Reject Jobs": {
     "Reject Jobs": "דחה/י עבודות"
   },
+  "Related: %1": {
+    "Related: %1": "קשור: %1"
+  },
   "Release": {
     "Release": "שחרור"
   },
@@ -6378,7 +6513,7 @@
     "Remember Last Query": "זכירת הבקשה האחרונה"
   },
   "Remember Type Filter": {
-    "Remember Type Filter": ""
+    "Remember Type Filter": "שמור/שמרי מסנן סוגים"
   },
   "Remember last session": {
     "Remember last session": "זכירת ההפעלה האחרונה"
@@ -6446,6 +6581,9 @@
   "Rename Workspace": {
     "Rename Workspace": "שנה/י את השם של סביבת העבודה"
   },
+  "Reorder & Group": {
+    "Reorder & Group": "סידור מחדש וקיבוץ"
+  },
   "Repeat": {
     "Repeat": "חזרה"
   },
@@ -6481,6 +6619,9 @@
   },
   "Requires a newer version of Quickshell": {
     "Requires a newer version of Quickshell": "נדרשת גרסה חדשה יותר של Quickshell"
+  },
+  "Requires greetd, dms-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys). Auth changes apply automatically and may open a terminal for sudo.": {
+    "Requires greetd, dms-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys). Auth changes apply automatically and may open a terminal for sudo.": ""
   },
   "Requires night mode support": {
     "Requires night mode support": "תמיכה במצב לילה נדרשת"
@@ -6552,7 +6693,7 @@
     "Revert": "חזור/חזרי"
   },
   "Rewind 10s": {
-    "Rewind 10s": ""
+    "Rewind 10s": "אחורה 10 שניות"
   },
   "Right": {
     "Right": "ימין"
@@ -6618,7 +6759,7 @@
     "Run a shell command (e.g., notify-send)": "הרץ/י פקודת מעטפת (לדוגמא notify-send)"
   },
   "Run paru/yay with AUR enabled when 'Update All' is clicked.": {
-    "Run paru/yay with AUR enabled when 'Update All' is clicked.": "הרץ/י paru/yay עם גישה לAUR כאשר לוחצים על 'עדכן/י הכל'."
+    "Run paru/yay with AUR enabled when 'Update All' is clicked.": "הרץ/י את paru/yay עם גישה לAUR כאשר לוחצים על 'עדכן/י הכל'."
   },
   "Running Apps": {
     "Running Apps": "אפליקציות פעילות"
@@ -6642,7 +6783,7 @@
     "SMS": "SMS"
   },
   "SMS sent successfully": {
-    "SMS sent successfully": ""
+    "SMS sent successfully": "הSMS נשלח בהצלחה"
   },
   "Saturation": {
     "Saturation": "רוויה"
@@ -6666,7 +6807,7 @@
     "Save and switch between display configurations": "שמור/שמרי והחלף/החליפי את הגדרות התצוגה"
   },
   "Save credentials": {
-    "Save credentials": ""
+    "Save credentials": "שמור/שמרי אישורי גישה"
   },
   "Save critical priority notifications to history": {
     "Save critical priority notifications to history": "שמור/י התראות בעדיפות קריטית להיסטוריה"
@@ -6690,7 +6831,7 @@
     "Saved Configurations": "תצורות שמורות"
   },
   "Saved Networks": {
-    "Saved Networks": ""
+    "Saved Networks": "רשתות שמורות"
   },
   "Saved Note": {
     "Saved Note": "פתק נשמר"
@@ -6733,6 +6874,9 @@
   },
   "Screen sharing": {
     "Screen sharing": "שיתוף מסך"
+  },
+  "Screenshot unavailable": {
+    "Screenshot unavailable": "צילום מסך לא זמין"
   },
   "Scroll": {
     "Scroll": "גלילה"
@@ -6816,7 +6960,7 @@
     "Secondary": "משני"
   },
   "Secondary Container": {
-    "Secondary Container": ""
+    "Secondary Container": "מיכל משני"
   },
   "Secured": {
     "Secured": "מאובטח"
@@ -6893,6 +7037,9 @@
   "Select at least one provider": {
     "Select at least one provider": "בחר/י לפחות ספק אחד"
   },
+  "Select background image": {
+    "Select background image": ""
+  },
   "Select device": {
     "Select device": "בחר/י התקן"
   },
@@ -6907,6 +7054,9 @@
   },
   "Select greeter background image": {
     "Select greeter background image": "בחר/י תמונת רקע במסך ההתחברות"
+  },
+  "Select lock screen background image": {
+    "Select lock screen background image": ""
   },
   "Select monitor to configure wallpaper": {
     "Select monitor to configure wallpaper": "בחר/י מסך להגדרת הרקע"
@@ -6959,8 +7109,14 @@
   "Separate": {
     "Separate": "נפרד"
   },
+  "Separate Appearance for Unfocused Display(s)": {
+    "Separate Appearance for Unfocused Display(s)": "מראה נפרד עבור מסך(ים) לא ממוקד(ים)"
+  },
   "Separate Light & Dark Themes": {
-    "Separate Light & Dark Themes": ""
+    "Separate Light & Dark Themes": "ערכות נושא נפרדות למצב בהיר וכהה"
+  },
+  "Separate appearance for unfocused displays is not supported on this compositor.": {
+    "Separate appearance for unfocused displays is not supported on this compositor.": "מראה נפרד עבור מסכים לא ממוקדים אינו נתמך בקומפוזיטור זה."
   },
   "Separator": {
     "Separator": "מפריד"
@@ -7005,10 +7161,13 @@
     "Set the font size for notification summary text": "הגדר/י את גודל הגופן לטקסט תקציר ההתראה"
   },
   "Set the percentage at which the battery is considered low.": {
-    "Set the percentage at which the battery is considered low.": ""
+    "Set the percentage at which the battery is considered low.": "הגדר/י את האחוז שבו הסוללה תיחשב כחלשה."
   },
   "Setting": {
     "Setting": "הגדרה"
+  },
+  "Setting up...": {
+    "Setting up...": "מגדיר..."
   },
   "Settings": {
     "Settings": "הגדרות"
@@ -7035,7 +7194,7 @@
     "Shadow Override": "דריסת צל"
   },
   "Shadow blur radius in pixels": {
-    "Shadow blur radius in pixels": "רדיוס טשטוש של הצל בפיקסלים"
+    "Shadow blur radius in pixels": "רדיוס הטשטוש של הצל בפיקסלים"
   },
   "Shadow elevation on bars and panels": {
     "Shadow elevation on bars and panels": "הגבהה של הצללה בסרגלים ופאנלים"
@@ -7078,6 +7237,9 @@
   },
   "Shortcut (%1)": {
     "Shortcut (%1)": "קיצור (%1)"
+  },
+  "Shortcut that opens this settings window": {
+    "Shortcut that opens this settings window": "קיצור דרך שפותח את חלון ההגדרות הזה"
   },
   "Shortcuts": {
     "Shortcuts": "קיצורי דרך"
@@ -7122,7 +7284,7 @@
     "Show Feels Like Temperature": "הצגת הטמפרטורה המורגשת (\"מרגיש כמו\")"
   },
   "Show Flatpak, Snap, AppImage, or Nix badge icons on launcher items.": {
-    "Show Flatpak, Snap, AppImage, or Nix badge icons on launcher items.": ""
+    "Show Flatpak, Snap, AppImage, or Nix badge icons on launcher items.": "הצג/י תגיות סמלים של Flatpak, Snap, AppImage או Nix על פריטי המשגר."
   },
   "Show Footer": {
     "Show Footer": "הצגת כותרת תחתונה"
@@ -7197,13 +7359,13 @@
     "Show Overflow Badge Count": "הצגת תג עם ספירה לגלישה"
   },
   "Show Package Source Badges": {
-    "Show Package Source Badges": ""
+    "Show Package Source Badges": "הצגת תגיות של מקור החבילה"
   },
   "Show Password Field": {
     "Show Password Field": "הצגת שדה לסיסמה"
   },
   "Show Percentage": {
-    "Show Percentage": ""
+    "Show Percentage": "הצג/י אחוזים"
   },
   "Show Power Actions": {
     "Show Power Actions": "הצגת פעולות חשמל"
@@ -7224,7 +7386,7 @@
     "Show Reboot": "הצגה של \"הפעלה מחדש\""
   },
   "Show Remaining Time": {
-    "Show Remaining Time": ""
+    "Show Remaining Time": "הצג/י זמן נותר"
   },
   "Show Restart DMS": {
     "Show Restart DMS": "הצגה של \"הפעלה מחדש של DMS\""
@@ -7281,10 +7443,10 @@
     "Show a bar that drains as the popup's auto-dismiss timer runs": "הצג/י פס שמתרוקן ככל שהזמן לסגירה האוטומטית של החלון הקופץ עובר"
   },
   "Show a notification when battery reaches the charge limit.": {
-    "Show a notification when battery reaches the charge limit.": ""
+    "Show a notification when battery reaches the charge limit.": "הצג/י התראה כאשר הסוללה מגיעה למגבלת הטעינה."
   },
   "Show a warning popup when battery is running low.": {
-    "Show a warning popup when battery is running low.": ""
+    "Show a warning popup when battery is running low.": "הצג/י חלונית אזהרה קופצת כאשר הסוללה חלשה."
   },
   "Show all 9 tags instead of only occupied tags": {
     "Show all 9 tags instead of only occupied tags": "הצג/י את כל 9 התגיות במקום רק תגיות בשימוש"
@@ -7293,13 +7455,13 @@
     "Show an outline ring around the focused workspace indicator": "הצג/י טבעת מתאר סביב המחוון של סביבת העבודה הממוקדת"
   },
   "Show an urgent alert when battery reaches critical level.": {
-    "Show an urgent alert when battery reaches critical level.": ""
+    "Show an urgent alert when battery reaches critical level.": "הצג/י התראה דחופה כאשר הסוללה מגיעה לרמה קריטית."
   },
   "Show cava audio visualizer in media widget": {
     "Show cava audio visualizer in media widget": "הצג/י את המחולל החזותי לשמע (cava) בווידג׳ט המדיה"
   },
   "Show darkened overlay behind modal dialogs": {
-    "Show darkened overlay behind modal dialogs": "הצג/י שכבה כהה מאחורי חלוניות שיח"
+    "Show darkened overlay behind modal dialogs": "הצג/י שכבה כהה מאחורי חלוניות דו-שיח"
   },
   "Show device": {
     "Show device": "הצג/י התקן"
@@ -7308,19 +7470,22 @@
     "Show dock when floating windows don't overlap its area": "הצג/י את הDock כאשר חלונות צפים לא חופפים את השטח שלו"
   },
   "Show drop shadow on notification popups. Requires M3 Elevation to be enabled in Theme & Colors.": {
-    "Show drop shadow on notification popups. Requires M3 Elevation to be enabled in Theme & Colors.": "הצג/י צל נופל על חלונות קופצים של התראות. דורש הפעלה של M3 Elevation (הגבהה) בערכת נושא וצבעים."
+    "Show drop shadow on notification popups. Requires M3 Elevation to be enabled in Theme & Colors.": "הצג/י צל נופל על חלונות קופצים של התראות. דורש הפעלה של צללים והגבהה בערכת נושא וצבעים."
   },
   "Show during Niri overview": {
-    "Show during Niri overview": "הצג/י במהלך הסקירה של Niri"
+    "Show during Niri overview": "הצג/י במהלך הסקירה של niri"
   },
   "Show foreground surfaces on blurred panels for stronger contrast": {
     "Show foreground surfaces on blurred panels for stronger contrast": "הצג/י משטחים קדמיים על פאנלים מטושטשים לניגודיות חזקה יותר"
+  },
+  "Show foreground surfaces on panels for stronger contrast": {
+    "Show foreground surfaces on panels for stronger contrast": "הצג/י משטחים קדמיים על פאנלים עבור ניגודיות חזקה יותר"
   },
   "Show in GB": {
     "Show in GB": "הצג/י בGB"
   },
   "Show launcher overlay when typing in Niri overview. Disable to use another launcher.": {
-    "Show launcher overlay when typing in Niri overview. Disable to use another launcher.": "הצג/י שכבת משגר בעת הקלדה בסקירה של Niri. השבת/י כדי להשתמש במשגר אחר."
+    "Show launcher overlay when typing in Niri overview. Disable to use another launcher.": "הצג/י שכבת משגר בעת הקלדה בסקירה של niri. השבת/י כדי להשתמש במשגר אחר."
   },
   "Show mode tabs and keyboard hints at the bottom.": {
     "Show mode tabs and keyboard hints at the bottom.": "הצג/י לשוניות מצב ורמזי מקלדת בתחתית."
@@ -7383,7 +7548,7 @@
     "Show the bar only when no windows are open": "הצג/י את הסרגל רק כאשר אין חלונות פתוחים"
   },
   "Show the bar when niri overview is active": {
-    "Show the bar when niri overview is active": "הצג/י את הסרגל כאשר הסקירה של Niri פעילה"
+    "Show the bar when niri overview is active": "הצג/י את הסרגל כאשר הסקירה של niri פעילה"
   },
   "Show weather information in top bar and control center": {
     "Show weather information in top bar and control center": "הצג/י מידע על מזג האוויר בסרגל העליון ובמרכז הבקרה"
@@ -7422,7 +7587,7 @@
     "Signal": "אות"
   },
   "Signal Strength": {
-    "Signal Strength": ""
+    "Signal Strength": "עוצמת קליטה"
   },
   "Signal:": {
     "Signal:": "אות:"
@@ -7434,7 +7599,7 @@
     "Silence notifications": "השתק/י התראות"
   },
   "Silence system sounds while media is playing": {
-    "Silence system sounds while media is playing": ""
+    "Silence system sounds while media is playing": "השתק/י צלילי מערכת בזמן השמעת מדיה"
   },
   "Single-Line Popup": {
     "Single-Line Popup": "חלון קופץ בשורה אחת"
@@ -7472,9 +7637,6 @@
   "Smartcard Authentication": {
     "Smartcard Authentication": "אימות עם כרטיס חכם"
   },
-  "Smartcard PIN": {
-    "Smartcard PIN": "קוד PIN של הכרטיס החכם"
-  },
   "Snap": {
     "Snap": "הצמד/י"
   },
@@ -7489,6 +7651,9 @@
   },
   "Sort By": {
     "Sort By": "מיין/י לפי"
+  },
+  "Sort wallpapers": {
+    "Sort wallpapers": "מיין/י תמונות רקע"
   },
   "Sorting & Layout": {
     "Sorting & Layout": "מיון ופריסה"
@@ -7507,6 +7672,9 @@
   },
   "Space between windows": {
     "Space between windows": "רווח בין חלונות"
+  },
+  "Space between windows and screen edges": {
+    "Space between windows and screen edges": ""
   },
   "Spacer": {
     "Spacer": "מרווח"
@@ -7590,7 +7758,7 @@
     "Stripes": "פסים"
   },
   "Subtle Overlay": {
-    "Subtle Overlay": ""
+    "Subtle Overlay": "שכבת כיסוי עדינה"
   },
   "Summary": {
     "Summary": "סיכום"
@@ -7616,20 +7784,26 @@
   "Surface Behavior": {
     "Surface Behavior": "התנהגות המשטח"
   },
+  "Surface Border Color": {
+    "Surface Border Color": ""
+  },
+  "Surface Border Opacity": {
+    "Surface Border Opacity": ""
+  },
   "Surface Container": {
-    "Surface Container": ""
+    "Surface Container": "מיכל המשטח"
   },
   "Surface High": {
-    "Surface High": ""
+    "Surface High": "משטח גבוה"
   },
   "Surface Highest": {
-    "Surface Highest": ""
+    "Surface Highest": "משטח הכי גבוה"
   },
   "Surface Opacity": {
     "Surface Opacity": "שקיפות המשטח"
   },
   "Surface Text": {
-    "Surface Text": ""
+    "Surface Text": "טקסט במשטח"
   },
   "Surface Variant": {
     "Surface Variant": "גרסת משטח"
@@ -7668,7 +7842,7 @@
     "Sync": "סנכרון"
   },
   "Sync Bar Inset Padding": {
-    "Sync Bar Inset Padding": ""
+    "Sync Bar Inset Padding": "סנכרן/י את הריווח הפנימי של הסרגלים"
   },
   "Sync Mode with Portal": {
     "Sync Mode with Portal": "סנכרון מצב עם הפורטל"
@@ -7678,6 +7852,9 @@
   },
   "Sync Position Across Screens": {
     "Sync Position Across Screens": "סנכרון המיקום בין מסכים"
+  },
+  "Sync applies your theme and settings to the login screen. Other users should run dms greeter sync --profile instead of a full sync. Authentication changes apply automatically.": {
+    "Sync applies your theme and settings to the login screen. Other users should run dms greeter sync --profile instead of a full sync. Authentication changes apply automatically.": ""
   },
   "Sync completed successfully.": {
     "Sync completed successfully.": "הסנכרון הושלם בהצלחה."
@@ -7690,6 +7867,12 @@
   },
   "Sync needs sudo authentication. Opening terminal so you can use password or fingerprint.": {
     "Sync needs sudo authentication. Opening terminal so you can use password or fingerprint.": "הסנכרון דורש אימות עם sudo. ייפתח מסוף כדי שתוכל/י להשתמש בסיסמה או בטביעת אצבע."
+  },
+  "Sync to apply": {
+    "Sync to apply": ""
+  },
+  "Syncing...": {
+    "Syncing...": ""
   },
   "System": {
     "System": "מערכת"
@@ -7764,7 +7947,7 @@
     "Tailscale Network": "רשת Tailscale"
   },
   "Tailscale action failed": {
-    "Tailscale action failed": ""
+    "Tailscale action failed": "פעולת Tailscale נכשלה"
   },
   "Tailscale not available": {
     "Tailscale not available": "Tailscale אינו זמין"
@@ -7800,10 +7983,10 @@
     "Terminals - Always use Dark Theme": "השתמש/י תמיד בערכת נושא כהה במסופים"
   },
   "Tertiary": {
-    "Tertiary": ""
+    "Tertiary": "עדיפות שלישית"
   },
   "Tertiary Container": {
-    "Tertiary Container": ""
+    "Tertiary Container": "מיכל בעדיפות שלישית"
   },
   "Test Connection": {
     "Test Connection": "בדיקת חיבור"
@@ -7829,6 +8012,9 @@
   "Text Rendering": {
     "Text Rendering": "רינדור טקסט"
   },
+  "The 'boregard' tool is not installed or not on your PATH.\n\nInstall it from https://danklinux.com, then re-enable this plugin.": {
+    "The 'boregard' tool is not installed or not on your PATH.\n\nInstall it from https://danklinux.com, then re-enable this plugin.": "הכלי 'boregard' אינו מותקן או אינו נמצא בPATH שלך.\n\nהתקן/י אותו מhttps://danklinux.com, ולאחר מכן הפעל/י מחדש תוסף זה."
+  },
   "The 'dgop' tool is required for system monitoring.\nPlease install dgop to use this feature.": {
     "The 'dgop' tool is required for system monitoring.\nPlease install dgop to use this feature.": "כלי 'dgop' נדרש לניטור מערכת.\nאנא התקן/י dgop כדי להשתמש בתכונה זו."
   },
@@ -7836,7 +8022,7 @@
     "The DMS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the DMS_SOCKET.": "משתנה הסביבה DMS_SOCKET אינו מוגדר או שהsocket אינו זמין. ניהול תוספים אוטומטי דורש את DMS_SOCKET."
   },
   "The below settings will modify your GTK and Qt settings. If you wish to preserve your current configurations, please back them up (qt5ct.conf|qt6ct.conf and ~/.config/gtk-3.0|gtk-4.0).": {
-    "The below settings will modify your GTK and Qt settings. If you wish to preserve your current configurations, please back them up (qt5ct.conf|qt6ct.conf and ~/.config/gtk-3.0|gtk-4.0).": "ההגדרות הבאות ישנו את הגדרות ה GTK וQt שלך. אם ברצונך לשמור על התצורות הנוכחיות, נא לגבות אותן (qt5ct.conf|qt6ct.conf וconfig/gtk-3.0|gtk-4.0./~)."
+    "The below settings will modify your GTK and Qt settings. If you wish to preserve your current configurations, please back them up (qt5ct.conf|qt6ct.conf and ~/.config/gtk-3.0|gtk-4.0).": "ההגדרות הבאות ישנו את הגדרות ה GTK וQt שלך. אם ברצונך לשמור על התצורות הנוכחיות, אנא גבה/י אותן (הקבצים הם: qt5ct.conf|qt6ct.conf וconfig/gtk-3.0|gtk-4.0./~)."
   },
   "The custom command used when attaching to sessions (receives the session name as the first argument)": {
     "The custom command used when attaching to sessions (receives the session name as the first argument)": "הפקודה המותאמת אישית שנמצאת בשימוש בעת חיבור להפעלות (מקבלת את שם ההפעלה כארגומנט הראשון)"
@@ -7894,6 +8080,9 @@
   },
   "This install is still using hyprland.conf. Run dms setup to migrate before editing display settings.": {
     "This install is still using hyprland.conf. Run dms setup to migrate before editing display settings.": "התקנה זו עדיין משתמשת בhyprland.conf. הרץ/י dms setup כדי להעביר את ההגדרות לפני עריכת הגדרות התצוגה."
+  },
+  "This install is still using hyprland.conf. Run dms setup to migrate before editing layout settings.": {
+    "This install is still using hyprland.conf. Run dms setup to migrate before editing layout settings.": "התקנה זו עדיין משתמשת בhyprland.conf. הרץ/י dms setup כדי להעביר את ההגדרות לפני עריכת הגדרות הפריסה."
   },
   "This install is still using hyprland.conf. Run dms setup to migrate before editing shortcuts in Settings.": {
     "This install is still using hyprland.conf. Run dms setup to migrate before editing shortcuts in Settings.": "התקנה זו עדיין משתמשת בhyprland.conf. הרץ/י dms setup כדי להעביר את ההגדרות לפני עריכת קיצורי מקלדת בהגדרות."
@@ -7961,6 +8150,9 @@
   "Time remaining: %1": {
     "Time remaining: %1": "זמן שנותר: %1"
   },
+  "Time to rest on a widget before its popout opens": {
+    "Time to rest on a widget before its popout opens": "זמן ההמתנה על ווידג׳ט לפני שהחלון הקופץ שלו ייפתח"
+  },
   "Time to wait before hiding after the pointer leaves": {
     "Time to wait before hiding after the pointer leaves": "זמן המתנה לפני ההסתרה לאחר שמצביע העכבר עוזב"
   },
@@ -8013,7 +8205,7 @@
     "To use this DMS bind, remove or change the keybind in your config.kdl": "כדי להשתמש בקיצור המקלדת הזה ב DMS, הסר/י או שנה/י את קיצור המקלדת בקובץ הconfig.kdl שלך"
   },
   "Toast": {
-    "Toast": ""
+    "Toast": "התראה קופצת"
   },
   "Toast Messages": {
     "Toast Messages": "הודעות קופצות"
@@ -8178,7 +8370,7 @@
     "Typography & Motion": "טיפוגרפיה ותנועה"
   },
   "URI": {
-    "URI": ""
+    "URI": "URI"
   },
   "Unavailable": {
     "Unavailable": "לא זמין"
@@ -8188,6 +8380,9 @@
   },
   "Unfocused Color": {
     "Unfocused Color": "צבע לא ממוקד"
+  },
+  "Unfocused Display(s)": {
+    "Unfocused Display(s)": "מסך(ים) לא ממוקד(ים)"
   },
   "Ungrouped": {
     "Ungrouped": "לא בקבוצה"
@@ -8276,9 +8471,6 @@
   "Unsaved changes": {
     "Unsaved changes": "שינויים שלא נשמרו"
   },
-  "Unsaved note...": {
-    "Unsaved note...": "פתק שלא נשמר..."
-  },
   "Unset": {
     "Unset": "בטל/י הגדרה"
   },
@@ -8366,11 +8558,14 @@
   "Use System Theme": {
     "Use System Theme": "שימוש בערכת הנושא של המערכת"
   },
+  "Use a custom image for the lock screen, or leave empty to use your desktop wallpaper.": {
+    "Use a custom image for the lock screen, or leave empty to use your desktop wallpaper.": ""
+  },
   "Use a custom image for the login screen, or leave empty to use your desktop wallpaper.": {
     "Use a custom image for the login screen, or leave empty to use your desktop wallpaper.": "השתמש/י בתמונה מותאמת אישית למסך ההתחברות, או השאר/י ריק כדי להשתמש בתמונת הרקע של שולחן העבודה שלך."
   },
   "Use a custom radius for goth corner cutouts": {
-    "Use a custom radius for goth corner cutouts": "השתמש/י ברדיוס מותאם אישית לחיתוכי פינות גותיים"
+    "Use a custom radius for goth corner cutouts": "השתמש/י ברדיוס מותאם אישית לחיתוכי פינות גות'יות"
   },
   "Use a fixed shadow direction for this bar": {
     "Use a fixed shadow direction for this bar": "השתמש/י בכיוון צל קבוע עבור סרגל זה"
@@ -8400,7 +8595,10 @@
     "Use desktop wallpaper": "שימוש ברקע של שולחן העבודה"
   },
   "Use different icon themes for light and dark mode": {
-    "Use different icon themes for light and dark mode": ""
+    "Use different icon themes for light and dark mode": "השתמש/י בערכות נושא שונות של סמלים עבור מצבים בהיר וכהה"
+  },
+  "Use different workspace colors on displays that are not focused": {
+    "Use different workspace colors on displays that are not focused": "השתמש/י בצבעים שונים לסביבות עבודה במסכים שאינם ממוקדים"
   },
   "Use fingerprint authentication for the lock screen.": {
     "Use fingerprint authentication for the lock screen.": "השתמש/י באימות טביעת אצבע עבור מסך הנעילה."
@@ -8415,7 +8613,7 @@
     "Use meters per second instead of km/h for wind speed": "השתמש/י במטרים לשנייה במקום קמ\"ש למהירות רוח"
   },
   "Use one inset value for every bar": {
-    "Use one inset value for every bar": ""
+    "Use one inset value for every bar": "השתמש/י בערך ריווח פנימי אחד לכל סרגל"
   },
   "Use smaller notification cards": {
     "Use smaller notification cards": "השתמש/י בכרטיסי התראות קטנים יותר"
@@ -8510,14 +8708,11 @@
   "VPN Connections": {
     "VPN Connections": "חיבורי VPN"
   },
-  "VPN Password": {
-    "VPN Password": "סיסמת VPN"
-  },
   "VPN configuration updated": {
     "VPN configuration updated": "תצורת הVPN עודכנה"
   },
   "VPN credentials saved": {
-    "VPN credentials saved": ""
+    "VPN credentials saved": "אישורי הגישה לVPN נשמרו"
   },
   "VPN deleted": {
     "VPN deleted": "הVPN נמחק"
@@ -8613,7 +8808,7 @@
     "Volume, brightness, and other system OSDs": "עוצמת שמע, בהירות ותצוגות מערכת (OSD) אחרות על המסך"
   },
   "Votes": {
-    "Votes": ""
+    "Votes": "הצבעות"
   },
   "WPA/WPA2": {
     "WPA/WPA2": "WPA/WPA2"
@@ -8679,10 +8874,7 @@
     "When locked": "כאשר נעול"
   },
   "White": {
-    "White": ""
-  },
-  "Wi-Fi Password": {
-    "Wi-Fi Password": "סיסמת Wi-Fi"
+    "White": "לבן"
   },
   "Wi-Fi and Ethernet connection": {
     "Wi-Fi and Ethernet connection": "חיבור Wi-Fi ו-Ethernet"
@@ -8726,17 +8918,11 @@
   "Widget Outline": {
     "Widget Outline": "מתאר לווידג׳טים"
   },
-  "Widget Style": {
-    "Widget Style": "סגנון לווידג׳טים"
-  },
   "Widget Styling": {
     "Widget Styling": "עיצוב לווידג׳טים"
   },
   "Widget Text Style": {
-    "Widget Text Style": ""
-  },
-  "Widget Transparency": {
-    "Widget Transparency": "שקיפות לווידג׳טים"
+    "Widget Text Style": "סגנון טקסט לווידג׳ט"
   },
   "Widget added": {
     "Widget added": "הווידג׳ט נוסף"
@@ -8766,7 +8952,7 @@
     "Width of window border": "רוחב מסגרת החלון"
   },
   "Width of window border and focus ring": {
-    "Width of window border and focus ring": "רוחב מסגרת חלון וטבעת מיקוד"
+    "Width of window border and focus ring": "רוחב מסגרת החלון וטבעת המיקוד"
   },
   "Wind": {
     "Wind": "רוח"
@@ -8852,8 +9038,14 @@
   "XWayland": {
     "XWayland": "XWayland"
   },
+  "Xray Blur Effect": {
+    "Xray Blur Effect": "אפקט טשטוש רנטגן (xray)"
+  },
   "Xray blurs only the wallpaper (efficient) and is the default when Blur is on. Set Xray to Off for regular full blur of everything beneath the window (more expensive).": {
     "Xray blurs only the wallpaper (efficient) and is the default when Blur is on. Set Xray to Off for regular full blur of everything beneath the window (more expensive).": "רנטגן (xray) מטשטש רק את תמונת הרקע (חסכוני) וזוהי ברירת המחדל כאשר הטשטוש פועל. הגדר/י את ״רנטגן״ ככבוי לקבלת טשטוש מלא רגיל של כל מה שנמצא מתחת לחלון (זולל יותר משאבים)."
+  },
+  "Xray options are in Compositor → Layout": {
+    "Xray options are in Compositor → Layout": "אפשרויות רנטגן (xray) נמצאות בקומפוזיטור ← פריסה"
   },
   "Y": {
     "Y": "Y"
@@ -8906,11 +9098,14 @@
   "attached": {
     "attached": "מחובר"
   },
+  "boregard is required": {
+    "boregard is required": "נדרש boregard"
+  },
   "brandon": {
     "brandon": "brandon"
   },
   "broken": {
-    "broken": ""
+    "broken": "שבור"
   },
   "by %1": {
     "by %1": "מאת %1"
@@ -8919,7 +9114,7 @@
     "days": "ימים"
   },
   "deprecated": {
-    "deprecated": ""
+    "deprecated": "מיושן"
   },
   "detached": {
     "detached": "מנותק"
@@ -8937,16 +9132,13 @@
     "direct": "ישיר"
   },
   "discuss": {
-    "discuss": ""
+    "discuss": "דיון"
   },
   "dms is a highly customizable, modern desktop shell with a <a href=\"https://m3.material.io/\" style=\"text-decoration:none; color:%1;\">material 3 inspired</a> design.<br /><br/>It is built with <a href=\"https://quickshell.org\" style=\"text-decoration:none; color:%1;\">Quickshell</a>, a QT6 framework for building desktop shells, and <a href=\"https://go.dev\" style=\"text-decoration:none; color:%1;\">Go</a>, a statically typed, compiled programming language.": {
     "dms is a highly customizable, modern desktop shell with a <a href=\"https://m3.material.io/\" style=\"text-decoration:none; color:%1;\">material 3 inspired</a> design.<br /><br/>It is built with <a href=\"https://quickshell.org\" style=\"text-decoration:none; color:%1;\">Quickshell</a>, a QT6 framework for building desktop shells, and <a href=\"https://go.dev\" style=\"text-decoration:none; color:%1;\">Go</a>, a statically typed, compiled programming language.": "הפרויקט DMS הוא מעטפת שולחן עבודה מודרנית וניתנת להתאמה אישית עם עיצוב בהשראת <a href=\"https://m3.material.io/\" style=\"text-decoration:none; color:%1;\">Material Design 3</a> של גוגל.<br /><br/>היא נבנתה עם שפת התכנות <a href=\"https://go.dev\" style=\"text-decoration:none; color:%1;\">Go</a> ו<a href=\"https://quickshell.org\" style=\"text-decoration:none; color:%1;\">Quickshell</a>, ספריית QT6 לבניית מעטפות לשולחן העבודה."
   },
   "dms/cursor config exists but is not included. Cursor settings won't apply.": {
     "dms/cursor config exists but is not included. Cursor settings won't apply.": "קובץ ההגדרה dms/cursor קיים אך אינו כלול. הגדרות סמן העכבר לא יחולו."
-  },
-  "dms/outputs config exists but is not included in your compositor config. Display changes won't persist.": {
-    "dms/outputs config exists but is not included in your compositor config. Display changes won't persist.": "קובץ ההגדרה dms/outputs קיים אך אינו כלול בהגדרות הקומפוזיטור שלך. שינויי תצוגה לא יישמרו."
   },
   "e.g. /usr/bin/my-script --flag": {
     "e.g. /usr/bin/my-script --flag": "לדוגמה /usr/bin/my-script --flag"
@@ -9030,7 +9222,7 @@
     "niri Matrix Chat": "שרת הMatrix של niri"
   },
   "niri shortcuts config": {
-    "niri shortcuts config": "הגדרת קיצורים של Niri"
+    "niri shortcuts config": "הגדרת קיצורים של niri"
   },
   "niri/dms Discord": {
     "niri/dms Discord": "שרת הDiscord של niri/dms"
@@ -9057,7 +9249,7 @@
     "on Miracle WM": "על Miracle WM"
   },
   "on Niri": {
-    "on Niri": "על Niri"
+    "on Niri": "על niri"
   },
   "on Scroll": {
     "on Scroll": "על Scroll"
@@ -9086,6 +9278,9 @@
   "remote": {
     "remote": "מרוחק"
   },
+  "reviewed": {
+    "reviewed": "נבדק"
+  },
   "seconds": {
     "seconds": "שניות"
   },
@@ -9099,7 +9294,7 @@
     "this app": "אפליקציה זו"
   },
   "unmaintained": {
-    "unmaintained": ""
+    "unmaintained": "לא מתוחזק"
   },
   "until %1": {
     "until %1": "עד %1"
@@ -9123,7 +9318,7 @@
     "v%1 by %2": "v%1 מאת %2"
   },
   "verified": {
-    "verified": ""
+    "verified": "מאומת"
   },
   "wtype not available - install wtype for paste support": {
     "wtype not available - install wtype for paste support": "wtype אינו זמין - התקן/י את wtype כדי לאפשר תמיכה בהדבקה"

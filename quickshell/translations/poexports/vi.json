@@ -8,6 +8,9 @@
   "%1 Sessions": {
     "%1 Sessions": "%1 phiên làm việc"
   },
+  "%1 Startup Failed": {
+    "%1 Startup Failed": ""
+  },
   "%1 active session": {
     "%1 active session": "%1 phiên đang hoạt động"
   },
@@ -503,6 +506,9 @@
   "Adjusts contrast of generated colors (-100 = minimum, 0 = standard, 100 = maximum)": {
     "Adjusts contrast of generated colors (-100 = minimum, 0 = standard, 100 = maximum)": "Điều chỉnh độ tương phản của các màu đã tạo (-100 = tối thiểu, 0 = tiêu chuẩn, 100 = tối đa)"
   },
+  "Administrator access is required. Use the Sync button in Settings → Greeter to apply.": {
+    "Administrator access is required. Use the Sync button in Settings → Greeter to apply.": ""
+  },
   "Administrator group:": {
     "Administrator group:": "Nhóm quản trị viên:"
   },
@@ -563,6 +569,9 @@
   "Always Show Percentage": {
     "Always Show Percentage": "Luôn hiển thị phần trăm"
   },
+  "Always blur against the wallpaper, even with Xray off": {
+    "Always blur against the wallpaper, even with Xray off": ""
+  },
   "Always hide the dock and reveal it when hovering near the dock area": {
     "Always hide the dock and reveal it when hovering near the dock area": "Luôn ẩn thanh dock và hiển thị khi di chuột gần khu vực dock"
   },
@@ -583,6 +592,9 @@
   },
   "Amount": {
     "Amount": "Số lượng"
+  },
+  "An xray rule at %1 may conflict with the Xray settings below": {
+    "An xray rule at %1 may conflict with the Xray settings below": ""
   },
   "Analog": {
     "Analog": "Kim (Đồng hồ)"
@@ -640,6 +652,9 @@
   },
   "App Theming": {
     "App Theming": "Chủ đề ứng dụng"
+  },
+  "App name or identity (e.g., firefox)": {
+    "App name or identity (e.g., firefox)": ""
   },
   "Appearance": {
     "Appearance": "Giao diện"
@@ -833,6 +848,15 @@
   "Auto Power Saver": {
     "Auto Power Saver": ""
   },
+  "Auto matches bar spacing; Off leaves gaps to your Hyprland config": {
+    "Auto matches bar spacing; Off leaves gaps to your Hyprland config": ""
+  },
+  "Auto matches bar spacing; Off leaves gaps to your MangoWC config": {
+    "Auto matches bar spacing; Off leaves gaps to your MangoWC config": ""
+  },
+  "Auto matches bar spacing; Off leaves gaps to your niri config": {
+    "Auto matches bar spacing; Off leaves gaps to your niri config": ""
+  },
   "Auto mode is on. Manual profile selection is disabled.": {
     "Auto mode is on. Manual profile selection is disabled.": "Chế độ tự động đang bật. Lựa chọn cấu hình thủ công đã bị tắt."
   },
@@ -860,6 +884,9 @@
   "Auto-login": {
     "Auto-login": "Tự động đăng nhập"
   },
+  "Auto-login change needs a sync": {
+    "Auto-login change needs a sync": ""
+  },
   "Auto-login disabled": {
     "Auto-login disabled": "Tự động đăng nhập bị vô hiệu hóa"
   },
@@ -871,9 +898,6 @@
   },
   "Auto-save to disk": {
     "Auto-save to disk": "Tự động lưu vào ổ đĩa"
-  },
-  "Auto-saving...": {
-    "Auto-saving...": "Đang tự động lưu..."
   },
   "Autoconnect": {
     "Autoconnect": "Tự động kết nối"
@@ -1028,9 +1052,6 @@
   "Bar Spacing": {
     "Bar Spacing": ""
   },
-  "Bar Transparency": {
-    "Bar Transparency": "Độ trong suốt của thanh"
-  },
   "Bar corners and background": {
     "Bar corners and background": "Góc và nền của thanh"
   },
@@ -1097,9 +1118,6 @@
   "Bind the spotlight-bar IPC action in your compositor config.": {
     "Bind the spotlight-bar IPC action in your compositor config.": "Gán hành động spotlight-bar IPC trong cấu hình compositor của bạn."
   },
-  "Binds Include Missing": {
-    "Binds Include Missing": "Bao gồm các phím tắt còn thiếu"
-  },
   "Binds include added": {
     "Binds include added": "Bao gồm các phím tắt đã thêm"
   },
@@ -1160,6 +1178,9 @@
   "Blur wallpaper when niri overview is open": {
     "Blur wallpaper when niri overview is open": "Làm mờ hình nền khi tổng quan niri đang mở"
   },
+  "Blurred surfaces show the wallpaper instead of the content beneath": {
+    "Blurred surfaces show the wallpaper instead of the content beneath": ""
+  },
   "Body": {
     "Body": "Thân"
   },
@@ -1195,6 +1216,9 @@
   },
   "Border color around blurred surfaces": {
     "Border color around blurred surfaces": "Màu viền xung quanh các bề mặt bị làm mờ"
+  },
+  "Border color around popouts, modals, and other shell surfaces": {
+    "Border color around popouts, modals, and other shell surfaces": ""
   },
   "Border w/ Bg": {
     "Border w/ Bg": "Đường viền có nền"
@@ -1243,6 +1267,9 @@
   },
   "Browse Themes": {
     "Browse Themes": "Duyệt chủ đề"
+  },
+  "Browse and set wallpapers": {
+    "Browse and set wallpapers": ""
   },
   "Browse or search plugins": {
     "Browse or search plugins": "Duyệt hoặc tìm kiếm plugin"
@@ -1358,9 +1385,6 @@
   "Change Volume": {
     "Change Volume": "Thay đổi âm lượng"
   },
-  "Change bar appearance": {
-    "Change bar appearance": "Thay đổi giao diện thanh"
-  },
   "Change the locale used by the DMS interface.": {
     "Change the locale used by the DMS interface.": "Thay đổi ngôn ngữ hiển thị của giao diện DMS."
   },
@@ -1460,6 +1484,9 @@
   "Choose the logo displayed on the launcher button in DankBar": {
     "Choose the logo displayed on the launcher button in DankBar": "Chọn logo hiển thị trên nút launcher trong DankBar"
   },
+  "Choose wallpaper folder": {
+    "Choose wallpaper folder": ""
+  },
   "Choose where notification popups appear on screen": {
     "Choose where notification popups appear on screen": "Chọn nơi hộp thông báo nổi được hiển thị"
   },
@@ -1520,9 +1547,6 @@
   "Click 'Setup' to create %1 and add include to your compositor config.": {
     "Click 'Setup' to create %1 and add include to your compositor config.": "Nhấp 'Thiết lập' để tạo %1 và thêm phần bao gồm vào cấu hình compositor của bạn."
   },
-  "Click 'Setup' to create cursor config and add include to your compositor config.": {
-    "Click 'Setup' to create cursor config and add include to your compositor config.": "Nhấp 'Thiết lập' để tạo cấu hình con trỏ và thêm phần bao gồm vào cấu hình compositor của bạn."
-  },
   "Click 'Setup' to create the outputs config and add include to your compositor config.": {
     "Click 'Setup' to create the outputs config and add include to your compositor config.": "Nhấp 'Thiết lập' để tạo cấu hình đầu ra và thêm phần bao gồm vào cấu hình compositor của bạn."
   },
@@ -1580,6 +1604,9 @@
   "Clock Style": {
     "Clock Style": "Kiểu đồng hồ"
   },
+  "Clock, calendar, system info and profile": {
+    "Clock, calendar, system info and profile": ""
+  },
   "Close": {
     "Close": "Đóng"
   },
@@ -1621,6 +1648,9 @@
   },
   "Color for primary action buttons": {
     "Color for primary action buttons": "Màu sắc cho các nút hành động chính"
+  },
+  "Color shown for areas not covered by wallpaper": {
+    "Color shown for areas not covered by wallpaper": ""
   },
   "Color shown for areas not covered by wallpaper (e.g. Fit or Pad modes)": {
     "Color shown for areas not covered by wallpaper (e.g. Fit or Pad modes)": ""
@@ -1841,9 +1871,6 @@
   "Controls how strongly the selected tint color is applied": {
     "Controls how strongly the selected tint color is applied": "Điều khiển mức độ mạnh yếu của màu nhuộm đã chọn được áp dụng"
   },
-  "Controls opacity of all popouts, modals, and their content layers": {
-    "Controls opacity of all popouts, modals, and their content layers": "Điều khiển độ mờ của tất cả các cửa sổ nổi, bảng thông báo và các lớp nội dung của chúng"
-  },
   "Controls opacity of shell surfaces, popouts, and modals": {
     "Controls opacity of shell surfaces, popouts, and modals": "Điều khiển độ mờ của bề mặt shell, cửa sổ bật và hộp thoại modal"
   },
@@ -1865,6 +1892,9 @@
   "Controls outlines around blurred foreground cards, pills, and notification cards": {
     "Controls outlines around blurred foreground cards, pills, and notification cards": "Điều khiển đường viền xung quanh các thẻ phía trước bị làm mờ, các nút dạng thuốc và thẻ thông báo"
   },
+  "Controls outlines around foreground cards, pills, and notification cards": {
+    "Controls outlines around foreground cards, pills, and notification cards": ""
+  },
   "Controls shadow cast direction for elevation layers": {
     "Controls shadow cast direction for elevation layers": "Điều khiển hướng đổ bóng cho các lớp độ cao"
   },
@@ -1876,6 +1906,9 @@
   },
   "Controls the outer edge of protocol-blurred windows": {
     "Controls the outer edge of protocol-blurred windows": "Điều khiển cạnh ngoài của các cửa sổ bị làm mờ theo giao thức"
+  },
+  "Controls the outline of popouts, modals, and other shell surfaces": {
+    "Controls the outline of popouts, modals, and other shell surfaces": ""
   },
   "Controls the transparency of the shadow": {
     "Controls the transparency of the shadow": "Điều khiển độ trong suốt của bóng"
@@ -1960,6 +1993,9 @@
   },
   "Create Window Rule": {
     "Create Window Rule": "Tạo quy tắc cửa sổ"
+  },
+  "Create a new %1 session (^N)": {
+    "Create a new %1 session (^N)": ""
   },
   "Create a new %1 session (n)": {
     "Create a new %1 session (n)": "Tạo một phiên %1 mới (n)"
@@ -2111,9 +2147,6 @@
   "Custom Suspend Command": {
     "Custom Suspend Command": "Lệnh ngủ tùy chỉnh"
   },
-  "Custom Transparency": {
-    "Custom Transparency": "Tuỳ chỉnh độ trong suốt"
-  },
   "Custom command and terminal params are split on whitespace; paths with spaces will break.": {
     "Custom command and terminal params are split on whitespace; paths with spaces will break.": "Lệnh tùy chỉnh và các tham số dòng lệnh được phân tách bằng khoảng trắng; đường dẫn có khoảng trắng sẽ bị lỗi."
   },
@@ -2137,6 +2170,9 @@
   },
   "Customizable empty space": {
     "Customizable empty space": "Tuỳ chỉnh khoảng trống"
+  },
+  "Customize the font and background of the lock screen, or leave empty to use your theme font and desktop wallpaper. Changes apply instantly.": {
+    "Customize the font and background of the lock screen, or leave empty to use your theme font and desktop wallpaper. Changes apply instantly.": ""
   },
   "Customize which actions appear in the power menu": {
     "Customize which actions appear in the power menu": "Chọn các hành động hiển thị trong menu nguồn"
@@ -2194,6 +2230,12 @@
   },
   "Dank Bar": {
     "Dank Bar": "Dank Bar"
+  },
+  "Dank Bar Xray": {
+    "Dank Bar Xray": ""
+  },
+  "Dank Dash": {
+    "Dank Dash": ""
   },
   "DankBar": {
     "DankBar": "DankBar"
@@ -2576,9 +2618,6 @@
   "Dock Opacity": {
     "Dock Opacity": "Độ mờ thanh Dock"
   },
-  "Dock Transparency": {
-    "Dock Transparency": "Độ trong suốt thanh Dock"
-  },
   "Dock Visibility": {
     "Dock Visibility": "Chế độ hiển thị của Dock"
   },
@@ -2612,8 +2651,14 @@
   "Downloads": {
     "Downloads": "Tải về"
   },
+  "Drag a widget by its handle here to reorder it or drop it into another group": {
+    "Drag a widget by its handle here to reorder it or drop it into another group": ""
+  },
   "Drag to Reorder": {
     "Drag to Reorder": "Kéo để sắp xếp lại"
+  },
+  "Drag to reorder or click to hide tabs. Use ↑/↓ to highlight a tab and Ctrl+↑/↓ to move it.": {
+    "Drag to reorder or click to hide tabs. Use ↑/↓ to highlight a tab and Ctrl+↑/↓ to move it.": ""
   },
   "Drag widgets to reorder within sections. Use the eye icon to hide/show widgets (maintains spacing), or X to remove them completely.": {
     "Drag widgets to reorder within sections. Use the eye icon to hide/show widgets (maintains spacing), or X to remove them completely.": "Kéo để sắp xếp tiện ích. Dùng biểu tượng mắt để ẩn/hiện, hoặc X để xóa"
@@ -2629,6 +2674,9 @@
   },
   "Drizzle": {
     "Drizzle": "Mưa phùn"
+  },
+  "Drop here": {
+    "Drop here": ""
   },
   "Drop your override for %1 so the DMS default action re-applies?": {
     "Drop your override for %1 so the DMS default action re-applies?": "Bỏ ghi đè cho %1 để hành động mặc định của DMS được áp dụng lại?"
@@ -2660,6 +2708,9 @@
   "Dynamic Theming": {
     "Dynamic Theming": "Tạo chủ đề động"
   },
+  "Dynamic Width": {
+    "Dynamic Width": ""
+  },
   "Dynamic colors from wallpaper": {
     "Dynamic colors from wallpaper": "Màu động từ hình nền"
   },
@@ -2671,6 +2722,9 @@
   },
   "Dynamic: Spring bezier with overshoot — entry briefly exceeds its target then settles. Expressive and alive.": {
     "Dynamic: Spring bezier with overshoot — entry briefly exceeds its target then settles. Expressive and alive.": "Động: Đường cong bezier lò xo với độ vọt lố — phần nhập vượt quá mục tiêu một thời gian ngắn rồi ổn định. Sống động và đầy biểu cảm."
+  },
+  "Edge Hover Reveal": {
+    "Edge Hover Reveal": ""
   },
   "Edge Spacing": {
     "Edge Spacing": "Khoảng cách cạnh"
@@ -2929,6 +2983,9 @@
   },
   "Exact": {
     "Exact": "Chính xác"
+  },
+  "Excluded Media Players": {
+    "Excluded Media Players": ""
   },
   "Exclusive Zone Offset": {
     "Exclusive Zone Offset": "Độ lệch vùng độc quyền"
@@ -3341,12 +3398,6 @@
   "Fit": {
     "Fit": "Vừa vặn"
   },
-  "Fix Now": {
-    "Fix Now": "Khắc phục ngay"
-  },
-  "Fixing...": {
-    "Fixing...": "Đang khắc phục..."
-  },
   "Flags": {
     "Flags": "Cờ"
   },
@@ -3407,6 +3458,9 @@
   "Focused Color": {
     "Focused Color": "Màu cửa sổ đang chọn"
   },
+  "Focused Display": {
+    "Focused Display": ""
+  },
   "Focused Monitor Only": {
     "Focused Monitor Only": "Chỉ màn hình đang chọn"
   },
@@ -3449,6 +3503,9 @@
   "Font Weight": {
     "Font Weight": "Độ đậm phông chữ"
   },
+  "Font used for the clock and date on the lock screen": {
+    "Font used for the clock and date on the lock screen": ""
+  },
   "Font used on the login screen": {
     "Font used on the login screen": "Phông chữ dùng trên màn hình đăng nhập"
   },
@@ -3479,6 +3536,9 @@
   "Force Kill (SIGKILL)": {
     "Force Kill (SIGKILL)": "Bắt buộc dừng (SIGKILL)"
   },
+  "Force Padding": {
+    "Force Padding": ""
+  },
   "Force RGBX": {
     "Force RGBX": "Buộc RGBX"
   },
@@ -3496,6 +3556,9 @@
   },
   "Forecast Not Available": {
     "Forecast Not Available": "Dự báo không khả dụng"
+  },
+  "Forecast and conditions": {
+    "Forecast and conditions": ""
   },
   "Foreground Layers": {
     "Foreground Layers": "Các lớp phía trước"
@@ -3536,6 +3599,9 @@
   "Frame Border Color": {
     "Frame Border Color": "Màu viền khung"
   },
+  "Frame Xray": {
+    "Frame Xray": ""
+  },
   "Free VRAM/memory when the launcher is closed. May cause a slight delay when reopening.": {
     "Free VRAM/memory when the launcher is closed. May cause a slight delay when reopening.": "Giải phóng VRAM/bộ nhớ khi trình khởi chạy bị đóng. Có thể gây ra một chút chậm trễ khi mở lại."
   },
@@ -3559,6 +3625,9 @@
   },
   "Full Day & Month": {
     "Full Day & Month": "Đầy đủ ngày & tháng"
+  },
+  "Full Size": {
+    "Full Size": ""
   },
   "Full command to execute": {
     "Full command to execute": "Lệnh đầy đủ để thực thi"
@@ -3610,6 +3679,9 @@
   },
   "Gap between the end widgets and the bar ends (0 = edge-to-edge)": {
     "Gap between the end widgets and the bar ends (0 = edge-to-edge)": ""
+  },
+  "Gaps": {
+    "Gaps": ""
   },
   "Generate Override": {
     "Generate Override": "Tạo ghi đè"
@@ -3700,6 +3772,9 @@
   },
   "Greeter only — format for the date on the login screen": {
     "Greeter only — format for the date on the login screen": "Chỉ dành cho Màn hình chào — định dạng cho ngày trên màn hình đăng nhập"
+  },
+  "Greeter sync complete": {
+    "Greeter sync complete": ""
   },
   "Grid": {
     "Grid": "Lưới"
@@ -3806,6 +3881,9 @@
   "Hidden apps won't appear in the launcher. Right-click an app and select 'Hide App' to hide it.": {
     "Hidden apps won't appear in the launcher. Right-click an app and select 'Hide App' to hide it.": "Các ứng dụng đã ẩn sẽ không xuất hiện trong trình khởi chạy. Nhấp chuột phải vào ứng dụng và chọn 'Ẩn ứng dụng' để ẩn nó."
   },
+  "Hidden until weather is enabled": {
+    "Hidden until weather is enabled": ""
+  },
   "Hide": {
     "Hide": "Ẩn"
   },
@@ -3853,6 +3931,12 @@
   },
   "Hide the bar when the pointer leaves even if a popout is still open": {
     "Hide the bar when the pointer leaves even if a popout is still open": "Ẩn thanh khi con trỏ rời đi ngay cả khi một cửa sổ nổi vẫn đang mở"
+  },
+  "Hide when no updates: OFF": {
+    "Hide when no updates: OFF": ""
+  },
+  "Hide when no updates: ON": {
+    "Hide when no updates: ON": ""
   },
   "High": {
     "High": "Cao"
@@ -3919,6 +4003,9 @@
   },
   "Hourly Forecast Count": {
     "Hourly Forecast Count": "Số lượng dự báo hàng giờ"
+  },
+  "Hover Popouts": {
+    "Hover Popouts": ""
   },
   "How often the server polls for new updates.": {
     "How often the server polls for new updates.": "Tần suất máy chủ kiểm tra các bản cập nhật mới."
@@ -4091,6 +4178,9 @@
   "Initialised": {
     "Initialised": "Đã khởi tạo"
   },
+  "Inner Gaps": {
+    "Inner Gaps": ""
+  },
   "Inner padding applied to each widget": {
     "Inner padding applied to each widget": "Khoảng đệm bên trong áp dụng cho mỗi tiện ích"
   },
@@ -4210,6 +4300,12 @@
   },
   "Jobs: ": {
     "Jobs: ": "Công việc: "
+  },
+  "Jump to page": {
+    "Jump to page": ""
+  },
+  "Jump to page (1 - %1)": {
+    "Jump to page (1 - %1)": ""
   },
   "Keep Awake": {
     "Keep Awake": "Giữ thức"
@@ -4448,6 +4544,9 @@
   "Lock Screen": {
     "Lock Screen": "Khóa màn hình"
   },
+  "Lock Screen Appearance": {
+    "Lock Screen Appearance": ""
+  },
   "Lock Screen Display": {
     "Lock Screen Display": "Hiển thị màn hình khóa"
   },
@@ -4471,6 +4570,9 @@
   },
   "Lock screen authentication changes apply automatically and may open a terminal when sudo authentication is required.": {
     "Lock screen authentication changes apply automatically and may open a terminal when sudo authentication is required.": "Các thay đổi xác thực màn hình khóa được áp dụng tự động và có thể mở cửa sổ dòng lệnh khi cần xác thực sudo."
+  },
+  "Lock screen font": {
+    "Lock screen font": ""
   },
   "Locked": {
     "Locked": "Đã khóa"
@@ -5030,6 +5132,9 @@
   "Next Transition": {
     "Next Transition": "Hiệu ứng chuyển cảnh tiếp theo"
   },
+  "Next page": {
+    "Next page": ""
+  },
   "Night": {
     "Night": "Ban đêm"
   },
@@ -5192,6 +5297,9 @@
   "No errors": {
     "No errors": "Không có lỗi"
   },
+  "No excluded players configured": {
+    "No excluded players configured": ""
+  },
   "No features enabled": {
     "No features enabled": "Không có tính năng nào được bật"
   },
@@ -5299,6 +5407,9 @@
   },
   "No saved clipboard entries": {
     "No saved clipboard entries": "Không có mục bảng nhớ tạm đã lưu"
+  },
+  "No screenshot provided": {
+    "No screenshot provided": ""
   },
   "No session selected": {
     "No session selected": "Chưa chọn phiên nào"
@@ -5408,14 +5519,8 @@
   "Not set": {
     "Not set": "Chưa đặt"
   },
-  "Note: this only changes the percentage, it does not actually limit charging.": {
-    "Note: this only changes the percentage, it does not actually limit charging.": "Lưu ý: điều này chỉ thay đổi phần trăm, nó không thực sự giới hạn việc sạc."
-  },
   "Notepad": {
     "Notepad": "Ghi chú"
-  },
-  "Notepad Font Settings": {
-    "Notepad Font Settings": "Cài đặt phông chữ ghi chú"
   },
   "Notepad Settings": {
     "Notepad Settings": "Cài đặt Notepad"
@@ -5467,6 +5572,9 @@
   },
   "Notify when limit is reached": {
     "Notify when limit is reached": ""
+  },
+  "Now playing and media controls": {
+    "Now playing and media controls": ""
   },
   "Numbers": {
     "Numbers": "Số"
@@ -5555,6 +5663,9 @@
   "Open App": {
     "Open App": "Mở ứng dụng"
   },
+  "Open Delay": {
+    "Open Delay": ""
+  },
   "Open Dir": {
     "Open Dir": "Mở thư mục"
   },
@@ -5596,6 +5707,12 @@
   },
   "Open search bar to find text": {
     "Open search bar to find text": "Mở thanh tìm kiếm"
+  },
+  "Open the launcher by hovering the emerge edge (when free of bar and dock)": {
+    "Open the launcher by hovering the emerge edge (when free of bar and dock)": ""
+  },
+  "Open widget popouts by hovering over the bar. Moving to another widget switches the popout.": {
+    "Open widget popouts by hovering over the bar. Moving to another widget switches the popout.": ""
   },
   "Open with...": {
     "Open with...": "Mở bằng..."
@@ -5648,6 +5765,9 @@
   "Other": {
     "Other": "Khác"
   },
+  "Outer Gaps": {
+    "Outer Gaps": ""
+  },
   "Outline": {
     "Outline": "Đường viền"
   },
@@ -5666,14 +5786,14 @@
   "Output Tray Missing": {
     "Output Tray Missing": "Thiếu khay đầu ra"
   },
-  "Outputs Include Missing": {
-    "Outputs Include Missing": "Bao gồm các đầu ra còn thiếu"
-  },
   "Overcast": {
     "Overcast": "U ám"
   },
   "Overflow": {
     "Overflow": "Tràn"
+  },
+  "Overlay": {
+    "Overlay": ""
   },
   "Overridden by config": {
     "Overridden by config": "Bị ghi đè bởi cấu hình"
@@ -5975,6 +6095,9 @@
   "Plugin Visibility": {
     "Plugin Visibility": "Hiển thị Plugin"
   },
+  "Plugin dependency missing": {
+    "Plugin dependency missing": ""
+  },
   "Plugin disabled: %1": {
     "Plugin disabled: %1": "Đã tắt plugin: %1"
   },
@@ -6116,6 +6239,9 @@
   "Press 'n' or click 'New Session' to create one": {
     "Press 'n' or click 'New Session' to create one": "Nhấn 'n' hoặc nhấp 'Phiên mới' để tạo một cái"
   },
+  "Press Ctrl+N or click 'New Session' to create one": {
+    "Press Ctrl+N or click 'New Session' to create one": ""
+  },
   "Press Enter and the audio system will restart to apply the change": {
     "Press Enter and the audio system will restart to apply the change": "Nhấn Enter và hệ thống âm thanh sẽ khởi động lại để áp dụng thay đổi"
   },
@@ -6131,6 +6257,9 @@
   "Prevent screen timeout": {
     "Prevent screen timeout": "Ngăn tắt màn hình"
   },
+  "Prevent specific applications from displaying in the media controllers (e.g., browser audio streams, background tools). Matches player identity or desktop file name case-insensitively.": {
+    "Prevent specific applications from displaying in the media controllers (e.g., browser audio streams, background tools). Matches player identity or desktop file name case-insensitively.": ""
+  },
   "Preview": {
     "Preview": "Xem trước"
   },
@@ -6139,6 +6268,9 @@
   },
   "Previous": {
     "Previous": ""
+  },
+  "Previous page": {
+    "Previous page": ""
   },
   "Primary": {
     "Primary": "Chính"
@@ -6356,6 +6488,9 @@
   "Reject Jobs": {
     "Reject Jobs": "Từ chối công việc"
   },
+  "Related: %1": {
+    "Related: %1": ""
+  },
   "Release": {
     "Release": "Bản phát hành"
   },
@@ -6446,6 +6581,9 @@
   "Rename Workspace": {
     "Rename Workspace": "Đổi tên không gian làm việc"
   },
+  "Reorder & Group": {
+    "Reorder & Group": ""
+  },
   "Repeat": {
     "Repeat": "Lặp lại"
   },
@@ -6481,6 +6619,9 @@
   },
   "Requires a newer version of Quickshell": {
     "Requires a newer version of Quickshell": "Yêu cầu phiên bản Quickshell mới hơn"
+  },
+  "Requires greetd, dms-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys). Auth changes apply automatically and may open a terminal for sudo.": {
+    "Requires greetd, dms-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys). Auth changes apply automatically and may open a terminal for sudo.": ""
   },
   "Requires night mode support": {
     "Requires night mode support": "Yêu cầu hỗ trợ chế độ ban đêm"
@@ -6734,6 +6875,9 @@
   "Screen sharing": {
     "Screen sharing": "Chia sẻ màn hình"
   },
+  "Screenshot unavailable": {
+    "Screenshot unavailable": ""
+  },
   "Scroll": {
     "Scroll": "Cuộn"
   },
@@ -6893,6 +7037,9 @@
   "Select at least one provider": {
     "Select at least one provider": "Chọn ít nhất một nhà cung cấp"
   },
+  "Select background image": {
+    "Select background image": ""
+  },
   "Select device": {
     "Select device": "Chọn thiết bị"
   },
@@ -6907,6 +7054,9 @@
   },
   "Select greeter background image": {
     "Select greeter background image": "Chọn hình nền màn hình chào"
+  },
+  "Select lock screen background image": {
+    "Select lock screen background image": ""
   },
   "Select monitor to configure wallpaper": {
     "Select monitor to configure wallpaper": "Chọn màn hình áp dụng hình nền"
@@ -6959,8 +7109,14 @@
   "Separate": {
     "Separate": "Riêng biệt"
   },
+  "Separate Appearance for Unfocused Display(s)": {
+    "Separate Appearance for Unfocused Display(s)": ""
+  },
   "Separate Light & Dark Themes": {
     "Separate Light & Dark Themes": ""
+  },
+  "Separate appearance for unfocused displays is not supported on this compositor.": {
+    "Separate appearance for unfocused displays is not supported on this compositor.": ""
   },
   "Separator": {
     "Separator": "Dấu phân cách"
@@ -7009,6 +7165,9 @@
   },
   "Setting": {
     "Setting": "Cài đặt"
+  },
+  "Setting up...": {
+    "Setting up...": ""
   },
   "Settings": {
     "Settings": "Cài đặt"
@@ -7078,6 +7237,9 @@
   },
   "Shortcut (%1)": {
     "Shortcut (%1)": "Phím tắt (%1)"
+  },
+  "Shortcut that opens this settings window": {
+    "Shortcut that opens this settings window": ""
   },
   "Shortcuts": {
     "Shortcuts": "Phím tắt"
@@ -7316,6 +7478,9 @@
   "Show foreground surfaces on blurred panels for stronger contrast": {
     "Show foreground surfaces on blurred panels for stronger contrast": "Hiển thị các bề mặt phía trước trên các bảng bị làm mờ để có độ tương phản mạnh hơn"
   },
+  "Show foreground surfaces on panels for stronger contrast": {
+    "Show foreground surfaces on panels for stronger contrast": ""
+  },
   "Show in GB": {
     "Show in GB": "Hiển thị theo GB"
   },
@@ -7472,9 +7637,6 @@
   "Smartcard Authentication": {
     "Smartcard Authentication": "Xác thực thẻ thông minh"
   },
-  "Smartcard PIN": {
-    "Smartcard PIN": "PIN thẻ thông minh"
-  },
   "Snap": {
     "Snap": "Snap"
   },
@@ -7489,6 +7651,9 @@
   },
   "Sort By": {
     "Sort By": "Sắp xếp theo"
+  },
+  "Sort wallpapers": {
+    "Sort wallpapers": ""
   },
   "Sorting & Layout": {
     "Sorting & Layout": "Sắp xếp & Bố cục"
@@ -7507,6 +7672,9 @@
   },
   "Space between windows": {
     "Space between windows": "Khoảng cách giữa các cửa sổ"
+  },
+  "Space between windows and screen edges": {
+    "Space between windows and screen edges": ""
   },
   "Spacer": {
     "Spacer": "Khoảng trống"
@@ -7616,6 +7784,12 @@
   "Surface Behavior": {
     "Surface Behavior": "Hành vi bề mặt"
   },
+  "Surface Border Color": {
+    "Surface Border Color": ""
+  },
+  "Surface Border Opacity": {
+    "Surface Border Opacity": ""
+  },
   "Surface Container": {
     "Surface Container": ""
   },
@@ -7679,6 +7853,9 @@
   "Sync Position Across Screens": {
     "Sync Position Across Screens": "Đồng bộ vị trí qua các màn hình"
   },
+  "Sync applies your theme and settings to the login screen. Other users should run dms greeter sync --profile instead of a full sync. Authentication changes apply automatically.": {
+    "Sync applies your theme and settings to the login screen. Other users should run dms greeter sync --profile instead of a full sync. Authentication changes apply automatically.": ""
+  },
   "Sync completed successfully.": {
     "Sync completed successfully.": "Đồng bộ hoàn tất thành công."
   },
@@ -7690,6 +7867,12 @@
   },
   "Sync needs sudo authentication. Opening terminal so you can use password or fingerprint.": {
     "Sync needs sudo authentication. Opening terminal so you can use password or fingerprint.": "Đồng bộ cần xác thực sudo. Đang mở cửa sổ dòng lệnh để bạn có thể sử dụng mật khẩu hoặc vân tay."
+  },
+  "Sync to apply": {
+    "Sync to apply": ""
+  },
+  "Syncing...": {
+    "Syncing...": ""
   },
   "System": {
     "System": "Hệ thống"
@@ -7829,6 +8012,9 @@
   "Text Rendering": {
     "Text Rendering": "Kết xuất văn bản"
   },
+  "The 'boregard' tool is not installed or not on your PATH.\n\nInstall it from https://danklinux.com, then re-enable this plugin.": {
+    "The 'boregard' tool is not installed or not on your PATH.\n\nInstall it from https://danklinux.com, then re-enable this plugin.": ""
+  },
   "The 'dgop' tool is required for system monitoring.\nPlease install dgop to use this feature.": {
     "The 'dgop' tool is required for system monitoring.\nPlease install dgop to use this feature.": "Công cụ 'dgop' là bắt buộc để giám sát hệ thống.\nVui lòng cài đặt dgop để sử dụng tính năng này."
   },
@@ -7895,6 +8081,9 @@
   "This install is still using hyprland.conf. Run dms setup to migrate before editing display settings.": {
     "This install is still using hyprland.conf. Run dms setup to migrate before editing display settings.": "Bản cài đặt này vẫn đang dùng hyprland.conf. Chạy dms setup để migrate trước khi chỉnh sửa cài đặt màn hình."
   },
+  "This install is still using hyprland.conf. Run dms setup to migrate before editing layout settings.": {
+    "This install is still using hyprland.conf. Run dms setup to migrate before editing layout settings.": ""
+  },
   "This install is still using hyprland.conf. Run dms setup to migrate before editing shortcuts in Settings.": {
     "This install is still using hyprland.conf. Run dms setup to migrate before editing shortcuts in Settings.": "Bản cài đặt này vẫn đang dùng hyprland.conf. Chạy dms setup để migrate trước khi chỉnh sửa phím tắt trong Cài đặt."
   },
@@ -7960,6 +8149,9 @@
   },
   "Time remaining: %1": {
     "Time remaining: %1": "Thời gian còn lại: %1"
+  },
+  "Time to rest on a widget before its popout opens": {
+    "Time to rest on a widget before its popout opens": ""
   },
   "Time to wait before hiding after the pointer leaves": {
     "Time to wait before hiding after the pointer leaves": "Thời gian chờ trước khi ẩn sau khi con trỏ rời đi"
@@ -8189,6 +8381,9 @@
   "Unfocused Color": {
     "Unfocused Color": "Màu cửa sổ đang không chọn"
   },
+  "Unfocused Display(s)": {
+    "Unfocused Display(s)": ""
+  },
   "Ungrouped": {
     "Ungrouped": "Không được nhóm"
   },
@@ -8275,9 +8470,6 @@
   },
   "Unsaved changes": {
     "Unsaved changes": "Thay đổi chưa lưu"
-  },
-  "Unsaved note...": {
-    "Unsaved note...": "Ghi chú chưa lưu..."
   },
   "Unset": {
     "Unset": "Chưa đặt"
@@ -8366,6 +8558,9 @@
   "Use System Theme": {
     "Use System Theme": "Dùng chủ đề hệ thống"
   },
+  "Use a custom image for the lock screen, or leave empty to use your desktop wallpaper.": {
+    "Use a custom image for the lock screen, or leave empty to use your desktop wallpaper.": ""
+  },
   "Use a custom image for the login screen, or leave empty to use your desktop wallpaper.": {
     "Use a custom image for the login screen, or leave empty to use your desktop wallpaper.": "Sử dụng ảnh tùy chỉnh cho màn hình đăng nhập, hoặc để trống để sử dụng hình nền máy tính."
   },
@@ -8401,6 +8596,9 @@
   },
   "Use different icon themes for light and dark mode": {
     "Use different icon themes for light and dark mode": ""
+  },
+  "Use different workspace colors on displays that are not focused": {
+    "Use different workspace colors on displays that are not focused": ""
   },
   "Use fingerprint authentication for the lock screen.": {
     "Use fingerprint authentication for the lock screen.": "Sử dụng xác thực vân tay cho màn hình khóa."
@@ -8509,9 +8707,6 @@
   },
   "VPN Connections": {
     "VPN Connections": "Kết nối VPN"
-  },
-  "VPN Password": {
-    "VPN Password": "Mật khẩu VPN"
   },
   "VPN configuration updated": {
     "VPN configuration updated": "Đã cập nhật cấu hình VPN"
@@ -8681,9 +8876,6 @@
   "White": {
     "White": ""
   },
-  "Wi-Fi Password": {
-    "Wi-Fi Password": "Mật khẩu WiFi"
-  },
   "Wi-Fi and Ethernet connection": {
     "Wi-Fi and Ethernet connection": "Kết nối Wi-Fi và Ethernet"
   },
@@ -8726,17 +8918,11 @@
   "Widget Outline": {
     "Widget Outline": "Đường viền tiện ích"
   },
-  "Widget Style": {
-    "Widget Style": "Kiểu tiện ích"
-  },
   "Widget Styling": {
     "Widget Styling": "Kiểu tiện ích"
   },
   "Widget Text Style": {
     "Widget Text Style": ""
-  },
-  "Widget Transparency": {
-    "Widget Transparency": "Độ trong suốt của tiện ích"
   },
   "Widget added": {
     "Widget added": "Đã thêm tiện ích"
@@ -8852,8 +9038,14 @@
   "XWayland": {
     "XWayland": "XWayland"
   },
+  "Xray Blur Effect": {
+    "Xray Blur Effect": ""
+  },
   "Xray blurs only the wallpaper (efficient) and is the default when Blur is on. Set Xray to Off for regular full blur of everything beneath the window (more expensive).": {
     "Xray blurs only the wallpaper (efficient) and is the default when Blur is on. Set Xray to Off for regular full blur of everything beneath the window (more expensive).": "X-Ray chỉ làm mờ hình nền (hiệu quả) và là mặc định khi Làm mờ được bật. Tắt X-Ray để làm mờ toàn bộ mọi thứ bên dưới cửa sổ (tốn kém hơn)."
+  },
+  "Xray options are in Compositor → Layout": {
+    "Xray options are in Compositor → Layout": ""
   },
   "Y": {
     "Y": "Y"
@@ -8906,6 +9098,9 @@
   "attached": {
     "attached": "đã đính kèm"
   },
+  "boregard is required": {
+    "boregard is required": ""
+  },
   "brandon": {
     "brandon": "brandon (Kiểu)"
   },
@@ -8944,9 +9139,6 @@
   },
   "dms/cursor config exists but is not included. Cursor settings won't apply.": {
     "dms/cursor config exists but is not included. Cursor settings won't apply.": "cấu hình dms/cursor tồn tại nhưng không được bao gồm. Các cài đặt con trỏ sẽ không có hiệu lực."
-  },
-  "dms/outputs config exists but is not included in your compositor config. Display changes won't persist.": {
-    "dms/outputs config exists but is not included in your compositor config. Display changes won't persist.": "cấu hình dms/outputs tồn tại nhưng không được bao gồm trong cấu hình compositor của bạn. Các thay đổi hiển thị sẽ không được lưu lại."
   },
   "e.g. /usr/bin/my-script --flag": {
     "e.g. /usr/bin/my-script --flag": "vd. /usr/bin/my-script --flag"
@@ -9085,6 +9277,9 @@
   },
   "remote": {
     "remote": "từ xa"
+  },
+  "reviewed": {
+    "reviewed": ""
   },
   "seconds": {
     "seconds": "giây"

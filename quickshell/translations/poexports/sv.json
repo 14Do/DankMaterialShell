@@ -8,6 +8,9 @@
   "%1 Sessions": {
     "%1 Sessions": "%1 sessioner"
   },
+  "%1 Startup Failed": {
+    "%1 Startup Failed": ""
+  },
   "%1 active session": {
     "%1 active session": "%1 aktiv session"
   },
@@ -503,6 +506,9 @@
   "Adjusts contrast of generated colors (-100 = minimum, 0 = standard, 100 = maximum)": {
     "Adjusts contrast of generated colors (-100 = minimum, 0 = standard, 100 = maximum)": ""
   },
+  "Administrator access is required. Use the Sync button in Settings → Greeter to apply.": {
+    "Administrator access is required. Use the Sync button in Settings → Greeter to apply.": ""
+  },
   "Administrator group:": {
     "Administrator group:": ""
   },
@@ -563,6 +569,9 @@
   "Always Show Percentage": {
     "Always Show Percentage": "Visa alltid procent"
   },
+  "Always blur against the wallpaper, even with Xray off": {
+    "Always blur against the wallpaper, even with Xray off": ""
+  },
   "Always hide the dock and reveal it when hovering near the dock area": {
     "Always hide the dock and reveal it when hovering near the dock area": "Dölj alltid docken och visa den när pekaren är nära dockområdet"
   },
@@ -583,6 +592,9 @@
   },
   "Amount": {
     "Amount": "Antal"
+  },
+  "An xray rule at %1 may conflict with the Xray settings below": {
+    "An xray rule at %1 may conflict with the Xray settings below": ""
   },
   "Analog": {
     "Analog": "Analog"
@@ -640,6 +652,9 @@
   },
   "App Theming": {
     "App Theming": "Apptematisering"
+  },
+  "App name or identity (e.g., firefox)": {
+    "App name or identity (e.g., firefox)": ""
   },
   "Appearance": {
     "Appearance": "Utseende"
@@ -833,6 +848,15 @@
   "Auto Power Saver": {
     "Auto Power Saver": ""
   },
+  "Auto matches bar spacing; Off leaves gaps to your Hyprland config": {
+    "Auto matches bar spacing; Off leaves gaps to your Hyprland config": ""
+  },
+  "Auto matches bar spacing; Off leaves gaps to your MangoWC config": {
+    "Auto matches bar spacing; Off leaves gaps to your MangoWC config": ""
+  },
+  "Auto matches bar spacing; Off leaves gaps to your niri config": {
+    "Auto matches bar spacing; Off leaves gaps to your niri config": ""
+  },
   "Auto mode is on. Manual profile selection is disabled.": {
     "Auto mode is on. Manual profile selection is disabled.": ""
   },
@@ -860,6 +884,9 @@
   "Auto-login": {
     "Auto-login": ""
   },
+  "Auto-login change needs a sync": {
+    "Auto-login change needs a sync": ""
+  },
   "Auto-login disabled": {
     "Auto-login disabled": ""
   },
@@ -871,9 +898,6 @@
   },
   "Auto-save to disk": {
     "Auto-save to disk": ""
-  },
-  "Auto-saving...": {
-    "Auto-saving...": "Sparar automatiskt..."
   },
   "Autoconnect": {
     "Autoconnect": "Automatisk anslutning"
@@ -1028,9 +1052,6 @@
   "Bar Spacing": {
     "Bar Spacing": ""
   },
-  "Bar Transparency": {
-    "Bar Transparency": "Genomskinlighet på menyraden"
-  },
   "Bar corners and background": {
     "Bar corners and background": ""
   },
@@ -1097,9 +1118,6 @@
   "Bind the spotlight-bar IPC action in your compositor config.": {
     "Bind the spotlight-bar IPC action in your compositor config.": ""
   },
-  "Binds Include Missing": {
-    "Binds Include Missing": "Inkludering av kortkommandon saknas"
-  },
   "Binds include added": {
     "Binds include added": "Inkludering av kortkommandon tillagd"
   },
@@ -1160,6 +1178,9 @@
   "Blur wallpaper when niri overview is open": {
     "Blur wallpaper when niri overview is open": "Oskärpa bakgrundsbild när niri-översikten är öppen"
   },
+  "Blurred surfaces show the wallpaper instead of the content beneath": {
+    "Blurred surfaces show the wallpaper instead of the content beneath": ""
+  },
   "Body": {
     "Body": "Brödtext"
   },
@@ -1195,6 +1216,9 @@
   },
   "Border color around blurred surfaces": {
     "Border color around blurred surfaces": ""
+  },
+  "Border color around popouts, modals, and other shell surfaces": {
+    "Border color around popouts, modals, and other shell surfaces": ""
   },
   "Border w/ Bg": {
     "Border w/ Bg": ""
@@ -1243,6 +1267,9 @@
   },
   "Browse Themes": {
     "Browse Themes": "Bläddra bland teman"
+  },
+  "Browse and set wallpapers": {
+    "Browse and set wallpapers": ""
   },
   "Browse or search plugins": {
     "Browse or search plugins": "Bläddra bland eller sök tillägg"
@@ -1358,9 +1385,6 @@
   "Change Volume": {
     "Change Volume": "Ändra volym"
   },
-  "Change bar appearance": {
-    "Change bar appearance": "Ändra utseende på menyraden"
-  },
   "Change the locale used by the DMS interface.": {
     "Change the locale used by the DMS interface.": "Ändra det språk som används av DMS-gränssnittet."
   },
@@ -1460,6 +1484,9 @@
   "Choose the logo displayed on the launcher button in DankBar": {
     "Choose the logo displayed on the launcher button in DankBar": "Välj ikonen som visas på appstartarknappen i DankBar"
   },
+  "Choose wallpaper folder": {
+    "Choose wallpaper folder": ""
+  },
   "Choose where notification popups appear on screen": {
     "Choose where notification popups appear on screen": "Välj var notisbanderoller visas på skärmen"
   },
@@ -1520,9 +1547,6 @@
   "Click 'Setup' to create %1 and add include to your compositor config.": {
     "Click 'Setup' to create %1 and add include to your compositor config.": "Klicka på 'Konfiguration' för att skapa %1 och lägga till inkludering i din kompositorkonfiguration."
   },
-  "Click 'Setup' to create cursor config and add include to your compositor config.": {
-    "Click 'Setup' to create cursor config and add include to your compositor config.": "Klicka på 'Konfiguration' för att skapa markörskonfigurationen och lägga till inkludering i din kompositorkonfiguration."
-  },
   "Click 'Setup' to create the outputs config and add include to your compositor config.": {
     "Click 'Setup' to create the outputs config and add include to your compositor config.": "Klicka på 'Konfiguration' för att skapa utgångskonfigurationen och lägga till inkludering i din kompositorkonfiguration."
   },
@@ -1580,6 +1604,9 @@
   "Clock Style": {
     "Clock Style": "Klockstil"
   },
+  "Clock, calendar, system info and profile": {
+    "Clock, calendar, system info and profile": ""
+  },
   "Close": {
     "Close": "Stäng"
   },
@@ -1621,6 +1648,9 @@
   },
   "Color for primary action buttons": {
     "Color for primary action buttons": "Färg på primära åtgärdsknappar"
+  },
+  "Color shown for areas not covered by wallpaper": {
+    "Color shown for areas not covered by wallpaper": ""
   },
   "Color shown for areas not covered by wallpaper (e.g. Fit or Pad modes)": {
     "Color shown for areas not covered by wallpaper (e.g. Fit or Pad modes)": ""
@@ -1841,9 +1871,6 @@
   "Controls how strongly the selected tint color is applied": {
     "Controls how strongly the selected tint color is applied": ""
   },
-  "Controls opacity of all popouts, modals, and their content layers": {
-    "Controls opacity of all popouts, modals, and their content layers": "Styr opaciteten för alla popupfönster, dialogrutor och deras innehållslager"
-  },
   "Controls opacity of shell surfaces, popouts, and modals": {
     "Controls opacity of shell surfaces, popouts, and modals": ""
   },
@@ -1865,6 +1892,9 @@
   "Controls outlines around blurred foreground cards, pills, and notification cards": {
     "Controls outlines around blurred foreground cards, pills, and notification cards": ""
   },
+  "Controls outlines around foreground cards, pills, and notification cards": {
+    "Controls outlines around foreground cards, pills, and notification cards": ""
+  },
   "Controls shadow cast direction for elevation layers": {
     "Controls shadow cast direction for elevation layers": "Styr skuggkastningsriktning för upphöjningslager"
   },
@@ -1876,6 +1906,9 @@
   },
   "Controls the outer edge of protocol-blurred windows": {
     "Controls the outer edge of protocol-blurred windows": ""
+  },
+  "Controls the outline of popouts, modals, and other shell surfaces": {
+    "Controls the outline of popouts, modals, and other shell surfaces": ""
   },
   "Controls the transparency of the shadow": {
     "Controls the transparency of the shadow": "Styr skuggans genomskinlighet"
@@ -1960,6 +1993,9 @@
   },
   "Create Window Rule": {
     "Create Window Rule": "Skapa fönsterregel"
+  },
+  "Create a new %1 session (^N)": {
+    "Create a new %1 session (^N)": ""
   },
   "Create a new %1 session (n)": {
     "Create a new %1 session (n)": "Skapa en ny %1-session (n)"
@@ -2111,9 +2147,6 @@
   "Custom Suspend Command": {
     "Custom Suspend Command": "Anpassat strömsparlägeskommando"
   },
-  "Custom Transparency": {
-    "Custom Transparency": "Anpassad genomskinlighet"
-  },
   "Custom command and terminal params are split on whitespace; paths with spaces will break.": {
     "Custom command and terminal params are split on whitespace; paths with spaces will break.": ""
   },
@@ -2137,6 +2170,9 @@
   },
   "Customizable empty space": {
     "Customizable empty space": "Anpassningsbart mellanrum"
+  },
+  "Customize the font and background of the lock screen, or leave empty to use your theme font and desktop wallpaper. Changes apply instantly.": {
+    "Customize the font and background of the lock screen, or leave empty to use your theme font and desktop wallpaper. Changes apply instantly.": ""
   },
   "Customize which actions appear in the power menu": {
     "Customize which actions appear in the power menu": "Anpassa vilka åtgärder som visas i strömmenyn"
@@ -2194,6 +2230,12 @@
   },
   "Dank Bar": {
     "Dank Bar": "Dank Bar"
+  },
+  "Dank Bar Xray": {
+    "Dank Bar Xray": ""
+  },
+  "Dank Dash": {
+    "Dank Dash": ""
   },
   "DankBar": {
     "DankBar": "DankBar"
@@ -2576,9 +2618,6 @@
   "Dock Opacity": {
     "Dock Opacity": ""
   },
-  "Dock Transparency": {
-    "Dock Transparency": "Genomskinlighet på Dock"
-  },
   "Dock Visibility": {
     "Dock Visibility": "Docksynlighet"
   },
@@ -2612,8 +2651,14 @@
   "Downloads": {
     "Downloads": "Hämtningar"
   },
+  "Drag a widget by its handle here to reorder it or drop it into another group": {
+    "Drag a widget by its handle here to reorder it or drop it into another group": ""
+  },
   "Drag to Reorder": {
     "Drag to Reorder": "Dra för att ordna om"
+  },
+  "Drag to reorder or click to hide tabs. Use ↑/↓ to highlight a tab and Ctrl+↑/↓ to move it.": {
+    "Drag to reorder or click to hide tabs. Use ↑/↓ to highlight a tab and Ctrl+↑/↓ to move it.": ""
   },
   "Drag widgets to reorder within sections. Use the eye icon to hide/show widgets (maintains spacing), or X to remove them completely.": {
     "Drag widgets to reorder within sections. Use the eye icon to hide/show widgets (maintains spacing), or X to remove them completely.": "Håll och dra för att ordna widgetar inom en avdelning. Klicka på ögat för att gömma eller visa widgetar (mellanrum bevaras), eller X för att ta bort dem."
@@ -2629,6 +2674,9 @@
   },
   "Drizzle": {
     "Drizzle": "Duggregn"
+  },
+  "Drop here": {
+    "Drop here": ""
   },
   "Drop your override for %1 so the DMS default action re-applies?": {
     "Drop your override for %1 so the DMS default action re-applies?": ""
@@ -2660,6 +2708,9 @@
   "Dynamic Theming": {
     "Dynamic Theming": "Dynamisk tematisering"
   },
+  "Dynamic Width": {
+    "Dynamic Width": ""
+  },
   "Dynamic colors from wallpaper": {
     "Dynamic colors from wallpaper": "Dynamiska färger från bakgrundsbild"
   },
@@ -2671,6 +2722,9 @@
   },
   "Dynamic: Spring bezier with overshoot — entry briefly exceeds its target then settles. Expressive and alive.": {
     "Dynamic: Spring bezier with overshoot — entry briefly exceeds its target then settles. Expressive and alive.": ""
+  },
+  "Edge Hover Reveal": {
+    "Edge Hover Reveal": ""
   },
   "Edge Spacing": {
     "Edge Spacing": "Avstånd från skärmkanter"
@@ -2929,6 +2983,9 @@
   },
   "Exact": {
     "Exact": "Exakt"
+  },
+  "Excluded Media Players": {
+    "Excluded Media Players": ""
   },
   "Exclusive Zone Offset": {
     "Exclusive Zone Offset": "Avstånd från fönster"
@@ -3341,12 +3398,6 @@
   "Fit": {
     "Fit": "Anpassa"
   },
-  "Fix Now": {
-    "Fix Now": "Åtgärda nu"
-  },
-  "Fixing...": {
-    "Fixing...": "Åtgärdar..."
-  },
   "Flags": {
     "Flags": "Flaggor"
   },
@@ -3407,6 +3458,9 @@
   "Focused Color": {
     "Focused Color": "Fokusradfärg"
   },
+  "Focused Display": {
+    "Focused Display": ""
+  },
   "Focused Monitor Only": {
     "Focused Monitor Only": "Bara fokuserad bildskärm"
   },
@@ -3449,6 +3503,9 @@
   "Font Weight": {
     "Font Weight": "Teckensnittsvikt"
   },
+  "Font used for the clock and date on the lock screen": {
+    "Font used for the clock and date on the lock screen": ""
+  },
   "Font used on the login screen": {
     "Font used on the login screen": "Teckensnitt som används på inloggningsskärmen"
   },
@@ -3479,6 +3536,9 @@
   "Force Kill (SIGKILL)": {
     "Force Kill (SIGKILL)": "Tvångsavsluta (SIGKILL)"
   },
+  "Force Padding": {
+    "Force Padding": ""
+  },
   "Force RGBX": {
     "Force RGBX": ""
   },
@@ -3496,6 +3556,9 @@
   },
   "Forecast Not Available": {
     "Forecast Not Available": "Prognos otillgänglig"
+  },
+  "Forecast and conditions": {
+    "Forecast and conditions": ""
   },
   "Foreground Layers": {
     "Foreground Layers": ""
@@ -3536,6 +3599,9 @@
   "Frame Border Color": {
     "Frame Border Color": ""
   },
+  "Frame Xray": {
+    "Frame Xray": ""
+  },
   "Free VRAM/memory when the launcher is closed. May cause a slight delay when reopening.": {
     "Free VRAM/memory when the launcher is closed. May cause a slight delay when reopening.": "Frigör VRAM/minne när startaren stängs. Kan orsaka en liten fördröjning vid återöppning."
   },
@@ -3559,6 +3625,9 @@
   },
   "Full Day & Month": {
     "Full Day & Month": "Fullständig dag och månad"
+  },
+  "Full Size": {
+    "Full Size": ""
   },
   "Full command to execute": {
     "Full command to execute": ""
@@ -3610,6 +3679,9 @@
   },
   "Gap between the end widgets and the bar ends (0 = edge-to-edge)": {
     "Gap between the end widgets and the bar ends (0 = edge-to-edge)": ""
+  },
+  "Gaps": {
+    "Gaps": ""
   },
   "Generate Override": {
     "Generate Override": ""
@@ -3700,6 +3772,9 @@
   },
   "Greeter only — format for the date on the login screen": {
     "Greeter only — format for the date on the login screen": "Gäller bara välkomstskärmen – format för datumet på inloggningsskärmen"
+  },
+  "Greeter sync complete": {
+    "Greeter sync complete": ""
   },
   "Grid": {
     "Grid": "Rutnät"
@@ -3806,6 +3881,9 @@
   "Hidden apps won't appear in the launcher. Right-click an app and select 'Hide App' to hide it.": {
     "Hidden apps won't appear in the launcher. Right-click an app and select 'Hide App' to hide it.": "Dolda appar visas inte i startaren. Högerklicka på en app och välj 'Dölj app' för att dölja den."
   },
+  "Hidden until weather is enabled": {
+    "Hidden until weather is enabled": ""
+  },
   "Hide": {
     "Hide": "Dölj"
   },
@@ -3853,6 +3931,12 @@
   },
   "Hide the bar when the pointer leaves even if a popout is still open": {
     "Hide the bar when the pointer leaves even if a popout is still open": ""
+  },
+  "Hide when no updates: OFF": {
+    "Hide when no updates: OFF": ""
+  },
+  "Hide when no updates: ON": {
+    "Hide when no updates: ON": ""
   },
   "High": {
     "High": ""
@@ -3919,6 +4003,9 @@
   },
   "Hourly Forecast Count": {
     "Hourly Forecast Count": "Antal timvisa prognoser"
+  },
+  "Hover Popouts": {
+    "Hover Popouts": ""
   },
   "How often the server polls for new updates.": {
     "How often the server polls for new updates.": ""
@@ -4091,6 +4178,9 @@
   "Initialised": {
     "Initialised": ""
   },
+  "Inner Gaps": {
+    "Inner Gaps": ""
+  },
   "Inner padding applied to each widget": {
     "Inner padding applied to each widget": ""
   },
@@ -4210,6 +4300,12 @@
   },
   "Jobs: ": {
     "Jobs: ": "Jobb: "
+  },
+  "Jump to page": {
+    "Jump to page": ""
+  },
+  "Jump to page (1 - %1)": {
+    "Jump to page (1 - %1)": ""
   },
   "Keep Awake": {
     "Keep Awake": "Håll vaken"
@@ -4448,6 +4544,9 @@
   "Lock Screen": {
     "Lock Screen": "Låsskärm"
   },
+  "Lock Screen Appearance": {
+    "Lock Screen Appearance": ""
+  },
   "Lock Screen Display": {
     "Lock Screen Display": "Låsskärmsvisning"
   },
@@ -4471,6 +4570,9 @@
   },
   "Lock screen authentication changes apply automatically and may open a terminal when sudo authentication is required.": {
     "Lock screen authentication changes apply automatically and may open a terminal when sudo authentication is required.": ""
+  },
+  "Lock screen font": {
+    "Lock screen font": ""
   },
   "Locked": {
     "Locked": "Låst"
@@ -5030,6 +5132,9 @@
   "Next Transition": {
     "Next Transition": "Nästa övergång"
   },
+  "Next page": {
+    "Next page": ""
+  },
   "Night": {
     "Night": "Natt"
   },
@@ -5192,6 +5297,9 @@
   "No errors": {
     "No errors": "Inga fel"
   },
+  "No excluded players configured": {
+    "No excluded players configured": ""
+  },
   "No features enabled": {
     "No features enabled": "Inga funktioner aktiverade"
   },
@@ -5299,6 +5407,9 @@
   },
   "No saved clipboard entries": {
     "No saved clipboard entries": "Inga sparade urklippsposter"
+  },
+  "No screenshot provided": {
+    "No screenshot provided": ""
   },
   "No session selected": {
     "No session selected": ""
@@ -5408,14 +5519,8 @@
   "Not set": {
     "Not set": "Inte inställt"
   },
-  "Note: this only changes the percentage, it does not actually limit charging.": {
-    "Note: this only changes the percentage, it does not actually limit charging.": "Obs: detta ändrar bara procenttalet, det begränsar inte faktisk laddning."
-  },
   "Notepad": {
     "Notepad": "Anteckningar"
-  },
-  "Notepad Font Settings": {
-    "Notepad Font Settings": "Teckensnittsinställningar för Anteckningar"
   },
   "Notepad Settings": {
     "Notepad Settings": ""
@@ -5467,6 +5572,9 @@
   },
   "Notify when limit is reached": {
     "Notify when limit is reached": ""
+  },
+  "Now playing and media controls": {
+    "Now playing and media controls": ""
   },
   "Numbers": {
     "Numbers": "Tal"
@@ -5555,6 +5663,9 @@
   "Open App": {
     "Open App": "Öppna app"
   },
+  "Open Delay": {
+    "Open Delay": ""
+  },
   "Open Dir": {
     "Open Dir": ""
   },
@@ -5596,6 +5707,12 @@
   },
   "Open search bar to find text": {
     "Open search bar to find text": "Öppna sökfältet för att hitta text"
+  },
+  "Open the launcher by hovering the emerge edge (when free of bar and dock)": {
+    "Open the launcher by hovering the emerge edge (when free of bar and dock)": ""
+  },
+  "Open widget popouts by hovering over the bar. Moving to another widget switches the popout.": {
+    "Open widget popouts by hovering over the bar. Moving to another widget switches the popout.": ""
   },
   "Open with...": {
     "Open with...": "Öppna med..."
@@ -5648,6 +5765,9 @@
   "Other": {
     "Other": "Övrigt"
   },
+  "Outer Gaps": {
+    "Outer Gaps": ""
+  },
   "Outline": {
     "Outline": "Kontur"
   },
@@ -5666,14 +5786,14 @@
   "Output Tray Missing": {
     "Output Tray Missing": "Utmatningsfäcket saknas"
   },
-  "Outputs Include Missing": {
-    "Outputs Include Missing": "Utgångsinkludering saknas"
-  },
   "Overcast": {
     "Overcast": "Mulet"
   },
   "Overflow": {
     "Overflow": "Overflow"
+  },
+  "Overlay": {
+    "Overlay": ""
   },
   "Overridden by config": {
     "Overridden by config": "Åsidosatt av konfiguration"
@@ -5975,6 +6095,9 @@
   "Plugin Visibility": {
     "Plugin Visibility": "Tilläggssynlighet"
   },
+  "Plugin dependency missing": {
+    "Plugin dependency missing": ""
+  },
   "Plugin disabled: %1": {
     "Plugin disabled: %1": ""
   },
@@ -6116,6 +6239,9 @@
   "Press 'n' or click 'New Session' to create one": {
     "Press 'n' or click 'New Session' to create one": "Tryck på 'n' eller klicka på 'Ny session' för att skapa en"
   },
+  "Press Ctrl+N or click 'New Session' to create one": {
+    "Press Ctrl+N or click 'New Session' to create one": ""
+  },
   "Press Enter and the audio system will restart to apply the change": {
     "Press Enter and the audio system will restart to apply the change": "Tryck på Retur så startar ljudsystemet om för att tillämpa ändringen"
   },
@@ -6131,6 +6257,9 @@
   "Prevent screen timeout": {
     "Prevent screen timeout": "Förhindra att skärmen stängs av"
   },
+  "Prevent specific applications from displaying in the media controllers (e.g., browser audio streams, background tools). Matches player identity or desktop file name case-insensitively.": {
+    "Prevent specific applications from displaying in the media controllers (e.g., browser audio streams, background tools). Matches player identity or desktop file name case-insensitively.": ""
+  },
   "Preview": {
     "Preview": "Förhandsgranskning"
   },
@@ -6139,6 +6268,9 @@
   },
   "Previous": {
     "Previous": ""
+  },
+  "Previous page": {
+    "Previous page": ""
   },
   "Primary": {
     "Primary": "Primär"
@@ -6356,6 +6488,9 @@
   "Reject Jobs": {
     "Reject Jobs": "Avvisa jobb"
   },
+  "Related: %1": {
+    "Related: %1": ""
+  },
   "Release": {
     "Release": "Släpp"
   },
@@ -6446,6 +6581,9 @@
   "Rename Workspace": {
     "Rename Workspace": "Byt namn på arbetsyta"
   },
+  "Reorder & Group": {
+    "Reorder & Group": ""
+  },
   "Repeat": {
     "Repeat": "Upprepa"
   },
@@ -6481,6 +6619,9 @@
   },
   "Requires a newer version of Quickshell": {
     "Requires a newer version of Quickshell": ""
+  },
+  "Requires greetd, dms-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys). Auth changes apply automatically and may open a terminal for sudo.": {
+    "Requires greetd, dms-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys). Auth changes apply automatically and may open a terminal for sudo.": ""
   },
   "Requires night mode support": {
     "Requires night mode support": "Kräver stöd för nattläge"
@@ -6734,6 +6875,9 @@
   "Screen sharing": {
     "Screen sharing": "Skärmdelning"
   },
+  "Screenshot unavailable": {
+    "Screenshot unavailable": ""
+  },
   "Scroll": {
     "Scroll": "Rulla"
   },
@@ -6893,6 +7037,9 @@
   "Select at least one provider": {
     "Select at least one provider": "Välj minst en leverantör"
   },
+  "Select background image": {
+    "Select background image": ""
+  },
   "Select device": {
     "Select device": "Välj enhet"
   },
@@ -6907,6 +7054,9 @@
   },
   "Select greeter background image": {
     "Select greeter background image": "Välj bakgrundsbild för välkomstskärmen"
+  },
+  "Select lock screen background image": {
+    "Select lock screen background image": ""
   },
   "Select monitor to configure wallpaper": {
     "Select monitor to configure wallpaper": "Ställ in bakgrundsbild på den här bildskärmen"
@@ -6959,8 +7109,14 @@
   "Separate": {
     "Separate": ""
   },
+  "Separate Appearance for Unfocused Display(s)": {
+    "Separate Appearance for Unfocused Display(s)": ""
+  },
   "Separate Light & Dark Themes": {
     "Separate Light & Dark Themes": ""
+  },
+  "Separate appearance for unfocused displays is not supported on this compositor.": {
+    "Separate appearance for unfocused displays is not supported on this compositor.": ""
   },
   "Separator": {
     "Separator": "Avskiljare"
@@ -7009,6 +7165,9 @@
   },
   "Setting": {
     "Setting": ""
+  },
+  "Setting up...": {
+    "Setting up...": ""
   },
   "Settings": {
     "Settings": "Inställningar"
@@ -7078,6 +7237,9 @@
   },
   "Shortcut (%1)": {
     "Shortcut (%1)": "Kortkommando (%1)"
+  },
+  "Shortcut that opens this settings window": {
+    "Shortcut that opens this settings window": ""
   },
   "Shortcuts": {
     "Shortcuts": "Genvägar"
@@ -7316,6 +7478,9 @@
   "Show foreground surfaces on blurred panels for stronger contrast": {
     "Show foreground surfaces on blurred panels for stronger contrast": ""
   },
+  "Show foreground surfaces on panels for stronger contrast": {
+    "Show foreground surfaces on panels for stronger contrast": ""
+  },
   "Show in GB": {
     "Show in GB": "Visa i GB"
   },
@@ -7472,9 +7637,6 @@
   "Smartcard Authentication": {
     "Smartcard Authentication": "Smartkortsautentisering"
   },
-  "Smartcard PIN": {
-    "Smartcard PIN": "Smartkorts-PIN"
-  },
   "Snap": {
     "Snap": "Knäppa"
   },
@@ -7489,6 +7651,9 @@
   },
   "Sort By": {
     "Sort By": "Sortera efter"
+  },
+  "Sort wallpapers": {
+    "Sort wallpapers": ""
   },
   "Sorting & Layout": {
     "Sorting & Layout": "Sortering & layout"
@@ -7507,6 +7672,9 @@
   },
   "Space between windows": {
     "Space between windows": "Mellanrum mellan fönster"
+  },
+  "Space between windows and screen edges": {
+    "Space between windows and screen edges": ""
   },
   "Spacer": {
     "Spacer": "Mellanrum"
@@ -7616,6 +7784,12 @@
   "Surface Behavior": {
     "Surface Behavior": ""
   },
+  "Surface Border Color": {
+    "Surface Border Color": ""
+  },
+  "Surface Border Opacity": {
+    "Surface Border Opacity": ""
+  },
   "Surface Container": {
     "Surface Container": ""
   },
@@ -7679,6 +7853,9 @@
   "Sync Position Across Screens": {
     "Sync Position Across Screens": "Synkronisera position mellan skärmar"
   },
+  "Sync applies your theme and settings to the login screen. Other users should run dms greeter sync --profile instead of a full sync. Authentication changes apply automatically.": {
+    "Sync applies your theme and settings to the login screen. Other users should run dms greeter sync --profile instead of a full sync. Authentication changes apply automatically.": ""
+  },
   "Sync completed successfully.": {
     "Sync completed successfully.": "Synkronisering klar."
   },
@@ -7690,6 +7867,12 @@
   },
   "Sync needs sudo authentication. Opening terminal so you can use password or fingerprint.": {
     "Sync needs sudo authentication. Opening terminal so you can use password or fingerprint.": "Synkronisering kräver sudo-autentisering. Öppnar terminal för lösenord eller fingeravtryck."
+  },
+  "Sync to apply": {
+    "Sync to apply": ""
+  },
+  "Syncing...": {
+    "Syncing...": ""
   },
   "System": {
     "System": "System"
@@ -7829,6 +8012,9 @@
   "Text Rendering": {
     "Text Rendering": ""
   },
+  "The 'boregard' tool is not installed or not on your PATH.\n\nInstall it from https://danklinux.com, then re-enable this plugin.": {
+    "The 'boregard' tool is not installed or not on your PATH.\n\nInstall it from https://danklinux.com, then re-enable this plugin.": ""
+  },
   "The 'dgop' tool is required for system monitoring.\nPlease install dgop to use this feature.": {
     "The 'dgop' tool is required for system monitoring.\nPlease install dgop to use this feature.": "Verktyget 'dgop' krävs för systemövervakning.\nInstallera dgop för att använda den här funktionen."
   },
@@ -7895,6 +8081,9 @@
   "This install is still using hyprland.conf. Run dms setup to migrate before editing display settings.": {
     "This install is still using hyprland.conf. Run dms setup to migrate before editing display settings.": ""
   },
+  "This install is still using hyprland.conf. Run dms setup to migrate before editing layout settings.": {
+    "This install is still using hyprland.conf. Run dms setup to migrate before editing layout settings.": ""
+  },
   "This install is still using hyprland.conf. Run dms setup to migrate before editing shortcuts in Settings.": {
     "This install is still using hyprland.conf. Run dms setup to migrate before editing shortcuts in Settings.": ""
   },
@@ -7960,6 +8149,9 @@
   },
   "Time remaining: %1": {
     "Time remaining: %1": "Återstående tid: %1"
+  },
+  "Time to rest on a widget before its popout opens": {
+    "Time to rest on a widget before its popout opens": ""
   },
   "Time to wait before hiding after the pointer leaves": {
     "Time to wait before hiding after the pointer leaves": ""
@@ -8189,6 +8381,9 @@
   "Unfocused Color": {
     "Unfocused Color": "Ofokuserad färg"
   },
+  "Unfocused Display(s)": {
+    "Unfocused Display(s)": ""
+  },
   "Ungrouped": {
     "Ungrouped": "Inte grupperad"
   },
@@ -8275,9 +8470,6 @@
   },
   "Unsaved changes": {
     "Unsaved changes": "Osparade ändringar"
-  },
-  "Unsaved note...": {
-    "Unsaved note...": "Osparad anteckning..."
   },
   "Unset": {
     "Unset": ""
@@ -8366,6 +8558,9 @@
   "Use System Theme": {
     "Use System Theme": "Använd systemtema"
   },
+  "Use a custom image for the lock screen, or leave empty to use your desktop wallpaper.": {
+    "Use a custom image for the lock screen, or leave empty to use your desktop wallpaper.": ""
+  },
   "Use a custom image for the login screen, or leave empty to use your desktop wallpaper.": {
     "Use a custom image for the login screen, or leave empty to use your desktop wallpaper.": "Använd en anpassad bild för inloggningsskärmen, eller lämna tomt för att använda skrivbordets bakgrundsbild."
   },
@@ -8401,6 +8596,9 @@
   },
   "Use different icon themes for light and dark mode": {
     "Use different icon themes for light and dark mode": ""
+  },
+  "Use different workspace colors on displays that are not focused": {
+    "Use different workspace colors on displays that are not focused": ""
   },
   "Use fingerprint authentication for the lock screen.": {
     "Use fingerprint authentication for the lock screen.": "Använd fingeravtrycksautentisering för låsskärmen."
@@ -8509,9 +8707,6 @@
   },
   "VPN Connections": {
     "VPN Connections": "VPN-anslutningar"
-  },
-  "VPN Password": {
-    "VPN Password": "VPN-lösenord"
   },
   "VPN configuration updated": {
     "VPN configuration updated": "VPN-konfiguration uppdaterad"
@@ -8681,9 +8876,6 @@
   "White": {
     "White": ""
   },
-  "Wi-Fi Password": {
-    "Wi-Fi Password": "Wi-Fi-lösenord"
-  },
   "Wi-Fi and Ethernet connection": {
     "Wi-Fi and Ethernet connection": "Wi-Fi och Ethernet-anslutning"
   },
@@ -8726,17 +8918,11 @@
   "Widget Outline": {
     "Widget Outline": "Widgetkantlinje"
   },
-  "Widget Style": {
-    "Widget Style": "Widgetstil"
-  },
   "Widget Styling": {
     "Widget Styling": "Widgetstil"
   },
   "Widget Text Style": {
     "Widget Text Style": ""
-  },
-  "Widget Transparency": {
-    "Widget Transparency": "Genomskinlighet på widget"
   },
   "Widget added": {
     "Widget added": "Widget tillagd"
@@ -8852,8 +9038,14 @@
   "XWayland": {
     "XWayland": ""
   },
+  "Xray Blur Effect": {
+    "Xray Blur Effect": ""
+  },
   "Xray blurs only the wallpaper (efficient) and is the default when Blur is on. Set Xray to Off for regular full blur of everything beneath the window (more expensive).": {
     "Xray blurs only the wallpaper (efficient) and is the default when Blur is on. Set Xray to Off for regular full blur of everything beneath the window (more expensive).": ""
+  },
+  "Xray options are in Compositor → Layout": {
+    "Xray options are in Compositor → Layout": ""
   },
   "Y": {
     "Y": ""
@@ -8906,6 +9098,9 @@
   "attached": {
     "attached": "ansluten"
   },
+  "boregard is required": {
+    "boregard is required": ""
+  },
   "brandon": {
     "brandon": "brandon"
   },
@@ -8944,9 +9139,6 @@
   },
   "dms/cursor config exists but is not included. Cursor settings won't apply.": {
     "dms/cursor config exists but is not included. Cursor settings won't apply.": "dms/cursor-konfigurationen finns men ingår inte. Markörsinställningar tillämpas inte."
-  },
-  "dms/outputs config exists but is not included in your compositor config. Display changes won't persist.": {
-    "dms/outputs config exists but is not included in your compositor config. Display changes won't persist.": "dms/outputs-konfigurationen finns men ingår inte i din kompositorkonfiguration. Bildskärmsändringar sparas inte."
   },
   "e.g. /usr/bin/my-script --flag": {
     "e.g. /usr/bin/my-script --flag": ""
@@ -9085,6 +9277,9 @@
   },
   "remote": {
     "remote": ""
+  },
+  "reviewed": {
+    "reviewed": ""
   },
   "seconds": {
     "seconds": "sekunder"

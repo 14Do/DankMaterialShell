@@ -371,7 +371,7 @@ DankModal {
                         }
 
                         StyledText {
-                            text: I18n.tr("Create a new %1 session (n)").arg(MuxService.displayName)
+                            text: I18n.tr("Create a new %1 session (^N)").arg(MuxService.displayName)
                             font.pixelSize: Theme.fontSizeSmall
                             color: Theme.surfaceVariantText
                         }
@@ -549,7 +549,7 @@ DankModal {
                                 }
 
                                 StyledText {
-                                    text: muxModal.searchText.length > 0 ? I18n.tr("Try a different search") : I18n.tr("Press 'n' or click 'New Session' to create one")
+                                    text: muxModal.searchText.length > 0 ? I18n.tr("Try a different search") : I18n.tr("Press Ctrl+N or click 'New Session' to create one")
                                     font.pixelSize: Theme.fontSizeSmall
                                     color: Theme.surfaceVariantText
                                     anchors.horizontalCenter: parent.horizontalCenter

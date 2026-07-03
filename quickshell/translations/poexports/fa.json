@@ -8,6 +8,9 @@
   "%1 Sessions": {
     "%1 Sessions": "%1 نشست"
   },
+  "%1 Startup Failed": {
+    "%1 Startup Failed": ""
+  },
   "%1 active session": {
     "%1 active session": "%1 نشست فعال"
   },
@@ -503,6 +506,9 @@
   "Adjusts contrast of generated colors (-100 = minimum, 0 = standard, 100 = maximum)": {
     "Adjusts contrast of generated colors (-100 = minimum, 0 = standard, 100 = maximum)": "کنتراست رنگ‌های تولید شده را تنظیم می‌کند (-۱۰۰ = کمینه، ۰ = استاندارد، ۱۰۰ = بیشینه)"
   },
+  "Administrator access is required. Use the Sync button in Settings → Greeter to apply.": {
+    "Administrator access is required. Use the Sync button in Settings → Greeter to apply.": ""
+  },
   "Administrator group:": {
     "Administrator group:": "گروه ادمین:"
   },
@@ -563,6 +569,9 @@
   "Always Show Percentage": {
     "Always Show Percentage": "همیشه درصد را نشان بده"
   },
+  "Always blur against the wallpaper, even with Xray off": {
+    "Always blur against the wallpaper, even with Xray off": ""
+  },
   "Always hide the dock and reveal it when hovering near the dock area": {
     "Always hide the dock and reveal it when hovering near the dock area": "همیشه داک را پنهان کن و هنگام نزدیک شدن اشاره‌گر موس به منطقه داک آن را نمایش بده"
   },
@@ -583,6 +592,9 @@
   },
   "Amount": {
     "Amount": "مقدار"
+  },
+  "An xray rule at %1 may conflict with the Xray settings below": {
+    "An xray rule at %1 may conflict with the Xray settings below": ""
   },
   "Analog": {
     "Analog": "آنالوگ"
@@ -640,6 +652,9 @@
   },
   "App Theming": {
     "App Theming": "تم برنامه"
+  },
+  "App name or identity (e.g., firefox)": {
+    "App name or identity (e.g., firefox)": ""
   },
   "Appearance": {
     "Appearance": "نمای ظاهری"
@@ -833,6 +848,15 @@
   "Auto Power Saver": {
     "Auto Power Saver": ""
   },
+  "Auto matches bar spacing; Off leaves gaps to your Hyprland config": {
+    "Auto matches bar spacing; Off leaves gaps to your Hyprland config": ""
+  },
+  "Auto matches bar spacing; Off leaves gaps to your MangoWC config": {
+    "Auto matches bar spacing; Off leaves gaps to your MangoWC config": ""
+  },
+  "Auto matches bar spacing; Off leaves gaps to your niri config": {
+    "Auto matches bar spacing; Off leaves gaps to your niri config": ""
+  },
   "Auto mode is on. Manual profile selection is disabled.": {
     "Auto mode is on. Manual profile selection is disabled.": "حالت خودکار فعال است. انتخاب پروفایل دستی غیرفعال می‌باشد."
   },
@@ -860,6 +884,9 @@
   "Auto-login": {
     "Auto-login": ""
   },
+  "Auto-login change needs a sync": {
+    "Auto-login change needs a sync": ""
+  },
   "Auto-login disabled": {
     "Auto-login disabled": ""
   },
@@ -871,9 +898,6 @@
   },
   "Auto-save to disk": {
     "Auto-save to disk": ""
-  },
-  "Auto-saving...": {
-    "Auto-saving...": "درحال ذخیره خودکار..."
   },
   "Autoconnect": {
     "Autoconnect": "اتصال خودکار"
@@ -1028,9 +1052,6 @@
   "Bar Spacing": {
     "Bar Spacing": ""
   },
-  "Bar Transparency": {
-    "Bar Transparency": "شفافیت نوار"
-  },
   "Bar corners and background": {
     "Bar corners and background": "گوشه‌ها و پس‌زمینه نوار"
   },
@@ -1097,9 +1118,6 @@
   "Bind the spotlight-bar IPC action in your compositor config.": {
     "Bind the spotlight-bar IPC action in your compositor config.": ""
   },
-  "Binds Include Missing": {
-    "Binds Include Missing": "Include نگاشت‌ها یافت نشد"
-  },
   "Binds include added": {
     "Binds include added": "Include نگاشت‌ها اضافه شد"
   },
@@ -1160,6 +1178,9 @@
   "Blur wallpaper when niri overview is open": {
     "Blur wallpaper when niri overview is open": "هنگامی که نمای کلی niri باز است تصویر پس‌زمینه را تار کن"
   },
+  "Blurred surfaces show the wallpaper instead of the content beneath": {
+    "Blurred surfaces show the wallpaper instead of the content beneath": ""
+  },
   "Body": {
     "Body": "بدنه"
   },
@@ -1195,6 +1216,9 @@
   },
   "Border color around blurred surfaces": {
     "Border color around blurred surfaces": "رنگ حاشیه دور سطوح تار"
+  },
+  "Border color around popouts, modals, and other shell surfaces": {
+    "Border color around popouts, modals, and other shell surfaces": ""
   },
   "Border w/ Bg": {
     "Border w/ Bg": ""
@@ -1243,6 +1267,9 @@
   },
   "Browse Themes": {
     "Browse Themes": "مرور تم‌ها"
+  },
+  "Browse and set wallpapers": {
+    "Browse and set wallpapers": ""
   },
   "Browse or search plugins": {
     "Browse or search plugins": "مرور یا جستجوی افزونه‌ها"
@@ -1358,9 +1385,6 @@
   "Change Volume": {
     "Change Volume": "تغییر حجم صدا"
   },
-  "Change bar appearance": {
-    "Change bar appearance": "نمای ظاهری نوار را تغییر بده"
-  },
   "Change the locale used by the DMS interface.": {
     "Change the locale used by the DMS interface.": "زبان استفاده شده توسط رابط DMS را تغییر دهید."
   },
@@ -1460,6 +1484,9 @@
   "Choose the logo displayed on the launcher button in DankBar": {
     "Choose the logo displayed on the launcher button in DankBar": "لوگوی نمایش‌داده شده بر دکمه‌ی لانچر در نوار دَنک را انتخاب کنید"
   },
+  "Choose wallpaper folder": {
+    "Choose wallpaper folder": ""
+  },
   "Choose where notification popups appear on screen": {
     "Choose where notification popups appear on screen": "انتخاب کنید پاپ‌آپ اعلان کجای صفحه ظاهر شود"
   },
@@ -1520,9 +1547,6 @@
   "Click 'Setup' to create %1 and add include to your compositor config.": {
     "Click 'Setup' to create %1 and add include to your compositor config.": "برای ایجاد %1 و افزودن include به پیکربندی کامپازیتور خود، روی «راه‌اندازی» کلیک کنید."
   },
-  "Click 'Setup' to create cursor config and add include to your compositor config.": {
-    "Click 'Setup' to create cursor config and add include to your compositor config.": "برای ایجاد پیکربندی اشاره‌گر موس و افزودن include به پیکربندی کامپازیتور خود، روی «راه‌اندازی» کلیک کنید."
-  },
   "Click 'Setup' to create the outputs config and add include to your compositor config.": {
     "Click 'Setup' to create the outputs config and add include to your compositor config.": "برای ایجاد پیکربندی خروجی‌ها و افزودن include به پیکربندی کامپازیتور خود، روی «راه‌اندازی» کلیک کنید."
   },
@@ -1580,6 +1604,9 @@
   "Clock Style": {
     "Clock Style": "استایل ساعت"
   },
+  "Clock, calendar, system info and profile": {
+    "Clock, calendar, system info and profile": ""
+  },
   "Close": {
     "Close": "بستن"
   },
@@ -1621,6 +1648,9 @@
   },
   "Color for primary action buttons": {
     "Color for primary action buttons": "رنگ برای دکمه‌‌های عمل اصلی"
+  },
+  "Color shown for areas not covered by wallpaper": {
+    "Color shown for areas not covered by wallpaper": ""
   },
   "Color shown for areas not covered by wallpaper (e.g. Fit or Pad modes)": {
     "Color shown for areas not covered by wallpaper (e.g. Fit or Pad modes)": ""
@@ -1841,9 +1871,6 @@
   "Controls how strongly the selected tint color is applied": {
     "Controls how strongly the selected tint color is applied": "کنترل می‌کند که سایه‌ی رنگ انتخابی چقدر قوی اعمال شود"
   },
-  "Controls opacity of all popouts, modals, and their content layers": {
-    "Controls opacity of all popouts, modals, and their content layers": "میزان شفافیت همه پاپ‌آپ‌ها، مودال‌ها و لایه‌های محتوای آنها را کنترل می‌کند"
-  },
   "Controls opacity of shell surfaces, popouts, and modals": {
     "Controls opacity of shell surfaces, popouts, and modals": ""
   },
@@ -1865,6 +1892,9 @@
   "Controls outlines around blurred foreground cards, pills, and notification cards": {
     "Controls outlines around blurred foreground cards, pills, and notification cards": "خط بیرونی دور کارت‌های پیش‌زمینه، برچسب‌های گرد و کارت‌های اعلان تار را کنترل می‌کند"
   },
+  "Controls outlines around foreground cards, pills, and notification cards": {
+    "Controls outlines around foreground cards, pills, and notification cards": ""
+  },
   "Controls shadow cast direction for elevation layers": {
     "Controls shadow cast direction for elevation layers": "جهت سایه‌اندازی برای لایه‌های برجستگی را کنترل می‌کند"
   },
@@ -1876,6 +1906,9 @@
   },
   "Controls the outer edge of protocol-blurred windows": {
     "Controls the outer edge of protocol-blurred windows": "لبه بیرونی پنجره‌های تار شده با پروتکل را کنترل می‌کند"
+  },
+  "Controls the outline of popouts, modals, and other shell surfaces": {
+    "Controls the outline of popouts, modals, and other shell surfaces": ""
   },
   "Controls the transparency of the shadow": {
     "Controls the transparency of the shadow": "شفافیت سایه را کنترل می‌کند"
@@ -1960,6 +1993,9 @@
   },
   "Create Window Rule": {
     "Create Window Rule": "ایجاد قاعده پنجره"
+  },
+  "Create a new %1 session (^N)": {
+    "Create a new %1 session (^N)": ""
   },
   "Create a new %1 session (n)": {
     "Create a new %1 session (n)": "ساخت یک نشست %1 جدید (n)"
@@ -2111,9 +2147,6 @@
   "Custom Suspend Command": {
     "Custom Suspend Command": "دستور تعلیق سفارشی"
   },
-  "Custom Transparency": {
-    "Custom Transparency": "شفافیت سفارشی"
-  },
   "Custom command and terminal params are split on whitespace; paths with spaces will break.": {
     "Custom command and terminal params are split on whitespace; paths with spaces will break.": ""
   },
@@ -2137,6 +2170,9 @@
   },
   "Customizable empty space": {
     "Customizable empty space": "فضای خالی قابل تنظیم"
+  },
+  "Customize the font and background of the lock screen, or leave empty to use your theme font and desktop wallpaper. Changes apply instantly.": {
+    "Customize the font and background of the lock screen, or leave empty to use your theme font and desktop wallpaper. Changes apply instantly.": ""
   },
   "Customize which actions appear in the power menu": {
     "Customize which actions appear in the power menu": "مشخص کن کدام گزینه‌ها در منوی پاور نمایش داده شوند"
@@ -2194,6 +2230,12 @@
   },
   "Dank Bar": {
     "Dank Bar": "نوار دَنک"
+  },
+  "Dank Bar Xray": {
+    "Dank Bar Xray": ""
+  },
+  "Dank Dash": {
+    "Dank Dash": ""
   },
   "DankBar": {
     "DankBar": "نوار دَنک"
@@ -2576,9 +2618,6 @@
   "Dock Opacity": {
     "Dock Opacity": ""
   },
-  "Dock Transparency": {
-    "Dock Transparency": "شفافیت داک"
-  },
   "Dock Visibility": {
     "Dock Visibility": "وضعیت نمایش داک"
   },
@@ -2612,8 +2651,14 @@
   "Downloads": {
     "Downloads": "بارگیری‌ها"
   },
+  "Drag a widget by its handle here to reorder it or drop it into another group": {
+    "Drag a widget by its handle here to reorder it or drop it into another group": ""
+  },
   "Drag to Reorder": {
     "Drag to Reorder": "نگه‌داشتن برای بازآرایی"
+  },
+  "Drag to reorder or click to hide tabs. Use ↑/↓ to highlight a tab and Ctrl+↑/↓ to move it.": {
+    "Drag to reorder or click to hide tabs. Use ↑/↓ to highlight a tab and Ctrl+↑/↓ to move it.": ""
   },
   "Drag widgets to reorder within sections. Use the eye icon to hide/show widgets (maintains spacing), or X to remove them completely.": {
     "Drag widgets to reorder within sections. Use the eye icon to hide/show widgets (maintains spacing), or X to remove them completely.": "برای مرتب‌سازی مجدد ابزارک‌ها میان بخش‌ها، آنها را بکشید. از نماد چشم برای مخفی کردن/نمایش ویجت‌ها (حفظ فاصله) یا از X برای حذف کامل آنها استفاده کنید."
@@ -2629,6 +2674,9 @@
   },
   "Drizzle": {
     "Drizzle": "باران‌ریزه"
+  },
+  "Drop here": {
+    "Drop here": ""
   },
   "Drop your override for %1 so the DMS default action re-applies?": {
     "Drop your override for %1 so the DMS default action re-applies?": "جایگزینی شما برای %1 حذف شود تا عملکرد پیش‌فرض DMS دوباره اعمال گردد؟"
@@ -2660,6 +2708,9 @@
   "Dynamic Theming": {
     "Dynamic Theming": "پوسته پویا"
   },
+  "Dynamic Width": {
+    "Dynamic Width": ""
+  },
   "Dynamic colors from wallpaper": {
     "Dynamic colors from wallpaper": "رنگ‌های پویا از تصویر پس‌زمینه"
   },
@@ -2671,6 +2722,9 @@
   },
   "Dynamic: Spring bezier with overshoot — entry briefly exceeds its target then settles. Expressive and alive.": {
     "Dynamic: Spring bezier with overshoot — entry briefly exceeds its target then settles. Expressive and alive.": ""
+  },
+  "Edge Hover Reveal": {
+    "Edge Hover Reveal": ""
   },
   "Edge Spacing": {
     "Edge Spacing": "فاصله لبه"
@@ -2929,6 +2983,9 @@
   },
   "Exact": {
     "Exact": "دقیق"
+  },
+  "Excluded Media Players": {
+    "Excluded Media Players": ""
   },
   "Exclusive Zone Offset": {
     "Exclusive Zone Offset": "آفست ناحیه انحصاری"
@@ -3341,12 +3398,6 @@
   "Fit": {
     "Fit": "متناسب"
   },
-  "Fix Now": {
-    "Fix Now": "رفع فوری"
-  },
-  "Fixing...": {
-    "Fixing...": "درحال رفع..."
-  },
   "Flags": {
     "Flags": "فلگ‌ها"
   },
@@ -3407,6 +3458,9 @@
   "Focused Color": {
     "Focused Color": "رنگ فوکوس شده"
   },
+  "Focused Display": {
+    "Focused Display": ""
+  },
   "Focused Monitor Only": {
     "Focused Monitor Only": "فقط مانیتور فوکوس شده"
   },
@@ -3449,6 +3503,9 @@
   "Font Weight": {
     "Font Weight": "وزن قلم"
   },
+  "Font used for the clock and date on the lock screen": {
+    "Font used for the clock and date on the lock screen": ""
+  },
   "Font used on the login screen": {
     "Font used on the login screen": "قلم استفاده شده در صفحه ورود"
   },
@@ -3479,6 +3536,9 @@
   "Force Kill (SIGKILL)": {
     "Force Kill (SIGKILL)": "بستن اجباری (SIGKILL)"
   },
+  "Force Padding": {
+    "Force Padding": ""
+  },
   "Force RGBX": {
     "Force RGBX": ""
   },
@@ -3496,6 +3556,9 @@
   },
   "Forecast Not Available": {
     "Forecast Not Available": "پیش‌بینی موجود نیست"
+  },
+  "Forecast and conditions": {
+    "Forecast and conditions": ""
   },
   "Foreground Layers": {
     "Foreground Layers": "لایه‌های پیش‌زمینه"
@@ -3536,6 +3599,9 @@
   "Frame Border Color": {
     "Frame Border Color": "رنگ حاشیه قاب"
   },
+  "Frame Xray": {
+    "Frame Xray": ""
+  },
   "Free VRAM/memory when the launcher is closed. May cause a slight delay when reopening.": {
     "Free VRAM/memory when the launcher is closed. May cause a slight delay when reopening.": "هنگامی که لانچر بسته شد VRAM/حافظه را آزاد کن. ممکن است باعث اندکی تأخیر هنگام باز کردن مجدد شود."
   },
@@ -3559,6 +3625,9 @@
   },
   "Full Day & Month": {
     "Full Day & Month": "روز کامل و ماه"
+  },
+  "Full Size": {
+    "Full Size": ""
   },
   "Full command to execute": {
     "Full command to execute": ""
@@ -3610,6 +3679,9 @@
   },
   "Gap between the end widgets and the bar ends (0 = edge-to-edge)": {
     "Gap between the end widgets and the bar ends (0 = edge-to-edge)": ""
+  },
+  "Gaps": {
+    "Gaps": ""
   },
   "Generate Override": {
     "Generate Override": ""
@@ -3700,6 +3772,9 @@
   },
   "Greeter only — format for the date on the login screen": {
     "Greeter only — format for the date on the login screen": "فقط صفحه خوش‌آمدگویی - قالب برای تاریخ در صفحه ورود"
+  },
+  "Greeter sync complete": {
+    "Greeter sync complete": ""
   },
   "Grid": {
     "Grid": "جدولی"
@@ -3806,6 +3881,9 @@
   "Hidden apps won't appear in the launcher. Right-click an app and select 'Hide App' to hide it.": {
     "Hidden apps won't appear in the launcher. Right-click an app and select 'Hide App' to hide it.": "برنامه‌های پنهان در لانچر ظاهر نمی‌شوند. روی یک برنامه راست‌کلیک کرده و «پنهان کردن برنامه» را برای پنهان کردن آن انتخاب کنید."
   },
+  "Hidden until weather is enabled": {
+    "Hidden until weather is enabled": ""
+  },
   "Hide": {
     "Hide": "پنهان"
   },
@@ -3853,6 +3931,12 @@
   },
   "Hide the bar when the pointer leaves even if a popout is still open": {
     "Hide the bar when the pointer leaves even if a popout is still open": "زمانی که اشاره‌گر می‌رود نوار را پنهان کن حتی اگر هنوز یک پاپ‌آپ باز باشد"
+  },
+  "Hide when no updates: OFF": {
+    "Hide when no updates: OFF": ""
+  },
+  "Hide when no updates: ON": {
+    "Hide when no updates: ON": ""
   },
   "High": {
     "High": ""
@@ -3919,6 +4003,9 @@
   },
   "Hourly Forecast Count": {
     "Hourly Forecast Count": "تعداد پیش‌بینی‌های ساعتی"
+  },
+  "Hover Popouts": {
+    "Hover Popouts": ""
   },
   "How often the server polls for new updates.": {
     "How often the server polls for new updates.": "چند وقت یکبار سرور درخواست به‌روزرسانی‌های جدید را کند."
@@ -4091,6 +4178,9 @@
   "Initialised": {
     "Initialised": ""
   },
+  "Inner Gaps": {
+    "Inner Gaps": ""
+  },
   "Inner padding applied to each widget": {
     "Inner padding applied to each widget": "فاصله درونی اعمال شده به هر ابزارک"
   },
@@ -4210,6 +4300,12 @@
   },
   "Jobs: ": {
     "Jobs: ": "کار‌های چاپ: "
+  },
+  "Jump to page": {
+    "Jump to page": ""
+  },
+  "Jump to page (1 - %1)": {
+    "Jump to page (1 - %1)": ""
   },
   "Keep Awake": {
     "Keep Awake": "بیدار نگه‌ دار"
@@ -4448,6 +4544,9 @@
   "Lock Screen": {
     "Lock Screen": "صفحه قفل"
   },
+  "Lock Screen Appearance": {
+    "Lock Screen Appearance": ""
+  },
   "Lock Screen Display": {
     "Lock Screen Display": "نمایشگر صفحه قفل"
   },
@@ -4471,6 +4570,9 @@
   },
   "Lock screen authentication changes apply automatically and may open a terminal when sudo authentication is required.": {
     "Lock screen authentication changes apply automatically and may open a terminal when sudo authentication is required.": "تغییرات احراز هویت صفحه قفل بصورت خودکار اعمال می‌شوند و شاید ترمینالی هنگامی که احراز هویت sudo نیاز باشد، باز شود."
+  },
+  "Lock screen font": {
+    "Lock screen font": ""
   },
   "Locked": {
     "Locked": "قفل شده"
@@ -5030,6 +5132,9 @@
   "Next Transition": {
     "Next Transition": "گذار بعدی"
   },
+  "Next page": {
+    "Next page": ""
+  },
   "Night": {
     "Night": "شب"
   },
@@ -5192,6 +5297,9 @@
   "No errors": {
     "No errors": "بدون خطا"
   },
+  "No excluded players configured": {
+    "No excluded players configured": ""
+  },
   "No features enabled": {
     "No features enabled": "هیچ قابلیتی فعال نشده"
   },
@@ -5299,6 +5407,9 @@
   },
   "No saved clipboard entries": {
     "No saved clipboard entries": "هیچ مدخل کلیپ‌بوردی ذخیره نشده است"
+  },
+  "No screenshot provided": {
+    "No screenshot provided": ""
   },
   "No session selected": {
     "No session selected": "هیچ نشستی انتخاب نشده است"
@@ -5408,14 +5519,8 @@
   "Not set": {
     "Not set": "تنظیم نشده"
   },
-  "Note: this only changes the percentage, it does not actually limit charging.": {
-    "Note: this only changes the percentage, it does not actually limit charging.": "نکته: این فقط درصد را تغییر می‌دهد، به طور واقعی محدودیت روی شارژ کردن اعمال نمی‌کند."
-  },
   "Notepad": {
     "Notepad": "دفترچه یادداشت"
-  },
-  "Notepad Font Settings": {
-    "Notepad Font Settings": "تنظیمات دفترچه یادداشت"
   },
   "Notepad Settings": {
     "Notepad Settings": ""
@@ -5467,6 +5572,9 @@
   },
   "Notify when limit is reached": {
     "Notify when limit is reached": ""
+  },
+  "Now playing and media controls": {
+    "Now playing and media controls": ""
   },
   "Numbers": {
     "Numbers": "شماره‌ها"
@@ -5555,6 +5663,9 @@
   "Open App": {
     "Open App": "باز کردن برنامه"
   },
+  "Open Delay": {
+    "Open Delay": ""
+  },
   "Open Dir": {
     "Open Dir": "باز کردن مسیر"
   },
@@ -5596,6 +5707,12 @@
   },
   "Open search bar to find text": {
     "Open search bar to find text": "باز‌ کردن نوار جستجو برای یافتن متن"
+  },
+  "Open the launcher by hovering the emerge edge (when free of bar and dock)": {
+    "Open the launcher by hovering the emerge edge (when free of bar and dock)": ""
+  },
+  "Open widget popouts by hovering over the bar. Moving to another widget switches the popout.": {
+    "Open widget popouts by hovering over the bar. Moving to another widget switches the popout.": ""
   },
   "Open with...": {
     "Open with...": "باز کردن با..."
@@ -5648,6 +5765,9 @@
   "Other": {
     "Other": "دیگر"
   },
+  "Outer Gaps": {
+    "Outer Gaps": ""
+  },
   "Outline": {
     "Outline": "خط بیرونی"
   },
@@ -5666,14 +5786,14 @@
   "Output Tray Missing": {
     "Output Tray Missing": "سینی خروج موجود نیست"
   },
-  "Outputs Include Missing": {
-    "Outputs Include Missing": "Include خروجی‌ها یافت نشد"
-  },
   "Overcast": {
     "Overcast": "کاملاْ ابری"
   },
   "Overflow": {
     "Overflow": "سرریزی"
+  },
+  "Overlay": {
+    "Overlay": ""
   },
   "Overridden by config": {
     "Overridden by config": "جایگزین شده توسط پیکربندی"
@@ -5975,6 +6095,9 @@
   "Plugin Visibility": {
     "Plugin Visibility": "نمایانی افزونه‌ها"
   },
+  "Plugin dependency missing": {
+    "Plugin dependency missing": ""
+  },
   "Plugin disabled: %1": {
     "Plugin disabled: %1": "افزونه غیرفعال شد: %1"
   },
@@ -6116,6 +6239,9 @@
   "Press 'n' or click 'New Session' to create one": {
     "Press 'n' or click 'New Session' to create one": "برای ساخت یکی دکمه 'n' را فشار دهید یا بر «نشست جدید» کلیک کنید"
   },
+  "Press Ctrl+N or click 'New Session' to create one": {
+    "Press Ctrl+N or click 'New Session' to create one": ""
+  },
   "Press Enter and the audio system will restart to apply the change": {
     "Press Enter and the audio system will restart to apply the change": "دکمه Enter را فشار دهید و سیستم صوتی برای اعمال تغییرات راه‌اندازی مجدد خواهد شد"
   },
@@ -6131,6 +6257,9 @@
   "Prevent screen timeout": {
     "Prevent screen timeout": "وقفه جلوگیری از خاموش‌شدن صفحه"
   },
+  "Prevent specific applications from displaying in the media controllers (e.g., browser audio streams, background tools). Matches player identity or desktop file name case-insensitively.": {
+    "Prevent specific applications from displaying in the media controllers (e.g., browser audio streams, background tools). Matches player identity or desktop file name case-insensitively.": ""
+  },
   "Preview": {
     "Preview": "پیش‌نمایش"
   },
@@ -6139,6 +6268,9 @@
   },
   "Previous": {
     "Previous": ""
+  },
+  "Previous page": {
+    "Previous page": ""
   },
   "Primary": {
     "Primary": "اصلی"
@@ -6356,6 +6488,9 @@
   "Reject Jobs": {
     "Reject Jobs": "ردکردن کارهای چاپ"
   },
+  "Related: %1": {
+    "Related: %1": ""
+  },
   "Release": {
     "Release": "رها کردن"
   },
@@ -6446,6 +6581,9 @@
   "Rename Workspace": {
     "Rename Workspace": "تغییر نام محیط‌کار"
   },
+  "Reorder & Group": {
+    "Reorder & Group": ""
+  },
   "Repeat": {
     "Repeat": "تکرار"
   },
@@ -6481,6 +6619,9 @@
   },
   "Requires a newer version of Quickshell": {
     "Requires a newer version of Quickshell": "به نسخه جدیدتر Quickshell نیاز دارد"
+  },
+  "Requires greetd, dms-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys). Auth changes apply automatically and may open a terminal for sudo.": {
+    "Requires greetd, dms-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys). Auth changes apply automatically and may open a terminal for sudo.": ""
   },
   "Requires night mode support": {
     "Requires night mode support": "به پشتیبانی حالت شب نیاز دارد"
@@ -6734,6 +6875,9 @@
   "Screen sharing": {
     "Screen sharing": "اشتراک‌گذاری صفحه"
   },
+  "Screenshot unavailable": {
+    "Screenshot unavailable": ""
+  },
   "Scroll": {
     "Scroll": "اسکرول"
   },
@@ -6893,6 +7037,9 @@
   "Select at least one provider": {
     "Select at least one provider": "حداقل یک ارائه‌دهنده انتخاب کنید"
   },
+  "Select background image": {
+    "Select background image": ""
+  },
   "Select device": {
     "Select device": "انتخاب دستگاه"
   },
@@ -6907,6 +7054,9 @@
   },
   "Select greeter background image": {
     "Select greeter background image": "انتخاب تصویر پس‌زمینه برای صفحه خوش‌آمدگویی"
+  },
+  "Select lock screen background image": {
+    "Select lock screen background image": ""
   },
   "Select monitor to configure wallpaper": {
     "Select monitor to configure wallpaper": "مانیتور را برای پیکربندی تصویر پس‌زمینه انتخاب کنید"
@@ -6959,8 +7109,14 @@
   "Separate": {
     "Separate": "جدا"
   },
+  "Separate Appearance for Unfocused Display(s)": {
+    "Separate Appearance for Unfocused Display(s)": ""
+  },
   "Separate Light & Dark Themes": {
     "Separate Light & Dark Themes": ""
+  },
+  "Separate appearance for unfocused displays is not supported on this compositor.": {
+    "Separate appearance for unfocused displays is not supported on this compositor.": ""
   },
   "Separator": {
     "Separator": "جداکننده"
@@ -7009,6 +7165,9 @@
   },
   "Setting": {
     "Setting": ""
+  },
+  "Setting up...": {
+    "Setting up...": ""
   },
   "Settings": {
     "Settings": "تنظیمات"
@@ -7078,6 +7237,9 @@
   },
   "Shortcut (%1)": {
     "Shortcut (%1)": "میانبر (%1)"
+  },
+  "Shortcut that opens this settings window": {
+    "Shortcut that opens this settings window": ""
   },
   "Shortcuts": {
     "Shortcuts": "میانبرها"
@@ -7316,6 +7478,9 @@
   "Show foreground surfaces on blurred panels for stronger contrast": {
     "Show foreground surfaces on blurred panels for stronger contrast": "سطوح پیش‌زمینه را بر پنل‌های تار برای کنتراست قوی‌تر نمایش بده"
   },
+  "Show foreground surfaces on panels for stronger contrast": {
+    "Show foreground surfaces on panels for stronger contrast": ""
+  },
   "Show in GB": {
     "Show in GB": "نمایش به صورت گیگابایت"
   },
@@ -7472,9 +7637,6 @@
   "Smartcard Authentication": {
     "Smartcard Authentication": "احراز هویت با کارت هوشمند"
   },
-  "Smartcard PIN": {
-    "Smartcard PIN": "PIN کارت هوشمند"
-  },
   "Snap": {
     "Snap": "چسباندن"
   },
@@ -7489,6 +7651,9 @@
   },
   "Sort By": {
     "Sort By": "مرتب‌سازی براساس"
+  },
+  "Sort wallpapers": {
+    "Sort wallpapers": ""
   },
   "Sorting & Layout": {
     "Sorting & Layout": "مرتب‌سازی و چیدمان"
@@ -7507,6 +7672,9 @@
   },
   "Space between windows": {
     "Space between windows": "فاصله بین پنجره‌ها"
+  },
+  "Space between windows and screen edges": {
+    "Space between windows and screen edges": ""
   },
   "Spacer": {
     "Spacer": "فاصله دهنده"
@@ -7616,6 +7784,12 @@
   "Surface Behavior": {
     "Surface Behavior": "رفتار سطح"
   },
+  "Surface Border Color": {
+    "Surface Border Color": ""
+  },
+  "Surface Border Opacity": {
+    "Surface Border Opacity": ""
+  },
   "Surface Container": {
     "Surface Container": ""
   },
@@ -7679,6 +7853,9 @@
   "Sync Position Across Screens": {
     "Sync Position Across Screens": "همگام‌سازی مکان در تمامی صفحات"
   },
+  "Sync applies your theme and settings to the login screen. Other users should run dms greeter sync --profile instead of a full sync. Authentication changes apply automatically.": {
+    "Sync applies your theme and settings to the login screen. Other users should run dms greeter sync --profile instead of a full sync. Authentication changes apply automatically.": ""
+  },
   "Sync completed successfully.": {
     "Sync completed successfully.": "همگام‌سازی با موفقیت کامل شد."
   },
@@ -7690,6 +7867,12 @@
   },
   "Sync needs sudo authentication. Opening terminal so you can use password or fingerprint.": {
     "Sync needs sudo authentication. Opening terminal so you can use password or fingerprint.": "همگام‌سازی به احراز هویت sudo نیاز دارد. درحال باز کردن ترمینال تا بتوانید از گذرواژه یا اثرانگشت استفاده کنید."
+  },
+  "Sync to apply": {
+    "Sync to apply": ""
+  },
+  "Syncing...": {
+    "Syncing...": ""
   },
   "System": {
     "System": "سیستم"
@@ -7829,6 +8012,9 @@
   "Text Rendering": {
     "Text Rendering": "نماپردازی متن"
   },
+  "The 'boregard' tool is not installed or not on your PATH.\n\nInstall it from https://danklinux.com, then re-enable this plugin.": {
+    "The 'boregard' tool is not installed or not on your PATH.\n\nInstall it from https://danklinux.com, then re-enable this plugin.": ""
+  },
   "The 'dgop' tool is required for system monitoring.\nPlease install dgop to use this feature.": {
     "The 'dgop' tool is required for system monitoring.\nPlease install dgop to use this feature.": "ابزار «dgop» برای نظارت سیستم نیاز است.\nلطفا برای استفاده از این قابلیت dgop را نصب کنید."
   },
@@ -7895,6 +8081,9 @@
   "This install is still using hyprland.conf. Run dms setup to migrate before editing display settings.": {
     "This install is still using hyprland.conf. Run dms setup to migrate before editing display settings.": ""
   },
+  "This install is still using hyprland.conf. Run dms setup to migrate before editing layout settings.": {
+    "This install is still using hyprland.conf. Run dms setup to migrate before editing layout settings.": ""
+  },
   "This install is still using hyprland.conf. Run dms setup to migrate before editing shortcuts in Settings.": {
     "This install is still using hyprland.conf. Run dms setup to migrate before editing shortcuts in Settings.": ""
   },
@@ -7960,6 +8149,9 @@
   },
   "Time remaining: %1": {
     "Time remaining: %1": "زمان باقی‌مانده: %1"
+  },
+  "Time to rest on a widget before its popout opens": {
+    "Time to rest on a widget before its popout opens": ""
   },
   "Time to wait before hiding after the pointer leaves": {
     "Time to wait before hiding after the pointer leaves": "مدت زمان انتظار قبل از پنهان‌سازی پس از خروج اشاره‌گر"
@@ -8189,6 +8381,9 @@
   "Unfocused Color": {
     "Unfocused Color": "رنگ فوکوس نشده"
   },
+  "Unfocused Display(s)": {
+    "Unfocused Display(s)": ""
+  },
   "Ungrouped": {
     "Ungrouped": "گروه‌بندی نشده"
   },
@@ -8275,9 +8470,6 @@
   },
   "Unsaved changes": {
     "Unsaved changes": "تغییرات ذخیره نشده"
-  },
-  "Unsaved note...": {
-    "Unsaved note...": "یادداشت ذخیره نشده..."
   },
   "Unset": {
     "Unset": ""
@@ -8366,6 +8558,9 @@
   "Use System Theme": {
     "Use System Theme": "استفاده از تم سیستم"
   },
+  "Use a custom image for the lock screen, or leave empty to use your desktop wallpaper.": {
+    "Use a custom image for the lock screen, or leave empty to use your desktop wallpaper.": ""
+  },
   "Use a custom image for the login screen, or leave empty to use your desktop wallpaper.": {
     "Use a custom image for the login screen, or leave empty to use your desktop wallpaper.": "از یک تصویر سفارشی برای صفحه ورود استفاده کنید یا برای استفاده از تصویر پس‌زمینه دسکتاپ خالی نگه دارید."
   },
@@ -8401,6 +8596,9 @@
   },
   "Use different icon themes for light and dark mode": {
     "Use different icon themes for light and dark mode": ""
+  },
+  "Use different workspace colors on displays that are not focused": {
+    "Use different workspace colors on displays that are not focused": ""
   },
   "Use fingerprint authentication for the lock screen.": {
     "Use fingerprint authentication for the lock screen.": "از احراز هویت اثرانگشت برای صفحه قفل استفاده کن."
@@ -8509,9 +8707,6 @@
   },
   "VPN Connections": {
     "VPN Connections": "اتصال‌های VPN"
-  },
-  "VPN Password": {
-    "VPN Password": "گذرواژه VPN"
   },
   "VPN configuration updated": {
     "VPN configuration updated": "گذرواژه VPN بروز شد"
@@ -8681,9 +8876,6 @@
   "White": {
     "White": ""
   },
-  "Wi-Fi Password": {
-    "Wi-Fi Password": "گذرواژه وای‌فای"
-  },
   "Wi-Fi and Ethernet connection": {
     "Wi-Fi and Ethernet connection": "اتصالات Wi-Fi و اترنت"
   },
@@ -8726,17 +8918,11 @@
   "Widget Outline": {
     "Widget Outline": "خط بیرونی ابزارک"
   },
-  "Widget Style": {
-    "Widget Style": "استایل ابزارک"
-  },
   "Widget Styling": {
     "Widget Styling": "استایل‌‌دهی ابزارک‌"
   },
   "Widget Text Style": {
     "Widget Text Style": ""
-  },
-  "Widget Transparency": {
-    "Widget Transparency": "شفافیت ابزارک"
   },
   "Widget added": {
     "Widget added": "ابزارک اضافه شد"
@@ -8852,8 +9038,14 @@
   "XWayland": {
     "XWayland": ""
   },
+  "Xray Blur Effect": {
+    "Xray Blur Effect": ""
+  },
   "Xray blurs only the wallpaper (efficient) and is the default when Blur is on. Set Xray to Off for regular full blur of everything beneath the window (more expensive).": {
     "Xray blurs only the wallpaper (efficient) and is the default when Blur is on. Set Xray to Off for regular full blur of everything beneath the window (more expensive).": ""
+  },
+  "Xray options are in Compositor → Layout": {
+    "Xray options are in Compositor → Layout": ""
   },
   "Y": {
     "Y": ""
@@ -8906,6 +9098,9 @@
   "attached": {
     "attached": "پیوست شد"
   },
+  "boregard is required": {
+    "boregard is required": ""
+  },
   "brandon": {
     "brandon": "براندون"
   },
@@ -8944,9 +9139,6 @@
   },
   "dms/cursor config exists but is not included. Cursor settings won't apply.": {
     "dms/cursor config exists but is not included. Cursor settings won't apply.": "پیکربندی dms/cursor وجود دارد اما وارد نشده است. تنظیمات اشاره‌گر موس اعمال نخواهند شد."
-  },
-  "dms/outputs config exists but is not included in your compositor config. Display changes won't persist.": {
-    "dms/outputs config exists but is not included in your compositor config. Display changes won't persist.": "پیکربندی dms/outputs وجود دارد اما در پیکربندی کامپوزیتور شما گنجانده نشده است. تغییرات نمایشگر پایدار نخواهند بود."
   },
   "e.g. /usr/bin/my-script --flag": {
     "e.g. /usr/bin/my-script --flag": ""
@@ -9085,6 +9277,9 @@
   },
   "remote": {
     "remote": "از راه دور"
+  },
+  "reviewed": {
+    "reviewed": ""
   },
   "seconds": {
     "seconds": "ثانیه"

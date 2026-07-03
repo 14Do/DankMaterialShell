@@ -1162,6 +1162,13 @@
     "comment": ""
   },
   {
+    "term": "Administrator access is required. Use the Sync button in Settings → Greeter to apply.",
+    "translation": "",
+    "context": "",
+    "reference": "",
+    "comment": ""
+  },
+  {
     "term": "Administrator group:",
     "translation": "",
     "context": "",
@@ -1296,6 +1303,13 @@
   },
   {
     "term": "Always Show Percentage",
+    "translation": "",
+    "context": "",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Always blur against the wallpaper, even with Xray off",
     "translation": "",
     "context": "",
     "reference": "",
@@ -1946,6 +1960,27 @@
     "comment": ""
   },
   {
+    "term": "Auto matches bar spacing; Off leaves gaps to your Hyprland config",
+    "translation": "",
+    "context": "",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Auto matches bar spacing; Off leaves gaps to your MangoWC config",
+    "translation": "",
+    "context": "",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Auto matches bar spacing; Off leaves gaps to your niri config",
+    "translation": "",
+    "context": "",
+    "reference": "",
+    "comment": ""
+  },
+  {
     "term": "Auto mode is on. Manual profile selection is disabled.",
     "translation": "",
     "context": "",
@@ -2003,6 +2038,13 @@
   },
   {
     "term": "Auto-login",
+    "translation": "",
+    "context": "",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Auto-login change needs a sync",
     "translation": "",
     "context": "",
     "reference": "",
@@ -2632,20 +2674,6 @@
     "comment": ""
   },
   {
-    "term": "Surface Border Color",
-    "translation": "",
-    "context": "",
-    "reference": "",
-    "comment": ""
-  },
-  {
-    "term": "Surface Border Opacity",
-    "translation": "",
-    "context": "",
-    "reference": "",
-    "comment": ""
-  },
-  {
     "term": "Blur Wallpaper Layer",
     "translation": "",
     "context": "",
@@ -3214,13 +3242,6 @@
   },
   {
     "term": "Check on startup",
-    "translation": "",
-    "context": "",
-    "reference": "",
-    "comment": ""
-  },
-  {
-    "term": "Check sync status on demand. Sync (full) is for the main admin: it copies your theme to the login screen and sets up system greeter config. On multi-user systems, add other accounts in Settings → Users, then have each of them run dms greeter sync --profile after logging out and back in—not full sync. Authentication changes apply automatically.",
     "translation": "",
     "context": "",
     "reference": "",
@@ -4340,7 +4361,7 @@
     "comment": ""
   },
   {
-    "term": "Controls the outer edge of popouts, modals, and other shell surfaces",
+    "term": "Controls the outline of popouts, modals, and other shell surfaces",
     "translation": "",
     "context": "",
     "reference": "",
@@ -4480,13 +4501,6 @@
     "comment": ""
   },
   {
-    "term": "Couldn't open a terminal for the auto-login update.",
-    "translation": "",
-    "context": "",
-    "reference": "",
-    "comment": ""
-  },
-  {
     "term": "Count Only",
     "translation": "",
     "context": "lock screen notification mode option",
@@ -4536,7 +4550,7 @@
     "comment": ""
   },
   {
-    "term": "Create a new %1 session (n)",
+    "term": "Create a new %1 session (^N)",
     "translation": "",
     "context": "",
     "reference": "",
@@ -4769,7 +4783,7 @@
   {
     "term": "Custom",
     "translation": "",
-    "context": "blur border color | shadow color option | theme category option | widget background color option | workspace color option",
+    "context": "shadow color option | surface border color | theme category option | widget background color option | workspace color option",
     "reference": "",
     "comment": ""
   },
@@ -4928,6 +4942,13 @@
     "comment": ""
   },
   {
+    "term": "Customize the font and background of the lock screen, or leave empty to use your theme font and desktop wallpaper. Changes apply instantly.",
+    "translation": "",
+    "context": "",
+    "reference": "",
+    "comment": ""
+  },
+  {
     "term": "Customize which actions appear in the power menu",
     "translation": "",
     "context": "",
@@ -4980,20 +5001,6 @@
     "term": "DMS Shortcuts",
     "translation": "",
     "context": "greeter keybinds section header",
-    "reference": "",
-    "comment": ""
-  },
-  {
-    "term": "DMS greeter needs: greetd, dms-greeter. Fingerprint: fprintd, pam_fprintd. Security keys: pam_u2f. Add your user to the greeter group. Authentication changes apply automatically and may open a terminal when sudo authentication is required.",
-    "translation": "",
-    "context": "",
-    "reference": "",
-    "comment": ""
-  },
-  {
-    "term": "DMS needs administrator access. The terminal closes automatically when done.",
-    "translation": "",
-    "context": "",
     "reference": "",
     "comment": ""
   },
@@ -5055,6 +5062,13 @@
   },
   {
     "term": "Dank Bar",
+    "translation": "",
+    "context": "",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Dank Bar Xray",
     "translation": "",
     "context": "",
     "reference": "",
@@ -6156,6 +6170,13 @@
     "term": "Dynamic Theming",
     "translation": "",
     "context": "greeter feature card title",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Dynamic Width",
+    "translation": "",
+    "context": "",
     "reference": "",
     "comment": ""
   },
@@ -7994,6 +8015,13 @@
     "comment": ""
   },
   {
+    "term": "Font used for the clock and date on the lock screen",
+    "translation": "",
+    "context": "",
+    "reference": "",
+    "comment": ""
+  },
+  {
     "term": "Font used on the login screen",
     "translation": "",
     "context": "",
@@ -8058,6 +8086,13 @@
   },
   {
     "term": "Force Kill (SIGKILL)",
+    "translation": "",
+    "context": "",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Force Padding",
     "translation": "",
     "context": "",
     "reference": "",
@@ -8204,6 +8239,13 @@
     "comment": ""
   },
   {
+    "term": "Frame Xray",
+    "translation": "",
+    "context": "",
+    "reference": "",
+    "comment": ""
+  },
+  {
     "term": "Free VRAM/memory when the launcher is closed. May cause a slight delay when reopening.",
     "translation": "",
     "context": "",
@@ -8256,6 +8298,13 @@
     "term": "Full Day & Month",
     "translation": "",
     "context": "date format option",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Full Size",
+    "translation": "",
+    "context": "",
     "reference": "",
     "comment": ""
   },
@@ -8373,6 +8422,13 @@
   },
   {
     "term": "Gap between the end widgets and the bar ends (0 = edge-to-edge)",
+    "translation": "",
+    "context": "",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Gaps",
     "translation": "",
     "context": "",
     "reference": "",
@@ -8583,6 +8639,13 @@
   },
   {
     "term": "Greeter only — format for the date on the login screen",
+    "translation": "",
+    "context": "",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Greeter sync complete",
     "translation": "",
     "context": "",
     "reference": "",
@@ -8940,6 +9003,20 @@
   },
   {
     "term": "Hide the bar when the pointer leaves even if a popout is still open",
+    "translation": "",
+    "context": "",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Hide when no updates: OFF",
+    "translation": "",
+    "context": "",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Hide when no updates: ON",
     "translation": "",
     "context": "",
     "reference": "",
@@ -9500,6 +9577,13 @@
   },
   {
     "term": "Initialised",
+    "translation": "",
+    "context": "",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Inner Gaps",
     "translation": "",
     "context": "",
     "reference": "",
@@ -10115,13 +10199,6 @@
     "comment": ""
   },
   {
-    "term": "Layout and module positions on the greeter are synced from your shell (e.g. bar config). Run Sync to apply.",
-    "translation": "",
-    "context": "",
-    "reference": "",
-    "comment": ""
-  },
-  {
     "term": "Left",
     "translation": "",
     "context": "",
@@ -10353,6 +10430,13 @@
     "comment": ""
   },
   {
+    "term": "Lock Screen Appearance",
+    "translation": "",
+    "context": "",
+    "reference": "",
+    "comment": ""
+  },
+  {
     "term": "Lock Screen Display",
     "translation": "",
     "context": "",
@@ -10403,6 +10487,13 @@
   },
   {
     "term": "Lock screen authentication changes apply automatically and may open a terminal when sudo authentication is required.",
+    "translation": "",
+    "context": "",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Lock screen font",
     "translation": "",
     "context": "",
     "reference": "",
@@ -13062,13 +13153,6 @@
     "comment": ""
   },
   {
-    "term": "Opening terminal to update greetd",
-    "translation": "",
-    "context": "",
-    "reference": "",
-    "comment": ""
-  },
-  {
     "term": "Opening terminal: ",
     "translation": "",
     "context": "",
@@ -13146,9 +13230,16 @@
     "comment": ""
   },
   {
+    "term": "Outer Gaps",
+    "translation": "",
+    "context": "",
+    "reference": "",
+    "comment": ""
+  },
+  {
     "term": "Outline",
     "translation": "",
-    "context": "blur border color | outline color",
+    "context": "outline color | surface border color",
     "reference": "",
     "comment": ""
   },
@@ -13202,6 +13293,13 @@
     "comment": ""
   },
   {
+    "term": "Overlay",
+    "translation": "",
+    "context": "widget background color option",
+    "reference": "",
+    "comment": ""
+  },
+  {
     "term": "Overridden by config",
     "translation": "",
     "context": "",
@@ -13224,13 +13322,6 @@
   },
   {
     "term": "Override Corner Radius",
-    "translation": "",
-    "context": "",
-    "reference": "",
-    "comment": ""
-  },
-  {
-    "term": "Override Gaps",
     "translation": "",
     "context": "",
     "reference": "",
@@ -14217,7 +14308,7 @@
     "comment": ""
   },
   {
-    "term": "Press 'n' or click 'New Session' to create one",
+    "term": "Press Ctrl+N or click 'New Session' to create one",
     "translation": "",
     "context": "",
     "reference": "",
@@ -14296,7 +14387,7 @@
   {
     "term": "Primary",
     "translation": "",
-    "context": "blur border color | button color option | color option | primary color | shadow color option | tile color option | workspace color option",
+    "context": "button color option | color option | primary color | shadow color option | surface border color | tile color option | workspace color option",
     "reference": "",
     "comment": ""
   },
@@ -14304,13 +14395,6 @@
     "term": "Primary Container",
     "translation": "",
     "context": "button color option | tile color option | widget background color option | workspace color option",
-    "reference": "",
-    "comment": ""
-  },
-  {
-    "term": "Primary Theme Color",
-    "translation": "",
-    "context": "",
     "reference": "",
     "comment": ""
   },
@@ -15106,6 +15190,13 @@
     "comment": ""
   },
   {
+    "term": "Requires greetd, dms-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys). Auth changes apply automatically and may open a terminal for sudo.",
+    "translation": "",
+    "context": "",
+    "reference": "",
+    "comment": ""
+  },
+  {
     "term": "Requires night mode support",
     "translation": "",
     "context": "",
@@ -15885,7 +15976,7 @@
   {
     "term": "Secondary",
     "translation": "",
-    "context": "blur border color | button color option | color option | secondary color | tile color option | workspace color option",
+    "context": "button color option | color option | secondary color | surface border color | tile color option | workspace color option",
     "reference": "",
     "comment": ""
   },
@@ -16072,6 +16163,13 @@
     "comment": ""
   },
   {
+    "term": "Select background image",
+    "translation": "",
+    "context": "",
+    "reference": "",
+    "comment": ""
+  },
+  {
     "term": "Select device",
     "translation": "",
     "context": "audio status",
@@ -16101,6 +16199,13 @@
   },
   {
     "term": "Select greeter background image",
+    "translation": "",
+    "context": "",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Select lock screen background image",
     "translation": "",
     "context": "",
     "reference": "",
@@ -17514,6 +17619,13 @@
     "comment": ""
   },
   {
+    "term": "Space between windows and screen edges",
+    "translation": "",
+    "context": "",
+    "reference": "",
+    "comment": ""
+  },
+  {
     "term": "Spacer",
     "translation": "",
     "context": "",
@@ -17696,13 +17808,6 @@
     "comment": ""
   },
   {
-    "term": "Overlay",
-    "translation": "",
-    "context": "widget background color option",
-    "reference": "",
-    "comment": ""
-  },
-  {
     "term": "Summary",
     "translation": "",
     "context": "notification rule match field option",
@@ -17753,6 +17858,20 @@
   },
   {
     "term": "Surface Behavior",
+    "translation": "",
+    "context": "",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Surface Border Color",
+    "translation": "",
+    "context": "",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Surface Border Opacity",
     "translation": "",
     "context": "",
     "reference": "",
@@ -17906,6 +18025,13 @@
     "comment": ""
   },
   {
+    "term": "Sync applies your theme and settings to the login screen. Other users should run dms greeter sync --profile instead of a full sync. Authentication changes apply automatically.",
+    "translation": "",
+    "context": "",
+    "reference": "",
+    "comment": ""
+  },
+  {
     "term": "Sync completed successfully.",
     "translation": "",
     "context": "",
@@ -17928,6 +18054,20 @@
   },
   {
     "term": "Sync needs sudo authentication. Opening terminal so you can use password or fingerprint.",
+    "translation": "",
+    "context": "",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Sync to apply",
+    "translation": "",
+    "context": "",
+    "reference": "",
+    "comment": ""
+  },
+  {
+    "term": "Syncing...",
     "translation": "",
     "context": "",
     "reference": "",
@@ -18237,7 +18377,7 @@
   {
     "term": "Text Color",
     "translation": "",
-    "context": "blur border color | shadow color option",
+    "context": "shadow color option | surface border color",
     "reference": "",
     "comment": ""
   },
@@ -19509,6 +19649,13 @@
     "comment": ""
   },
   {
+    "term": "Use a custom image for the lock screen, or leave empty to use your desktop wallpaper.",
+    "translation": "",
+    "context": "",
+    "reference": "",
+    "comment": ""
+  },
+  {
     "term": "Use a custom image for the login screen, or leave empty to use your desktop wallpaper.",
     "translation": "",
     "context": "",
@@ -19559,13 +19706,6 @@
   },
   {
     "term": "Use custom border/focus-ring width",
-    "translation": "",
-    "context": "",
-    "reference": "",
-    "comment": ""
-  },
-  {
-    "term": "Use custom gaps instead of bar spacing",
     "translation": "",
     "context": "",
     "reference": "",

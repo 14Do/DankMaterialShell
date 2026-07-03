@@ -1,12 +1,15 @@
 {
   "%1 (+%2 more)": {
-    "%1 (+%2 more)": ""
+    "%1 (+%2 more)": "%1（ほか %2 件）"
   },
   "%1 Animation Speed": {
     "%1 Animation Speed": "%1 アニメーション速度"
   },
   "%1 Sessions": {
     "%1 Sessions": "%1 件のセッション"
+  },
+  "%1 Startup Failed": {
+    "%1 Startup Failed": ""
   },
   "%1 active session": {
     "%1 active session": "%1 件のアクティブなセッション"
@@ -81,7 +84,7 @@
     "%1 online": "1％オンライン"
   },
   "%1 tasks": {
-    "%1 tasks": ""
+    "%1 tasks": "%1 件のタスク"
   },
   "%1 update": {
     "%1 update": "更新 %1 件"
@@ -108,13 +111,13 @@
     "%1 windows": "ウィンドウ %1 個"
   },
   "%1: %2": {
-    "%1: %2": ""
+    "%1: %2": "%1: %2"
   },
   "%1m ago": {
     "%1m ago": "%1分前"
   },
   "%command%": {
-    "%command%": ""
+    "%command%": "%command%"
   },
   "'Alternative' lets the key unlock on its own. 'Second factor' requires password or fingerprint first, then the key.": {
     "'Alternative' lets the key unlock on its own. 'Second factor' requires password or fingerprint first, then the key.": "「Alternative」はキーだけでロックを解除できます。「Second factor」は最初にパスワードまたは指紋認証が必要で、その後にキーが必要です。"
@@ -138,7 +141,7 @@
     "1 day": "1日"
   },
   "1 day before": {
-    "1 day before": ""
+    "1 day before": "1日前"
   },
   "1 device connected": {
     "1 device connected": "1台接続済み"
@@ -150,7 +153,7 @@
     "1 hour 30 minutes": "1時間30分"
   },
   "1 hour before": {
-    "1 hour before": ""
+    "1 hour before": "1時間前"
   },
   "1 minute": {
     "1 minute": "1分"
@@ -162,10 +165,10 @@
     "1 second": "1秒"
   },
   "1 task": {
-    "1 task": ""
+    "1 task": "1 件のタスク"
   },
   "10 min before": {
-    "10 min before": ""
+    "10 min before": "10分前"
   },
   "10 minutes": {
     "10 minutes": "10分"
@@ -186,7 +189,7 @@
     "15 min": "15 分"
   },
   "15 min before": {
-    "15 min before": ""
+    "15 min before": "15分前"
   },
   "15 minutes": {
     "15 minutes": "15分"
@@ -246,7 +249,7 @@
     "30 min": "30 分"
   },
   "30 min before": {
-    "30 min before": ""
+    "30 min before": "30分前"
   },
   "30 minutes": {
     "30 minutes": "30分"
@@ -273,7 +276,7 @@
     "45 seconds": "45秒"
   },
   "5 min before": {
-    "5 min before": ""
+    "5 min before": "5分前"
   },
   "5 minutes": {
     "5 minutes": "5分"
@@ -321,13 +324,13 @@
     "A modern desktop shell for Wayland compositors": "Wayland コンポジター向けのモダンなデスクトップシェル"
   },
   "A separate minimal launcher action that works in Standalone, Separate Frame Mode, and Connected Frame Mode.": {
-    "A separate minimal launcher action that works in Standalone, Separate Frame Mode, and Connected Frame Mode.": ""
+    "A separate minimal launcher action that works in Standalone, Separate Frame Mode, and Connected Frame Mode.": "スタンドアロン、分離フレームモード、接続フレームモードで使える、独立した最小ランチャーアクションです。"
   },
   "A user with that name already exists.": {
-    "A user with that name already exists.": ""
+    "A user with that name already exists.": "その名前のユーザーはすでに存在します。"
   },
   "AC Adapter (Plugged In)": {
-    "AC Adapter (Plugged In)": ""
+    "AC Adapter (Plugged In)": "AC アダプター（接続中）"
   },
   "AC Power": {
     "AC Power": "AC電源"
@@ -372,10 +375,10 @@
     "Action failed or terminal was closed.": "アクションに失敗したか、端末が閉じられました。"
   },
   "Action performed when scrolling horizontally on the bar": {
-    "Action performed when scrolling horizontally on the bar": ""
+    "Action performed when scrolling horizontally on the bar": "バー上で水平スクロールしたときのアクション"
   },
   "Action performed when scrolling vertically on the bar": {
-    "Action performed when scrolling vertically on the bar": ""
+    "Action performed when scrolling vertically on the bar": "バー上で垂直スクロールしたときのアクション"
   },
   "Actions": {
     "Actions": "アクション"
@@ -405,7 +408,7 @@
     "Active VPN": "アクティブ VPN"
   },
   "Active in Column": {
-    "Active in Column": ""
+    "Active in Column": "列内で有効"
   },
   "Active tile background and icon color": {
     "Active tile background and icon color": "アクティブタイルの背景色とアイコン色"
@@ -429,10 +432,10 @@
     "Add": "追加"
   },
   "Add \"%1\" to the %2 group?": {
-    "Add \"%1\" to the %2 group?": ""
+    "Add \"%1\" to the %2 group?": "\"%1\" を %2 グループに追加しますか？"
   },
   "Add \"%1\" to the %2 group? They must log out and back in, then run dms greeter sync --profile to publish their login-screen theme.": {
-    "Add \"%1\" to the %2 group? They must log out and back in, then run dms greeter sync --profile to publish their login-screen theme.": ""
+    "Add \"%1\" to the %2 group? They must log out and back in, then run dms greeter sync --profile to publish their login-screen theme.": "\"%1\" を %2 グループに追加しますか？ログイン画面のテーマを公開するには、一度ログアウトして再ログインし、dms greeter sync --profile を実行する必要があります。"
   },
   "Add Bar": {
     "Add Bar": "バーを追加"
@@ -441,7 +444,7 @@
     "Add Desktop Widget": "デスクトップウィジェットを追加"
   },
   "Add Entry": {
-    "Add Entry": ""
+    "Add Entry": "エントリを追加"
   },
   "Add Printer": {
     "Add Printer": "プリンターを追加"
@@ -453,10 +456,10 @@
     "Add Widget": "ウィジェットを追加"
   },
   "Add Widget to %1": {
-    "Add Widget to %1": ""
+    "Add Widget to %1": "%1 にウィジェットを追加"
   },
   "Add Window Rule": {
-    "Add Window Rule": ""
+    "Add Window Rule": "ウィンドウルールを追加"
   },
   "Add a border around the dock": {
     "Add a border around the dock": "ドックの周囲に境界線を追加"
@@ -465,7 +468,7 @@
     "Add a custom prefix to all application launches. This can be used for things like 'uwsm-app', 'systemd-run', or other command wrappers.": "すべてのアプリ起動にカスタム接頭辞を追加します。これは 'uwsm-app'、'systemd-run'、その他のコマンドラッパーなどに使用できます。"
   },
   "Add a task...": {
-    "Add a task...": ""
+    "Add a task...": "タスクを追加..."
   },
   "Add and configure widgets that appear on your desktop": {
     "Add and configure widgets that appear on your desktop": "デスクトップに表示されるウィジェットを追加および設定"
@@ -474,25 +477,25 @@
     "Add by Address": "アドレスで追加"
   },
   "Add location": {
-    "Add location": ""
+    "Add location": "場所を追加"
   },
   "Add match": {
-    "Add match": ""
+    "Add match": "一致条件を追加"
   },
   "Add notes": {
-    "Add notes": ""
+    "Add notes": "メモを追加"
   },
   "Add the new user to the %1 group so they can run dms greeter sync --profile.": {
-    "Add the new user to the %1 group so they can run dms greeter sync --profile.": ""
+    "Add the new user to the %1 group so they can run dms greeter sync --profile.": "新しいユーザーを %1 グループに追加して、dms greeter sync --profile を実行できるようにします。"
   },
   "Add the new user to the %1 group so they can use sudo.": {
-    "Add the new user to the %1 group so they can use sudo.": ""
+    "Add the new user to the %1 group so they can use sudo.": "新しいユーザーを %1 グループに追加して、sudo を使えるようにします。"
   },
   "Add to Autostart": {
-    "Add to Autostart": ""
+    "Add to Autostart": "自動起動に追加"
   },
   "Adjust the bar height via inner padding": {
-    "Adjust the bar height via inner padding": ""
+    "Adjust the bar height via inner padding": "内側の余白でバーの高さを調整"
   },
   "Adjust the number of columns in grid view mode.": {
     "Adjust the number of columns in grid view mode.": "グリッド表示モードでの列数を調整します。"
@@ -503,8 +506,11 @@
   "Adjusts contrast of generated colors (-100 = minimum, 0 = standard, 100 = maximum)": {
     "Adjusts contrast of generated colors (-100 = minimum, 0 = standard, 100 = maximum)": "生成される色のコントラストを調整します（-100 = 最小、0 = 標準、100 = 最大）"
   },
+  "Administrator access is required. Use the Sync button in Settings → Greeter to apply.": {
+    "Administrator access is required. Use the Sync button in Settings → Greeter to apply.": ""
+  },
   "Administrator group:": {
-    "Administrator group:": ""
+    "Administrator group:": "管理者グループ:"
   },
   "Advanced": {
     "Advanced": "詳細設定"
@@ -528,28 +534,28 @@
     "All displays": "すべてのディスプレイ"
   },
   "Allow": {
-    "Allow": ""
+    "Allow": "許可"
   },
   "Allow LAN access": {
-    "Allow LAN access": ""
+    "Allow LAN access": "LAN アクセスを許可"
   },
   "Allow adjusting device volume by scrolling on the right half of items in the device list": {
-    "Allow adjusting device volume by scrolling on the right half of items in the device list": ""
+    "Allow adjusting device volume by scrolling on the right half of items in the device list": "デバイス一覧の項目右半分をスクロールしてデバイス音量を調整できるようにする"
   },
   "Allow clicks to pass through the widget": {
     "Allow clicks to pass through the widget": "クリックをウィジェットに透過させる"
   },
   "Allow greeter access?": {
-    "Allow greeter access?": ""
+    "Allow greeter access?": "Greeter アクセスを許可しますか？"
   },
   "Allow greeter login access": {
-    "Allow greeter login access": ""
+    "Allow greeter login access": "Greeter ログインアクセスを許可"
   },
   "Already on that session": {
-    "Already on that session": ""
+    "Already on that session": "すでにそのセッションです"
   },
   "Also group repeated application icons on the active workspace": {
-    "Also group repeated application icons on the active workspace": ""
+    "Also group repeated application icons on the active workspace": "アクティブなワークスペースでも重複するアプリアイコンをグループ化"
   },
   "Alt+←/Backspace: Back • F1/I: File Info • F10: Help • Esc: Close": {
     "Alt+←/Backspace: Back • F1/I: File Info • F10: Help • Esc: Close": "Alt+←/Backspace: 戻る • F1/I: ファイル情報 • F10: ヘルプ • Esc: 閉じる"
@@ -562,6 +568,9 @@
   },
   "Always Show Percentage": {
     "Always Show Percentage": "常に割合を表示"
+  },
+  "Always blur against the wallpaper, even with Xray off": {
+    "Always blur against the wallpaper, even with Xray off": ""
   },
   "Always hide the dock and reveal it when hovering near the dock area": {
     "Always hide the dock and reveal it when hovering near the dock area": "常にドックを隠し、ドック領域の近くにホバーしたときに表示します"
@@ -584,6 +593,9 @@
   "Amount": {
     "Amount": "量"
   },
+  "An xray rule at %1 may conflict with the Xray settings below": {
+    "An xray rule at %1 may conflict with the Xray settings below": ""
+  },
   "Analog": {
     "Analog": "アナログ"
   },
@@ -594,7 +606,7 @@
     "Analyzing configuration...": "設定を解析中..."
   },
   "Anchor": {
-    "Anchor": ""
+    "Anchor": "アンカー"
   },
   "Animation Duration": {
     "Animation Duration": "アニメーション時間"
@@ -612,22 +624,22 @@
     "Anonymous Identity (optional)": "匿名 ID (オプション)"
   },
   "Any window": {
-    "Any window": ""
+    "Any window": "任意のウィンドウ"
   },
   "App Customizations": {
     "App Customizations": "アプリのカスタマイズ"
   },
   "App ID": {
-    "App ID": ""
+    "App ID": "アプリ ID"
   },
   "App ID (e.g. firefox)": {
-    "App ID (e.g. firefox)": ""
+    "App ID (e.g. firefox)": "アプリ ID（例: firefox）"
   },
   "App ID Substitutions": {
     "App ID Substitutions": "App ID 置換"
   },
   "App ID regex": {
-    "App ID regex": ""
+    "App ID regex": "アプリ ID 正規表現"
   },
   "App ID regex (e.g. ^firefox$)": {
     "App ID regex (e.g. ^firefox$)": "App ID の正規表現（例: ^firefox$）"
@@ -641,11 +653,14 @@
   "App Theming": {
     "App Theming": "アプリテーマ"
   },
+  "App name or identity (e.g., firefox)": {
+    "App name or identity (e.g., firefox)": ""
+  },
   "Appearance": {
     "Appearance": "外観"
   },
   "Application": {
-    "Application": ""
+    "Application": "アプリケーション"
   },
   "Application Dock": {
     "Application Dock": "アプリドック"
@@ -654,7 +669,7 @@
     "Applications": "アプリ"
   },
   "Applications and commands to start automatically when you log in": {
-    "Applications and commands to start automatically when you log in": ""
+    "Applications and commands to start automatically when you log in": "ログイン時に自動起動するアプリケーションとコマンド"
   },
   "Apply Changes": {
     "Apply Changes": "変更を適用"
@@ -672,19 +687,19 @@
     "Apply compositor blur behind the frame border": "フレーム境界線の背後にコンポジターブラーを適用"
   },
   "Apply inverse concave corner cutouts to the bar": {
-    "Apply inverse concave corner cutouts to the bar": ""
+    "Apply inverse concave corner cutouts to the bar": "バーに反転した凹型コーナーカットアウトを適用"
   },
   "Apply to Hardware": {
-    "Apply to Hardware": ""
+    "Apply to Hardware": "ハードウェアに適用"
   },
   "Apply warm color temperature to reduce eye strain. Use automation settings below to control when it activates.": {
     "Apply warm color temperature to reduce eye strain. Use automation settings below to control when it activates.": "目の疲れを軽減するために、暖色系の色温度を適用します。以下の自動化設定で、いつアクティブにするか制御できます。"
   },
   "Applying authentication changes...": {
-    "Applying authentication changes...": ""
+    "Applying authentication changes...": "認証の変更を適用中..."
   },
   "Applying auto-login on startup...": {
-    "Applying auto-login on startup...": ""
+    "Applying auto-login on startup...": "起動時の自動ログインを適用中..."
   },
   "Apps": {
     "Apps": "アプリ"
@@ -720,13 +735,13 @@
     "Arrange displays and configure resolution, refresh rate, and VRR": "ディスプレイを配置し、解像度、リフレッシュレート、VRR を設定"
   },
   "At Startup": {
-    "At Startup": ""
+    "At Startup": "起動時"
   },
   "At least one output must remain enabled": {
     "At least one output must remain enabled": "少なくとも1つの出力は有効のままにしておく必要がある"
   },
   "At start": {
-    "At start": ""
+    "At start": "開始時"
   },
   "Attach": {
     "Attach": "添付"
@@ -819,25 +834,34 @@
     "Auto (Wide)": "自動（ワイド）"
   },
   "Auto Compositor Gaps": {
-    "Auto Compositor Gaps": ""
+    "Auto Compositor Gaps": "コンポジターの余白を自動適用"
   },
   "Auto Location": {
     "Auto Location": "自動位置検出"
   },
   "Auto Overflow": {
-    "Auto Overflow": ""
+    "Auto Overflow": "自動オーバーフロー"
   },
   "Auto Popup Gaps": {
     "Auto Popup Gaps": "自動ポップアップギャップ"
   },
   "Auto Power Saver": {
-    "Auto Power Saver": ""
+    "Auto Power Saver": "自動省電力"
+  },
+  "Auto matches bar spacing; Off leaves gaps to your Hyprland config": {
+    "Auto matches bar spacing; Off leaves gaps to your Hyprland config": ""
+  },
+  "Auto matches bar spacing; Off leaves gaps to your MangoWC config": {
+    "Auto matches bar spacing; Off leaves gaps to your MangoWC config": ""
+  },
+  "Auto matches bar spacing; Off leaves gaps to your niri config": {
+    "Auto matches bar spacing; Off leaves gaps to your niri config": ""
   },
   "Auto mode is on. Manual profile selection is disabled.": {
     "Auto mode is on. Manual profile selection is disabled.": "自動モードがオンになっています。手動プロファイル選択は無効になっています。"
   },
   "Auto saved": {
-    "Auto saved": ""
+    "Auto saved": "自動保存しました"
   },
   "Auto-Clear After": {
     "Auto-Clear After": "自動消去まで"
@@ -858,22 +882,22 @@
     "Auto-hide Dock": "ドックを自動的に隠す"
   },
   "Auto-login": {
-    "Auto-login": ""
+    "Auto-login": "自動ログイン"
+  },
+  "Auto-login change needs a sync": {
+    "Auto-login change needs a sync": ""
   },
   "Auto-login disabled": {
-    "Auto-login disabled": ""
+    "Auto-login disabled": "自動ログインを無効化しました"
   },
   "Auto-login enabled": {
-    "Auto-login enabled": ""
+    "Auto-login enabled": "自動ログインを有効化しました"
   },
   "Auto-login on startup": {
-    "Auto-login on startup": ""
+    "Auto-login on startup": "起動時に自動ログイン"
   },
   "Auto-save to disk": {
-    "Auto-save to disk": ""
-  },
-  "Auto-saving...": {
-    "Auto-saving...": "自動保存中..."
+    "Auto-save to disk": "ディスクに自動保存"
   },
   "Autoconnect": {
     "Autoconnect": "自動接続"
@@ -897,7 +921,7 @@
     "Automatic Cycling": "自動サイクリング"
   },
   "Automatically calculate popup gap based on bar spacing": {
-    "Automatically calculate popup gap based on bar spacing": ""
+    "Automatically calculate popup gap based on bar spacing": "バーの間隔に基づいてポップアップの余白を自動計算"
   },
   "Automatically cycle through wallpapers in the same folder": {
     "Automatically cycle through wallpapers in the same folder": "同じフォルダ内の壁紙を自動的に切り替える"
@@ -912,7 +936,7 @@
     "Automatically determine your location using your IP address": "IP アドレスを使用して現在地を自動的に特定します"
   },
   "Automatically hide the bar when the pointer moves away": {
-    "Automatically hide the bar when the pointer moves away": ""
+    "Automatically hide the bar when the pointer moves away": "ポインターが離れたらバーを自動的に隠す"
   },
   "Automatically lock after": {
     "Automatically lock after": "自動的にロック"
@@ -924,19 +948,19 @@
     "Automatically lock the screen when the system prepares to suspend": "システムが一時停止の準備中に自動的に画面をロック"
   },
   "Automatically save changes to opened files as you type": {
-    "Automatically save changes to opened files as you type": ""
+    "Automatically save changes to opened files as you type": "入力中の変更を開いているファイルへ自動保存"
   },
   "Automatically turn on Power Saver profile when battery is low.": {
-    "Automatically turn on Power Saver profile when battery is low.": ""
+    "Automatically turn on Power Saver profile when battery is low.": "バッテリー残量が少ないとき、省電力プロファイルを自動で有効にします。"
   },
   "Automation": {
     "Automation": "自動化"
   },
   "Autostart Apps": {
-    "Autostart Apps": ""
+    "Autostart Apps": "自動起動アプリ"
   },
   "Autostart Entries": {
-    "Autostart Entries": ""
+    "Autostart Entries": "自動起動エントリ"
   },
   "Available": {
     "Available": "利用可能"
@@ -966,7 +990,7 @@
     "Back": "戻る"
   },
   "Back to user list": {
-    "Back to user list": ""
+    "Back to user list": "ユーザー一覧に戻る"
   },
   "Backend": {
     "Backend": "バックエンド"
@@ -981,10 +1005,10 @@
     "Background Blur": "背景のぼかし"
   },
   "Background Color": {
-    "Background Color": ""
+    "Background Color": "背景色"
   },
   "Background Effect": {
-    "Background Effect": ""
+    "Background Effect": "背景エフェクト"
   },
   "Background Opacity": {
     "Background Opacity": "背景の透明度"
@@ -1008,28 +1032,25 @@
     "Balanced palette with focused accents (default).": "アクセントに焦点を絞ったバランスの取れたパレット(デフォルト)。"
   },
   "Bar": {
-    "Bar": ""
+    "Bar": "バー"
   },
   "Bar %1": {
-    "Bar %1": ""
+    "Bar %1": "バー %1"
   },
   "Bar Configurations": {
     "Bar Configurations": "バーの設定"
   },
   "Bar Inset Padding": {
-    "Bar Inset Padding": ""
+    "Bar Inset Padding": "バーの内側余白"
   },
   "Bar Opacity": {
-    "Bar Opacity": ""
+    "Bar Opacity": "バーの不透明度"
   },
   "Bar Shadows": {
     "Bar Shadows": "バーの影"
   },
   "Bar Spacing": {
-    "Bar Spacing": ""
-  },
-  "Bar Transparency": {
-    "Bar Transparency": "バーの透明度"
+    "Bar Spacing": "バーの間隔"
   },
   "Bar corners and background": {
     "Bar corners and background": "バーの角と背景"
@@ -1056,34 +1077,34 @@
     "Battery Charge Limit": "バッテリー充電上限"
   },
   "Battery Health": {
-    "Battery Health": ""
+    "Battery Health": "バッテリーの状態"
   },
   "Battery Power": {
-    "Battery Power": ""
+    "Battery Power": "バッテリー駆動"
   },
   "Battery Protection & Charging": {
-    "Battery Protection & Charging": ""
+    "Battery Protection & Charging": "バッテリー保護と充電"
   },
   "Battery Status": {
-    "Battery Status": ""
+    "Battery Status": "バッテリー状態"
   },
   "Battery and power management": {
     "Battery and power management": "バッテリーと電源管理"
   },
   "Battery has charged to your set limit of %1%": {
-    "Battery has charged to your set limit of %1%": ""
+    "Battery has charged to your set limit of %1%": "バッテリーが設定上限の %1% まで充電されました"
   },
   "Battery is at %1% - Connect charger immediately!": {
-    "Battery is at %1% - Connect charger immediately!": ""
+    "Battery is at %1% - Connect charger immediately!": "バッテリー残量 %1% - すぐに充電器を接続してください！"
   },
   "Battery is at %1% - Consider charging soon": {
-    "Battery is at %1% - Consider charging soon": ""
+    "Battery is at %1% - Consider charging soon": "バッテリー残量 %1% - そろそろ充電してください"
   },
   "Battery level and power management": {
     "Battery level and power management": "バッテリーレベルおよび電源管理"
   },
   "Battery percentage to trigger a critical alert.": {
-    "Battery percentage to trigger a critical alert.": ""
+    "Battery percentage to trigger a critical alert.": "重大アラートを出すバッテリー残量の割合です。"
   },
   "Behavior": {
     "Behavior": "動作"
@@ -1092,13 +1113,10 @@
     "Bind lock screen to dbus signals from loginctl. Disable if using an external lock screen": "ロック画面をloginctlからのdbus信号にバインド。外部ロック画面を使用している場合は無効に"
   },
   "Bind the spotlight IPC action in your compositor config.": {
-    "Bind the spotlight IPC action in your compositor config.": ""
+    "Bind the spotlight IPC action in your compositor config.": "コンポジター設定で spotlight IPC アクションをバインドしてください。"
   },
   "Bind the spotlight-bar IPC action in your compositor config.": {
-    "Bind the spotlight-bar IPC action in your compositor config.": ""
-  },
-  "Binds Include Missing": {
-    "Binds Include Missing": "Binds Include が不足"
+    "Bind the spotlight-bar IPC action in your compositor config.": "コンポジター設定で spotlight-bar IPC アクションをバインドしてください。"
   },
   "Binds include added": {
     "Binds include added": "Binds include を追加しました"
@@ -1110,7 +1128,7 @@
     "Black": "黒"
   },
   "Blend between Surface High and the selected custom color": {
-    "Blend between Surface High and the selected custom color": ""
+    "Blend between Surface High and the selected custom color": "Surface High と選択したカスタム色をブレンド"
   },
   "Block Out": {
     "Block Out": "ブロックアウト"
@@ -1137,7 +1155,7 @@
     "Bluetooth not available": "Bluetooth は利用できません"
   },
   "Blur": {
-    "Blur": ""
+    "Blur": "ぼかし"
   },
   "Blur Border Color": {
     "Blur Border Color": "ぼかし境界線の色"
@@ -1155,16 +1173,19 @@
     "Blur the background behind bars, popouts, modals, and notifications. Requires compositor support and configuration.": "バー、ポップアウト、モーダル、通知の背後の背景をぼかす。コンポジターのサポートと設定が必要。"
   },
   "Blur the background behind bars, popouts, modals, and notifications. Requires compositor support. Adjust Opacity accordingly.": {
-    "Blur the background behind bars, popouts, modals, and notifications. Requires compositor support. Adjust Opacity accordingly.": ""
+    "Blur the background behind bars, popouts, modals, and notifications. Requires compositor support. Adjust Opacity accordingly.": "バー、ポップアウト、モーダル、通知の背後をぼかします。コンポジターの対応が必要です。不透明度も合わせて調整してください。"
   },
   "Blur wallpaper when niri overview is open": {
     "Blur wallpaper when niri overview is open": "Niri 概要が開いているときに壁紙をぼかす"
+  },
+  "Blurred surfaces show the wallpaper instead of the content beneath": {
+    "Blurred surfaces show the wallpaper instead of the content beneath": ""
   },
   "Body": {
     "Body": "本文"
   },
   "Body Font Size": {
-    "Body Font Size": ""
+    "Body Font Size": "本文フォントサイズ"
   },
   "Bold": {
     "Bold": "ボールド"
@@ -1176,7 +1197,7 @@
     "Border Color": "ボーダーの色"
   },
   "Border Off": {
-    "Border Off": ""
+    "Border Off": "境界線なし"
   },
   "Border Opacity": {
     "Border Opacity": "ボーダーの透明度"
@@ -1196,11 +1217,14 @@
   "Border color around blurred surfaces": {
     "Border color around blurred surfaces": "ぼかしたサーフェスの周囲のボーダー色"
   },
+  "Border color around popouts, modals, and other shell surfaces": {
+    "Border color around popouts, modals, and other shell surfaces": ""
+  },
   "Border w/ Bg": {
-    "Border w/ Bg": ""
+    "Border w/ Bg": "背景付き境界線"
   },
   "Border with Background": {
-    "Border with Background": ""
+    "Border with Background": "背景付き境界線"
   },
   "Bottom": {
     "Bottom": "ボトム"
@@ -1243,6 +1267,9 @@
   },
   "Browse Themes": {
     "Browse Themes": "テーマをブラウズ"
+  },
+  "Browse and set wallpapers": {
+    "Browse and set wallpapers": ""
   },
   "Browse or search plugins": {
     "Browse or search plugins": "プラグインを閲覧または検索"
@@ -1287,7 +1314,7 @@
     "Calendar": "カレンダー"
   },
   "Calendar Backend": {
-    "Calendar Backend": ""
+    "Calendar Backend": "カレンダーバックエンド"
   },
   "Camera": {
     "Camera": "カメラ"
@@ -1302,7 +1329,7 @@
     "Canceled": "取り消し済み"
   },
   "Cannot delete the only administrator": {
-    "Cannot delete the only administrator": ""
+    "Cannot delete the only administrator": "唯一の管理者は削除できません"
   },
   "Cannot disable the only output": {
     "Cannot disable the only output": "唯一の出力を無効にすることはできません"
@@ -1317,7 +1344,7 @@
     "Cannot pair": "ペアリングできません"
   },
   "Cannot remove the only administrator": {
-    "Cannot remove the only administrator": ""
+    "Cannot remove the only administrator": "唯一の管理者は外せません"
   },
   "Capabilities": {
     "Capabilities": "機能"
@@ -1335,10 +1362,10 @@
     "Caps Lock is on": "Caps Lock がオンです"
   },
   "Cast Target": {
-    "Cast Target": ""
+    "Cast Target": "キャスト先"
   },
   "Category": {
-    "Category": ""
+    "Category": "カテゴリ"
   },
   "Center Section": {
     "Center Section": "センターセクション"
@@ -1358,9 +1385,6 @@
   "Change Volume": {
     "Change Volume": "音量を変更"
   },
-  "Change bar appearance": {
-    "Change bar appearance": "バーの見た目を変更"
-  },
   "Change the locale used by the DMS interface.": {
     "Change the locale used by the DMS interface.": "DMS インターフェースで使用するロケールを変更します。"
   },
@@ -1371,13 +1395,13 @@
     "Channel": "チャンネル"
   },
   "Charge Level": {
-    "Charge Level": ""
+    "Charge Level": "充電レベル"
   },
   "Charge Limit Reached": {
-    "Charge Limit Reached": ""
+    "Charge Limit Reached": "充電上限に到達"
   },
   "Charge limit applied successfully": {
-    "Charge limit applied successfully": ""
+    "Charge limit applied successfully": "充電上限を適用しました"
   },
   "Charging": {
     "Charging": "充電中"
@@ -1392,7 +1416,7 @@
     "Check on startup": "起動時にチェック"
   },
   "Check sync status on demand. Sync (full) is for the main admin: it copies your theme to the login screen and sets up system greeter config. On multi-user systems, add other accounts in Settings → Users, then have each of them run dms greeter sync --profile after logging out and back in—not full sync. Authentication changes apply automatically.": {
-    "Check sync status on demand. Sync (full) is for the main admin: it copies your theme to the login screen and sets up system greeter config. On multi-user systems, add other accounts in Settings → Users, then have each of them run dms greeter sync --profile after logging out and back in—not full sync. Authentication changes apply automatically.": ""
+    "Check sync status on demand. Sync (full) is for the main admin: it copies your theme to the login screen and sets up system greeter config. On multi-user systems, add other accounts in Settings → Users, then have each of them run dms greeter sync --profile after logging out and back in—not full sync. Authentication changes apply automatically.": "必要なときに同期状態を確認します。同期（フル）はメイン管理者向けで、テーマをログイン画面へコピーし、システムの greeter 設定を行います。複数ユーザー環境では、設定 → ユーザーで他のアカウントを追加し、それぞれログアウト後に再ログインして dms greeter sync --profile を実行してください。フル同期ではありません。認証の変更は自動で適用されます。"
   },
   "Check your custom command in Settings → Dock → Trash.": {
     "Check your custom command in Settings → Dock → Trash.": "設定 → ドック → ゴミ箱でカスタムコマンドを確認してください。"
@@ -1401,7 +1425,7 @@
     "Checking for updates...": "更新を確認中..."
   },
   "Checking whether sudo authentication is needed...": {
-    "Checking whether sudo authentication is needed...": ""
+    "Checking whether sudo authentication is needed...": "sudo 認証が必要か確認中..."
   },
   "Checking...": {
     "Checking...": "確認中..."
@@ -1428,7 +1452,7 @@
     "Choose a color": "色を選ぶ"
   },
   "Choose a power profile": {
-    "Choose a power profile": ""
+    "Choose a power profile": "電源プロファイルを選択"
   },
   "Choose colors from palette": {
     "Choose colors from palette": "パレットから色を選ぶ"
@@ -1440,7 +1464,7 @@
     "Choose how this bar resolves shadow direction": "このバーが影の方向を決定する方法を選ぶ"
   },
   "Choose how to be notified about battery alerts.": {
-    "Choose how to be notified about battery alerts.": ""
+    "Choose how to be notified about battery alerts.": "バッテリーアラートの通知方法を選択します。"
   },
   "Choose icon": {
     "Choose icon": "アイコンを選ぶ"
@@ -1449,7 +1473,7 @@
     "Choose monochrome or a theme color tint for system tray icons": "システムトレイアイコンにモノクロまたはテーマカラーの色合いを選択します"
   },
   "Choose neutral or accent-colored widget text": {
-    "Choose neutral or accent-colored widget text": ""
+    "Choose neutral or accent-colored widget text": "ウィジェット文字色をニュートラルかアクセント色から選択"
   },
   "Choose the background color for widgets": {
     "Choose the background color for widgets": "ウィジェットの背景色を選んでください"
@@ -1460,6 +1484,9 @@
   "Choose the logo displayed on the launcher button in DankBar": {
     "Choose the logo displayed on the launcher button in DankBar": "Dank Barのランチャーボタンに表示されるロゴを選ぶ"
   },
+  "Choose wallpaper folder": {
+    "Choose wallpaper folder": ""
+  },
   "Choose where notification popups appear on screen": {
     "Choose where notification popups appear on screen": "通知ポップアップが画面に表示される場所を選ぶ"
   },
@@ -1467,10 +1494,10 @@
     "Choose where on-screen displays appear on screen": "OSDの表示する場所を選んでください"
   },
   "Choose whether to launch a desktop app or a command": {
-    "Choose whether to launch a desktop app or a command": ""
+    "Choose whether to launch a desktop app or a command": "デスクトップアプリかコマンドのどちらを起動するか選択"
   },
   "Choose which action buttons appear on clipboard entries": {
-    "Choose which action buttons appear on clipboard entries": ""
+    "Choose which action buttons appear on clipboard entries": "クリップボード項目に表示するアクションボタンを選択"
   },
   "Choose which displays show this widget": {
     "Choose which displays show this widget": "このウィジェットを表示するディスプレイを選ぶ"
@@ -1488,7 +1515,7 @@
     "Circle": "円"
   },
   "Class regex": {
-    "Class regex": ""
+    "Class regex": "クラス正規表現"
   },
   "Class regex (e.g. ^firefox$)": {
     "Class regex (e.g. ^firefox$)": "Class の正規表現（例: ^firefox$）"
@@ -1520,9 +1547,6 @@
   "Click 'Setup' to create %1 and add include to your compositor config.": {
     "Click 'Setup' to create %1 and add include to your compositor config.": "「Setup」をクリックして %1 を作成し、コンポジター設定に include を追加します。"
   },
-  "Click 'Setup' to create cursor config and add include to your compositor config.": {
-    "Click 'Setup' to create cursor config and add include to your compositor config.": "「Setup」をクリックしてカーソル設定を作成し、コンポジター設定に include を追加します。"
-  },
   "Click 'Setup' to create the outputs config and add include to your compositor config.": {
     "Click 'Setup' to create the outputs config and add include to your compositor config.": "「Setup」をクリックして outputs 設定を作成し、コンポジター設定に include を追加します。"
   },
@@ -1536,13 +1560,13 @@
     "Click Through": "クリックを透過"
   },
   "Click an entry to paste directly instead of copying": {
-    "Click an entry to paste directly instead of copying": ""
+    "Click an entry to paste directly instead of copying": "項目をクリックしたとき、コピーではなく直接貼り付ける"
   },
   "Click any shortcut to edit. Changes save to %1": {
     "Click any shortcut to edit. Changes save to %1": "任意のショートカットをクリックして編集します。変更は %1 に保存されます"
   },
   "Click to Paste": {
-    "Click to Paste": ""
+    "Click to Paste": "クリックで貼り付け"
   },
   "Click to capture": {
     "Click to capture": "クリックしてキャプチャ"
@@ -1566,7 +1590,7 @@
     "Clipboard Manager": "クリップボード管理"
   },
   "Clipboard Saved": {
-    "Clipboard Saved": ""
+    "Clipboard Saved": "クリップボードを保存しました"
   },
   "Clipboard sent": {
     "Clipboard sent": "クリップボードを送信しました"
@@ -1579,6 +1603,9 @@
   },
   "Clock Style": {
     "Clock Style": "時計スタイル"
+  },
+  "Clock, calendar, system info and profile": {
+    "Clock, calendar, system info and profile": ""
   },
   "Close": {
     "Close": "閉じる"
@@ -1622,8 +1649,11 @@
   "Color for primary action buttons": {
     "Color for primary action buttons": "主要アクションボタンの色"
   },
+  "Color shown for areas not covered by wallpaper": {
+    "Color shown for areas not covered by wallpaper": ""
+  },
   "Color shown for areas not covered by wallpaper (e.g. Fit or Pad modes)": {
-    "Color shown for areas not covered by wallpaper (e.g. Fit or Pad modes)": ""
+    "Color shown for areas not covered by wallpaper (e.g. Fit or Pad modes)": "壁紙で覆われない領域に表示する色（例: フィットやパディングモード）"
   },
   "Color temperature for day time": {
     "Color temperature for day time": "昼間の色温度"
@@ -1668,7 +1698,7 @@
     "Command": "コマンド"
   },
   "Command Line": {
-    "Command Line": ""
+    "Command Line": "コマンドライン"
   },
   "Commands": {
     "Commands": "コマンド"
@@ -1749,7 +1779,7 @@
     "Confirm passkey for ": "パスキーを確認 "
   },
   "Confirm password": {
-    "Confirm password": ""
+    "Confirm password": "パスワード確認"
   },
   "Conflicts with: %1": {
     "Conflicts with: %1": "競合先: %1"
@@ -1776,7 +1806,7 @@
     "Connected Displays": "接続されたディスプレイ"
   },
   "Connected Frame Mode uses the connected launcher for default launcher shortcuts.": {
-    "Connected Frame Mode uses the connected launcher for default launcher shortcuts.": ""
+    "Connected Frame Mode uses the connected launcher for default launcher shortcuts.": "接続フレームモードでは、既定のランチャーショートカットに接続ランチャーを使います。"
   },
   "Connected Options": {
     "Connected Options": "接続オプション"
@@ -1788,13 +1818,13 @@
     "Connecting to Device": "デバイスに接続中"
   },
   "Connecting to clipboard service...": {
-    "Connecting to clipboard service...": ""
+    "Connecting to clipboard service...": "クリップボードサービスに接続中..."
   },
   "Connecting...": {
     "Connecting...": "接続中..."
   },
   "Connecting…": {
-    "Connecting…": ""
+    "Connecting…": "接続中…"
   },
   "Connection failed": {
     "Connection failed": "接続に失敗しました"
@@ -1812,7 +1842,7 @@
     "Contrast": "コントラスト"
   },
   "Contributor": {
-    "Contributor": ""
+    "Contributor": "貢献者"
   },
   "Control Center": {
     "Control Center": "コントロールセンター"
@@ -1841,29 +1871,29 @@
   "Controls how strongly the selected tint color is applied": {
     "Controls how strongly the selected tint color is applied": "選択した色合いをどの程度強く適用するかを調整します"
   },
-  "Controls opacity of all popouts, modals, and their content layers": {
-    "Controls opacity of all popouts, modals, and their content layers": "すべてのポップアウト、モーダル、およびそのコンテンツレイヤーの透明度を制御"
-  },
   "Controls opacity of shell surfaces, popouts, and modals": {
-    "Controls opacity of shell surfaces, popouts, and modals": ""
+    "Controls opacity of shell surfaces, popouts, and modals": "シェル面、ポップアウト、モーダルの不透明度を制御"
   },
   "Controls opacity of the bar background": {
-    "Controls opacity of the bar background": ""
+    "Controls opacity of the bar background": "バー背景の不透明度を制御"
   },
   "Controls opacity of the border": {
-    "Controls opacity of the border": ""
+    "Controls opacity of the border": "境界線の不透明度を制御"
   },
   "Controls opacity of the shadow layer": {
-    "Controls opacity of the shadow layer": ""
+    "Controls opacity of the shadow layer": "影レイヤーの不透明度を制御"
   },
   "Controls opacity of the widget outline": {
-    "Controls opacity of the widget outline": ""
+    "Controls opacity of the widget outline": "ウィジェット輪郭線の不透明度を制御"
   },
   "Controls opacity of widget backgrounds": {
-    "Controls opacity of widget backgrounds": ""
+    "Controls opacity of widget backgrounds": "ウィジェット背景の不透明度を制御"
   },
   "Controls outlines around blurred foreground cards, pills, and notification cards": {
     "Controls outlines around blurred foreground cards, pills, and notification cards": "ぼかした前景カード、ピル型要素、通知カードのアウトラインを調整"
+  },
+  "Controls outlines around foreground cards, pills, and notification cards": {
+    "Controls outlines around foreground cards, pills, and notification cards": ""
   },
   "Controls shadow cast direction for elevation layers": {
     "Controls shadow cast direction for elevation layers": "エレベーションレイヤーの影の方向を制御"
@@ -1872,10 +1902,13 @@
     "Controls the base blur radius and offset of shadows": "影の基本ぼかし半径とオフセットを制御"
   },
   "Controls the opacity of the shadow": {
-    "Controls the opacity of the shadow": ""
+    "Controls the opacity of the shadow": "影の不透明度を制御"
   },
   "Controls the outer edge of protocol-blurred windows": {
     "Controls the outer edge of protocol-blurred windows": "プロトコルによるぼかしが適用されたウィンドウの外縁を調整"
+  },
+  "Controls the outline of popouts, modals, and other shell surfaces": {
+    "Controls the outline of popouts, modals, and other shell surfaces": ""
   },
   "Controls the transparency of the shadow": {
     "Controls the transparency of the shadow": "影の透明度を制御"
@@ -1884,7 +1917,7 @@
     "Convenience options for the login screen. Sync to apply.": "ログイン画面用の便利なオプションです。適用するには Sync を実行してください。"
   },
   "Convert to DMS": {
-    "Convert to DMS": ""
+    "Convert to DMS": "DMS に変換"
   },
   "Cooldown": {
     "Cooldown": "クールダウン"
@@ -1938,7 +1971,7 @@
     "Corners & Background": "角と背景"
   },
   "Couldn't open a terminal for the auto-login update.": {
-    "Couldn't open a terminal for the auto-login update.": ""
+    "Couldn't open a terminal for the auto-login update.": "自動ログイン更新用の端末を開けませんでした。"
   },
   "Count Only": {
     "Count Only": "件数のみ"
@@ -1956,10 +1989,13 @@
     "Create Printer": "プリンターを作成"
   },
   "Create User": {
-    "Create User": ""
+    "Create User": "ユーザーを作成"
   },
   "Create Window Rule": {
     "Create Window Rule": "ウィンドウルールを作成"
+  },
+  "Create a new %1 session (^N)": {
+    "Create a new %1 session (^N)": ""
   },
   "Create a new %1 session (n)": {
     "Create a new %1 session (n)": "新しい %1 セッションを作成（n）"
@@ -1977,37 +2013,37 @@
     "Creating...": "作成中..."
   },
   "Credentials": {
-    "Credentials": ""
+    "Credentials": "認証情報"
   },
   "Critical Battery": {
-    "Critical Battery": ""
+    "Critical Battery": "バッテリー重大"
   },
   "Critical Battery Alert": {
-    "Critical Battery Alert": ""
+    "Critical Battery Alert": "バッテリー重大アラート"
   },
   "Critical Battery Notifications": {
-    "Critical Battery Notifications": ""
+    "Critical Battery Notifications": "バッテリー重大通知"
   },
   "Critical Priority": {
     "Critical Priority": "最優先事項"
   },
   "Critical Threshold": {
-    "Critical Threshold": ""
+    "Critical Threshold": "重大しきい値"
   },
   "Ctrl+A: Select All • Ctrl+P: Preview • Enter/Shift+Enter: Find Next/Previous • Esc: Close": {
-    "Ctrl+A: Select All • Ctrl+P: Preview • Enter/Shift+Enter: Find Next/Previous • Esc: Close": ""
+    "Ctrl+A: Select All • Ctrl+P: Preview • Enter/Shift+Enter: Find Next/Previous • Esc: Close": "Ctrl+A: すべて選択 • Ctrl+P: プレビュー • Enter/Shift+Enter: 次/前を検索 • Esc: 閉じる"
   },
   "Ctrl+S: Save • Ctrl+O: Open • Ctrl+N: New • Ctrl+F: Find": {
-    "Ctrl+S: Save • Ctrl+O: Open • Ctrl+N: New • Ctrl+F: Find": ""
+    "Ctrl+S: Save • Ctrl+O: Open • Ctrl+N: New • Ctrl+F: Find": "Ctrl+S: 保存 • Ctrl+O: 開く • Ctrl+N: 新規 • Ctrl+F: 検索"
   },
   "Ctrl+Tab: Switch Tab • Ctrl+S: Pin/Unpin • Shift+Del: Clear All • Esc: Close": {
     "Ctrl+Tab: Switch Tab • Ctrl+S: Pin/Unpin • Shift+Del: Clear All • Esc: Close": "Ctrl+Tab: タブ切替 • Ctrl+S: ピン留め/解除 • Shift+Del: すべてクリア • Esc: 閉じる"
   },
   "Ctrl+Tab: Switch Tabs • Ctrl+S: Pin/Unpin • Shift+Enter: Copy • Shift+Del: Clear All • F10: Help • Esc: Close": {
-    "Ctrl+Tab: Switch Tabs • Ctrl+S: Pin/Unpin • Shift+Enter: Copy • Shift+Del: Clear All • F10: Help • Esc: Close": ""
+    "Ctrl+Tab: Switch Tabs • Ctrl+S: Pin/Unpin • Shift+Enter: Copy • Shift+Del: Clear All • F10: Help • Esc: Close": "Ctrl+Tab: タブ切替 • Ctrl+S: ピン留め/解除 • Shift+Enter: コピー • Shift+Del: すべて消去 • F10: ヘルプ • Esc: 閉じる"
   },
   "Ctrl+Tab: Switch Tabs • Ctrl+S: Pin/Unpin • Shift+Enter: Paste • Shift+Del: Clear All • F10: Help • Esc: Close": {
-    "Ctrl+Tab: Switch Tabs • Ctrl+S: Pin/Unpin • Shift+Enter: Paste • Shift+Del: Clear All • F10: Help • Esc: Close": ""
+    "Ctrl+Tab: Switch Tabs • Ctrl+S: Pin/Unpin • Shift+Enter: Paste • Shift+Del: Clear All • F10: Help • Esc: Close": "Ctrl+Tab: タブ切替 • Ctrl+S: ピン留め/解除 • Shift+Enter: 貼り付け • Shift+Del: すべて消去 • F10: ヘルプ • Esc: 閉じる"
   },
   "Current": {
     "Current": "現在"
@@ -2061,7 +2097,7 @@
     "Cursor Theme": "カーソルテーマ"
   },
   "Curve": {
-    "Curve": ""
+    "Curve": "カーブ"
   },
   "Curve: curve rasterizer.": {
     "Curve: curve rasterizer.": "曲線：曲線ラスタライザー。"
@@ -2070,7 +2106,7 @@
     "Custom": "カスタム"
   },
   "Custom Blend": {
-    "Custom Blend": ""
+    "Custom Blend": "カスタムブレンド"
   },
   "Custom Color": {
     "Custom Color": "カスタムカラー"
@@ -2111,9 +2147,6 @@
   "Custom Suspend Command": {
     "Custom Suspend Command": "カスタムサスペンドコマンド"
   },
-  "Custom Transparency": {
-    "Custom Transparency": "カスタム透明度"
-  },
   "Custom command and terminal params are split on whitespace; paths with spaces will break.": {
     "Custom command and terminal params are split on whitespace; paths with spaces will break.": "カスタムコマンドと端末のパラメーターは空白で分割されます。空白を含むパスは動作しません。"
   },
@@ -2138,6 +2171,9 @@
   "Customizable empty space": {
     "Customizable empty space": "カスタマイズ可能な空きスペース"
   },
+  "Customize the font and background of the lock screen, or leave empty to use your theme font and desktop wallpaper. Changes apply instantly.": {
+    "Customize the font and background of the lock screen, or leave empty to use your theme font and desktop wallpaper. Changes apply instantly.": ""
+  },
   "Customize which actions appear in the power menu": {
     "Customize which actions appear in the power menu": "電源メニューに表示されるアクションをカスタマイズ"
   },
@@ -2157,7 +2193,7 @@
     "DMS Settings": "DMS 設定"
   },
   "DMS Settings writes Lua keybinds. Add the DMS include so edits apply.": {
-    "DMS Settings writes Lua keybinds. Add the DMS include so edits apply.": ""
+    "DMS Settings writes Lua keybinds. Add the DMS include so edits apply.": "DMS 設定は Lua キーバインドを書き込みます。変更を反映するには DMS include を追加してください。"
   },
   "DMS Shortcuts": {
     "DMS Shortcuts": "DMS ショートカット"
@@ -2166,7 +2202,7 @@
     "DMS greeter needs: greetd, dms-greeter. Fingerprint: fprintd, pam_fprintd. Security keys: pam_u2f. Add your user to the greeter group. Authentication changes apply automatically and may open a terminal when sudo authentication is required.": "DMS greeter には greetd と dms-greeter が必要です。指紋認証には fprintd と pam_fprintd、セキュリティキーには pam_u2f が必要です。ユーザーを greeter グループに追加してください。認証の変更は自動的に適用され、sudo 認証が必要な場合は端末が開くことがあります。"
   },
   "DMS needs administrator access. The terminal closes automatically when done.": {
-    "DMS needs administrator access. The terminal closes automatically when done.": ""
+    "DMS needs administrator access. The terminal closes automatically when done.": "DMS には管理者権限が必要です。完了すると端末は自動で閉じます。"
   },
   "DMS out of date": {
     "DMS out of date": "DMSに更新があります"
@@ -2195,17 +2231,23 @@
   "Dank Bar": {
     "Dank Bar": "Dank Bar"
   },
+  "Dank Bar Xray": {
+    "Dank Bar Xray": ""
+  },
+  "Dank Dash": {
+    "Dank Dash": ""
+  },
   "DankBar": {
     "DankBar": "DankBar"
   },
   "DankCalendar": {
-    "DankCalendar": ""
+    "DankCalendar": "DankCalendar"
   },
   "DankCalendar isn't installed": {
-    "DankCalendar isn't installed": ""
+    "DankCalendar isn't installed": "DankCalendar がインストールされていません"
   },
   "DankCalendar isn't running": {
-    "DankCalendar isn't running": ""
+    "DankCalendar isn't running": "DankCalendar が実行されていません"
   },
   "DankMaterialShell is ready to use": {
     "DankMaterialShell is ready to use": "DankMaterialShell は使用可能です"
@@ -2217,7 +2259,7 @@
     "Dark Mode": "ダークモード"
   },
   "Dark Mode Icon Theme": {
-    "Dark Mode Icon Theme": ""
+    "Dark Mode Icon Theme": "ダークモードのアイコンテーマ"
   },
   "Dark mode base": {
     "Dark mode base": "ダークモードベース"
@@ -2271,25 +2313,25 @@
     "Default Apps": "デフォルトアプリ"
   },
   "Default Launcher": {
-    "Default Launcher": ""
+    "Default Launcher": "既定のランチャー"
   },
   "Default Launcher Shortcut": {
-    "Default Launcher Shortcut": ""
+    "Default Launcher Shortcut": "既定のランチャーショートカット"
   },
   "Default Mode": {
-    "Default Mode": ""
+    "Default Mode": "既定モード"
   },
   "Default Opens": {
-    "Default Opens": ""
+    "Default Opens": "既定で開くもの"
   },
   "Default Width (%)": {
     "Default Width (%)": "デフォルト幅（%）"
   },
   "Default launcher shortcuts open the full launcher with mode tabs, grid view, and action panel.": {
-    "Default launcher shortcuts open the full launcher with mode tabs, grid view, and action panel.": ""
+    "Default launcher shortcuts open the full launcher with mode tabs, grid view, and action panel.": "既定のランチャーショートカットで、モードタブ、グリッド表示、アクションパネル付きのフルランチャーを開きます。"
   },
   "Default launcher shortcuts open the minimal Spotlight Bar. The dedicated Spotlight Bar shortcut below stays independent.": {
-    "Default launcher shortcuts open the minimal Spotlight Bar. The dedicated Spotlight Bar shortcut below stays independent.": ""
+    "Default launcher shortcuts open the minimal Spotlight Bar. The dedicated Spotlight Bar shortcut below stays independent.": "既定のランチャーショートカットで最小構成の Spotlight Bar を開きます。下の専用 Spotlight Bar ショートカットは独立したままです。"
   },
   "Default selected action": {
     "Default selected action": "デフォルトで選択されるアクション"
@@ -2307,7 +2349,7 @@
     "Delete": "削除"
   },
   "Delete \"%1\" and remove the home directory? This cannot be undone.": {
-    "Delete \"%1\" and remove the home directory? This cannot be undone.": ""
+    "Delete \"%1\" and remove the home directory? This cannot be undone.": "\"%1\" を削除し、ホームディレクトリも削除しますか？元に戻せません。"
   },
   "Delete \"%1\"?": {
     "Delete \"%1\"?": "\"%1\" を削除しますか?"
@@ -2319,7 +2361,7 @@
     "Delete Printer": "プリンターを削除"
   },
   "Delete Rule": {
-    "Delete Rule": ""
+    "Delete Rule": "ルールを削除"
   },
   "Delete Saved Item?": {
     "Delete Saved Item?": "保存済みアイテムを削除しますか?"
@@ -2334,10 +2376,10 @@
     "Delete profile \"%1\"?": "プロファイル \"%1\" を削除しますか?"
   },
   "Delete user": {
-    "Delete user": ""
+    "Delete user": "ユーザーを削除"
   },
   "Delete user?": {
-    "Delete user?": ""
+    "Delete user?": "ユーザーを削除しますか？"
   },
   "Demi Bold": {
     "Demi Bold": "デミボールド"
@@ -2361,7 +2403,7 @@
     "Desktop": "デスクトップ"
   },
   "Desktop Application": {
-    "Desktop Application": ""
+    "Desktop Application": "デスクトップアプリケーション"
   },
   "Desktop Clock": {
     "Desktop Clock": "デスクトップ時計"
@@ -2397,7 +2439,7 @@
     "Device connections": "デバイス接続"
   },
   "Device list scroll volume": {
-    "Device list scroll volume": ""
+    "Device list scroll volume": "デバイス一覧スクロール音量"
   },
   "Device names updated": {
     "Device names updated": "デバイス名を更新しました"
@@ -2442,7 +2484,7 @@
     "Disabling WiFi...": "WiFi を無効化中..."
   },
   "Disabling auto-login on startup...": {
-    "Disabling auto-login on startup...": ""
+    "Disabling auto-login on startup...": "起動時の自動ログインを無効化中..."
   },
   "Disc": {
     "Disc": "ディスク"
@@ -2508,7 +2550,7 @@
     "Display all priorities over fullscreen apps": "フルスクリーンアプリよりもすべての優先度を表示する"
   },
   "Display and switch MangoWC layouts": {
-    "Display and switch MangoWC layouts": ""
+    "Display and switch MangoWC layouts": "MangoWC レイアウトを表示・切り替え"
   },
   "Display application icons in workspace indicators": {
     "Display application icons in workspace indicators": "ワークスペース インジケーターにアプリのアイコンを表示"
@@ -2529,7 +2571,7 @@
     "Display line numbers in editor": "エディタに行番号を表示する"
   },
   "Display name for this entry": {
-    "Display name for this entry": ""
+    "Display name for this entry": "このエントリの表示名"
   },
   "Display only workspaces that contain windows": {
     "Display only workspaces that contain windows": "ウィンドウを含むワークスペースのみ表示"
@@ -2541,7 +2583,7 @@
     "Display seconds in the clock": "時計に秒を表示"
   },
   "Display setup failed": {
-    "Display setup failed": ""
+    "Display setup failed": "ディスプレイ設定に失敗しました"
   },
   "Display the power system menu": {
     "Display the power system menu": "電源システムメニューを表示"
@@ -2574,22 +2616,19 @@
     "Dock & Launcher": "ドックとランチャー"
   },
   "Dock Opacity": {
-    "Dock Opacity": ""
-  },
-  "Dock Transparency": {
-    "Dock Transparency": "ドックの透明度"
+    "Dock Opacity": "ドックの不透明度"
   },
   "Dock Visibility": {
     "Dock Visibility": "ドックの表示"
   },
   "Dock margin, opacity, and border": {
-    "Dock margin, opacity, and border": ""
+    "Dock margin, opacity, and border": "ドックの余白、不透明度、境界線"
   },
   "Dock margin, transparency, and border": {
     "Dock margin, transparency, and border": "ドックの余白、透明度、境界線"
   },
   "Dock window": {
-    "Dock window": ""
+    "Dock window": "ドックウィンドウ"
   },
   "Docs": {
     "Docs": "ドキュメント"
@@ -2612,8 +2651,14 @@
   "Downloads": {
     "Downloads": "ダウンロード"
   },
+  "Drag a widget by its handle here to reorder it or drop it into another group": {
+    "Drag a widget by its handle here to reorder it or drop it into another group": ""
+  },
   "Drag to Reorder": {
     "Drag to Reorder": "ドラッグして並べ替え"
+  },
+  "Drag to reorder or click to hide tabs. Use ↑/↓ to highlight a tab and Ctrl+↑/↓ to move it.": {
+    "Drag to reorder or click to hide tabs. Use ↑/↓ to highlight a tab and Ctrl+↑/↓ to move it.": ""
   },
   "Drag widgets to reorder within sections. Use the eye icon to hide/show widgets (maintains spacing), or X to remove them completely.": {
     "Drag widgets to reorder within sections. Use the eye icon to hide/show widgets (maintains spacing), or X to remove them completely.": "ウィジェットをドラッグしてセクション内で順序を変更できます。目のアイコンでウィジェットを表示/非表示に（スペースは維持）、Xで完全に削除できます。"
@@ -2630,8 +2675,11 @@
   "Drizzle": {
     "Drizzle": "霧雨"
   },
+  "Drop here": {
+    "Drop here": ""
+  },
   "Drop your override for %1 so the DMS default action re-applies?": {
-    "Drop your override for %1 so the DMS default action re-applies?": ""
+    "Drop your override for %1 so the DMS default action re-applies?": "%1 の上書きを破棄して、DMS の既定アクションを再適用しますか？"
   },
   "Duplicate": {
     "Duplicate": "複製"
@@ -2660,6 +2708,9 @@
   "Dynamic Theming": {
     "Dynamic Theming": "動的テーマ"
   },
+  "Dynamic Width": {
+    "Dynamic Width": ""
+  },
   "Dynamic colors from wallpaper": {
     "Dynamic colors from wallpaper": "壁紙から動的に取得した色"
   },
@@ -2672,38 +2723,41 @@
   "Dynamic: Spring bezier with overshoot — entry briefly exceeds its target then settles. Expressive and alive.": {
     "Dynamic: Spring bezier with overshoot — entry briefly exceeds its target then settles. Expressive and alive.": "ダイナミック：オーバーシュート付きスプリングベジェ曲線 ― 開始点が目標値を一時的に超えた後、落ち着きます。表現力豊かで生き生きとした曲線です。"
   },
+  "Edge Hover Reveal": {
+    "Edge Hover Reveal": ""
+  },
   "Edge Spacing": {
     "Edge Spacing": "端の余白"
   },
   "Edge spacing, exclusive zone, and popup gaps are managed by Frame": {
-    "Edge spacing, exclusive zone, and popup gaps are managed by Frame": ""
+    "Edge spacing, exclusive zone, and popup gaps are managed by Frame": "端の間隔、排他ゾーン、ポップアップの余白は Frame が管理します"
   },
   "Edge the launcher slides from": {
     "Edge the launcher slides from": "ランチャーのスライドを端から"
   },
   "Edit": {
-    "Edit": ""
+    "Edit": "編集"
   },
   "Edit App": {
     "Edit App": "アプリを編集"
   },
   "Edit Clipboard": {
-    "Edit Clipboard": ""
+    "Edit Clipboard": "クリップボードを編集"
   },
   "Edit Rule": {
-    "Edit Rule": ""
+    "Edit Rule": "ルールを編集"
   },
   "Edit Window Rule": {
     "Edit Window Rule": "ウィンドウルールを編集"
   },
   "Edit clipboard text": {
-    "Edit clipboard text": ""
+    "Edit clipboard text": "クリップボードのテキストを編集"
   },
   "Edit event": {
-    "Edit event": ""
+    "Edit event": "イベントを編集"
   },
   "Editing changes on %1": {
-    "Editing changes on %1": ""
+    "Editing changes on %1": "%1 の変更を編集中"
   },
   "Education": {
     "Education": "教育"
@@ -2820,7 +2874,7 @@
     "End": "終わり"
   },
   "End must be after start": {
-    "End must be after start": ""
+    "End must be after start": "終了は開始より後にしてください"
   },
   "Enlarge on Hover": {
     "Enlarge on Hover": "ホバー時に拡大"
@@ -2838,7 +2892,7 @@
     "Enter PIN for ": "PINを入力してください "
   },
   "Enter URI or text to share": {
-    "Enter URI or text to share": ""
+    "Enter URI or text to share": "共有する URI またはテキストを入力"
   },
   "Enter URL or text to share": {
     "Enter URL or text to share": "共有する URL またはテキストを入力"
@@ -2889,7 +2943,7 @@
     "Enterprise": "エンタープライズ"
   },
   "Entry Type": {
-    "Entry Type": ""
+    "Entry Type": "エントリ種別"
   },
   "Entry pinned": {
     "Entry pinned": "項目を固定しました"
@@ -2907,13 +2961,13 @@
     "Errors": "エラー"
   },
   "Estimated Time": {
-    "Estimated Time": ""
+    "Estimated Time": "推定時間"
   },
   "Ethernet": {
     "Ethernet": "Ethernet"
   },
   "Event title": {
-    "Event title": ""
+    "Event title": "イベント名"
   },
   "Every 15 minutes": {
     "Every 15 minutes": "15分ごと"
@@ -2930,14 +2984,17 @@
   "Exact": {
     "Exact": "完全一致"
   },
+  "Excluded Media Players": {
+    "Excluded Media Players": ""
+  },
   "Exclusive Zone Offset": {
     "Exclusive Zone Offset": "排他ゾーンオフセット"
   },
   "Existing Users": {
-    "Existing Users": ""
+    "Existing Users": "既存ユーザー"
   },
   "Exit node": {
-    "Exit node": ""
+    "Exit node": "出口ノード"
   },
   "Experimental Feature": {
     "Experimental Feature": "実験的機能"
@@ -3003,7 +3060,7 @@
     "Failed to apply Qt colors": "Qt カラーの適用に失敗しました"
   },
   "Failed to apply charge limit to system": {
-    "Failed to apply charge limit to system": ""
+    "Failed to apply charge limit to system": "充電上限をシステムに適用できませんでした"
   },
   "Failed to apply profile": {
     "Failed to apply profile": "プロファイルの適用に失敗しました"
@@ -3081,7 +3138,7 @@
     "Failed to fetch network QR code: %1": "ネットワークQRコードの取得に失敗しました: %1"
   },
   "Failed to generate systemd override": {
-    "Failed to generate systemd override": ""
+    "Failed to generate systemd override": "systemd override の生成に失敗しました"
   },
   "Failed to hold job": {
     "Failed to hold job": "ジョブの保留に失敗しました"
@@ -3159,7 +3216,7 @@
     "Failed to run 'dms greeter status'. Ensure DMS is installed and dms is in PATH.": "'dms greeter status' の実行に失敗しました。DMS がインストールされ、dms が PATH にあることを確認してください。"
   },
   "Failed to save VPN credentials": {
-    "Failed to save VPN credentials": ""
+    "Failed to save VPN credentials": "VPN 認証情報の保存に失敗しました"
   },
   "Failed to save audio config": {
     "Failed to save audio config": "オーディオ設定の保存に失敗しました"
@@ -3174,7 +3231,7 @@
     "Failed to save profile": "プロファイルの保存に失敗しました"
   },
   "Failed to send SMS": {
-    "Failed to send SMS": ""
+    "Failed to send SMS": "SMS の送信に失敗しました"
   },
   "Failed to send clipboard": {
     "Failed to send clipboard": "クリップボードの送信に失敗しました"
@@ -3222,7 +3279,7 @@
     "Failed to update autoconnect": "自動接続の更新が失敗しました"
   },
   "Failed to update clipboard": {
-    "Failed to update clipboard": ""
+    "Failed to update clipboard": "クリップボードの更新に失敗しました"
   },
   "Failed to update description": {
     "Failed to update description": "説明の更新に失敗しました"
@@ -3234,10 +3291,10 @@
     "Failed to update sharing": "共有設定の更新に失敗しました"
   },
   "Failed to write autostart entry": {
-    "Failed to write autostart entry": ""
+    "Failed to write autostart entry": "自動起動エントリの書き込みに失敗しました"
   },
   "Failed to write outputs config.": {
-    "Failed to write outputs config.": ""
+    "Failed to write outputs config.": "出力設定の書き込みに失敗しました。"
   },
   "Failed to write temp file for validation": {
     "Failed to write temp file for validation": "検証用の一時ファイル書き込みに失敗しました"
@@ -3276,7 +3333,7 @@
     "File Manager": "ファイルマネージャー"
   },
   "File changed on disk": {
-    "File changed on disk": ""
+    "File changed on disk": "ディスク上のファイルが変更されました"
   },
   "File manager used to open the trash. Pick \"custom\" to enter your own command.": {
     "File manager used to open the trash. Pick \"custom\" to enter your own command.": "ゴミ箱を開くために使用するファイルマネージャーです。独自のコマンドを入力するには「カスタム」を選択してください。"
@@ -3300,10 +3357,10 @@
     "Fill": "埋める"
   },
   "Filter": {
-    "Filter": ""
+    "Filter": "フィルター"
   },
   "Filter by type": {
-    "Filter by type": ""
+    "Filter by type": "種類で絞り込み"
   },
   "Find in Text": {
     "Find in Text": "テキスト内検索"
@@ -3312,7 +3369,7 @@
     "Find in note...": "メモで検索..."
   },
   "Fine-tune the space reserved for the bar from the screen edge": {
-    "Fine-tune the space reserved for the bar from the screen edge": ""
+    "Fine-tune the space reserved for the bar from the screen edge": "画面端からバー用に確保する余白を微調整"
   },
   "Fingerprint availability could not be confirmed.": {
     "Fingerprint availability could not be confirmed.": "指紋認証の利用可否を確認できませんでした。"
@@ -3341,12 +3398,6 @@
   "Fit": {
     "Fit": "フィット"
   },
-  "Fix Now": {
-    "Fix Now": "今すぐ修正"
-  },
-  "Fixing...": {
-    "Fixing...": "修正中..."
-  },
   "Flags": {
     "Flags": "フラグ"
   },
@@ -3366,19 +3417,19 @@
     "Float": "フロート"
   },
   "Float Anchor": {
-    "Float Anchor": ""
+    "Float Anchor": "フロートアンカー"
   },
   "Float X": {
-    "Float X": ""
+    "Float X": "フロート X"
   },
   "Float Y": {
-    "Float Y": ""
+    "Float Y": "フロート Y"
   },
   "Floating": {
-    "Floating": ""
+    "Floating": "フローティング"
   },
   "Floating Position": {
-    "Floating Position": ""
+    "Floating Position": "フローティング位置"
   },
   "Fluent": {
     "Fluent": " Fluent"
@@ -3390,22 +3441,25 @@
     "Focus": "フォーカス"
   },
   "Focus Ring Color": {
-    "Focus Ring Color": ""
+    "Focus Ring Color": "フォーカスリングの色"
   },
   "Focus Ring Off": {
-    "Focus Ring Off": ""
+    "Focus Ring Off": "フォーカスリングなし"
   },
   "Focus at Startup": {
     "Focus at Startup": "起動時にフォーカス"
   },
   "Focused": {
-    "Focused": ""
+    "Focused": "フォーカス中"
   },
   "Focused Border": {
     "Focused Border": "フォーカス時のボーダー"
   },
   "Focused Color": {
     "Focused Color": "フォーカス時の色"
+  },
+  "Focused Display": {
+    "Focused Display": ""
   },
   "Focused Monitor Only": {
     "Focused Monitor Only": "フォーカス中のモニターのみ"
@@ -3432,7 +3486,7 @@
     "Follow focus": "フォーカスに従う"
   },
   "Follows the default launcher choice selected above.": {
-    "Follows the default launcher choice selected above.": ""
+    "Follows the default launcher choice selected above.": "上で選択した既定ランチャーに従います。"
   },
   "Font": {
     "Font": "フォント"
@@ -3448,6 +3502,9 @@
   },
   "Font Weight": {
     "Font Weight": "フォントウェイト"
+  },
+  "Font used for the clock and date on the lock screen": {
+    "Font used for the clock and date on the lock screen": ""
   },
   "Font used on the login screen": {
     "Font used on the login screen": "ログイン画面で使用するフォント"
@@ -3479,8 +3536,11 @@
   "Force Kill (SIGKILL)": {
     "Force Kill (SIGKILL)": "強制終了（SIGKILL）"
   },
+  "Force Padding": {
+    "Force Padding": ""
+  },
   "Force RGBX": {
-    "Force RGBX": ""
+    "Force RGBX": "RGBX を強制"
   },
   "Force Wide Color": {
     "Force Wide Color": "ワイドカラーを強制"
@@ -3496,6 +3556,9 @@
   },
   "Forecast Not Available": {
     "Forecast Not Available": "予報は利用できません"
+  },
+  "Forecast and conditions": {
+    "Forecast and conditions": ""
   },
   "Foreground Layers": {
     "Foreground Layers": "前景レイヤー"
@@ -3522,7 +3585,7 @@
     "Format Legend": "フォーマット凡例"
   },
   "Forward 10s": {
-    "Forward 10s": ""
+    "Forward 10s": "10秒進む"
   },
   "Frame": {
     "Frame": "フレーム"
@@ -3535,6 +3598,9 @@
   },
   "Frame Border Color": {
     "Frame Border Color": "フレーム枠の色"
+  },
+  "Frame Xray": {
+    "Frame Xray": ""
   },
   "Free VRAM/memory when the launcher is closed. May cause a slight delay when reopening.": {
     "Free VRAM/memory when the launcher is closed. May cause a slight delay when reopening.": "ランチャーを閉じたときに VRAM/メモリを解放します。再度開く際にわずかな遅延が発生する場合があります。"
@@ -3560,8 +3626,11 @@
   "Full Day & Month": {
     "Full Day & Month": "曜日と月を完全表示"
   },
+  "Full Size": {
+    "Full Size": ""
+  },
   "Full command to execute": {
-    "Full command to execute": ""
+    "Full command to execute": "実行する完全なコマンド"
   },
   "Full with Year": {
     "Full with Year": "年を含めて完全表示"
@@ -3609,10 +3678,13 @@
     "Gamma control not available. Requires DMS API v6+.": "ガンマ制御は使用できません。DMS API v6+ が必要です。"
   },
   "Gap between the end widgets and the bar ends (0 = edge-to-edge)": {
-    "Gap between the end widgets and the bar ends (0 = edge-to-edge)": ""
+    "Gap between the end widgets and the bar ends (0 = edge-to-edge)": "端のウィジェットとバー端の間隔（0 = 端まで）"
+  },
+  "Gaps": {
+    "Gaps": ""
   },
   "Generate Override": {
-    "Generate Override": ""
+    "Generate Override": "Override を生成"
   },
   "Generate baseline GTK3/4 or QT5/QT6 (requires qt6ct-kde) configurations to follow DMS colors. Only needed once.<br /><br />It is recommended to configure <a href=\"https://github.com/AvengeMedia/DankMaterialShell/blob/master/README.md#Theming\" style=\"text-decoration:none; color:%1;\">adw-gtk3</a> prior to applying GTK themes.": {
     "Generate baseline GTK3/4 or QT5/QT6 (requires qt6ct-kde) configurations to follow DMS colors. Only needed once.<br /><br />It is recommended to configure <a href=\"https://github.com/AvengeMedia/DankMaterialShell/blob/master/README.md#Theming\" style=\"text-decoration:none; color:%1;\">adw-gtk3</a> prior to applying GTK themes.": "DMS の色に合わせたベースライン GTK3/4 または QT5/QT6（qt6ct-kde が必要）設定を生成します。必要なのは一度だけです。<br /><br />GTK テーマを適用する前に <a href=\"https://github.com/AvengeMedia/DankMaterialShell/blob/master/README.md#Theming\" style=\"text-decoration:none; color:%1;\">adw-gtk3</a> を設定することを推奨します。"
@@ -3651,19 +3723,19 @@
     "Gradually fade the screen before turning off monitors with a configurable grace period": "設定可能な猶予時間のあと、モニターをオフにする前に画面を徐々にフェードさせます"
   },
   "Grant": {
-    "Grant": ""
+    "Grant": "付与"
   },
   "Grant admin?": {
-    "Grant admin?": ""
+    "Grant admin?": "管理者権限を付与しますか？"
   },
   "Grant administrator privileges": {
-    "Grant administrator privileges": ""
+    "Grant administrator privileges": "管理者権限を付与"
   },
   "Granted administrator privileges": {
-    "Granted administrator privileges": ""
+    "Granted administrator privileges": "管理者権限を付与しました"
   },
   "Granted greeter login access": {
-    "Granted greeter login access": ""
+    "Granted greeter login access": "Greeter ログインアクセスを付与しました"
   },
   "Graph Time Range": {
     "Graph Time Range": "グラフの時間範囲"
@@ -3690,16 +3762,19 @@
     "Greeter font": "Greeter フォント"
   },
   "Greeter group members can sync their login-screen theme with dms greeter sync --profile after logging out and back in.": {
-    "Greeter group members can sync their login-screen theme with dms greeter sync --profile after logging out and back in.": ""
+    "Greeter group members can sync their login-screen theme with dms greeter sync --profile after logging out and back in.": "Greeter グループのメンバーは、ログアウトして再ログインしたあと dms greeter sync --profile でログイン画面テーマを同期できます。"
   },
   "Greeter group:": {
-    "Greeter group:": ""
+    "Greeter group:": "Greeter グループ:"
   },
   "Greeter only — does not affect main clock": {
     "Greeter only — does not affect main clock": "Greeter のみ — メイン時計には影響しません"
   },
   "Greeter only — format for the date on the login screen": {
     "Greeter only — format for the date on the login screen": "Greeter のみ — ログイン画面の日付形式"
+  },
+  "Greeter sync complete": {
+    "Greeter sync complete": ""
   },
   "Grid": {
     "Grid": "グリッド"
@@ -3717,7 +3792,7 @@
     "Group": "グループ"
   },
   "Group Active Workspace": {
-    "Group Active Workspace": ""
+    "Group Active Workspace": "アクティブワークスペースをグループ化"
   },
   "Group Workspace Apps": {
     "Group Workspace Apps": "ワークスペースのアプリをグループ化"
@@ -3806,6 +3881,9 @@
   "Hidden apps won't appear in the launcher. Right-click an app and select 'Hide App' to hide it.": {
     "Hidden apps won't appear in the launcher. Right-click an app and select 'Hide App' to hide it.": "非表示のアプリはランチャーに表示されません。アプリを右クリックして「Hide App」を選択すると非表示にできます。"
   },
+  "Hidden until weather is enabled": {
+    "Hidden until weather is enabled": ""
+  },
   "Hide": {
     "Hide": "非表示"
   },
@@ -3840,7 +3918,7 @@
     "Hide device": "デバイスを非表示"
   },
   "Hide installed": {
-    "Hide installed": ""
+    "Hide installed": "インストール済みを隠す"
   },
   "Hide notification content until expanded": {
     "Hide notification content until expanded": "展開するまで通知内容を非表示"
@@ -3852,10 +3930,16 @@
     "Hide on Touch": "タッチ時に非表示"
   },
   "Hide the bar when the pointer leaves even if a popout is still open": {
-    "Hide the bar when the pointer leaves even if a popout is still open": ""
+    "Hide the bar when the pointer leaves even if a popout is still open": "ポップアウトが開いていても、ポインターが離れたらバーを隠す"
+  },
+  "Hide when no updates: OFF": {
+    "Hide when no updates: OFF": ""
+  },
+  "Hide when no updates: ON": {
+    "Hide when no updates: ON": ""
   },
   "High": {
-    "High": ""
+    "High": "高"
   },
   "High-fidelity palette that preserves source hues.": {
     "High-fidelity palette that preserves source hues.": "ソースの色相を保持する忠実度の高いパレット。"
@@ -3920,6 +4004,9 @@
   "Hourly Forecast Count": {
     "Hourly Forecast Count": "時間別予報件数"
   },
+  "Hover Popouts": {
+    "Hover Popouts": ""
+  },
   "How often the server polls for new updates.": {
     "How often the server polls for new updates.": "サーバーが新しい更新を確認する頻度です。"
   },
@@ -3945,13 +4032,13 @@
     "Hyprland Website": "Hyprland ウェブサイト"
   },
   "Hyprland conf mode": {
-    "Hyprland conf mode": ""
+    "Hyprland conf mode": "Hyprland conf モード"
   },
   "Hyprland conf mode is read-only in Settings": {
-    "Hyprland conf mode is read-only in Settings": ""
+    "Hyprland conf mode is read-only in Settings": "Hyprland conf モードは設定内では読み取り専用です"
   },
   "Hyprland config include missing": {
-    "Hyprland config include missing": ""
+    "Hyprland config include missing": "Hyprland 設定の include がありません"
   },
   "I Understand": {
     "I Understand": "わかりました"
@@ -3984,19 +4071,19 @@
     "Icon Theme": "アイコンテーマ"
   },
   "Icon theme changed outside DMS; switched to System Default": {
-    "Icon theme changed outside DMS; switched to System Default": ""
+    "Icon theme changed outside DMS; switched to System Default": "アイコンテーマが DMS 外で変更されたため、システム既定に切り替えました"
   },
   "Identical alerts show as one popup instead of stacking": {
-    "Identical alerts show as one popup instead of stacking": ""
+    "Identical alerts show as one popup instead of stacking": "同一アラートは積み重ねず 1 つのポップアップとして表示"
   },
   "Identical alerts stack as separate notification cards": {
-    "Identical alerts stack as separate notification cards": ""
+    "Identical alerts stack as separate notification cards": "同一アラートを別々の通知カードとして積み重ねる"
   },
   "Idle": {
     "Idle": "アイドル"
   },
   "Idle Inhibit": {
-    "Idle Inhibit": ""
+    "Idle Inhibit": "アイドル抑制"
   },
   "Idle Inhibitor": {
     "Idle Inhibitor": "アイドルインヒビター"
@@ -4005,7 +4092,7 @@
     "Idle Settings": "アイドル設定"
   },
   "If autostart app icons don't appear in the system tray, generate a systemd override to ensure DMS starts before autostart apps": {
-    "If autostart app icons don't appear in the system tray, generate a systemd override to ensure DMS starts before autostart apps": ""
+    "If autostart app icons don't appear in the system tray, generate a systemd override to ensure DMS starts before autostart apps": "自動起動アプリのアイコンがシステムトレイに出ない場合、DMS が自動起動アプリより先に起動するよう systemd override を生成します"
   },
   "If the field is hidden, it will appear as soon as a key is pressed.": {
     "If the field is hidden, it will appear as soon as a key is pressed.": "フィールドが非表示の場合、キーが押されるとすぐに表示されます。"
@@ -4086,13 +4173,16 @@
     "Inhibitable": "抑制可能"
   },
   "Initial position for floating windows. Set both X and Y; anchor controls which corner/edge they're relative to.": {
-    "Initial position for floating windows. Set both X and Y; anchor controls which corner/edge they're relative to.": ""
+    "Initial position for floating windows. Set both X and Y; anchor controls which corner/edge they're relative to.": "フローティングウィンドウの初期位置です。X と Y の両方を設定してください。アンカーで基準にする角や辺を指定します。"
   },
   "Initialised": {
-    "Initialised": ""
+    "Initialised": "初期化済み"
+  },
+  "Inner Gaps": {
+    "Inner Gaps": ""
   },
   "Inner padding applied to each widget": {
-    "Inner padding applied to each widget": ""
+    "Inner padding applied to each widget": "各ウィジェットに適用する内側余白"
   },
   "Input Devices": {
     "Input Devices": "入力デバイス"
@@ -4104,7 +4194,7 @@
     "Insert your security key...": "セキュリティキーを挿入してください..."
   },
   "Inset the Notepad from screen edges using the compositor's configured gaps": {
-    "Inset the Notepad from screen edges using the compositor's configured gaps": ""
+    "Inset the Notepad from screen edges using the compositor's configured gaps": "コンポジターで設定された余白を使って、メモ帳を画面端から内側に配置"
   },
   "Install": {
     "Install": "インストール"
@@ -4152,7 +4242,7 @@
     "Installed": "インストール済み"
   },
   "Installed first": {
-    "Installed first": ""
+    "Installed first": "インストール済みを先頭"
   },
   "Installed: %1": {
     "Installed: %1": "インストール済み: %1"
@@ -4191,13 +4281,13 @@
     "Invalid password for %1": "%1 のパスワードが無効"
   },
   "Invalid username": {
-    "Invalid username": ""
+    "Invalid username": "無効なユーザー名"
   },
   "Invert on mode change": {
     "Invert on mode change": "モード変更時に反転"
   },
   "Invert touchpad scroll direction": {
-    "Invert touchpad scroll direction": ""
+    "Invert touchpad scroll direction": "タッチパッドのスクロール方向を反転"
   },
   "Iris Bloom": {
     "Iris Bloom": "Iris Bloom"
@@ -4211,6 +4301,12 @@
   "Jobs: ": {
     "Jobs: ": "ジョブ: "
   },
+  "Jump to page": {
+    "Jump to page": ""
+  },
+  "Jump to page (1 - %1)": {
+    "Jump to page (1 - %1)": ""
+  },
   "Keep Awake": {
     "Keep Awake": "活動状態を維持"
   },
@@ -4218,13 +4314,13 @@
     "Keep Changes": "変更を保持"
   },
   "Keep My Edits": {
-    "Keep My Edits": ""
+    "Keep My Edits": "自分の編集を保持"
   },
   "Keep in Bar": {
-    "Keep in Bar": ""
+    "Keep in Bar": "バーに残す"
   },
   "Keep the clipboard type filter when reopening history": {
-    "Keep the clipboard type filter when reopening history": ""
+    "Keep the clipboard type filter when reopening history": "履歴を開き直したときにクリップボード種別フィルターを維持"
   },
   "Keep typing": {
     "Keep typing": "入力し続けてください"
@@ -4368,7 +4464,7 @@
     "Light Mode": "ライトモード"
   },
   "Light Mode Icon Theme": {
-    "Light Mode Icon Theme": ""
+    "Light Mode Icon Theme": "ライトモードのアイコンテーマ"
   },
   "Light Rain": {
     "Light Rain": "小雨"
@@ -4386,10 +4482,10 @@
     "Light mode harmony": "ライトモードハーモニー"
   },
   "Limit set to %1%": {
-    "Limit set to %1%": ""
+    "Limit set to %1%": "上限を %1% に設定しました"
   },
   "Limit the maximum battery charge level to extend lifespan.": {
-    "Limit the maximum battery charge level to extend lifespan.": ""
+    "Limit the maximum battery charge level to extend lifespan.": "寿命を延ばすため、バッテリーの最大充電レベルを制限します。"
   },
   "Line": {
     "Line": "行"
@@ -4428,7 +4524,7 @@
     "Local": "ローカル"
   },
   "Local Weather": {
-    "Local Weather": ""
+    "Local Weather": "ローカル天気"
   },
   "Locale": {
     "Locale": "ロケール"
@@ -4447,6 +4543,9 @@
   },
   "Lock Screen": {
     "Lock Screen": "ロック画面"
+  },
+  "Lock Screen Appearance": {
+    "Lock Screen Appearance": ""
   },
   "Lock Screen Display": {
     "Lock Screen Display": "ロック画面表示"
@@ -4471,6 +4570,9 @@
   },
   "Lock screen authentication changes apply automatically and may open a terminal when sudo authentication is required.": {
     "Lock screen authentication changes apply automatically and may open a terminal when sudo authentication is required.": "ロック画面の認証変更は自動的に適用され、sudo 認証が必要な場合は端末が開くことがあります。"
+  },
+  "Lock screen font": {
+    "Lock screen font": ""
   },
   "Locked": {
     "Locked": "ロック済み"
@@ -4500,16 +4602,16 @@
     "Longitude": "経度"
   },
   "Low": {
-    "Low": ""
+    "Low": "低"
   },
   "Low Battery": {
-    "Low Battery": ""
+    "Low Battery": "低バッテリー"
   },
   "Low Battery Notifications": {
-    "Low Battery Notifications": ""
+    "Low Battery Notifications": "低バッテリー通知"
   },
   "Low Battery Threshold": {
-    "Low Battery Threshold": ""
+    "Low Battery Threshold": "低バッテリーしきい値"
   },
   "Low Priority": {
     "Low Priority": "低優先度"
@@ -4524,13 +4626,13 @@
     "Mail": "メール"
   },
   "Make admin": {
-    "Make admin": ""
+    "Make admin": "管理者にする"
   },
   "Make sure KDE Connect or Valent is running on your other devices": {
     "Make sure KDE Connect or Valent is running on your other devices": "他のデバイスで KDE Connect または Valent が実行されていることを確認してください"
   },
   "Make the bar background fully transparent": {
-    "Make the bar background fully transparent": ""
+    "Make the bar background fully transparent": "バー背景を完全に透明にする"
   },
   "Manage and configure plugins for extending DMS functionality": {
     "Manage and configure plugins for extending DMS functionality": "DMS 機能を拡張するためのプラグインを管理および構成"
@@ -4554,10 +4656,10 @@
     "Manages files and directories": "ファイルとディレクトリを管理します"
   },
   "Mango Options": {
-    "Mango Options": ""
+    "Mango Options": "Mango オプション"
   },
   "Mango service not available": {
-    "Mango service not available": ""
+    "Mango service not available": "Mango サービスを利用できません"
   },
   "MangoWC Layout Overrides": {
     "MangoWC Layout Overrides": "MangoWC レイアウト上書き"
@@ -4575,13 +4677,13 @@
     "Manual Gap Size": "手動ギャップサイズ"
   },
   "Manual Gaps": {
-    "Manual Gaps": ""
+    "Manual Gaps": "手動余白"
   },
   "Manual Show/Hide": {
     "Manual Show/Hide": "手動で表示/非表示"
   },
   "Manual config": {
-    "Manual config": ""
+    "Manual config": "手動設定"
   },
   "Map window class names to icon names for proper icon display": {
     "Map window class names to icon names for proper icon display": "適切にアイコンを表示するため、ウィンドウ class 名をアイコン名にマッピングします"
@@ -4602,10 +4704,10 @@
     "Marker Waste Full": "マーカー廃棄物がいっぱい"
   },
   "Match (%1)": {
-    "Match (%1)": ""
+    "Match (%1)": "一致条件（%1）"
   },
   "Match Conditions": {
-    "Match Conditions": ""
+    "Match Conditions": "一致条件"
   },
   "Match Criteria": {
     "Match Criteria": "一致条件"
@@ -4662,7 +4764,7 @@
     "Max Running Apps (0 = Unlimited)": "最大実行中アプリ数（0 = 無制限）"
   },
   "Max Visible": {
-    "Max Visible": ""
+    "Max Visible": "最大表示数"
   },
   "Max Volume": {
     "Max Volume": "最大音量"
@@ -4872,7 +4974,7 @@
     "Mount Points": "マウントポイント"
   },
   "Mouse clicks pass through the bar to windows behind it": {
-    "Mouse clicks pass through the bar to windows behind it": ""
+    "Mouse clicks pass through the bar to windows behind it": "マウスクリックをバーの背後のウィンドウへ通す"
   },
   "Mouse pointer appearance": {
     "Mouse pointer appearance": "マウスポインターの外観"
@@ -4914,7 +5016,7 @@
     "Music Player": "音楽プレーヤー"
   },
   "Mute During Playback": {
-    "Mute During Playback": ""
+    "Mute During Playback": "再生中はミュート"
   },
   "Mute Popups": {
     "Mute Popups": "ポップアップをミュート"
@@ -4944,13 +5046,13 @@
     "Named Workspace Icons": "名前付きワークスペースアイコン"
   },
   "Native": {
-    "Native": ""
+    "Native": "ネイティブ"
   },
   "Native: platform renderer (FreeType).": {
     "Native: platform renderer (FreeType).": "ネイティブ: プラットフォームレンダラー (FreeType)。"
   },
   "Natural Touchpad Scrolling": {
-    "Natural Touchpad Scrolling": ""
+    "Natural Touchpad Scrolling": "タッチパッドのナチュラルスクロール"
   },
   "Navigate": {
     "Navigate": "移動"
@@ -4980,7 +5082,7 @@
     "Network Status": "ネットワーク状態"
   },
   "Network Type": {
-    "Network Type": ""
+    "Network Type": "ネットワーク種別"
   },
   "Network download and upload speed display": {
     "Network download and upload speed display": "ネットワークのダウンロードおよびアップロード速度を表示"
@@ -5019,7 +5121,7 @@
     "New York, NY": "New York, NY"
   },
   "New event": {
-    "New event": ""
+    "New event": "新しいイベント"
   },
   "New group name...": {
     "New group name...": "新しいグループ名..."
@@ -5029,6 +5131,9 @@
   },
   "Next Transition": {
     "Next Transition": "次の切り替え"
+  },
+  "Next page": {
+    "Next page": ""
   },
   "Night": {
     "Night": "夜"
@@ -5124,7 +5229,7 @@
     "No active %1 sessions": "アクティブな %1 セッションはありません"
   },
   "No active session found for %1": {
-    "No active session found for %1": ""
+    "No active session found for %1": "%1 のアクティブセッションが見つかりません"
   },
   "No adapter": {
     "No adapter": "アダプターなし"
@@ -5136,7 +5241,7 @@
     "No app customizations.": "アプリのカスタマイズはありません。"
   },
   "No application selected": {
-    "No application selected": ""
+    "No application selected": "アプリケーションが選択されていません"
   },
   "No apps found": {
     "No apps found": "アプリが見つかりませんでした"
@@ -5148,7 +5253,7 @@
     "No apps muted. Right-click a notification and choose \"Mute popups\" to add one here.": "ミュートされたアプリはありません。通知を右クリックして「Mute popups」を選択すると、ここに追加できます。"
   },
   "No autostart entries": {
-    "No autostart entries": ""
+    "No autostart entries": "自動起動エントリはありません"
   },
   "No battery": {
     "No battery": "バッテリーなし"
@@ -5157,7 +5262,7 @@
     "No brightness devices available": "利用可能な明るさデバイスがありません"
   },
   "No calendar source available": {
-    "No calendar source available": ""
+    "No calendar source available": "利用できるカレンダーソースがありません"
   },
   "No changes": {
     "No changes": "変更なし"
@@ -5192,6 +5297,9 @@
   "No errors": {
     "No errors": "エラーなし"
   },
+  "No excluded players configured": {
+    "No excluded players configured": ""
+  },
   "No features enabled": {
     "No features enabled": "有効な機能はありません"
   },
@@ -5208,10 +5316,10 @@
     "No hidden apps.": "非表示のアプリはありません。"
   },
   "No human user accounts found.": {
-    "No human user accounts found.": ""
+    "No human user accounts found.": "通常ユーザーアカウントが見つかりません。"
   },
   "No images found": {
-    "No images found": ""
+    "No images found": "画像が見つかりません"
   },
   "No info items": {
     "No info items": "情報項目はありません"
@@ -5253,7 +5361,7 @@
     "No mount points found": "マウントポイントが見つかりませんでした"
   },
   "No other active sessions on this seat": {
-    "No other active sessions on this seat": ""
+    "No other active sessions on this seat": "この seat に他のアクティブセッションはありません"
   },
   "No output device": {
     "No output device": "出力デバイスなし"
@@ -5289,7 +5397,7 @@
     "No recent clipboard entries found": "最近のクリップボードエントリは見つかりませんでした"
   },
   "No reminder": {
-    "No reminder": ""
+    "No reminder": "リマインダーなし"
   },
   "No results": {
     "No results": "検索結果なし"
@@ -5300,8 +5408,11 @@
   "No saved clipboard entries": {
     "No saved clipboard entries": "保存済みのクリップボードエントリはありません"
   },
+  "No screenshot provided": {
+    "No screenshot provided": ""
+  },
   "No session selected": {
-    "No session selected": ""
+    "No session selected": "セッションが選択されていません"
   },
   "No sessions found": {
     "No sessions found": "セッションが見つかりませんでした"
@@ -5325,7 +5436,7 @@
     "No trigger": "トリガーなし"
   },
   "No user specified": {
-    "No user specified": ""
+    "No user specified": "ユーザーが指定されていません"
   },
   "No video found in folder": {
     "No video found in folder": "フォルダー内に動画が見つかりませんでした"
@@ -5355,10 +5466,10 @@
     "No window rules configured": "ウィンドウルールは設定されていません"
   },
   "No writable calendar available": {
-    "No writable calendar available": ""
+    "No writable calendar available": "書き込み可能なカレンダーがありません"
   },
   "Noise": {
-    "Noise": ""
+    "Noise": "ノイズ"
   },
   "None": {
     "None": "ない"
@@ -5391,7 +5502,7 @@
     "Not available — install or configure pam_u2f.": "利用できません — pam_u2f をインストールまたは設定してください。"
   },
   "Not bound": {
-    "Not bound": ""
+    "Not bound": "未バインド"
   },
   "Not connected": {
     "Not connected": "未接続"
@@ -5400,7 +5511,7 @@
     "Not detected": "未検出"
   },
   "Not listed?": {
-    "Not listed?": ""
+    "Not listed?": "一覧にありませんか？"
   },
   "Not paired": {
     "Not paired": "未ペアリング"
@@ -5408,23 +5519,17 @@
   "Not set": {
     "Not set": "未設定"
   },
-  "Note: this only changes the percentage, it does not actually limit charging.": {
-    "Note: this only changes the percentage, it does not actually limit charging.": "注: これは割合のみを変更するもので、実際に充電を制限するわけではありません。"
-  },
   "Notepad": {
     "Notepad": "メモ帳"
   },
-  "Notepad Font Settings": {
-    "Notepad Font Settings": "メモ帳のフォント設定"
-  },
   "Notepad Settings": {
-    "Notepad Settings": ""
+    "Notepad Settings": "メモ帳設定"
   },
   "Notepad Slideout": {
     "Notepad Slideout": "メモ帳スライドアウト"
   },
   "Notes": {
-    "Notes": ""
+    "Notes": "メモ"
   },
   "Nothing": {
     "Nothing": "なし"
@@ -5433,7 +5538,7 @@
     "Nothing to see here": "ここには何もありません"
   },
   "Notification": {
-    "Notification": ""
+    "Notification": "通知"
   },
   "Notification Center": {
     "Notification Center": "通知センター"
@@ -5457,7 +5562,7 @@
     "Notification Timeouts": "通知タイムアウト"
   },
   "Notification Type": {
-    "Notification Type": ""
+    "Notification Type": "通知タイプ"
   },
   "Notification toast popups": {
     "Notification toast popups": "通知トーストポップアップ"
@@ -5466,7 +5571,10 @@
     "Notifications": "通知"
   },
   "Notify when limit is reached": {
-    "Notify when limit is reached": ""
+    "Notify when limit is reached": "上限到達時に通知"
+  },
+  "Now playing and media controls": {
+    "Now playing and media controls": ""
   },
   "Numbers": {
     "Numbers": "数字"
@@ -5529,7 +5637,7 @@
     "Only affects DMS-managed PAM. If greetd already includes pam_fprintd, fingerprint stays enabled.": "DMS 管理の PAM にのみ影響します。greetd がすでに pam_fprintd を含んでいる場合、指紋認証は有効のままです。"
   },
   "Only on Battery": {
-    "Only on Battery": ""
+    "Only on Battery": "バッテリー駆動時のみ"
   },
   "Only show windows from the current monitor on each dock": {
     "Only show windows from the current monitor on each dock": "各ドックに現在のモニターのウィンドウのみ表示"
@@ -5541,10 +5649,10 @@
     "Opacity": "不透明度"
   },
   "Opacity of the bar background": {
-    "Opacity of the bar background": ""
+    "Opacity of the bar background": "バー背景の不透明度"
   },
   "Opacity of widget backgrounds": {
-    "Opacity of widget backgrounds": ""
+    "Opacity of widget backgrounds": "ウィジェット背景の不透明度"
   },
   "Opaque": {
     "Opaque": "不透明"
@@ -5555,6 +5663,9 @@
   "Open App": {
     "Open App": "アプリを開く"
   },
+  "Open Delay": {
+    "Open Delay": ""
+  },
   "Open Dir": {
     "Open Dir": "ディレクトリを開く"
   },
@@ -5562,7 +5673,7 @@
     "Open Frame": "オープンフレーム"
   },
   "Open From": {
-    "Open From": ""
+    "Open From": "開く元"
   },
   "Open KDE Connect on your phone": {
     "Open KDE Connect on your phone": "スマートフォンで KDE Connect を開く"
@@ -5583,7 +5694,7 @@
     "Open a terminal and run a custom command instead of the in-shell upgrade flow.": "端末を開き、シェル内のアップグレード処理の代わりにカスタムコマンドを実行します。"
   },
   "Open as window": {
-    "Open as window": ""
+    "Open as window": "ウィンドウとして開く"
   },
   "Open folder": {
     "Open folder": "フォルダーを開く"
@@ -5596,6 +5707,12 @@
   },
   "Open search bar to find text": {
     "Open search bar to find text": "検索バーを開いてテキストを検索"
+  },
+  "Open the launcher by hovering the emerge edge (when free of bar and dock)": {
+    "Open the launcher by hovering the emerge edge (when free of bar and dock)": ""
+  },
+  "Open widget popouts by hovering over the bar. Moving to another widget switches the popout.": {
+    "Open widget popouts by hovering over the bar. Moving to another widget switches the popout.": ""
   },
   "Open with...": {
     "Open with...": "別のアプリで開く..."
@@ -5613,19 +5730,19 @@
     "Opening files": "ファイルを開いています"
   },
   "Opening terminal to update greetd": {
-    "Opening terminal to update greetd": ""
+    "Opening terminal to update greetd": "greetd 更新用の端末を開いています"
   },
   "Opening terminal: ": {
     "Opening terminal: ": "端末を開いています: "
   },
   "Opens a picker of other active sessions on this seat": {
-    "Opens a picker of other active sessions on this seat": ""
+    "Opens a picker of other active sessions on this seat": "この seat 上の他のアクティブセッションを選ぶピッカーを開きます"
   },
   "Opens image files": {
     "Opens image files": "画像ファイルを開く"
   },
   "Opens the connected launcher in Connected Frame Mode.": {
-    "Opens the connected launcher in Connected Frame Mode.": ""
+    "Opens the connected launcher in Connected Frame Mode.": "接続フレームモードで接続ランチャーを開きます。"
   },
   "Optional description": {
     "Optional description": "任意の説明"
@@ -5634,7 +5751,7 @@
     "Optional location": "任意の場所"
   },
   "Optional state-based conditions applied to the first match.": {
-    "Optional state-based conditions applied to the first match.": ""
+    "Optional state-based conditions applied to the first match.": "最初の一致条件に適用される任意の状態ベース条件です。"
   },
   "Options": {
     "Options": "オプション"
@@ -5647,6 +5764,9 @@
   },
   "Other": {
     "Other": "他"
+  },
+  "Outer Gaps": {
+    "Outer Gaps": ""
   },
   "Outline": {
     "Outline": "アウトライン"
@@ -5666,14 +5786,14 @@
   "Output Tray Missing": {
     "Output Tray Missing": "アウトプットトレイが見つかりませんでした"
   },
-  "Outputs Include Missing": {
-    "Outputs Include Missing": "outputs include が不足"
-  },
   "Overcast": {
     "Overcast": "曇り"
   },
   "Overflow": {
     "Overflow": "オーバーフロー"
+  },
+  "Overlay": {
+    "Overlay": ""
   },
   "Overridden by config": {
     "Overridden by config": "設定で上書きされています"
@@ -5703,7 +5823,7 @@
     "Override the global shadow with per-bar settings": "バーごとの設定でグローバルな影を上書き"
   },
   "Override the popup gap size when auto is disabled": {
-    "Override the popup gap size when auto is disabled": ""
+    "Override the popup gap size when auto is disabled": "自動が無効なとき、ポップアップの余白サイズを上書き"
   },
   "Overrides": {
     "Overrides": "上書き設定"
@@ -5790,28 +5910,28 @@
     "Password": "パスワード"
   },
   "Password cannot be empty": {
-    "Password cannot be empty": ""
+    "Password cannot be empty": "パスワードは空にできません"
   },
   "Password change failed (exit %1)": {
-    "Password change failed (exit %1)": ""
+    "Password change failed (exit %1)": "パスワード変更に失敗しました（終了 %1）"
   },
   "Password set": {
-    "Password set": ""
+    "Password set": "パスワードを設定しました"
   },
   "Password updated": {
-    "Password updated": ""
+    "Password updated": "パスワードを更新しました"
   },
   "Password...": {
     "Password...": "パスワード..."
   },
   "Passwords do not match.": {
-    "Passwords do not match.": ""
+    "Passwords do not match.": "パスワードが一致しません。"
   },
   "Paste": {
     "Paste": "貼り付け"
   },
   "Path copied to clipboard": {
-    "Path copied to clipboard": ""
+    "Path copied to clipboard": "パスをクリップボードにコピーしました"
   },
   "Path to a video file or folder containing videos": {
     "Path to a video file or folder containing videos": "動画ファイル、または動画を含むフォルダーへのパス"
@@ -5916,13 +6036,13 @@
     "Place plugins in %1": "%1 にプラグインを配置"
   },
   "Place the bar on the Wayland overlay layer": {
-    "Place the bar on the Wayland overlay layer": ""
+    "Place the bar on the Wayland overlay layer": "バーを Wayland オーバーレイレイヤーに配置"
   },
   "Place the dock on the Wayland overlay layer": {
-    "Place the dock on the Wayland overlay layer": ""
+    "Place the dock on the Wayland overlay layer": "ドックを Wayland オーバーレイレイヤーに配置"
   },
   "Play": {
-    "Play": ""
+    "Play": "再生"
   },
   "Play a video when the screen locks.": {
     "Play a video when the screen locks.": "画面がロックされたときに動画を再生します。"
@@ -5975,6 +6095,9 @@
   "Plugin Visibility": {
     "Plugin Visibility": "プラグインの表示"
   },
+  "Plugin dependency missing": {
+    "Plugin dependency missing": ""
+  },
   "Plugin disabled: %1": {
     "Plugin disabled: %1": "プラグインが無効になっています: %1"
   },
@@ -6000,10 +6123,10 @@
     "Pointer": "ポインター"
   },
   "Polkit integration is disabled. User management requires Polkit to elevate privileges.": {
-    "Polkit integration is disabled. User management requires Polkit to elevate privileges.": ""
+    "Polkit integration is disabled. User management requires Polkit to elevate privileges.": "Polkit 連携が無効です。ユーザー管理には Polkit による権限昇格が必要です。"
   },
   "Popout": {
-    "Popout": ""
+    "Popout": "ポップアウト"
   },
   "Popout Shadows": {
     "Popout Shadows": "ポップアウトの影"
@@ -6057,7 +6180,7 @@
     "Power Menu Customization": "電源メニューのカスタマイズ"
   },
   "Power Mode": {
-    "Power Mode": ""
+    "Power Mode": "電源モード"
   },
   "Power Off": {
     "Power Off": "電源オフ"
@@ -6072,7 +6195,7 @@
     "Power Profile Degradation": "電源プロファイルの劣化"
   },
   "Power Profiles Auto-Switching": {
-    "Power Profiles Auto-Switching": ""
+    "Power Profiles Auto-Switching": "電源プロファイル自動切替"
   },
   "Power Saver": {
     "Power Saver": "省電力"
@@ -6084,10 +6207,10 @@
     "Power profile management available": "電源プロファイル管理が利用可能"
   },
   "Power profile to use when AC power is connected.": {
-    "Power profile to use when AC power is connected.": ""
+    "Power profile to use when AC power is connected.": "AC 電源接続時に使う電源プロファイルです。"
   },
   "Power profile to use when running on battery power.": {
-    "Power profile to use when running on battery power.": ""
+    "Power profile to use when running on battery power.": "バッテリー駆動時に使う電源プロファイルです。"
   },
   "Power source": {
     "Power source": "電源"
@@ -6116,6 +6239,9 @@
   "Press 'n' or click 'New Session' to create one": {
     "Press 'n' or click 'New Session' to create one": "'n' を押すか「新しいセッション」をクリックして作成してください"
   },
+  "Press Ctrl+N or click 'New Session' to create one": {
+    "Press Ctrl+N or click 'New Session' to create one": ""
+  },
   "Press Enter and the audio system will restart to apply the change": {
     "Press Enter and the audio system will restart to apply the change": "Enter を押すと変更を適用するためにオーディオシステムが再起動します"
   },
@@ -6131,14 +6257,20 @@
   "Prevent screen timeout": {
     "Prevent screen timeout": "画面のタイムアウトを防止"
   },
+  "Prevent specific applications from displaying in the media controllers (e.g., browser audio streams, background tools). Matches player identity or desktop file name case-insensitively.": {
+    "Prevent specific applications from displaying in the media controllers (e.g., browser audio streams, background tools). Matches player identity or desktop file name case-insensitively.": ""
+  },
   "Preview": {
     "Preview": "プレビュー"
   },
   "Preview: %1": {
-    "Preview: %1": ""
+    "Preview: %1": "プレビュー: %1"
   },
   "Previous": {
-    "Previous": ""
+    "Previous": "前へ"
+  },
+  "Previous page": {
+    "Previous page": ""
   },
   "Primary": {
     "Primary": "プライマリー"
@@ -6147,7 +6279,7 @@
     "Primary Container": "プライマリーコンテナー"
   },
   "Primary Theme Color": {
-    "Primary Theme Color": ""
+    "Primary Theme Color": "プライマリテーマ色"
   },
   "Print Server Management": {
     "Print Server Management": "プリントサーバー管理"
@@ -6198,7 +6330,7 @@
     "Process Count": "プロセス数"
   },
   "Process exited with code %1": {
-    "Process exited with code %1": ""
+    "Process exited with code %1": "プロセスはコード %1 で終了しました"
   },
   "Processes": {
     "Processes": "プロセス"
@@ -6237,16 +6369,16 @@
     "Profile saved: %1": "プロファイルを保存しました: %1"
   },
   "Profile when Plugged In (AC)": {
-    "Profile when Plugged In (AC)": ""
+    "Profile when Plugged In (AC)": "接続時（AC）のプロファイル"
   },
   "Profile when on Battery": {
-    "Profile when on Battery": ""
+    "Profile when on Battery": "バッテリー駆動時のプロファイル"
   },
   "Protocol": {
     "Protocol": "プロトコル"
   },
   "Qt": {
-    "Qt": ""
+    "Qt": "Qt"
   },
   "Qt colors applied successfully": {
     "Qt colors applied successfully": "Qt カラーが正常に適用されました"
@@ -6303,13 +6435,13 @@
     "Rate": "レート"
   },
   "Re-enter password": {
-    "Re-enter password": ""
+    "Re-enter password": "パスワードを再入力"
   },
   "Reach local network devices while using an exit node": {
-    "Reach local network devices while using an exit node": ""
+    "Reach local network devices while using an exit node": "出口ノード使用中もローカルネットワーク機器へアクセス"
   },
   "Read-only legacy config": {
-    "Read-only legacy config": ""
+    "Read-only legacy config": "読み取り専用の旧設定"
   },
   "Read:": {
     "Read:": "読み取り:"
@@ -6327,7 +6459,7 @@
     "Recent Colors": "最近の色"
   },
   "Recent Images": {
-    "Recent Images": ""
+    "Recent Images": "最近の画像"
   },
   "Recently Used Apps": {
     "Recently Used Apps": "最近使用したアプリ"
@@ -6342,7 +6474,7 @@
     "Refresh Weather": "天気を更新"
   },
   "Refreshing...": {
-    "Refreshing...": ""
+    "Refreshing...": "更新中..."
   },
   "Regex": {
     "Regex": "正規表現"
@@ -6356,11 +6488,14 @@
   "Reject Jobs": {
     "Reject Jobs": "ジョブを拒否"
   },
+  "Related: %1": {
+    "Related: %1": ""
+  },
   "Release": {
     "Release": "離す"
   },
   "Reload From Disk": {
-    "Reload From Disk": ""
+    "Reload From Disk": "ディスクから再読み込み"
   },
   "Reload Plugin": {
     "Reload Plugin": "プラグインをリロード"
@@ -6372,13 +6507,13 @@
     "Remaining / Total": "残り / 合計"
   },
   "Remember Last Mode": {
-    "Remember Last Mode": ""
+    "Remember Last Mode": "最後のモードを記憶"
   },
   "Remember Last Query": {
     "Remember Last Query": "前回のクエリを記憶"
   },
   "Remember Type Filter": {
-    "Remember Type Filter": ""
+    "Remember Type Filter": "種別フィルターを記憶"
   },
   "Remember last session": {
     "Remember last session": "最後のセッションを記憶"
@@ -6387,55 +6522,55 @@
     "Remember last user": "最後のユーザーを記憶"
   },
   "Reminder": {
-    "Reminder": ""
+    "Reminder": "リマインダー"
   },
   "Remove": {
     "Remove": "削除"
   },
   "Remove \"%1\" from the %2 group?": {
-    "Remove \"%1\" from the %2 group?": ""
+    "Remove \"%1\" from the %2 group?": "\"%1\" を %2 グループから削除しますか？"
   },
   "Remove Shortcut?": {
-    "Remove Shortcut?": ""
+    "Remove Shortcut?": "ショートカットを削除しますか？"
   },
   "Remove Widget Padding": {
     "Remove Widget Padding": "ウィジェットのパディングを削除"
   },
   "Remove admin": {
-    "Remove admin": ""
+    "Remove admin": "管理者から外す"
   },
   "Remove admin?": {
-    "Remove admin?": ""
+    "Remove admin?": "管理者権限を外しますか？"
   },
   "Remove corner rounding from the bar": {
-    "Remove corner rounding from the bar": ""
+    "Remove corner rounding from the bar": "バーの角丸をなくす"
   },
   "Remove gaps and border when windows are maximized": {
     "Remove gaps and border when windows are maximized": "ウィンドウ最大化時にギャップと境界線を削除"
   },
   "Remove greeter access?": {
-    "Remove greeter access?": ""
+    "Remove greeter access?": "Greeter アクセスを削除しますか？"
   },
   "Remove greeter login access": {
-    "Remove greeter login access": ""
+    "Remove greeter login access": "Greeter ログインアクセスを削除"
   },
   "Remove inner padding from all widgets": {
-    "Remove inner padding from all widgets": ""
+    "Remove inner padding from all widgets": "すべてのウィジェットから内側余白を削除"
   },
   "Remove match": {
-    "Remove match": ""
+    "Remove match": "一致条件を削除"
   },
   "Remove the shortcut %1?": {
-    "Remove the shortcut %1?": ""
+    "Remove the shortcut %1?": "ショートカット %1 を削除しますか？"
   },
   "Remove the shortcut %1? An unbind entry will be saved to dms/binds-user.lua so it stays removed across DMS updates.": {
-    "Remove the shortcut %1? An unbind entry will be saved to dms/binds-user.lua so it stays removed across DMS updates.": ""
+    "Remove the shortcut %1? An unbind entry will be saved to dms/binds-user.lua so it stays removed across DMS updates.": "ショートカット %1 を削除しますか？DMS 更新後も削除状態を保つため、unbind エントリが dms/binds-user.lua に保存されます。"
   },
   "Removed administrator privileges": {
-    "Removed administrator privileges": ""
+    "Removed administrator privileges": "管理者権限を削除しました"
   },
   "Removed greeter login access": {
-    "Removed greeter login access": ""
+    "Removed greeter login access": "Greeter ログインアクセスを削除しました"
   },
   "Rename": {
     "Rename": "名前を変更"
@@ -6445,6 +6580,9 @@
   },
   "Rename Workspace": {
     "Rename Workspace": "ワークスペース名を変更"
+  },
+  "Reorder & Group": {
+    "Reorder & Group": ""
   },
   "Repeat": {
     "Repeat": "繰り返し"
@@ -6477,16 +6615,19 @@
     "Requires DMS server with sysupdate capability": "sysupdate 機能に対応した DMS サーバーが必要です"
   },
   "Requires MangoWC compositor": {
-    "Requires MangoWC compositor": ""
+    "Requires MangoWC compositor": "MangoWC コンポジターが必要です"
   },
   "Requires a newer version of Quickshell": {
     "Requires a newer version of Quickshell": "より新しいバージョンの Quickshell が必要"
+  },
+  "Requires greetd, dms-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys). Auth changes apply automatically and may open a terminal for sudo.": {
+    "Requires greetd, dms-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys). Auth changes apply automatically and may open a terminal for sudo.": ""
   },
   "Requires night mode support": {
     "Requires night mode support": "ナイトモード対応が必要"
   },
   "Requires remembering the last user and session. Enable those options first.": {
-    "Requires remembering the last user and session. Enable those options first.": ""
+    "Requires remembering the last user and session. Enable those options first.": "最後のユーザーとセッションの記憶が必要です。先にそれらのオプションを有効にしてください。"
   },
   "Reset": {
     "Reset": "リセット"
@@ -6498,10 +6639,10 @@
     "Reset Size": "サイズをリセット"
   },
   "Reset to Default?": {
-    "Reset to Default?": ""
+    "Reset to Default?": "既定に戻しますか？"
   },
   "Reset to default": {
-    "Reset to default": ""
+    "Reset to default": "既定に戻す"
   },
   "Reset to default name": {
     "Reset to default name": "既定の名前に戻す"
@@ -6510,10 +6651,10 @@
     "Resize Widget": "ウィジェットのサイズを変更"
   },
   "Resize on Border": {
-    "Resize on Border": ""
+    "Resize on Border": "境界線でリサイズ"
   },
   "Resize windows by dragging their edges with the mouse": {
-    "Resize windows by dragging their edges with the mouse": ""
+    "Resize windows by dragging their edges with the mouse": "マウスで端をドラッグしてウィンドウをリサイズ"
   },
   "Resolution & Refresh": {
     "Resolution & Refresh": "解像度とリフレッシュレート"
@@ -6534,7 +6675,7 @@
     "Restore Special Workspace Windows": "特殊ワークスペースのウィンドウを復元"
   },
   "Restore the last selected mode (tab) when the launcher is opened": {
-    "Restore the last selected mode (tab) when the launcher is opened": ""
+    "Restore the last selected mode (tab) when the launcher is opened": "ランチャーを開いたとき、最後に選択したモード（タブ）を復元"
   },
   "Resume": {
     "Resume": "レジュメ"
@@ -6552,7 +6693,7 @@
     "Revert": "戻す"
   },
   "Rewind 10s": {
-    "Rewind 10s": ""
+    "Rewind 10s": "10秒戻る"
   },
   "Right": {
     "Right": "右"
@@ -6600,7 +6741,7 @@
     "Rules (%1)": "ルール（%1）"
   },
   "Rules found in your compositor config. These are read-only here, use Convert to DMS to make an editable copy.": {
-    "Rules found in your compositor config. These are read-only here, use Convert to DMS to make an editable copy.": ""
+    "Rules found in your compositor config. These are read-only here, use Convert to DMS to make an editable copy.": "コンポジター設定内に見つかったルールです。ここでは読み取り専用です。編集可能なコピーを作るには DMS に変換を使ってください。"
   },
   "Run Again": {
     "Run Again": "再実行"
@@ -6627,7 +6768,7 @@
     "Running Apps Settings": "実行中のアプリの設定"
   },
   "Running greeter sync...": {
-    "Running greeter sync...": ""
+    "Running greeter sync...": "Greeter 同期を実行中..."
   },
   "Running in terminal": {
     "Running in terminal": "端末で実行中"
@@ -6642,10 +6783,10 @@
     "SMS": "SMS"
   },
   "SMS sent successfully": {
-    "SMS sent successfully": ""
+    "SMS sent successfully": "SMS を送信しました"
   },
   "Saturation": {
-    "Saturation": ""
+    "Saturation": "彩度"
   },
   "Save": {
     "Save": "保存"
@@ -6657,16 +6798,16 @@
     "Save QR Code": "QR コードを保存"
   },
   "Save and close": {
-    "Save and close": ""
+    "Save and close": "保存して閉じる"
   },
   "Save and paste": {
-    "Save and paste": ""
+    "Save and paste": "保存して貼り付け"
   },
   "Save and switch between display configurations": {
     "Save and switch between display configurations": "ディスプレイ設定を保存して切り替える"
   },
   "Save credentials": {
-    "Save credentials": ""
+    "Save credentials": "認証情報を保存"
   },
   "Save critical priority notifications to history": {
     "Save critical priority notifications to history": "最優先の通知を履歴に保存"
@@ -6690,7 +6831,7 @@
     "Saved Configurations": "保存済み設定"
   },
   "Saved Networks": {
-    "Saved Networks": ""
+    "Saved Networks": "保存済みネットワーク"
   },
   "Saved Note": {
     "Saved Note": "保存済みメモ"
@@ -6702,7 +6843,7 @@
     "Saving...": "保存しています..."
   },
   "Saving…": {
-    "Saving…": ""
+    "Saving…": "保存中…"
   },
   "Scale": {
     "Scale": "スケール"
@@ -6733,6 +6874,9 @@
   },
   "Screen sharing": {
     "Screen sharing": "画面共有"
+  },
+  "Screenshot unavailable": {
+    "Screenshot unavailable": ""
   },
   "Scroll": {
     "Scroll": "スクロール"
@@ -6765,7 +6909,7 @@
     "Search Options": "検索オプション"
   },
   "Search applications...": {
-    "Search applications...": ""
+    "Search applications...": "アプリケーションを検索..."
   },
   "Search by key combo, description, or action name.\n\nDefault action copies the keybind to clipboard.\nRight-click or press Right Arrow to pin frequently used keybinds - they'll appear at the top when not searching.": {
     "Search by key combo, description, or action name.\n\nDefault action copies the keybind to clipboard.\nRight-click or press Right Arrow to pin frequently used keybinds - they'll appear at the top when not searching.": "キーの組み合わせ、説明、またはアクション名で検索します。\n\n既定の操作ではキーバインドをクリップボードにコピーします。\nよく使うキーバインドは右クリックまたは右矢印キーでピン留めできます。検索していないときに上部に表示されます。"
@@ -6816,7 +6960,7 @@
     "Secondary": "セカンダリー"
   },
   "Secondary Container": {
-    "Secondary Container": ""
+    "Secondary Container": "セカンダリコンテナ"
   },
   "Secured": {
     "Secured": "保護済み"
@@ -6873,7 +7017,7 @@
     "Select a color from the palette or use custom sliders": "パレットから色を選ぶか、カスタムスライダーを使用します"
   },
   "Select a desktop application": {
-    "Select a desktop application": ""
+    "Select a desktop application": "デスクトップアプリケーションを選択"
   },
   "Select a widget to add to your desktop. Each widget is a separate instance with its own settings.": {
     "Select a widget to add to your desktop. Each widget is a separate instance with its own settings.": "デスクトップに追加するウィジェットを選択してください。各ウィジェットはそれぞれ独自の設定を持つ別インスタンスです。"
@@ -6885,13 +7029,16 @@
     "Select a window...": "ウィンドウを選択..."
   },
   "Select an active session to switch to. The current session stays running in the background.": {
-    "Select an active session to switch to. The current session stays running in the background.": ""
+    "Select an active session to switch to. The current session stays running in the background.": "切り替えるアクティブセッションを選択します。現在のセッションはバックグラウンドで実行されたままです。"
   },
   "Select an image file...": {
     "Select an image file...": "画像ファイルを選ぶ..."
   },
   "Select at least one provider": {
     "Select at least one provider": "少なくとも1つのプロバイダーを選択"
+  },
+  "Select background image": {
+    "Select background image": ""
   },
   "Select device": {
     "Select device": "デバイスを選択"
@@ -6907,6 +7054,9 @@
   },
   "Select greeter background image": {
     "Select greeter background image": "Greeter の背景画像を選択"
+  },
+  "Select lock screen background image": {
+    "Select lock screen background image": ""
   },
   "Select monitor to configure wallpaper": {
     "Select monitor to configure wallpaper": "壁紙を設定するモニターを選ぶ"
@@ -6927,7 +7077,7 @@
     "Select the palette algorithm used for wallpaper-based colors": "壁紙ベースの色で、使用するパレットアルゴリズムを選ぶ"
   },
   "Select user...": {
-    "Select user...": ""
+    "Select user...": "ユーザーを選択..."
   },
   "Select which keybind providers to include": {
     "Select which keybind providers to include": "含めるキーバインドプロバイダーを選択"
@@ -6959,8 +7109,14 @@
   "Separate": {
     "Separate": "Separate"
   },
+  "Separate Appearance for Unfocused Display(s)": {
+    "Separate Appearance for Unfocused Display(s)": ""
+  },
   "Separate Light & Dark Themes": {
-    "Separate Light & Dark Themes": ""
+    "Separate Light & Dark Themes": "ライト/ダークテーマを分ける"
+  },
+  "Separate appearance for unfocused displays is not supported on this compositor.": {
+    "Separate appearance for unfocused displays is not supported on this compositor.": ""
   },
   "Separator": {
     "Separator": "区切り"
@@ -6990,7 +7146,7 @@
     "Set different wallpapers for light and dark mode": "ライトモードとダークモードで異なる壁紙を設定する"
   },
   "Set initial password": {
-    "Set initial password": ""
+    "Set initial password": "初期パスワードを設定"
   },
   "Set key and action to save": {
     "Set key and action to save": "保存するキーとアクションを設定"
@@ -6999,16 +7155,19 @@
     "Set notification rules": "通知ルールを設定"
   },
   "Set the font size for notification body text (htmlBody)": {
-    "Set the font size for notification body text (htmlBody)": ""
+    "Set the font size for notification body text (htmlBody)": "通知本文テキスト（htmlBody）のフォントサイズを設定"
   },
   "Set the font size for notification summary text": {
-    "Set the font size for notification summary text": ""
+    "Set the font size for notification summary text": "通知概要テキストのフォントサイズを設定"
   },
   "Set the percentage at which the battery is considered low.": {
-    "Set the percentage at which the battery is considered low.": ""
+    "Set the percentage at which the battery is considered low.": "バッテリー残量が少ないとみなす割合を設定します。"
   },
   "Setting": {
     "Setting": "設定"
+  },
+  "Setting up...": {
+    "Setting up...": ""
   },
   "Settings": {
     "Settings": "設定"
@@ -7035,7 +7194,7 @@
     "Shadow Override": "影の上書き"
   },
   "Shadow blur radius in pixels": {
-    "Shadow blur radius in pixels": ""
+    "Shadow blur radius in pixels": "影のぼかし半径（ピクセル）"
   },
   "Shadow elevation on bars and panels": {
     "Shadow elevation on bars and panels": "バーとパネルの影の強さ"
@@ -7079,6 +7238,9 @@
   "Shortcut (%1)": {
     "Shortcut (%1)": "ショートカット（%1）"
   },
+  "Shortcut that opens this settings window": {
+    "Shortcut that opens this settings window": ""
+  },
   "Shortcuts": {
     "Shortcuts": "ショートカット"
   },
@@ -7095,7 +7257,7 @@
     "Show All Tags": "すべてのタグを表示"
   },
   "Show All, Apps, Files, and Plugins chips beside the Spotlight Bar input.": {
-    "Show All, Apps, Files, and Plugins chips beside the Spotlight Bar input.": ""
+    "Show All, Apps, Files, and Plugins chips beside the Spotlight Bar input.": "Spotlight Bar 入力欄の横に、すべて、アプリ、ファイル、プラグインのチップを表示します。"
   },
   "Show Badge": {
     "Show Badge": "バッジを表示"
@@ -7122,7 +7284,7 @@
     "Show Feels Like Temperature": "体感温度を表示"
   },
   "Show Flatpak, Snap, AppImage, or Nix badge icons on launcher items.": {
-    "Show Flatpak, Snap, AppImage, or Nix badge icons on launcher items.": ""
+    "Show Flatpak, Snap, AppImage, or Nix badge icons on launcher items.": "ランチャー項目に Flatpak、Snap、AppImage、Nix のバッジアイコンを表示します。"
   },
   "Show Footer": {
     "Show Footer": "フッターを表示"
@@ -7149,7 +7311,7 @@
     "Show Humidity": "湿度を表示"
   },
   "Show Icon": {
-    "Show Icon": ""
+    "Show Icon": "アイコンを表示"
   },
   "Show Launcher Button": {
     "Show Launcher Button": "ランチャーボタンを表示"
@@ -7182,7 +7344,7 @@
     "Show Memory in GB": "メモリーを GB で表示"
   },
   "Show Mode Chips": {
-    "Show Mode Chips": ""
+    "Show Mode Chips": "モードチップを表示"
   },
   "Show Network": {
     "Show Network": "ネットワークを表示"
@@ -7197,13 +7359,13 @@
     "Show Overflow Badge Count": "オーバーフローバッジ数を表示"
   },
   "Show Package Source Badges": {
-    "Show Package Source Badges": ""
+    "Show Package Source Badges": "パッケージ元バッジを表示"
   },
   "Show Password Field": {
     "Show Password Field": "パスワード欄を表示"
   },
   "Show Percentage": {
-    "Show Percentage": ""
+    "Show Percentage": "パーセントを表示"
   },
   "Show Power Actions": {
     "Show Power Actions": "電源アクションを表示"
@@ -7224,7 +7386,7 @@
     "Show Reboot": "再起動を表示"
   },
   "Show Remaining Time": {
-    "Show Remaining Time": ""
+    "Show Remaining Time": "残り時間を表示"
   },
   "Show Restart DMS": {
     "Show Restart DMS": "DMS再起動を表示"
@@ -7245,7 +7407,7 @@
     "Show Swap": "スワップを表示"
   },
   "Show Switch User": {
-    "Show Switch User": ""
+    "Show Switch User": "ユーザー切替を表示"
   },
   "Show System Date": {
     "Show System Date": "システム日付を表示"
@@ -7278,22 +7440,22 @@
     "Show Workspace Apps": "ワークスペースアプリを表示"
   },
   "Show a bar that drains as the popup's auto-dismiss timer runs": {
-    "Show a bar that drains as the popup's auto-dismiss timer runs": ""
+    "Show a bar that drains as the popup's auto-dismiss timer runs": "ポップアップの自動消去タイマーに合わせて減っていくバーを表示"
   },
   "Show a notification when battery reaches the charge limit.": {
-    "Show a notification when battery reaches the charge limit.": ""
+    "Show a notification when battery reaches the charge limit.": "バッテリーが充電上限に達したら通知を表示します。"
   },
   "Show a warning popup when battery is running low.": {
-    "Show a warning popup when battery is running low.": ""
+    "Show a warning popup when battery is running low.": "バッテリー残量が少ないとき警告ポップアップを表示します。"
   },
   "Show all 9 tags instead of only occupied tags": {
-    "Show all 9 tags instead of only occupied tags": ""
+    "Show all 9 tags instead of only occupied tags": "使用中のタグだけでなく 9 個すべてのタグを表示"
   },
   "Show an outline ring around the focused workspace indicator": {
     "Show an outline ring around the focused workspace indicator": "フォーカス中のワークスペースインジケーターの周囲にアウトラインリングを表示"
   },
   "Show an urgent alert when battery reaches critical level.": {
-    "Show an urgent alert when battery reaches critical level.": ""
+    "Show an urgent alert when battery reaches critical level.": "バッテリーが重大レベルに達したら緊急アラートを表示します。"
   },
   "Show cava audio visualizer in media widget": {
     "Show cava audio visualizer in media widget": "メディアウィジェットに cava オーディオビジュアライザーを表示"
@@ -7316,6 +7478,9 @@
   "Show foreground surfaces on blurred panels for stronger contrast": {
     "Show foreground surfaces on blurred panels for stronger contrast": "コントラストを強めるため、ぼかしたパネル上に前景サーフェスを表示"
   },
+  "Show foreground surfaces on panels for stronger contrast": {
+    "Show foreground surfaces on panels for stronger contrast": ""
+  },
   "Show in GB": {
     "Show in GB": "GB で表示"
   },
@@ -7326,7 +7491,7 @@
     "Show mode tabs and keyboard hints at the bottom.": "下部にモードタブとキーボードヒントを表示します。"
   },
   "Show mount path": {
-    "Show mount path": ""
+    "Show mount path": "マウントパスを表示"
   },
   "Show notification popups only on the currently focused monitor": {
     "Show notification popups only on the currently focused monitor": "現在フォーカスされているモニターにのみ通知ポップアップを表示"
@@ -7380,10 +7545,10 @@
     "Show on-screen display when volume changes": "音量が変化したときにOSDを表示"
   },
   "Show the bar only when no windows are open": {
-    "Show the bar only when no windows are open": ""
+    "Show the bar only when no windows are open": "ウィンドウが開いていないときだけバーを表示"
   },
   "Show the bar when niri overview is active": {
-    "Show the bar when niri overview is active": ""
+    "Show the bar when niri overview is active": "niri overview が有効なときバーを表示"
   },
   "Show weather information in top bar and control center": {
     "Show weather information in top bar and control center": "トップバーとコントロールセンターに天気情報を表示"
@@ -7422,7 +7587,7 @@
     "Signal": "Signal"
   },
   "Signal Strength": {
-    "Signal Strength": ""
+    "Signal Strength": "信号強度"
   },
   "Signal:": {
     "Signal:": "Signal:"
@@ -7434,10 +7599,10 @@
     "Silence notifications": "通知をミュート"
   },
   "Silence system sounds while media is playing": {
-    "Silence system sounds while media is playing": ""
+    "Silence system sounds while media is playing": "メディア再生中はシステム音を無音にする"
   },
   "Single-Line Popup": {
-    "Single-Line Popup": ""
+    "Single-Line Popup": "1 行ポップアップ"
   },
   "Size": {
     "Size": "サイズ"
@@ -7461,19 +7626,16 @@
     "Skip setup": "セットアップをスキップ"
   },
   "Skip the greeter password after boot until you sign out. Lock screen unlock is unchanged. Takes effect on the next reboot after sync.": {
-    "Skip the greeter password after boot until you sign out. Lock screen unlock is unchanged. Takes effect on the next reboot after sync.": ""
+    "Skip the greeter password after boot until you sign out. Lock screen unlock is unchanged. Takes effect on the next reboot after sync.": "起動後、サインアウトするまで greeter のパスワードを省略します。ロック画面の解除は変わりません。同期後、次回再起動から有効です。"
   },
   "Slideout": {
-    "Slideout": ""
+    "Slideout": "スライドアウト"
   },
   "Small": {
     "Small": "小"
   },
   "Smartcard Authentication": {
     "Smartcard Authentication": "スマートカード認証"
-  },
-  "Smartcard PIN": {
-    "Smartcard PIN": "スマートカード PIN"
   },
   "Snap": {
     "Snap": "スナップ"
@@ -7490,6 +7652,9 @@
   "Sort By": {
     "Sort By": "並べ替え方法"
   },
+  "Sort wallpapers": {
+    "Sort wallpapers": ""
+  },
   "Sorting & Layout": {
     "Sorting & Layout": "並べ替えとレイアウト"
   },
@@ -7500,13 +7665,16 @@
     "Sounds": "サウンド"
   },
   "Source: %1": {
-    "Source: %1": ""
+    "Source: %1": "ソース: %1"
   },
   "Space between the bar and screen edges": {
-    "Space between the bar and screen edges": ""
+    "Space between the bar and screen edges": "バーと画面端の間隔"
   },
   "Space between windows": {
     "Space between windows": "ウィンドウ間の間隔"
+  },
+  "Space between windows and screen edges": {
+    "Space between windows and screen edges": ""
   },
   "Spacer": {
     "Spacer": "間隔"
@@ -7527,10 +7695,10 @@
     "Spotlight": "スポットライト"
   },
   "Spotlight Bar": {
-    "Spotlight Bar": ""
+    "Spotlight Bar": "Spotlight Bar"
   },
   "Spotlight Bar Shortcut": {
-    "Spotlight Bar Shortcut": ""
+    "Spotlight Bar Shortcut": "Spotlight Bar ショートカット"
   },
   "Spotlight Search": {
     "Spotlight Search": "注目の検索"
@@ -7578,10 +7746,10 @@
     "Stretch": "引き伸ばし"
   },
   "Stretch widget icons to fill the available bar height": {
-    "Stretch widget icons to fill the available bar height": ""
+    "Stretch widget icons to fill the available bar height": "利用可能なバー高さに合わせてウィジェットアイコンを引き伸ばす"
   },
   "Stretch widget text to fill the available bar height": {
-    "Stretch widget text to fill the available bar height": ""
+    "Stretch widget text to fill the available bar height": "利用可能なバー高さに合わせてウィジェット文字を引き伸ばす"
   },
   "Strict auto-hide": {
     "Strict auto-hide": "厳密な自動非表示"
@@ -7590,13 +7758,13 @@
     "Stripes": "ストライプ"
   },
   "Subtle Overlay": {
-    "Subtle Overlay": ""
+    "Subtle Overlay": "控えめなオーバーレイ"
   },
   "Summary": {
     "Summary": "概要"
   },
   "Summary Font Size": {
-    "Summary Font Size": ""
+    "Summary Font Size": "概要フォントサイズ"
   },
   "Sunrise": {
     "Sunrise": "日の出"
@@ -7605,7 +7773,7 @@
     "Sunset": "日の入り"
   },
   "Suppress Duplicate Notifications": {
-    "Suppress Duplicate Notifications": ""
+    "Suppress Duplicate Notifications": "重複通知を抑制"
   },
   "Suppress notification popups while enabled": {
     "Suppress notification popups while enabled": "有効時は通知ポップアップを抑制"
@@ -7616,20 +7784,26 @@
   "Surface Behavior": {
     "Surface Behavior": "表面挙動"
   },
+  "Surface Border Color": {
+    "Surface Border Color": ""
+  },
+  "Surface Border Opacity": {
+    "Surface Border Opacity": ""
+  },
   "Surface Container": {
-    "Surface Container": ""
+    "Surface Container": "Surface コンテナ"
   },
   "Surface High": {
-    "Surface High": ""
+    "Surface High": "Surface High"
   },
   "Surface Highest": {
-    "Surface Highest": ""
+    "Surface Highest": "Surface Highest"
   },
   "Surface Opacity": {
     "Surface Opacity": "表面の不透明度"
   },
   "Surface Text": {
-    "Surface Text": ""
+    "Surface Text": "Surface テキスト"
   },
   "Surface Variant": {
     "Surface Variant": "サーフェスバリアント"
@@ -7668,7 +7842,7 @@
     "Sync": "同期"
   },
   "Sync Bar Inset Padding": {
-    "Sync Bar Inset Padding": ""
+    "Sync Bar Inset Padding": "バーの内側余白を同期"
   },
   "Sync Mode with Portal": {
     "Sync Mode with Portal": "ポータルとの同期モード"
@@ -7678,6 +7852,9 @@
   },
   "Sync Position Across Screens": {
     "Sync Position Across Screens": "画面間で位置を同期"
+  },
+  "Sync applies your theme and settings to the login screen. Other users should run dms greeter sync --profile instead of a full sync. Authentication changes apply automatically.": {
+    "Sync applies your theme and settings to the login screen. Other users should run dms greeter sync --profile instead of a full sync. Authentication changes apply automatically.": ""
   },
   "Sync completed successfully.": {
     "Sync completed successfully.": "同期が正常に完了しました。"
@@ -7690,6 +7867,12 @@
   },
   "Sync needs sudo authentication. Opening terminal so you can use password or fingerprint.": {
     "Sync needs sudo authentication. Opening terminal so you can use password or fingerprint.": "同期には sudo 認証が必要です。パスワードまたは指紋を使えるよう端末を開きます。"
+  },
+  "Sync to apply": {
+    "Sync to apply": ""
+  },
+  "Syncing...": {
+    "Syncing...": ""
   },
   "System": {
     "System": "システム"
@@ -7743,7 +7926,7 @@
     "System toast notifications": "システムトースト通知"
   },
   "Systemd Override generated": {
-    "Systemd Override generated": ""
+    "Systemd Override generated": "systemd override を生成しました"
   },
   "Tab": {
     "Tab": "タブ"
@@ -7752,7 +7935,7 @@
     "Tab/Shift+Tab: Nav • ←→↑↓: Grid Nav • Enter/Space: Select": "Tab/Shift+Tab: ナビゲーション • ←→↑↓: グリッドナビゲーション • Enter/Space: 選択"
   },
   "Tags": {
-    "Tags": ""
+    "Tags": "タグ"
   },
   "Tags: %1": {
     "Tags: %1": "タグ: %1"
@@ -7764,7 +7947,7 @@
     "Tailscale Network": "テールスケールネットワーク"
   },
   "Tailscale action failed": {
-    "Tailscale action failed": ""
+    "Tailscale action failed": "Tailscale アクションに失敗しました"
   },
   "Tailscale not available": {
     "Tailscale not available": "尾部スケールは入手できません"
@@ -7800,10 +7983,10 @@
     "Terminals - Always use Dark Theme": "端末 - 常にダークテーマを使用"
   },
   "Tertiary": {
-    "Tertiary": ""
+    "Tertiary": "ターシャリ"
   },
   "Tertiary Container": {
-    "Tertiary Container": ""
+    "Tertiary Container": "ターシャリコンテナ"
   },
   "Test Connection": {
     "Test Connection": "接続をテスト"
@@ -7829,6 +8012,9 @@
   "Text Rendering": {
     "Text Rendering": "テキストレンダリング"
   },
+  "The 'boregard' tool is not installed or not on your PATH.\n\nInstall it from https://danklinux.com, then re-enable this plugin.": {
+    "The 'boregard' tool is not installed or not on your PATH.\n\nInstall it from https://danklinux.com, then re-enable this plugin.": ""
+  },
   "The 'dgop' tool is required for system monitoring.\nPlease install dgop to use this feature.": {
     "The 'dgop' tool is required for system monitoring.\nPlease install dgop to use this feature.": "システム監視には 'dgop' ツールが必要です。\nこの機能を使うには dgop をインストールしてください。"
   },
@@ -7845,7 +8031,7 @@
     "The job queue of this printer is empty": "このプリンタのジョブ待ち行列は空です"
   },
   "The rule applies to any window matching one of these.": {
-    "The rule applies to any window matching one of these.": ""
+    "The rule applies to any window matching one of these.": "このルールは、これらのいずれかに一致するウィンドウに適用されます。"
   },
   "Theme & Colors": {
     "Theme & Colors": "テーマおよびカラー"
@@ -7857,10 +8043,10 @@
     "Theme Registry": "テーマレジストリ"
   },
   "Theme color used for the border": {
-    "Theme color used for the border": ""
+    "Theme color used for the border": "境界線に使うテーマ色"
   },
   "Theme color used for the widget outline": {
-    "Theme color used for the widget outline": ""
+    "Theme color used for the widget outline": "ウィジェット輪郭線に使うテーマ色"
   },
   "Theme worker failed (%1)": {
     "Theme worker failed (%1)": "テーマワーカーが失敗しました（1%）"
@@ -7869,7 +8055,7 @@
     "Themes": "テーマ"
   },
   "These add entries to the XDG autostart directory (~/.config/autostart/*.desktop)": {
-    "These add entries to the XDG autostart directory (~/.config/autostart/*.desktop)": ""
+    "These add entries to the XDG autostart directory (~/.config/autostart/*.desktop)": "これらは XDG 自動起動ディレクトリ（~/.config/autostart/*.desktop）にエントリを追加します"
   },
   "Thickness": {
     "Thickness": "太さ"
@@ -7890,16 +8076,19 @@
     "This device": "このデバイス"
   },
   "This install is still using hyprland.conf. Run dms setup to migrate before editing cursor settings.": {
-    "This install is still using hyprland.conf. Run dms setup to migrate before editing cursor settings.": ""
+    "This install is still using hyprland.conf. Run dms setup to migrate before editing cursor settings.": "このインストールはまだ hyprland.conf を使っています。カーソル設定を編集する前に dms setup を実行して移行してください。"
   },
   "This install is still using hyprland.conf. Run dms setup to migrate before editing display settings.": {
-    "This install is still using hyprland.conf. Run dms setup to migrate before editing display settings.": ""
+    "This install is still using hyprland.conf. Run dms setup to migrate before editing display settings.": "このインストールはまだ hyprland.conf を使っています。ディスプレイ設定を編集する前に dms setup を実行して移行してください。"
+  },
+  "This install is still using hyprland.conf. Run dms setup to migrate before editing layout settings.": {
+    "This install is still using hyprland.conf. Run dms setup to migrate before editing layout settings.": ""
   },
   "This install is still using hyprland.conf. Run dms setup to migrate before editing shortcuts in Settings.": {
-    "This install is still using hyprland.conf. Run dms setup to migrate before editing shortcuts in Settings.": ""
+    "This install is still using hyprland.conf. Run dms setup to migrate before editing shortcuts in Settings.": "このインストールはまだ hyprland.conf を使っています。設定でショートカットを編集する前に dms setup を実行して移行してください。"
   },
   "This install is still using hyprland.conf. Run dms setup to migrate before editing window rules in Settings.": {
-    "This install is still using hyprland.conf. Run dms setup to migrate before editing window rules in Settings.": ""
+    "This install is still using hyprland.conf. Run dms setup to migrate before editing window rules in Settings.": "このインストールはまだ hyprland.conf を使っています。設定でウィンドウルールを編集する前に dms setup を実行して移行してください。"
   },
   "This may take a few seconds": {
     "This may take a few seconds": "これには数秒かかる場合があります"
@@ -7961,8 +8150,11 @@
   "Time remaining: %1": {
     "Time remaining: %1": "残り時間: %1"
   },
+  "Time to rest on a widget before its popout opens": {
+    "Time to rest on a widget before its popout opens": ""
+  },
   "Time to wait before hiding after the pointer leaves": {
-    "Time to wait before hiding after the pointer leaves": ""
+    "Time to wait before hiding after the pointer leaves": "ポインターが離れてから隠すまでの待ち時間"
   },
   "Time until full: %1": {
     "Time until full: %1": "満充電まで: %1"
@@ -7971,7 +8163,7 @@
     "Timed Out": "タイムアウト"
   },
   "Timeout Progress Bar": {
-    "Timeout Progress Bar": ""
+    "Timeout Progress Bar": "タイムアウト進行バー"
   },
   "Timeout for critical priority notifications": {
     "Timeout for critical priority notifications": "最優先通知のタイムアウト"
@@ -7992,10 +8184,10 @@
     "Title": "タイトル"
   },
   "Title (optional)": {
-    "Title (optional)": ""
+    "Title (optional)": "タイトル（任意）"
   },
   "Title is required": {
-    "Title is required": ""
+    "Title is required": "タイトルは必須です"
   },
   "Title regex (optional)": {
     "Title regex (optional)": "タイトルの正規表現（任意）"
@@ -8004,7 +8196,7 @@
     "To Full": "フルへ"
   },
   "To sign in as a different user, log out and pick the account from the greeter. Creating a fresh session in parallel needs a multi-session greeter (greetd-flexiserver / GDM / LightDM).": {
-    "To sign in as a different user, log out and pick the account from the greeter. Creating a fresh session in parallel needs a multi-session greeter (greetd-flexiserver / GDM / LightDM).": ""
+    "To sign in as a different user, log out and pick the account from the greeter. Creating a fresh session in parallel needs a multi-session greeter (greetd-flexiserver / GDM / LightDM).": "別のユーザーでサインインするには、ログアウトして greeter からアカウントを選んでください。並行して新しいセッションを作るには、マルチセッション対応の greeter（greetd-flexiserver / GDM / LightDM）が必要です。"
   },
   "To update, run the following command:": {
     "To update, run the following command:": "更新するには以下のコマンドを実行："
@@ -8013,7 +8205,7 @@
     "To use this DMS bind, remove or change the keybind in your config.kdl": "この DMS バインドを使うには、config.kdl 内のキーバインドを削除または変更してください"
   },
   "Toast": {
-    "Toast": ""
+    "Toast": "トースト"
   },
   "Toast Messages": {
     "Toast Messages": "トーストメッセージ"
@@ -8022,7 +8214,7 @@
     "Today": "今日"
   },
   "Toggle bar visibility manually via IPC": {
-    "Toggle bar visibility manually via IPC": ""
+    "Toggle bar visibility manually via IPC": "IPC でバーの表示を手動切替"
   },
   "Toggle fonts": {
     "Toggle fonts": "フォント切替"
@@ -8097,13 +8289,13 @@
     "Transparency": "透明度"
   },
   "Transparency of the border": {
-    "Transparency of the border": ""
+    "Transparency of the border": "境界線の透明度"
   },
   "Transparency of the shadow layer": {
-    "Transparency of the shadow layer": ""
+    "Transparency of the shadow layer": "影レイヤーの透明度"
   },
   "Transparency of the widget outline": {
-    "Transparency of the widget outline": ""
+    "Transparency of the widget outline": "ウィジェット輪郭線の透明度"
   },
   "Trash": {
     "Trash": "ゴミ箱"
@@ -8112,7 +8304,7 @@
     "Trash command failed (exit %1)": "ゴミ箱コマンドが失敗しました (終了コード %1)"
   },
   "Tray Icon Fix": {
-    "Tray Icon Fix": ""
+    "Tray Icon Fix": "トレイアイコン修正"
   },
   "Trending GIFs": {
     "Trending GIFs": "人気の GIF"
@@ -8178,16 +8370,19 @@
     "Typography & Motion": "タイポグラフィとモーション"
   },
   "URI": {
-    "URI": ""
+    "URI": "URI"
   },
   "Unavailable": {
     "Unavailable": "利用できません"
   },
   "Uncategorized": {
-    "Uncategorized": ""
+    "Uncategorized": "未分類"
   },
   "Unfocused Color": {
     "Unfocused Color": "非フォーカス時の色"
+  },
+  "Unfocused Display(s)": {
+    "Unfocused Display(s)": ""
   },
   "Ungrouped": {
     "Ungrouped": "グループ化なし"
@@ -8276,9 +8471,6 @@
   "Unsaved changes": {
     "Unsaved changes": "保存されていない変更"
   },
-  "Unsaved note...": {
-    "Unsaved note...": "保存されていないメモ..."
-  },
   "Unset": {
     "Unset": "未設定"
   },
@@ -8325,7 +8517,7 @@
     "Uptime:": "稼働時間:"
   },
   "Urgent": {
-    "Urgent": ""
+    "Urgent": "緊急"
   },
   "Urgent Color": {
     "Urgent Color": "緊急時の色"
@@ -8343,7 +8535,7 @@
     "Use Grid Layout": "グリッドレイアウトを使用"
   },
   "Use HH:MM time format": {
-    "Use HH:MM time format": ""
+    "Use HH:MM time format": "HH:MM 形式を使う"
   },
   "Use IP Location": {
     "Use IP Location": "IP ロケーションの使用"
@@ -8361,16 +8553,19 @@
     "Use Monospace Font": "等幅フォントを使用"
   },
   "Use Overlay Layer": {
-    "Use Overlay Layer": ""
+    "Use Overlay Layer": "オーバーレイレイヤーを使う"
   },
   "Use System Theme": {
     "Use System Theme": "システムテーマを使用"
+  },
+  "Use a custom image for the lock screen, or leave empty to use your desktop wallpaper.": {
+    "Use a custom image for the lock screen, or leave empty to use your desktop wallpaper.": ""
   },
   "Use a custom image for the login screen, or leave empty to use your desktop wallpaper.": {
     "Use a custom image for the login screen, or leave empty to use your desktop wallpaper.": "ログイン画面にカスタム画像を使用します。空のままにするとデスクトップ壁紙を使用します。"
   },
   "Use a custom radius for goth corner cutouts": {
-    "Use a custom radius for goth corner cutouts": ""
+    "Use a custom radius for goth corner cutouts": "ゴシック風コーナーカットアウトにカスタム半径を使う"
   },
   "Use a fixed shadow direction for this bar": {
     "Use a fixed shadow direction for this bar": "このバーに固定の影の方向を使用"
@@ -8400,13 +8595,16 @@
     "Use desktop wallpaper": "デスクトップ壁紙を使用"
   },
   "Use different icon themes for light and dark mode": {
-    "Use different icon themes for light and dark mode": ""
+    "Use different icon themes for light and dark mode": "ライト/ダークモードで別々のアイコンテーマを使う"
+  },
+  "Use different workspace colors on displays that are not focused": {
+    "Use different workspace colors on displays that are not focused": ""
   },
   "Use fingerprint authentication for the lock screen.": {
     "Use fingerprint authentication for the lock screen.": "ロック画面に指紋認証を使用します。"
   },
   "Use keys 1-3 or arrows, Enter/Space to select": {
-    "Use keys 1-3 or arrows, Enter/Space to select": ""
+    "Use keys 1-3 or arrows, Enter/Space to select": "1-3 キーまたは矢印キー、Enter/Space で選択"
   },
   "Use light theme instead of dark theme": {
     "Use light theme instead of dark theme": "ダークテーマではなく、ライトテーマを使用"
@@ -8415,7 +8613,7 @@
     "Use meters per second instead of km/h for wind speed": "風速に km/h ではなく m/s を使用します"
   },
   "Use one inset value for every bar": {
-    "Use one inset value for every bar": ""
+    "Use one inset value for every bar": "すべてのバーで同じ内側余白値を使う"
   },
   "Use smaller notification cards": {
     "Use smaller notification cards": "小さめの通知カードを使用"
@@ -8427,7 +8625,7 @@
     "Use the extended surface for launcher content": "拡張サーフェスを使用してランチャーコンテンツを表示する"
   },
   "Use the overlay layer when opening the launcher": {
-    "Use the overlay layer when opening the launcher": ""
+    "Use the overlay layer when opening the launcher": "ランチャーを開くときオーバーレイレイヤーを使う"
   },
   "Use the same position and size on all displays": {
     "Use the same position and size on all displays": "すべてのディスプレイで同じ位置とサイズを使用"
@@ -8445,40 +8643,40 @@
     "User": "ユーザー"
   },
   "User Window Rules (%1)": {
-    "User Window Rules (%1)": ""
+    "User Window Rules (%1)": "ユーザーウィンドウルール（%1）"
   },
   "User already exists": {
-    "User already exists": ""
+    "User already exists": "ユーザーはすでに存在します"
   },
   "User created": {
-    "User created": ""
+    "User created": "ユーザーを作成しました"
   },
   "User created with administrator and greeter login access": {
-    "User created with administrator and greeter login access": ""
+    "User created with administrator and greeter login access": "管理者権限と Greeter ログインアクセス付きでユーザーを作成しました"
   },
   "User created with administrator privileges": {
-    "User created with administrator privileges": ""
+    "User created with administrator privileges": "管理者権限付きでユーザーを作成しました"
   },
   "User created with greeter login access": {
-    "User created with greeter login access": ""
+    "User created with greeter login access": "Greeter ログインアクセス付きでユーザーを作成しました"
   },
   "User deleted": {
-    "User deleted": ""
+    "User deleted": "ユーザーを削除しました"
   },
   "User not found": {
-    "User not found": ""
+    "User not found": "ユーザーが見つかりません"
   },
   "Username": {
     "Username": "ユーザー名"
   },
   "Username must start with a lowercase letter or underscore and contain only lowercase letters, digits, hyphens, or underscores.": {
-    "Username must start with a lowercase letter or underscore and contain only lowercase letters, digits, hyphens, or underscores.": ""
+    "Username must start with a lowercase letter or underscore and contain only lowercase letters, digits, hyphens, or underscores.": "ユーザー名は小文字またはアンダースコアで始め、小文字、数字、ハイフン、アンダースコアだけを含める必要があります。"
   },
   "Username...": {
     "Username...": "ユーザー名..."
   },
   "Users": {
-    "Users": ""
+    "Users": "ユーザー"
   },
   "Uses sunrise/sunset times based on your location.": {
     "Uses sunrise/sunset times based on your location.": "位置情報に基づく日の出/日の入り時刻を使用する。"
@@ -8487,16 +8685,16 @@
     "Uses sunrise/sunset times to automatically adjust night mode based on your location.": "位置情報に基づく日の出/日の入り時刻を使ってナイトモードを自動調整する。"
   },
   "Uses the spotlight-bar IPC action and always opens the minimal bar.": {
-    "Uses the spotlight-bar IPC action and always opens the minimal bar.": ""
+    "Uses the spotlight-bar IPC action and always opens the minimal bar.": "spotlight-bar IPC アクションを使い、常に最小バーを開きます。"
   },
   "Using DankCalendar%1": {
-    "Using DankCalendar%1": ""
+    "Using DankCalendar%1": "DankCalendar%1 を使用中"
   },
   "Using global monospace font from Settings → Personalization": {
     "Using global monospace font from Settings → Personalization": "設定 → パーソナライズからグローバル等幅フォントを使用する"
   },
   "Using khal": {
-    "Using khal": ""
+    "Using khal": "khal を使用中"
   },
   "Using shared settings from Gamma Control": {
     "Using shared settings from Gamma Control": "Gamma Control の共有設定を使用中"
@@ -8510,14 +8708,11 @@
   "VPN Connections": {
     "VPN Connections": "VPN接続"
   },
-  "VPN Password": {
-    "VPN Password": "VPN パスワード"
-  },
   "VPN configuration updated": {
     "VPN configuration updated": "VPN 設定を更新しました"
   },
   "VPN credentials saved": {
-    "VPN credentials saved": ""
+    "VPN credentials saved": "VPN 認証情報を保存しました"
   },
   "VPN deleted": {
     "VPN deleted": "VPN を削除しました"
@@ -8562,7 +8757,7 @@
     "Vertical Tiling": "垂直タイリング"
   },
   "Very High": {
-    "Very High": ""
+    "Very High": "最高"
   },
   "Vibrant": {
     "Vibrant": "Vibrant"
@@ -8589,7 +8784,7 @@
     "Visibility": "視界"
   },
   "Visible Entry Actions": {
-    "Visible Entry Actions": ""
+    "Visible Entry Actions": "表示するエントリアクション"
   },
   "Visual Effects": {
     "Visual Effects": "視覚効果"
@@ -8613,7 +8808,7 @@
     "Volume, brightness, and other system OSDs": "音量、明るさ、その他のシステム OSD"
   },
   "Votes": {
-    "Votes": ""
+    "Votes": "票"
   },
   "WPA/WPA2": {
     "WPA/WPA2": "WPA/WPA2"
@@ -8679,10 +8874,7 @@
     "When locked": "ロック時"
   },
   "White": {
-    "White": ""
-  },
-  "Wi-Fi Password": {
-    "Wi-Fi Password": "Wi-Fi パスワード"
+    "White": "白"
   },
   "Wi-Fi and Ethernet connection": {
     "Wi-Fi and Ethernet connection": "Wi-Fi と Ethernet 接続"
@@ -8721,22 +8913,16 @@
     "Widget Management": "ウィジェット管理"
   },
   "Widget Opacity": {
-    "Widget Opacity": ""
+    "Widget Opacity": "ウィジェットの不透明度"
   },
   "Widget Outline": {
     "Widget Outline": "ウィジェットのアウトライン"
-  },
-  "Widget Style": {
-    "Widget Style": "ウィジェットのスタイル"
   },
   "Widget Styling": {
     "Widget Styling": "ウィジェットのスタイル"
   },
   "Widget Text Style": {
-    "Widget Text Style": ""
-  },
-  "Widget Transparency": {
-    "Widget Transparency": "ウィジェットの透明度"
+    "Widget Text Style": "ウィジェット文字スタイル"
   },
   "Widget added": {
     "Widget added": "ウィジェットを追加しました"
@@ -8748,7 +8934,7 @@
     "Widgets": "ウィジェット"
   },
   "Widgets & Notifications": {
-    "Widgets & Notifications": ""
+    "Widgets & Notifications": "ウィジェットと通知"
   },
   "Widgets, layout, style": {
     "Widgets, layout, style": "ウィジェット、レイアウト、スタイル"
@@ -8757,13 +8943,13 @@
     "Width": "幅"
   },
   "Width of the border in pixels": {
-    "Width of the border in pixels": ""
+    "Width of the border in pixels": "境界線の幅（ピクセル）"
   },
   "Width of the widget outline in pixels": {
-    "Width of the widget outline in pixels": ""
+    "Width of the widget outline in pixels": "ウィジェット輪郭線の幅（ピクセル）"
   },
   "Width of window border": {
-    "Width of window border": ""
+    "Width of window border": "ウィンドウ境界線の幅"
   },
   "Width of window border and focus ring": {
     "Width of window border and focus ring": "ウィンドウ境界線とフォーカスリングの幅"
@@ -8805,7 +8991,7 @@
     "Wipe": "ワイプ"
   },
   "Working...": {
-    "Working...": ""
+    "Working...": "処理中..."
   },
   "Workspace": {
     "Workspace": "ワークスペース"
@@ -8835,28 +9021,34 @@
     "Workspaces": "ワークスペース"
   },
   "Wrap the app command. %command% is replaced with the actual executable": {
-    "Wrap the app command. %command% is replaced with the actual executable": ""
+    "Wrap the app command. %command% is replaced with the actual executable": "アプリコマンドをラップします。%command% は実際の実行ファイルに置き換えられます"
   },
   "Write:": {
     "Write:": "書き込み:"
   },
   "X": {
-    "X": ""
+    "X": "X"
   },
   "X Axis": {
     "X Axis": "X 軸"
   },
   "X-Ray": {
-    "X-Ray": ""
+    "X-Ray": "X-Ray"
   },
   "XWayland": {
-    "XWayland": ""
+    "XWayland": "XWayland"
+  },
+  "Xray Blur Effect": {
+    "Xray Blur Effect": ""
   },
   "Xray blurs only the wallpaper (efficient) and is the default when Blur is on. Set Xray to Off for regular full blur of everything beneath the window (more expensive).": {
-    "Xray blurs only the wallpaper (efficient) and is the default when Blur is on. Set Xray to Off for regular full blur of everything beneath the window (more expensive).": ""
+    "Xray blurs only the wallpaper (efficient) and is the default when Blur is on. Set Xray to Off for regular full blur of everything beneath the window (more expensive).": "Xray は壁紙だけをぼかします（効率的）。ぼかしが有効なときの既定です。ウィンドウ下のすべてを通常の全面ぼかしにするには、Xray をオフにしてください（負荷が高くなります）。"
+  },
+  "Xray options are in Compositor → Layout": {
+    "Xray options are in Compositor → Layout": ""
   },
   "Y": {
-    "Y": ""
+    "Y": "Y"
   },
   "Y Axis": {
     "Y Axis": "Y 軸"
@@ -8883,16 +9075,16 @@
     "You need to set either:\nQT_QPA_PLATFORMTHEME=gtk3 OR\nQT_QPA_PLATFORMTHEME=qt6ct\nas environment variables, and then restart the shell.\n\nqt6ct requires qt6ct-kde to be installed.": "環境変数として以下のいずれかを設定し、その後シェルを再起動する必要があります。\nQT_QPA_PLATFORMTHEME=gtk3 または\nQT_QPA_PLATFORMTHEME=qt6ct\n\nqt6ct には qt6ct-kde のインストールが必要です。"
   },
   "You'll enter your password at the greeter after the next reboot.": {
-    "You'll enter your password at the greeter after the next reboot.": ""
+    "You'll enter your password at the greeter after the next reboot.": "次回再起動後は greeter でパスワードを入力します。"
   },
   "You'll skip the greeter password after the next reboot. The lock screen and signing out still require your password.": {
-    "You'll skip the greeter password after the next reboot. The lock screen and signing out still require your password.": ""
+    "You'll skip the greeter password after the next reboot. The lock screen and signing out still require your password.": "次回再起動後は greeter のパスワードを省略します。ロック画面とサインアウト後は引き続きパスワードが必要です。"
   },
   "You're All Set!": {
     "You're All Set!": "準備完了です!"
   },
   "Your compositor does not support background blur (ext-background-effect-v1)": {
-    "Your compositor does not support background blur (ext-background-effect-v1)": ""
+    "Your compositor does not support background blur (ext-background-effect-v1)": "お使いのコンポジターは背景ぼかし（ext-background-effect-v1）に対応していません"
   },
   "Your system is up to date!": {
     "Your system is up to date!": "システムは最新です!"
@@ -8901,16 +9093,19 @@
     "actions": "アクション"
   },
   "admin": {
-    "admin": ""
+    "admin": "管理者"
   },
   "attached": {
     "attached": "接続済み"
+  },
+  "boregard is required": {
+    "boregard is required": ""
   },
   "brandon": {
     "brandon": "brandon"
   },
   "broken": {
-    "broken": ""
+    "broken": "壊れています"
   },
   "by %1": {
     "by %1": "%1 による"
@@ -8919,7 +9114,7 @@
     "days": "日"
   },
   "deprecated": {
-    "deprecated": ""
+    "deprecated": "非推奨"
   },
   "detached": {
     "detached": "切り離し済み"
@@ -8937,7 +9132,7 @@
     "direct": "直接"
   },
   "discuss": {
-    "discuss": ""
+    "discuss": "議論"
   },
   "dms is a highly customizable, modern desktop shell with a <a href=\"https://m3.material.io/\" style=\"text-decoration:none; color:%1;\">material 3 inspired</a> design.<br /><br/>It is built with <a href=\"https://quickshell.org\" style=\"text-decoration:none; color:%1;\">Quickshell</a>, a QT6 framework for building desktop shells, and <a href=\"https://go.dev\" style=\"text-decoration:none; color:%1;\">Go</a>, a statically typed, compiled programming language.": {
     "dms is a highly customizable, modern desktop shell with a <a href=\"https://m3.material.io/\" style=\"text-decoration:none; color:%1;\">material 3 inspired</a> design.<br /><br/>It is built with <a href=\"https://quickshell.org\" style=\"text-decoration:none; color:%1;\">Quickshell</a>, a QT6 framework for building desktop shells, and <a href=\"https://go.dev\" style=\"text-decoration:none; color:%1;\">Go</a>, a statically typed, compiled programming language.": "dms は、<a href=\"https://m3.material.io/\" style=\"text-decoration:none; color:%1;\">Material 3 に着想を得た</a>デザインを持つ、高度にカスタマイズ可能なモダンなデスクトップシェルです。<br /><br/>デスクトップシェルを構築するための QT6 フレームワークである <a href=\"https://quickshell.org\" style=\"text-decoration:none; color:%1;\">Quickshell</a> と、静的型付けのコンパイル言語である <a href=\"https://go.dev\" style=\"text-decoration:none; color:%1;\">Go</a> で構築されています。"
@@ -8945,17 +9140,14 @@
   "dms/cursor config exists but is not included. Cursor settings won't apply.": {
     "dms/cursor config exists but is not included. Cursor settings won't apply.": "dms/cursor 設定は存在しますが、読み込まれていません。カーソル設定は適用されません。"
   },
-  "dms/outputs config exists but is not included in your compositor config. Display changes won't persist.": {
-    "dms/outputs config exists but is not included in your compositor config. Display changes won't persist.": "dms/outputs 設定は存在しますが、コンポジター設定に含まれていません。ディスプレイ変更は保持されません。"
-  },
   "e.g. /usr/bin/my-script --flag": {
-    "e.g. /usr/bin/my-script --flag": ""
+    "e.g. /usr/bin/my-script --flag": "例: /usr/bin/my-script --flag"
   },
   "e.g. My Script": {
-    "e.g. My Script": ""
+    "e.g. My Script": "例: My Script"
   },
   "e.g. alice": {
-    "e.g. alice": ""
+    "e.g. alice": "例: alice"
   },
   "e.g., firefox, kitty --title foo": {
     "e.g., firefox, kitty --title foo": "例: firefox、kitty --title foo"
@@ -8964,7 +9156,7 @@
     "e.g., focus-workspace 3, resize-column -10": "例: focus-workspace 3、resize-column -10"
   },
   "e.g., hl.dsp.focus({ workspace = \"3\" })": {
-    "e.g., hl.dsp.focus({ workspace = \"3\" })": ""
+    "e.g., hl.dsp.focus({ workspace = \"3\" })": "例: hl.dsp.focus({ workspace = \"3\" })"
   },
   "e.g., notify-send 'Hello' && sleep 1": {
     "e.g., notify-send 'Hello' && sleep 1": "例: notify-send 'Hello' && sleep 1"
@@ -8979,7 +9171,7 @@
     "featured": "おすすめ"
   },
   "khal": {
-    "khal": ""
+    "khal": "khal"
   },
   "last seen %1": {
     "last seen %1": "最後に確認されたのは 1%"
@@ -8988,16 +9180,16 @@
     "leave empty for default": "既定値を使うには空のままにしてください"
   },
   "loginctl activate failed (exit %1)": {
-    "loginctl activate failed (exit %1)": ""
+    "loginctl activate failed (exit %1)": "loginctl activate に失敗しました（終了 %1）"
   },
   "loginctl not available - lock integration requires DMS socket connection": {
     "loginctl not available - lock integration requires DMS socket connection": "loginctlが利用できません- ロック統合のためにDMS socketの接続が必要です。"
   },
   "mango: config reloaded": {
-    "mango: config reloaded": ""
+    "mango: config reloaded": "mango: 設定を再読み込みしました"
   },
   "mango: failed to reload config": {
-    "mango: failed to reload config": ""
+    "mango: failed to reload config": "mango: 設定の再読み込みに失敗しました"
   },
   "mangowc Discord Server": {
     "mangowc Discord Server": "mangowc Discord サーバー"
@@ -9084,13 +9276,16 @@
     "relay: %1": "リレー: %1"
   },
   "remote": {
-    "remote": ""
+    "remote": "リモート"
+  },
+  "reviewed": {
+    "reviewed": ""
   },
   "seconds": {
     "seconds": "秒"
   },
   "session %1": {
-    "session %1": ""
+    "session %1": "セッション %1"
   },
   "source": {
     "source": "ソース"
@@ -9099,7 +9294,7 @@
     "this app": "このアプリ"
   },
   "unmaintained": {
-    "unmaintained": ""
+    "unmaintained": "メンテナンス停止"
   },
   "until %1": {
     "until %1": "%1まで"
@@ -9111,19 +9306,19 @@
     "update dms for NM integration.": "NM統合のためにDMSを更新します。"
   },
   "useradd failed (exit %1)": {
-    "useradd failed (exit %1)": ""
+    "useradd failed (exit %1)": "useradd に失敗しました（終了 %1）"
   },
   "userdel failed (exit %1)": {
-    "userdel failed (exit %1)": ""
+    "userdel failed (exit %1)": "userdel に失敗しました（終了 %1）"
   },
   "usermod failed (exit %1)": {
-    "usermod failed (exit %1)": ""
+    "usermod failed (exit %1)": "usermod に失敗しました（終了 %1）"
   },
   "v%1 by %2": {
     "v%1 by %2": "v%1 by %2"
   },
   "verified": {
-    "verified": ""
+    "verified": "検証済み"
   },
   "wtype not available - install wtype for paste support": {
     "wtype not available - install wtype for paste support": "wtype は利用できません - 貼り付け対応には wtype をインストールしてください"
@@ -9171,9 +9366,9 @@
     "↑/↓: Nav • Space: Expand • Enter: Action/Expand • E: Text": "↑/↓: ナビゲーション • Space: 展開 • Enter: アクション/展開 • E: テキスト"
   },
   "↑/↓: Navigate • Enter/Ctrl+C: Copy • Del: Delete • Ctrl+E: Edit • Ctrl+S: Pin/Unpin • F10: Help": {
-    "↑/↓: Navigate • Enter/Ctrl+C: Copy • Del: Delete • Ctrl+E: Edit • Ctrl+S: Pin/Unpin • F10: Help": ""
+    "↑/↓: Navigate • Enter/Ctrl+C: Copy • Del: Delete • Ctrl+E: Edit • Ctrl+S: Pin/Unpin • F10: Help": "↑/↓: 移動 • Enter/Ctrl+C: コピー • Del: 削除 • Ctrl+E: 編集 • Ctrl+S: ピン留め/解除 • F10: ヘルプ"
   },
   "↑/↓: Navigate • Enter: Paste • Ctrl+C: Copy • Del: Delete • Ctrl+E: Edit • Ctrl+S: Pin/Unpin • F10: Help": {
-    "↑/↓: Navigate • Enter: Paste • Ctrl+C: Copy • Del: Delete • Ctrl+E: Edit • Ctrl+S: Pin/Unpin • F10: Help": ""
+    "↑/↓: Navigate • Enter: Paste • Ctrl+C: Copy • Del: Delete • Ctrl+E: Edit • Ctrl+S: Pin/Unpin • F10: Help": "↑/↓: 移動 • Enter: 貼り付け • Ctrl+C: コピー • Del: 削除 • Ctrl+E: 編集 • Ctrl+S: ピン留め/解除 • F10: ヘルプ"
   }
 }

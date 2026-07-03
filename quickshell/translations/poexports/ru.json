@@ -8,6 +8,9 @@
   "%1 Sessions": {
     "%1 Sessions": "Сеансы %1"
   },
+  "%1 Startup Failed": {
+    "%1 Startup Failed": ""
+  },
   "%1 active session": {
     "%1 active session": "%1 активный сеанс"
   },
@@ -503,6 +506,9 @@
   "Adjusts contrast of generated colors (-100 = minimum, 0 = standard, 100 = maximum)": {
     "Adjusts contrast of generated colors (-100 = minimum, 0 = standard, 100 = maximum)": "Регулирует контрастность сгенерированных цветов (-100 = минимум, 0 = стандарт, 100 = максимум)"
   },
+  "Administrator access is required. Use the Sync button in Settings → Greeter to apply.": {
+    "Administrator access is required. Use the Sync button in Settings → Greeter to apply.": ""
+  },
   "Administrator group:": {
     "Administrator group:": "Группа администраторов:"
   },
@@ -563,6 +569,9 @@
   "Always Show Percentage": {
     "Always Show Percentage": "Всегда показывать процент"
   },
+  "Always blur against the wallpaper, even with Xray off": {
+    "Always blur against the wallpaper, even with Xray off": ""
+  },
   "Always hide the dock and reveal it when hovering near the dock area": {
     "Always hide the dock and reveal it when hovering near the dock area": "Всегда скрывать док и показывать при наведении на область дока"
   },
@@ -583,6 +592,9 @@
   },
   "Amount": {
     "Amount": "Количество"
+  },
+  "An xray rule at %1 may conflict with the Xray settings below": {
+    "An xray rule at %1 may conflict with the Xray settings below": ""
   },
   "Analog": {
     "Analog": "Аналоговый"
@@ -640,6 +652,9 @@
   },
   "App Theming": {
     "App Theming": "Реестр тем"
+  },
+  "App name or identity (e.g., firefox)": {
+    "App name or identity (e.g., firefox)": ""
   },
   "Appearance": {
     "Appearance": "Внешний вид"
@@ -833,6 +848,15 @@
   "Auto Power Saver": {
     "Auto Power Saver": ""
   },
+  "Auto matches bar spacing; Off leaves gaps to your Hyprland config": {
+    "Auto matches bar spacing; Off leaves gaps to your Hyprland config": ""
+  },
+  "Auto matches bar spacing; Off leaves gaps to your MangoWC config": {
+    "Auto matches bar spacing; Off leaves gaps to your MangoWC config": ""
+  },
+  "Auto matches bar spacing; Off leaves gaps to your niri config": {
+    "Auto matches bar spacing; Off leaves gaps to your niri config": ""
+  },
   "Auto mode is on. Manual profile selection is disabled.": {
     "Auto mode is on. Manual profile selection is disabled.": "Включён автоматический режим. Ручной выбор профиля отключён."
   },
@@ -860,6 +884,9 @@
   "Auto-login": {
     "Auto-login": "Автоматический вход"
   },
+  "Auto-login change needs a sync": {
+    "Auto-login change needs a sync": ""
+  },
   "Auto-login disabled": {
     "Auto-login disabled": "Автоматический вход отключен"
   },
@@ -871,9 +898,6 @@
   },
   "Auto-save to disk": {
     "Auto-save to disk": "Автосохранение на диск"
-  },
-  "Auto-saving...": {
-    "Auto-saving...": "Автосохранение..."
   },
   "Autoconnect": {
     "Autoconnect": "Автоподключение"
@@ -1028,9 +1052,6 @@
   "Bar Spacing": {
     "Bar Spacing": ""
   },
-  "Bar Transparency": {
-    "Bar Transparency": "Прозрачность бара"
-  },
   "Bar corners and background": {
     "Bar corners and background": "Углы и фон бара"
   },
@@ -1097,9 +1118,6 @@
   "Bind the spotlight-bar IPC action in your compositor config.": {
     "Bind the spotlight-bar IPC action in your compositor config.": "Привяжите IPC-действие spotlight-bar в конфигурации композитора."
   },
-  "Binds Include Missing": {
-    "Binds Include Missing": "Binds Include отсутствует"
-  },
   "Binds include added": {
     "Binds include added": "Binds include добавлен"
   },
@@ -1160,6 +1178,9 @@
   "Blur wallpaper when niri overview is open": {
     "Blur wallpaper when niri overview is open": "Размытие обоев при открытом обзоре Niri"
   },
+  "Blurred surfaces show the wallpaper instead of the content beneath": {
+    "Blurred surfaces show the wallpaper instead of the content beneath": ""
+  },
   "Body": {
     "Body": "Заголовок"
   },
@@ -1195,6 +1216,9 @@
   },
   "Border color around blurred surfaces": {
     "Border color around blurred surfaces": "Цвет рамки вокруг размытых поверхностей"
+  },
+  "Border color around popouts, modals, and other shell surfaces": {
+    "Border color around popouts, modals, and other shell surfaces": ""
   },
   "Border w/ Bg": {
     "Border w/ Bg": "Рамка с фоном"
@@ -1243,6 +1267,9 @@
   },
   "Browse Themes": {
     "Browse Themes": "Просмотр тем"
+  },
+  "Browse and set wallpapers": {
+    "Browse and set wallpapers": ""
   },
   "Browse or search plugins": {
     "Browse or search plugins": "Обзор или поиск Плагины"
@@ -1358,9 +1385,6 @@
   "Change Volume": {
     "Change Volume": "Ничего"
   },
-  "Change bar appearance": {
-    "Change bar appearance": "Изменить панели внешний вид"
-  },
   "Change the locale used by the DMS interface.": {
     "Change the locale used by the DMS interface.": "Изменить язык, используемую интерфейсом DMS."
   },
@@ -1460,6 +1484,9 @@
   "Choose the logo displayed on the launcher button in DankBar": {
     "Choose the logo displayed on the launcher button in DankBar": "Выбрать логотип, отображаемый на кнопке запуска приложений в DankBar"
   },
+  "Choose wallpaper folder": {
+    "Choose wallpaper folder": ""
+  },
   "Choose where notification popups appear on screen": {
     "Choose where notification popups appear on screen": "Выбрать, где на экране будут отображаться всплывающие уведомления"
   },
@@ -1520,9 +1547,6 @@
   "Click 'Setup' to create %1 and add include to your compositor config.": {
     "Click 'Setup' to create %1 and add include to your compositor config.": "Нажмите «Setup» для создания %1 и добавления include в конфиг композитора."
   },
-  "Click 'Setup' to create cursor config and add include to your compositor config.": {
-    "Click 'Setup' to create cursor config and add include to your compositor config.": "Нажмите «Setup» для создания конфига курсора и добавления include в конфиг композитора."
-  },
   "Click 'Setup' to create the outputs config and add include to your compositor config.": {
     "Click 'Setup' to create the outputs config and add include to your compositor config.": "Нажмите «Setup» для создания конфига outputs и добавления include в конфиг композитора."
   },
@@ -1580,6 +1604,9 @@
   "Clock Style": {
     "Clock Style": "Стиль часов"
   },
+  "Clock, calendar, system info and profile": {
+    "Clock, calendar, system info and profile": ""
+  },
   "Close": {
     "Close": "Закрыть"
   },
@@ -1621,6 +1648,9 @@
   },
   "Color for primary action buttons": {
     "Color for primary action buttons": "Цвет для кнопок основных действий"
+  },
+  "Color shown for areas not covered by wallpaper": {
+    "Color shown for areas not covered by wallpaper": ""
   },
   "Color shown for areas not covered by wallpaper (e.g. Fit or Pad modes)": {
     "Color shown for areas not covered by wallpaper (e.g. Fit or Pad modes)": ""
@@ -1841,9 +1871,6 @@
   "Controls how strongly the selected tint color is applied": {
     "Controls how strongly the selected tint color is applied": "Управляет тем, насколько сильно применяется выбранный цвет оттенка"
   },
-  "Controls opacity of all popouts, modals, and their content layers": {
-    "Controls opacity of all popouts, modals, and their content layers": "Контролирует непрозрачность всех всплывающих окон, модальных окон и их слоев контента"
-  },
   "Controls opacity of shell surfaces, popouts, and modals": {
     "Controls opacity of shell surfaces, popouts, and modals": "Управление прозрачностью поверхностей оболочки, всплывающих и модальных окон"
   },
@@ -1865,6 +1892,9 @@
   "Controls outlines around blurred foreground cards, pills, and notification cards": {
     "Controls outlines around blurred foreground cards, pills, and notification cards": "Управляет контурами вокруг размытых карточек переднего плана, плашек и карточек уведомлений"
   },
+  "Controls outlines around foreground cards, pills, and notification cards": {
+    "Controls outlines around foreground cards, pills, and notification cards": ""
+  },
   "Controls shadow cast direction for elevation layers": {
     "Controls shadow cast direction for elevation layers": "Управляет направлением отбрасывания тени для слоев высоты"
   },
@@ -1876,6 +1906,9 @@
   },
   "Controls the outer edge of protocol-blurred windows": {
     "Controls the outer edge of protocol-blurred windows": "Управляет внешним краем окон с размытием по протоколу"
+  },
+  "Controls the outline of popouts, modals, and other shell surfaces": {
+    "Controls the outline of popouts, modals, and other shell surfaces": ""
   },
   "Controls the transparency of the shadow": {
     "Controls the transparency of the shadow": "Управляет прозрачностью тени"
@@ -1960,6 +1993,9 @@
   },
   "Create Window Rule": {
     "Create Window Rule": "Создать правило окна"
+  },
+  "Create a new %1 session (^N)": {
+    "Create a new %1 session (^N)": ""
   },
   "Create a new %1 session (n)": {
     "Create a new %1 session (n)": "Создать новую %1 сессию (n)"
@@ -2111,9 +2147,6 @@
   "Custom Suspend Command": {
     "Custom Suspend Command": "Пользовательская команда приостановки"
   },
-  "Custom Transparency": {
-    "Custom Transparency": "Своя Прозрачность"
-  },
   "Custom command and terminal params are split on whitespace; paths with spaces will break.": {
     "Custom command and terminal params are split on whitespace; paths with spaces will break.": "Пользовательская команда и параметры терминала разделяются по пробелам; пути с пробелами приведут к сбою."
   },
@@ -2137,6 +2170,9 @@
   },
   "Customizable empty space": {
     "Customizable empty space": "Настраиваемое пустое пространство"
+  },
+  "Customize the font and background of the lock screen, or leave empty to use your theme font and desktop wallpaper. Changes apply instantly.": {
+    "Customize the font and background of the lock screen, or leave empty to use your theme font and desktop wallpaper. Changes apply instantly.": ""
   },
   "Customize which actions appear in the power menu": {
     "Customize which actions appear in the power menu": "Настроить, какие действия появляются в меню питания"
@@ -2194,6 +2230,12 @@
   },
   "Dank Bar": {
     "Dank Bar": "Панель Dank"
+  },
+  "Dank Bar Xray": {
+    "Dank Bar Xray": ""
+  },
+  "Dank Dash": {
+    "Dank Dash": ""
   },
   "DankBar": {
     "DankBar": "DankBar"
@@ -2576,9 +2618,6 @@
   "Dock Opacity": {
     "Dock Opacity": "Прозрачность дока"
   },
-  "Dock Transparency": {
-    "Dock Transparency": "Прозрачность Дока"
-  },
   "Dock Visibility": {
     "Dock Visibility": "Видимость дока"
   },
@@ -2612,8 +2651,14 @@
   "Downloads": {
     "Downloads": "Загрузки"
   },
+  "Drag a widget by its handle here to reorder it or drop it into another group": {
+    "Drag a widget by its handle here to reorder it or drop it into another group": ""
+  },
   "Drag to Reorder": {
     "Drag to Reorder": "Перетащите для изменения порядка"
+  },
+  "Drag to reorder or click to hide tabs. Use ↑/↓ to highlight a tab and Ctrl+↑/↓ to move it.": {
+    "Drag to reorder or click to hide tabs. Use ↑/↓ to highlight a tab and Ctrl+↑/↓ to move it.": ""
   },
   "Drag widgets to reorder within sections. Use the eye icon to hide/show widgets (maintains spacing), or X to remove them completely.": {
     "Drag widgets to reorder within sections. Use the eye icon to hide/show widgets (maintains spacing), or X to remove them completely.": "Перетаскивайте виджеты, чтобы изменить их порядок. Используйте значок глаза, чтобы скрыть/отобразить виджеты (с сохранением интервалов), или крестик, чтобы полностью удалить их."
@@ -2629,6 +2674,9 @@
   },
   "Drizzle": {
     "Drizzle": "Морось"
+  },
+  "Drop here": {
+    "Drop here": ""
   },
   "Drop your override for %1 so the DMS default action re-applies?": {
     "Drop your override for %1 so the DMS default action re-applies?": "Сбросить переопределение для %1, чтобы снова применять действие DMS по умолчанию?"
@@ -2660,6 +2708,9 @@
   "Dynamic Theming": {
     "Dynamic Theming": "Динамичные темы"
   },
+  "Dynamic Width": {
+    "Dynamic Width": ""
+  },
   "Dynamic colors from wallpaper": {
     "Dynamic colors from wallpaper": "Динамические цвета из обоев"
   },
@@ -2671,6 +2722,9 @@
   },
   "Dynamic: Spring bezier with overshoot — entry briefly exceeds its target then settles. Expressive and alive.": {
     "Dynamic: Spring bezier with overshoot — entry briefly exceeds its target then settles. Expressive and alive.": "Динамичный: упругая кривая Безье с проскоком — при появлении элемент ненадолго превышает конечную точку, а затем стабилизируется. Выразительно и живо."
+  },
+  "Edge Hover Reveal": {
+    "Edge Hover Reveal": ""
   },
   "Edge Spacing": {
     "Edge Spacing": "Отступ краёв"
@@ -2929,6 +2983,9 @@
   },
   "Exact": {
     "Exact": "Регулярное выражение"
+  },
+  "Excluded Media Players": {
+    "Excluded Media Players": ""
   },
   "Exclusive Zone Offset": {
     "Exclusive Zone Offset": "Смещение Исключительной Зоны"
@@ -3341,12 +3398,6 @@
   "Fit": {
     "Fit": "Плитка вертикально"
   },
-  "Fix Now": {
-    "Fix Now": "Исправить сейчас"
-  },
-  "Fixing...": {
-    "Fixing...": "Исправление..."
-  },
   "Flags": {
     "Flags": "Флаги"
   },
@@ -3407,6 +3458,9 @@
   "Focused Color": {
     "Focused Color": "Цвет активного"
   },
+  "Focused Display": {
+    "Focused Display": ""
+  },
   "Focused Monitor Only": {
     "Focused Monitor Only": "Только активный монитор"
   },
@@ -3449,6 +3503,9 @@
   "Font Weight": {
     "Font Weight": "Вес Шрифта"
   },
+  "Font used for the clock and date on the lock screen": {
+    "Font used for the clock and date on the lock screen": ""
+  },
   "Font used on the login screen": {
     "Font used on the login screen": "Шрифт, используемый на экране входа"
   },
@@ -3479,6 +3536,9 @@
   "Force Kill (SIGKILL)": {
     "Force Kill (SIGKILL)": "Принудительно остановить (SIGKILL)"
   },
+  "Force Padding": {
+    "Force Padding": ""
+  },
   "Force RGBX": {
     "Force RGBX": "Принудительный RGBX"
   },
@@ -3496,6 +3556,9 @@
   },
   "Forecast Not Available": {
     "Forecast Not Available": "Прогноз недоступен"
+  },
+  "Forecast and conditions": {
+    "Forecast and conditions": ""
   },
   "Foreground Layers": {
     "Foreground Layers": "Слои переднего плана"
@@ -3536,6 +3599,9 @@
   "Frame Border Color": {
     "Frame Border Color": "Цвет границы рамки"
   },
+  "Frame Xray": {
+    "Frame Xray": ""
+  },
   "Free VRAM/memory when the launcher is closed. May cause a slight delay when reopening.": {
     "Free VRAM/memory when the launcher is closed. May cause a slight delay when reopening.": "Освободить VRAM/память при закрытии лаунчера. Может вызвать небольшую задержку при повторном открытии."
   },
@@ -3559,6 +3625,9 @@
   },
   "Full Day & Month": {
     "Full Day & Month": "Системный по умолчанию"
+  },
+  "Full Size": {
+    "Full Size": ""
   },
   "Full command to execute": {
     "Full command to execute": "Полная команда для выполнения"
@@ -3610,6 +3679,9 @@
   },
   "Gap between the end widgets and the bar ends (0 = edge-to-edge)": {
     "Gap between the end widgets and the bar ends (0 = edge-to-edge)": ""
+  },
+  "Gaps": {
+    "Gaps": ""
   },
   "Generate Override": {
     "Generate Override": "Создать переопределение"
@@ -3700,6 +3772,9 @@
   },
   "Greeter only — format for the date on the login screen": {
     "Greeter only — format for the date on the login screen": "Только для экрана приветствия — формат даты на экране входа"
+  },
+  "Greeter sync complete": {
+    "Greeter sync complete": ""
   },
   "Grid": {
     "Grid": "Сетка"
@@ -3806,6 +3881,9 @@
   "Hidden apps won't appear in the launcher. Right-click an app and select 'Hide App' to hide it.": {
     "Hidden apps won't appear in the launcher. Right-click an app and select 'Hide App' to hide it.": "Скрытые приложения не будут отображаться в лаунчере. Щёлкните ПКМ по приложению и выберите «Скрыть приложение» для скрытия."
   },
+  "Hidden until weather is enabled": {
+    "Hidden until weather is enabled": ""
+  },
   "Hide": {
     "Hide": "Скрыть"
   },
@@ -3853,6 +3931,12 @@
   },
   "Hide the bar when the pointer leaves even if a popout is still open": {
     "Hide the bar when the pointer leaves even if a popout is still open": "Скрывать панель, когда указатель уходит, даже если всплывающее окно всё ещё открыто"
+  },
+  "Hide when no updates: OFF": {
+    "Hide when no updates: OFF": ""
+  },
+  "Hide when no updates: ON": {
+    "Hide when no updates: ON": ""
   },
   "High": {
     "High": "Высокий"
@@ -3919,6 +4003,9 @@
   },
   "Hourly Forecast Count": {
     "Hourly Forecast Count": "Количество почасовых прогнозов"
+  },
+  "Hover Popouts": {
+    "Hover Popouts": ""
   },
   "How often the server polls for new updates.": {
     "How often the server polls for new updates.": "Как часто сервер проверяет наличие новых обновлений."
@@ -4091,6 +4178,9 @@
   "Initialised": {
     "Initialised": "Инициализировано"
   },
+  "Inner Gaps": {
+    "Inner Gaps": ""
+  },
   "Inner padding applied to each widget": {
     "Inner padding applied to each widget": "Внутренний отступ, применяемый к каждому виджету"
   },
@@ -4210,6 +4300,12 @@
   },
   "Jobs: ": {
     "Jobs: ": "Задания: "
+  },
+  "Jump to page": {
+    "Jump to page": ""
+  },
+  "Jump to page (1 - %1)": {
+    "Jump to page (1 - %1)": ""
   },
   "Keep Awake": {
     "Keep Awake": "Не спать"
@@ -4448,6 +4544,9 @@
   "Lock Screen": {
     "Lock Screen": "Экран Блокировки"
   },
+  "Lock Screen Appearance": {
+    "Lock Screen Appearance": ""
+  },
   "Lock Screen Display": {
     "Lock Screen Display": "Дисплей экрана блокировки"
   },
@@ -4471,6 +4570,9 @@
   },
   "Lock screen authentication changes apply automatically and may open a terminal when sudo authentication is required.": {
     "Lock screen authentication changes apply automatically and may open a terminal when sudo authentication is required.": "Изменения аутентификации экрана блокировки применяются автоматически и могут открыть терминал, если потребуется подтверждение прав sudo."
+  },
+  "Lock screen font": {
+    "Lock screen font": ""
   },
   "Locked": {
     "Locked": "Заблокировано"
@@ -5030,6 +5132,9 @@
   "Next Transition": {
     "Next Transition": "Следующий переход"
   },
+  "Next page": {
+    "Next page": ""
+  },
   "Night": {
     "Night": "Ночь"
   },
@@ -5192,6 +5297,9 @@
   "No errors": {
     "No errors": "Нет ошибок"
   },
+  "No excluded players configured": {
+    "No excluded players configured": ""
+  },
   "No features enabled": {
     "No features enabled": "Функции не включены"
   },
@@ -5299,6 +5407,9 @@
   },
   "No saved clipboard entries": {
     "No saved clipboard entries": "Сохранённые записи буфера обмена отсутствуют"
+  },
+  "No screenshot provided": {
+    "No screenshot provided": ""
   },
   "No session selected": {
     "No session selected": "Сессия не выбрана"
@@ -5408,14 +5519,8 @@
   "Not set": {
     "Not set": "Не установлено"
   },
-  "Note: this only changes the percentage, it does not actually limit charging.": {
-    "Note: this only changes the percentage, it does not actually limit charging.": "Примечание: это изменяет только процент, это фактически не ограничивает зарядку."
-  },
   "Notepad": {
     "Notepad": "Блокнот"
-  },
-  "Notepad Font Settings": {
-    "Notepad Font Settings": "Настройки Шрифта Блокнота"
   },
   "Notepad Settings": {
     "Notepad Settings": "Настройки Блокнота"
@@ -5467,6 +5572,9 @@
   },
   "Notify when limit is reached": {
     "Notify when limit is reached": ""
+  },
+  "Now playing and media controls": {
+    "Now playing and media controls": ""
   },
   "Numbers": {
     "Numbers": "Числа"
@@ -5555,6 +5663,9 @@
   "Open App": {
     "Open App": "Открыть приложение"
   },
+  "Open Delay": {
+    "Open Delay": ""
+  },
   "Open Dir": {
     "Open Dir": "Открыть папку"
   },
@@ -5596,6 +5707,12 @@
   },
   "Open search bar to find text": {
     "Open search bar to find text": "Открыть строку для поиска текста"
+  },
+  "Open the launcher by hovering the emerge edge (when free of bar and dock)": {
+    "Open the launcher by hovering the emerge edge (when free of bar and dock)": ""
+  },
+  "Open widget popouts by hovering over the bar. Moving to another widget switches the popout.": {
+    "Open widget popouts by hovering over the bar. Moving to another widget switches the popout.": ""
   },
   "Open with...": {
     "Open with...": "Открыть с помощью..."
@@ -5648,6 +5765,9 @@
   "Other": {
     "Other": "Другое"
   },
+  "Outer Gaps": {
+    "Outer Gaps": ""
+  },
   "Outline": {
     "Outline": "Контур"
   },
@@ -5666,14 +5786,14 @@
   "Output Tray Missing": {
     "Output Tray Missing": "Выходной лоток отсутствует"
   },
-  "Outputs Include Missing": {
-    "Outputs Include Missing": "Outputs Include отсутствует"
-  },
   "Overcast": {
     "Overcast": "Пасмурно"
   },
   "Overflow": {
     "Overflow": "Переполнение"
+  },
+  "Overlay": {
+    "Overlay": ""
   },
   "Overridden by config": {
     "Overridden by config": "Переопределено конфигурацией"
@@ -5975,6 +6095,9 @@
   "Plugin Visibility": {
     "Plugin Visibility": "Видимость плагинов"
   },
+  "Plugin dependency missing": {
+    "Plugin dependency missing": ""
+  },
   "Plugin disabled: %1": {
     "Plugin disabled: %1": "Плагин отключён: %1"
   },
@@ -6116,6 +6239,9 @@
   "Press 'n' or click 'New Session' to create one": {
     "Press 'n' or click 'New Session' to create one": "Нажмите 'n' или нажмите «Новый сеанс», чтобы создать его"
   },
+  "Press Ctrl+N or click 'New Session' to create one": {
+    "Press Ctrl+N or click 'New Session' to create one": ""
+  },
   "Press Enter and the audio system will restart to apply the change": {
     "Press Enter and the audio system will restart to apply the change": "Нажмите Enter, и аудиосистема перезапустится для применения изменений"
   },
@@ -6131,6 +6257,9 @@
   "Prevent screen timeout": {
     "Prevent screen timeout": "Предотвращение тайм-аута экрана"
   },
+  "Prevent specific applications from displaying in the media controllers (e.g., browser audio streams, background tools). Matches player identity or desktop file name case-insensitively.": {
+    "Prevent specific applications from displaying in the media controllers (e.g., browser audio streams, background tools). Matches player identity or desktop file name case-insensitively.": ""
+  },
   "Preview": {
     "Preview": "Предпросмотр"
   },
@@ -6139,6 +6268,9 @@
   },
   "Previous": {
     "Previous": ""
+  },
+  "Previous page": {
+    "Previous page": ""
   },
   "Primary": {
     "Primary": "Основной"
@@ -6356,6 +6488,9 @@
   "Reject Jobs": {
     "Reject Jobs": "Отклонить задания"
   },
+  "Related: %1": {
+    "Related: %1": ""
+  },
   "Release": {
     "Release": "Релиз"
   },
@@ -6446,6 +6581,9 @@
   "Rename Workspace": {
     "Rename Workspace": "Переименовать рабочую область"
   },
+  "Reorder & Group": {
+    "Reorder & Group": ""
+  },
   "Repeat": {
     "Repeat": "Повторить"
   },
@@ -6481,6 +6619,9 @@
   },
   "Requires a newer version of Quickshell": {
     "Requires a newer version of Quickshell": "требуется более новая версия Quickshell"
+  },
+  "Requires greetd, dms-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys). Auth changes apply automatically and may open a terminal for sudo.": {
+    "Requires greetd, dms-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys). Auth changes apply automatically and may open a terminal for sudo.": ""
   },
   "Requires night mode support": {
     "Requires night mode support": "Требуется поддержка ночного режима"
@@ -6734,6 +6875,9 @@
   "Screen sharing": {
     "Screen sharing": "Демонстрация экрана"
   },
+  "Screenshot unavailable": {
+    "Screenshot unavailable": ""
+  },
   "Scroll": {
     "Scroll": "Прокрутка"
   },
@@ -6893,6 +7037,9 @@
   "Select at least one provider": {
     "Select at least one provider": "Выбрать хотя бы одного провайдера"
   },
+  "Select background image": {
+    "Select background image": ""
+  },
   "Select device": {
     "Select device": "Выбрать устройство"
   },
@@ -6907,6 +7054,9 @@
   },
   "Select greeter background image": {
     "Select greeter background image": "Выбрать фоновое изображение экрана приветствия"
+  },
+  "Select lock screen background image": {
+    "Select lock screen background image": ""
   },
   "Select monitor to configure wallpaper": {
     "Select monitor to configure wallpaper": "Выберите монитор для настройки обоев"
@@ -6959,8 +7109,14 @@
   "Separate": {
     "Separate": "Раздельно"
   },
+  "Separate Appearance for Unfocused Display(s)": {
+    "Separate Appearance for Unfocused Display(s)": ""
+  },
   "Separate Light & Dark Themes": {
     "Separate Light & Dark Themes": ""
+  },
+  "Separate appearance for unfocused displays is not supported on this compositor.": {
+    "Separate appearance for unfocused displays is not supported on this compositor.": ""
   },
   "Separator": {
     "Separator": "Разделитель"
@@ -7009,6 +7165,9 @@
   },
   "Setting": {
     "Setting": "Параметр"
+  },
+  "Setting up...": {
+    "Setting up...": ""
   },
   "Settings": {
     "Settings": "Настройки"
@@ -7078,6 +7237,9 @@
   },
   "Shortcut (%1)": {
     "Shortcut (%1)": "Сочетание клавиш (%1)"
+  },
+  "Shortcut that opens this settings window": {
+    "Shortcut that opens this settings window": ""
   },
   "Shortcuts": {
     "Shortcuts": "Ярлыки"
@@ -7316,6 +7478,9 @@
   "Show foreground surfaces on blurred panels for stronger contrast": {
     "Show foreground surfaces on blurred panels for stronger contrast": "Показывать элементы переднего плана на размытых панелях для лучшего контраста"
   },
+  "Show foreground surfaces on panels for stronger contrast": {
+    "Show foreground surfaces on panels for stronger contrast": ""
+  },
   "Show in GB": {
     "Show in GB": "Показывать в GB"
   },
@@ -7472,9 +7637,6 @@
   "Smartcard Authentication": {
     "Smartcard Authentication": "Аутентификация Smartcard"
   },
-  "Smartcard PIN": {
-    "Smartcard PIN": "PIN смарт-карты"
-  },
   "Snap": {
     "Snap": "Прилипание"
   },
@@ -7489,6 +7651,9 @@
   },
   "Sort By": {
     "Sort By": "Сортировать по"
+  },
+  "Sort wallpapers": {
+    "Sort wallpapers": ""
   },
   "Sorting & Layout": {
     "Sorting & Layout": "Сортировка и макет"
@@ -7507,6 +7672,9 @@
   },
   "Space between windows": {
     "Space between windows": "Расстояние между окнами"
+  },
+  "Space between windows and screen edges": {
+    "Space between windows and screen edges": ""
   },
   "Spacer": {
     "Spacer": "Разделитель"
@@ -7616,6 +7784,12 @@
   "Surface Behavior": {
     "Surface Behavior": "Поведение поверхностей"
   },
+  "Surface Border Color": {
+    "Surface Border Color": ""
+  },
+  "Surface Border Opacity": {
+    "Surface Border Opacity": ""
+  },
   "Surface Container": {
     "Surface Container": ""
   },
@@ -7679,6 +7853,9 @@
   "Sync Position Across Screens": {
     "Sync Position Across Screens": "Синхронизировать позицию на всех экранах"
   },
+  "Sync applies your theme and settings to the login screen. Other users should run dms greeter sync --profile instead of a full sync. Authentication changes apply automatically.": {
+    "Sync applies your theme and settings to the login screen. Other users should run dms greeter sync --profile instead of a full sync. Authentication changes apply automatically.": ""
+  },
   "Sync completed successfully.": {
     "Sync completed successfully.": "Синхронизация завершена успешно."
   },
@@ -7690,6 +7867,12 @@
   },
   "Sync needs sudo authentication. Opening terminal so you can use password or fingerprint.": {
     "Sync needs sudo authentication. Opening terminal so you can use password or fingerprint.": "Для синхронизации требуются права sudo. Открытие терминала для ввода пароля или сканирования отпечатка пальца."
+  },
+  "Sync to apply": {
+    "Sync to apply": ""
+  },
+  "Syncing...": {
+    "Syncing...": ""
   },
   "System": {
     "System": "Система"
@@ -7829,6 +8012,9 @@
   "Text Rendering": {
     "Text Rendering": "Отрисовка текста"
   },
+  "The 'boregard' tool is not installed or not on your PATH.\n\nInstall it from https://danklinux.com, then re-enable this plugin.": {
+    "The 'boregard' tool is not installed or not on your PATH.\n\nInstall it from https://danklinux.com, then re-enable this plugin.": ""
+  },
   "The 'dgop' tool is required for system monitoring.\nPlease install dgop to use this feature.": {
     "The 'dgop' tool is required for system monitoring.\nPlease install dgop to use this feature.": "Инструмент 'dgop' требуется для системного мониторинга.\nУстановите dgop для использования этой функции."
   },
@@ -7895,6 +8081,9 @@
   "This install is still using hyprland.conf. Run dms setup to migrate before editing display settings.": {
     "This install is still using hyprland.conf. Run dms setup to migrate before editing display settings.": "Эта установка все еще использует hyprland.conf. Запустите «dms setup» для миграции перед редактированием настроек дисплея."
   },
+  "This install is still using hyprland.conf. Run dms setup to migrate before editing layout settings.": {
+    "This install is still using hyprland.conf. Run dms setup to migrate before editing layout settings.": ""
+  },
   "This install is still using hyprland.conf. Run dms setup to migrate before editing shortcuts in Settings.": {
     "This install is still using hyprland.conf. Run dms setup to migrate before editing shortcuts in Settings.": "Эта установка все еще использует hyprland.conf. Запустите «dms setup» для миграции перед редактированием горячих клавиш в Настройках."
   },
@@ -7960,6 +8149,9 @@
   },
   "Time remaining: %1": {
     "Time remaining: %1": "Осталось времени: %1"
+  },
+  "Time to rest on a widget before its popout opens": {
+    "Time to rest on a widget before its popout opens": ""
   },
   "Time to wait before hiding after the pointer leaves": {
     "Time to wait before hiding after the pointer leaves": "Время ожидания перед скрытием после ухода указателя"
@@ -8189,6 +8381,9 @@
   "Unfocused Color": {
     "Unfocused Color": "Цвет неактивного"
   },
+  "Unfocused Display(s)": {
+    "Unfocused Display(s)": ""
+  },
   "Ungrouped": {
     "Ungrouped": "Негруппированный"
   },
@@ -8275,9 +8470,6 @@
   },
   "Unsaved changes": {
     "Unsaved changes": "Несохранённые изменения"
-  },
-  "Unsaved note...": {
-    "Unsaved note...": "Несохранённая заметка..."
   },
   "Unset": {
     "Unset": "Не задано"
@@ -8366,6 +8558,9 @@
   "Use System Theme": {
     "Use System Theme": "Использовать системную тему"
   },
+  "Use a custom image for the lock screen, or leave empty to use your desktop wallpaper.": {
+    "Use a custom image for the lock screen, or leave empty to use your desktop wallpaper.": ""
+  },
   "Use a custom image for the login screen, or leave empty to use your desktop wallpaper.": {
     "Use a custom image for the login screen, or leave empty to use your desktop wallpaper.": "Использовать собственное изображение для экрана входа или оставить пустым, чтобы использовать обои рабочего стола."
   },
@@ -8401,6 +8596,9 @@
   },
   "Use different icon themes for light and dark mode": {
     "Use different icon themes for light and dark mode": ""
+  },
+  "Use different workspace colors on displays that are not focused": {
+    "Use different workspace colors on displays that are not focused": ""
   },
   "Use fingerprint authentication for the lock screen.": {
     "Use fingerprint authentication for the lock screen.": "Использовать аутентификацию по отпечатку пальца для экрана блокировки."
@@ -8509,9 +8707,6 @@
   },
   "VPN Connections": {
     "VPN Connections": "VPN соединение"
-  },
-  "VPN Password": {
-    "VPN Password": "VPN Пароль"
   },
   "VPN configuration updated": {
     "VPN configuration updated": "VPN конфигурации updated"
@@ -8681,9 +8876,6 @@
   "White": {
     "White": ""
   },
-  "Wi-Fi Password": {
-    "Wi-Fi Password": "Wi-Fi Пароль"
-  },
   "Wi-Fi and Ethernet connection": {
     "Wi-Fi and Ethernet connection": "Подключение Wi-Fi и Ethernet"
   },
@@ -8726,17 +8918,11 @@
   "Widget Outline": {
     "Widget Outline": "Контур виджета"
   },
-  "Widget Style": {
-    "Widget Style": "Стиль виджета"
-  },
   "Widget Styling": {
     "Widget Styling": "Стилизация виджета"
   },
   "Widget Text Style": {
     "Widget Text Style": ""
-  },
-  "Widget Transparency": {
-    "Widget Transparency": "Виджет Прозрачность"
   },
   "Widget added": {
     "Widget added": "Виджет добавленные"
@@ -8852,8 +9038,14 @@
   "XWayland": {
     "XWayland": "XWayland"
   },
+  "Xray Blur Effect": {
+    "Xray Blur Effect": ""
+  },
   "Xray blurs only the wallpaper (efficient) and is the default when Blur is on. Set Xray to Off for regular full blur of everything beneath the window (more expensive).": {
     "Xray blurs only the wallpaper (efficient) and is the default when Blur is on. Set Xray to Off for regular full blur of everything beneath the window (more expensive).": "X-Ray размывает только обои (эффективно) и используется по умолчанию при включенном размытии. Отключите X-Ray для обычного полного размытия всего, что находится под окном (более ресурсоемко)."
+  },
+  "Xray options are in Compositor → Layout": {
+    "Xray options are in Compositor → Layout": ""
   },
   "Y": {
     "Y": "Y"
@@ -8906,6 +9098,9 @@
   "attached": {
     "attached": "Подключён"
   },
+  "boregard is required": {
+    "boregard is required": ""
+  },
   "brandon": {
     "brandon": "brandon"
   },
@@ -8944,9 +9139,6 @@
   },
   "dms/cursor config exists but is not included. Cursor settings won't apply.": {
     "dms/cursor config exists but is not included. Cursor settings won't apply.": "конфигурация dms/cursor существует но не включена. Настройки курсора не будут применены."
-  },
-  "dms/outputs config exists but is not included in your compositor config. Display changes won't persist.": {
-    "dms/outputs config exists but is not included in your compositor config. Display changes won't persist.": "dms/outputs config существует, но не включён в ваш конфиг композитора. Изменения дисплеев не сохранятся."
   },
   "e.g. /usr/bin/my-script --flag": {
     "e.g. /usr/bin/my-script --flag": "напр. /usr/bin/my-script --flag"
@@ -9085,6 +9277,9 @@
   },
   "remote": {
     "remote": "удалённая"
+  },
+  "reviewed": {
+    "reviewed": ""
   },
   "seconds": {
     "seconds": "секунд"
