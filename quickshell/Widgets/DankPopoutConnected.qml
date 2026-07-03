@@ -38,6 +38,7 @@ Item {
     property bool contentHandlesKeys: false
     property bool fullHeightSurface: false
     property bool _primeContent: false
+    property bool _contentWarm: false
     property bool _resizeActive: false
     property real _chromeAnimTravelX: 1
     property real _chromeAnimTravelY: 1
@@ -472,6 +473,7 @@ Item {
         isClosing = false;
         animationsEnabled = false;
         _primeContent = true;
+        _contentWarm = true;
         _supersededClose = false;
 
         const screenChanged = _lastOpenedScreen !== null && _lastOpenedScreen !== screen;
@@ -1334,7 +1336,8 @@ Item {
                         Loader {
                             id: contentLoader
                             anchors.fill: parent
-                            active: root._primeContent || shouldBeVisible || contentWindow.visible
+                            // _contentWarm keeps the tree loaded across close for fast re-open; reclaimed by PopoutService on lock/idle.
+                            active: root._primeContent || shouldBeVisible || contentWindow.visible || root._contentWarm
                             asynchronous: false
                         }
                     }

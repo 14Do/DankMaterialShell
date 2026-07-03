@@ -134,12 +134,7 @@ Item {
         }
     }
 
-    Connections {
-        target: CompositorService
-        function onToplevelsChanged() {
-            root._maybeResolveBackend();
-        }
-    }
+    // Backend re-resolution on toplevel activity is covered by CompositorService.frameBlockedByScreen.
 
     function _usesConnectedBackendForScreen(targetScreen) {
         return CompositorService.usesConnectedFrameChromeForScreen(targetScreen);

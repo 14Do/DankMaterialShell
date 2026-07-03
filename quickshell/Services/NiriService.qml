@@ -435,26 +435,31 @@ Singleton {
     function handleWindowFocusChanged(data) {
         const focusedWindowId = data.id;
 
+        // Only clone windows whose focus flag changes; skip reassignment if nothing changed.
         let focusedWindow = null;
-        const updatedWindows = [];
+        let changed = false;
+        const updatedWindows = new Array(windows.length);
 
         for (var i = 0; i < windows.length; i++) {
             const w = windows[i];
-            const updatedWindow = {};
-
-            for (let prop in w) {
-                updatedWindow[prop] = w[prop];
+            const isFocused = w.id === focusedWindowId;
+            if (!!w.is_focused === isFocused) {
+                updatedWindows[i] = w;
+                if (isFocused)
+                    focusedWindow = w;
+                continue;
             }
-
-            updatedWindow.is_focused = (w.id === focusedWindowId);
-            if (updatedWindow.is_focused) {
+            const updatedWindow = Object.assign({}, w, {
+                "is_focused": isFocused
+            });
+            if (isFocused)
                 focusedWindow = updatedWindow;
-            }
-
-            updatedWindows.push(updatedWindow);
+            updatedWindows[i] = updatedWindow;
+            changed = true;
         }
 
-        windows = updatedWindows;
+        if (changed)
+            windows = updatedWindows;
 
         if (focusedWindow) {
             const ws = root.workspaces[focusedWindow.workspace_id];
@@ -490,26 +495,29 @@ Singleton {
             setWorkspaces(updatedWorkspaces);
         }
 
-        const updatedWindows = [];
+        let changed = false;
+        const updatedWindows = new Array(windows.length);
 
         for (var i = 0; i < windows.length; i++) {
             const w = windows[i];
-            const updatedWindow = {};
-
-            for (let prop in w) {
-                updatedWindow[prop] = w[prop];
-            }
-
+            let isFocused;
             if (data.active_window_id !== null && data.active_window_id !== undefined) {
-                updatedWindow.is_focused = (w.id == data.active_window_id);
+                isFocused = (w.id == data.active_window_id);
             } else {
-                updatedWindow.is_focused = w.workspace_id == data.workspace_id ? false : w.is_focused;
+                isFocused = w.workspace_id == data.workspace_id ? false : !!w.is_focused;
             }
-
-            updatedWindows.push(updatedWindow);
+            if (!!w.is_focused === isFocused) {
+                updatedWindows[i] = w;
+                continue;
+            }
+            updatedWindows[i] = Object.assign({}, w, {
+                "is_focused": isFocused
+            });
+            changed = true;
         }
 
-        windows = updatedWindows;
+        if (changed)
+            windows = updatedWindows;
     }
 
     function handleWindowsChanged(data) {
