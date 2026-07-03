@@ -741,7 +741,19 @@ Singleton {
         });
     }
 
-    function moveColumnLeft() {
+    function focusMonitor(outputName) {
+        return send({
+            "Action": {
+                "FocusMonitor": {
+                    "output": outputName
+                }
+            }
+        });
+    }
+
+    function moveColumnLeft(outputName) {
+        if (outputName && outputName !== currentOutput)
+            focusMonitor(outputName);
         return send({
             "Action": {
                 "FocusColumnLeft": {}
@@ -749,7 +761,9 @@ Singleton {
         });
     }
 
-    function moveColumnRight() {
+    function moveColumnRight(outputName) {
+        if (outputName && outputName !== currentOutput)
+            focusMonitor(outputName);
         return send({
             "Action": {
                 "FocusColumnRight": {}

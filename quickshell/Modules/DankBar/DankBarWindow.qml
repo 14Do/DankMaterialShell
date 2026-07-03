@@ -1158,9 +1158,9 @@ PanelWindow {
                                 if (!CompositorService.isNiri)
                                     return false;
                                 if (direction > 0)
-                                    NiriService.moveColumnRight();
+                                    NiriService.moveColumnRight(barWindow.screenName);
                                 else
-                                    NiriService.moveColumnLeft();
+                                    NiriService.moveColumnLeft(barWindow.screenName);
                                 return true;
                             default:
                                 return false;
