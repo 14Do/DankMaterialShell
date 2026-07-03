@@ -869,10 +869,7 @@ FloatingWindow {
                     anchors.topMargin: Theme.spacingS
                     anchors.bottomMargin: Theme.spacingS
                     spacing: Theme.spacingS
-                    model: ScriptModel {
-                        values: root.filteredPlugins
-                        objectProp: "id"
-                    }
+                    model: root.filteredPlugins
                     clip: true
                     visible: !root.isLoading
                     add: null
