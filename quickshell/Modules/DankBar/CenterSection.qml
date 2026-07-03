@@ -340,6 +340,9 @@ Item {
 
             readonly property bool active: widgetLoader.active
             readonly property var item: widgetLoader.item
+            readonly property bool itemVisible: widgetLoader.item?.visible ?? false
+
+            onItemVisibleChanged: layoutTimer.restart()
 
             WidgetHost {
                 id: widgetLoader
@@ -372,7 +375,6 @@ Item {
                 onContentItemReady: contentItem => {
                     contentItem.widthChanged.connect(() => layoutTimer.restart());
                     contentItem.heightChanged.connect(() => layoutTimer.restart());
-                    contentItem.visibleChanged.connect(() => layoutTimer.restart());
                     layoutTimer.restart();
                 }
 

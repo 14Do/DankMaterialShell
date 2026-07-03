@@ -151,7 +151,7 @@ PanelWindow {
             barBlur.rebuild();
         }
         function onBarRevealedChanged() {
-            _blurRebuildTimer.restart();
+            barBlur.rebuild();
         }
     }
 
@@ -169,6 +169,73 @@ PanelWindow {
         }
     }
 
+    Component {
+        id: blurWingRegionComp
+
+        // r×r square at a bar end minus a quarter-disc — the swoop BarCanvas paints
+        Region {
+            id: wingRegion
+
+            property bool atEnd: false
+
+            readonly property real r: barBackground.wing
+            readonly property real bx: topBarMouseArea.x + barUnitInset.x + topBarSlide.x
+            readonly property real by: topBarMouseArea.y + barUnitInset.y + topBarSlide.y
+            readonly property real bw: barUnitInset.width
+            readonly property real bh: barUnitInset.height
+
+            x: {
+                switch (barPos) {
+                case SettingsData.Position.Left:
+                    return bx + bw;
+                case SettingsData.Position.Right:
+                    return bx - r;
+                default:
+                    return atEnd ? bx + bw - r : bx;
+                }
+            }
+            y: {
+                switch (barPos) {
+                case SettingsData.Position.Top:
+                    return by + bh;
+                case SettingsData.Position.Bottom:
+                    return by - r;
+                default:
+                    return atEnd ? by + bh - r : by;
+                }
+            }
+            width: r
+            height: r
+
+            Region {
+                intersection: Intersection.Subtract
+                radius: wingRegion.r
+                width: wingRegion.r * 2
+                height: wingRegion.r * 2
+                x: {
+                    switch (barPos) {
+                    case SettingsData.Position.Left:
+                        return wingRegion.bx + wingRegion.bw;
+                    case SettingsData.Position.Right:
+                        return wingRegion.bx - wingRegion.r * 2;
+                    default:
+                        return wingRegion.atEnd ? wingRegion.bx + wingRegion.bw - wingRegion.r * 2 : wingRegion.bx;
+                    }
+                }
+                y: {
+                    switch (barPos) {
+                    case SettingsData.Position.Top:
+                        return wingRegion.by + wingRegion.bh;
+                    case SettingsData.Position.Bottom:
+                        return wingRegion.by - wingRegion.r * 2;
+                    default:
+                        return wingRegion.atEnd ? wingRegion.by + wingRegion.bh - wingRegion.r * 2 : wingRegion.by;
+                    }
+                }
+            }
+        }
+    }
+
     Item {
         id: barBlur
         visible: false
@@ -179,8 +246,7 @@ PanelWindow {
             teardown();
             if (!BlurService.enabled || !BlurService.available)
                 return;
-            // Hidden bar keeps a null region — an empty clip makes Hyprland blur the whole surface box
-            if (!barWindow.barRevealed)
+            if (!barWindow.barRevealed && CompositorService.isHyprland)
                 return;
             // FrameWindow owns the blur region for the whole edge while the bar wears frame chrome
             if (FrameTransitionState.effectiveFrameEnabled && barWindow.usesFrameBarChrome)
@@ -213,6 +279,17 @@ PanelWindow {
                 if (sub)
                     subRegions.push(sub);
             }
+
+            if (hasBar && barBackground.gothEnabled && barWindow._wingR > 0) {
+                for (const atEnd of [false, true]) {
+                    const wing = blurWingRegionComp.createObject(region, {
+                        atEnd: atEnd
+                    });
+                    if (wing)
+                        subRegions.push(wing);
+                }
+            }
+
             region.regions = subRegions;
 
             barWindow.BackgroundEffect.blurRegion = region;
@@ -224,7 +301,9 @@ PanelWindow {
                 return;
             try {
                 barWindow.BackgroundEffect.blurRegion = null;
-            } catch (e) {}
+            } catch (e) {
+                log.warn("BarBlur: failed to clear blur region:", e);
+            }
             barWindow.blurRegion.destroy();
             barWindow.blurRegion = null;
         }
@@ -252,6 +331,17 @@ PanelWindow {
                     barWindow.blurRegion.changed();
             }
             function onYChanged() {
+                if (barWindow.blurRegion)
+                    barWindow.blurRegion.changed();
+            }
+        }
+
+        Connections {
+            target: barBackground
+            function onGothEnabledChanged() {
+                _blurRebuildTimer.restart();
+            }
+            function onWingChanged() {
                 if (barWindow.blurRegion)
                     barWindow.blurRegion.changed();
             }
@@ -803,14 +893,53 @@ PanelWindow {
 
         property bool autoHide: barConfig?.autoHide ?? false
         property bool revealSticky: false
+        // In click-through mode the hidden bar's input mask covers the full
+        // band while the revealed bar's mask covers only the widget sections,
+        // so the pointer position is unknowable while it is over a gap. An
+        // enter on the hidden bar therefore only reveals once the pointer
+        // reaches a thin strip at the screen edge; anything else (including
+        // the spurious enter generated by the mask expanding underneath a
+        // resting pointer) keeps the bar hidden.
+        property bool gapEnterSuppressed: false
+        readonly property bool hoverReveal: topBarMouseArea.containsMouse && !gapEnterSuppressed
         readonly property bool ipcReveal: !!SettingsData.barIpcRevealStates[barConfig?.id ?? ""]
+
+        onRevealChanged: {
+            if (reveal && barWindow.clickThroughEnabled)
+                revealSettle.restart();
+        }
+
+        // The input mask updates lag reveal transitions, generating spurious
+        // enter/leave pairs. Hides are deferred until the transition settles;
+        // the timer re-evaluates against the post-transition mask.
+        Timer {
+            id: revealSettle
+            interval: 600
+            repeat: false
+            onTriggered: topBarCore.evaluateReveal()
+        }
+
+        function inEdgeStrip(x, y) {
+            const band = barWindow.isVertical ? topBarMouseArea.width : topBarMouseArea.height;
+            const strip = Math.max(8, band * 0.15);
+            switch (barPos) {
+            case SettingsData.Position.Bottom:
+                return y >= band - strip;
+            case SettingsData.Position.Left:
+                return x <= strip;
+            case SettingsData.Position.Right:
+                return x >= band - strip;
+            default:
+                return y <= strip;
+            }
+        }
 
         Timer {
             id: revealHold
-            interval: barWindow.clickThroughEnabled ? Math.max((barConfig?.autoHideDelay ?? 250) * 6, 1500) : (barConfig?.autoHideDelay ?? 250)
+            interval: barConfig?.autoHideDelay ?? 250
             repeat: false
             onTriggered: {
-                if (!topBarMouseArea.containsMouse && !topBarCore.popoutPinsReveal)
+                if (!topBarCore.hoverReveal && !topBarCore.popoutPinsReveal)
                     topBarCore.revealSticky = false;
             }
         }
@@ -863,14 +992,14 @@ PanelWindow {
             const showOnWindowsSetting = barConfig?.showOnWindowsOpen ?? false;
             if (showOnWindowsSetting && autoHide && (CompositorService.isNiri || CompositorService.isHyprland || CompositorService.isMango)) {
                 if (barWindow.shouldHideForWindows)
-                    return topBarMouseArea.containsMouse || popoutPinsReveal || revealSticky || ipcReveal;
+                    return hoverReveal || popoutPinsReveal || revealSticky || ipcReveal;
                 return true;
             }
 
             if (CompositorService.isNiri && NiriService.inOverview)
-                return topBarMouseArea.containsMouse || popoutPinsReveal || revealSticky || ipcReveal;
+                return hoverReveal || popoutPinsReveal || revealSticky || ipcReveal;
 
-            return (barConfig?.visible ?? true) && (!autoHide || topBarMouseArea.containsMouse || popoutPinsReveal || revealSticky || ipcReveal);
+            return (barConfig?.visible ?? true) && (!autoHide || hoverReveal || popoutPinsReveal || revealSticky || ipcReveal);
         }
 
         Connections {
@@ -888,7 +1017,7 @@ PanelWindow {
             if (!autoHide)
                 return;
 
-            if (topBarMouseArea.containsMouse) {
+            if (hoverReveal) {
                 SettingsData.setBarIpcReveal(barConfig?.id ?? "", false);
                 revealSticky = true;
                 revealHold.stop();
@@ -901,12 +1030,21 @@ PanelWindow {
                 return;
             }
 
+            if (revealSettle.running)
+                return;
+
+            revealHold.interval = barConfig?.autoHideDelay ?? 250;
             revealHold.restart();
         }
 
         Connections {
             target: topBarMouseArea
             function onContainsMouseChanged() {
+                if (!topBarMouseArea.containsMouse) {
+                    topBarCore.gapEnterSuppressed = false;
+                } else if (barWindow.clickThroughEnabled && !topBarCore.reveal) {
+                    topBarCore.gapEnterSuppressed = true;
+                }
                 topBarCore.evaluateReveal();
             }
         }
@@ -927,6 +1065,14 @@ PanelWindow {
             hoverEnabled: (barConfig?.autoHide ?? false) && !inOverview && !topBarCore.popoutPinsReveal
             acceptedButtons: Qt.NoButton
             enabled: (barConfig?.autoHide ?? false) && !inOverview
+            onPositionChanged: mouse => {
+                if (!topBarCore.gapEnterSuppressed)
+                    return;
+                if (!topBarCore.inEdgeStrip(mouse.x, mouse.y))
+                    return;
+                topBarCore.gapEnterSuppressed = false;
+                topBarCore.evaluateReveal();
+            }
 
             Item {
                 id: topBarContainer
