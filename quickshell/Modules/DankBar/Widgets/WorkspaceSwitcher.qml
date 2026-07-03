@@ -1283,10 +1283,15 @@ Item {
 
                 readonly property color requestedColor: isActive ? activeColor : isUrgent ? urgentColor : isPlaceholder ? Theme.surfaceTextLight : isHovered ? Theme.withAlpha(unfocusedColor, 0.7) : isOccupied ? occupiedColor : unfocusedColor
 
-                property color displayColor: requestedColor
                 property bool colorAnimationReady: false
 
-                onRequestedColorChanged: Qt.callLater(() => delegateRoot.displayColor = delegateRoot.requestedColor)
+                readonly property color displayColor: pillColor.value
+
+                DankColorAnimation {
+                    id: pillColor
+                    to: delegateRoot.requestedColor
+                    animated: delegateRoot.colorAnimationReady
+                }
 
                 Item {
                     id: dragHandler
@@ -1555,14 +1560,6 @@ Item {
 
                     Behavior on height {
                         NumberAnimation {
-                            duration: Theme.mediumDuration
-                            easing.type: Theme.emphasizedEasing
-                        }
-                    }
-
-                    Behavior on color {
-                        enabled: delegateRoot.colorAnimationReady
-                        ColorAnimation {
                             duration: Theme.mediumDuration
                             easing.type: Theme.emphasizedEasing
                         }

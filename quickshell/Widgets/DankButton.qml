@@ -44,7 +44,7 @@ Rectangle {
                 return Theme.withAlpha(root.textColor, 0.20);
             if (hovered)
                 return Theme.withAlpha(root.textColor, 0.12);
-            return "transparent";
+            return Theme.withAlpha(root.textColor, 0);
         }
 
         Behavior on color {

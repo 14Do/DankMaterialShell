@@ -279,7 +279,7 @@ Column {
                     scale: delegateItem.dragging ? 1.02 : 1.0
                     transformOrigin: Item.Center
                     radius: delegateItem.dragging ? Theme.cornerRadius + 6 : Theme.cornerRadius
-                    color: delegateItem.dragging ? Theme.secondaryContainer : Theme.withAlpha(Theme.surfaceContainer, modelData.enabled ? 0.7 : 0.4)
+                    color: itemColor.value
                     border.color: delegateItem.dragging ? Theme.primary : Theme.outlineHeavy
                     border.width: delegateItem.dragging ? 2 : 1
 
@@ -295,10 +295,10 @@ Column {
                             easing.type: Easing.OutCubic
                         }
                     }
-                    Behavior on color {
-                        ColorAnimation {
-                            duration: Theme.shortDuration
-                        }
+                    DankColorAnimation {
+                        id: itemColor
+                        to: delegateItem.dragging ? Theme.secondaryContainer : Theme.withAlpha(Theme.surfaceContainer, modelData.enabled ? 0.7 : 0.4)
+                        duration: Theme.shortDuration
                     }
                     Behavior on border.color {
                         ColorAnimation {

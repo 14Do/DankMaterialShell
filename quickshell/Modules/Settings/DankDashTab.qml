@@ -424,24 +424,20 @@ Item {
                                     id: surface
                                     anchors.fill: parent
                                     radius: rowItem.dragging ? Theme.cornerRadius + 6 : Theme.cornerRadius
-                                    color: {
-                                        if (rowItem.dragging)
-                                            return Theme.secondaryContainer;
-                                        const base = Theme.surfaceContainer;
-                                        return Theme.withAlpha(base, rowItem.isEnabled ? 0.7 : 0.4);
-                                    }
+                                    color: surfaceColor.value
                                     border.width: rowItem.dragging ? 2 : 1
                                     border.color: rowItem.dragging ? Theme.primary : Theme.outlineHeavy
+
+                                    DankColorAnimation {
+                                        id: surfaceColor
+                                        to: rowItem.dragging ? Theme.secondaryContainer : Theme.withAlpha(Theme.surfaceContainer, rowItem.isEnabled ? 0.7 : 0.4)
+                                        duration: Theme.shortDuration
+                                    }
 
                                     Behavior on radius {
                                         NumberAnimation {
                                             duration: Theme.shortDuration
                                             easing.type: Easing.OutCubic
-                                        }
-                                    }
-                                    Behavior on color {
-                                        ColorAnimation {
-                                            duration: Theme.shortDuration
                                         }
                                     }
                                     Behavior on border.color {

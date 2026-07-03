@@ -191,19 +191,19 @@ FloatingWindow {
                             width: isActive ? dotSize * 3 : dotSize
                             height: dotSize
                             radius: dotSize / 2
-                            color: isActive ? Theme.primary : Theme.surfaceTextAlpha
+                            color: dotColor.value
                             anchors.verticalCenter: parent.verticalCenter
+
+                            DankColorAnimation {
+                                id: dotColor
+                                to: isActive ? Theme.primary : Theme.surfaceTextAlpha
+                                duration: Theme.shortDuration
+                            }
 
                             Behavior on width {
                                 NumberAnimation {
                                     duration: Theme.shortDuration
                                     easing.type: Theme.emphasizedEasing
-                                }
-                            }
-
-                            Behavior on color {
-                                ColorAnimation {
-                                    duration: Theme.shortDuration
                                 }
                             }
                         }

@@ -1,7 +1,6 @@
 pragma ComponentBehavior: Bound
 
 import QtQuick
-import Quickshell
 import qs.Common
 import qs.Services
 import qs.Widgets
@@ -319,13 +318,13 @@ FocusScope {
                             Rectangle {
                                 anchors.fill: parent
                                 radius: height / 2
-                                color: categoryChip.isSelected ? Theme.primary : chipArea.containsMouse ? Theme.surfaceHover : Theme.surfaceVariantAlpha
+                                color: chipColor.value
 
-                                Behavior on color {
-                                    ColorAnimation {
-                                        duration: root._fastDuration
-                                        easing.type: Theme.standardEasing
-                                    }
+                                DankColorAnimation {
+                                    id: chipColor
+                                    to: categoryChip.isSelected ? Theme.primary : chipArea.containsMouse ? Theme.surfaceHover : Theme.surfaceVariantAlpha
+                                    duration: root._fastDuration
+                                    easingType: Theme.standardEasing
                                 }
 
                                 StyledText {
