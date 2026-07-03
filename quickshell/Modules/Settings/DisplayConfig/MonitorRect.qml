@@ -85,6 +85,8 @@ Rectangle {
             color: root.isConnected ? Theme.surfaceText : Theme.surfaceVariantText
             horizontalAlignment: Text.AlignHCenter
             anchors.horizontalCenter: parent.horizontalCenter
+            wrapMode: Text.NoWrap
+            maximumLineCount: 1
             elide: Text.ElideMiddle
             width: Math.min(implicitWidth, root.width - 8)
         }

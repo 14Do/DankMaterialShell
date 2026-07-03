@@ -632,4 +632,17 @@ Item {
         onConfirmed: DisplayConfigState.confirmChanges(root.selectedProfileId)
         onReverted: DisplayConfigState.revertChanges()
     }
+
+    readonly property bool identifyConfigured: {
+        if (!DisplayConfigState.hasOutputBackend || DisplayConfigState.readOnly)
+            return false;
+        if (!["niri", "hyprland", "mango"].includes(CompositorService.compositor))
+            return true;
+        return DisplayConfigState.includeStatus.included;
+    }
+
+    Loader {
+        active: root.visible && root.identifyConfigured
+        sourceComponent: MonitorIdentifyOverlay {}
+    }
 }
