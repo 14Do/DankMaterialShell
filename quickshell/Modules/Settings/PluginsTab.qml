@@ -20,6 +20,11 @@ FocusScope {
     property string searchQuery: ""
     property var filteredPlugins: []
 
+    readonly property var pluginsWithUpdates: {
+        if (!DMSService.installedPlugins) return [];
+        return DMSService.installedPlugins.filter(p => p.hasUpdate === true);
+    }
+
     function updateFilteredPlugins() {
         var query = searchQuery.toLowerCase();
         filteredPlugins = PluginService.availablePluginsList.filter(plugin => {
@@ -261,8 +266,22 @@ FocusScope {
                                 }
                             }
                         }
+
+                        DankButton {
+                            text: I18n.tr("Update All")
+                            iconName: "download"
+                            enabled: DMSService.dmsAvailable && pluginsTab.pluginsWithUpdates.length > 0
+                            onClicked: {
+                                showPluginUpdatesDialog();
+                            }
+                        }
                     }
                 }
+            }
+
+            PluginUpdatesDialog {
+                id: pluginUpdatesDialogItem
+                width: parent.width
             }
 
             StyledRect {
@@ -532,5 +551,9 @@ FocusScope {
         pluginBrowserLoader.active = true;
         if (pluginBrowserLoader.item)
             pluginBrowserLoader.item.show();
+    }
+
+    function showPluginUpdatesDialog() {
+        pluginUpdatesDialogItem.show(pluginsTab.pluginsWithUpdates);
     }
 }
