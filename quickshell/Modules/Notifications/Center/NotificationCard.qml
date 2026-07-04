@@ -268,6 +268,7 @@ Rectangle {
 
         DankCircularImage {
             id: iconContainer
+            cacheImages: false
             readonly property string rawImage: notificationGroup?.latestNotification?.image || ""
             readonly property string iconFromImage: {
                 if (rawImage.startsWith("image://icon/"))
@@ -610,6 +611,7 @@ Rectangle {
 
                             DankCircularImage {
                                 id: messageIcon
+                                cacheImages: false
 
                                 readonly property string rawImage: modelData?.image || ""
                                 readonly property string iconFromImage: {

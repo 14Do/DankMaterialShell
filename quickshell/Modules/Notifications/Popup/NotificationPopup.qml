@@ -818,6 +818,7 @@ PanelWindow {
 
                 DankCircularImage {
                     id: iconContainer
+                    cacheImages: false
 
                     readonly property string rawImage: notificationData?.image || ""
                     readonly property string iconFromImage: {

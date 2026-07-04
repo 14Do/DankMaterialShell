@@ -10,6 +10,7 @@ Rectangle {
     property string imageSource: ""
     property string fallbackIcon: "notifications"
     property string fallbackText: ""
+    property bool cacheImages: true
     property bool hasImage: imageSource !== ""
     readonly property bool shouldProbe: imageSource !== "" && !imageSource.startsWith("image://")
     // Probe with AnimatedImage first; once loaded, check frameCount to decide.
@@ -65,7 +66,7 @@ Rectangle {
         fillMode: Image.PreserveAspectCrop
         smooth: true
         mipmap: true
-        cache: true
+        cache: root.cacheImages
         visible: false
         source: root.shouldProbe ? root.imageSource : ""
     }
@@ -79,7 +80,7 @@ Rectangle {
         fillMode: Image.PreserveAspectCrop
         smooth: true
         mipmap: true
-        cache: true
+        cache: root.cacheImages
         visible: false
         sourceSize.width: Math.max(width * 2, 128)
         sourceSize.height: Math.max(height * 2, 128)

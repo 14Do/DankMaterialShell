@@ -113,6 +113,7 @@ Rectangle {
 
         DankCircularImage {
             id: iconContainer
+            cacheImages: false
             readonly property string rawImage: historyItem.image || ""
             readonly property string iconFromImage: {
                 if (rawImage.startsWith("image://icon/"))
