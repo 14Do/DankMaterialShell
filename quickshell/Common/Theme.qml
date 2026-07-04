@@ -1801,8 +1801,11 @@ Singleton {
         const iconTheme = (typeof SettingsData !== "undefined" && SettingsData.iconTheme) ? SettingsData.iconTheme : "System Default";
 
         if (currentTheme === dynamic) {
-            if (!rawWallpaperPath)
+            if (!rawWallpaperPath) {
+                log.warn("Auto theme has no wallpaper - skipping matugen, syncing portal mode only");
+                PortalService.setLightMode(isLight);
                 return;
+            }
             const selectedMatugenType = (typeof SettingsData !== "undefined" && SettingsData.matugenScheme) ? SettingsData.matugenScheme : "scheme-tonal-spot";
             const kind = rawWallpaperPath.startsWith("#") ? "hex" : "image";
             setDesiredTheme(kind, rawWallpaperPath, isLight, iconTheme, selectedMatugenType, null);
