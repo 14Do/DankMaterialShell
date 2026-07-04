@@ -68,27 +68,6 @@ const KEY_MAP = {
     16777429: "XF86Explorer",
     16777442: "XF86Launch0",
     16777443: "XF86Launch1",
-    33: "1",
-    64: "2",
-    35: "3",
-    36: "4",
-    37: "5",
-    94: "6",
-    38: "7",
-    42: "8",
-    40: "9",
-    41: "0",
-    60: "Comma",
-    62: "Period",
-    63: "Slash",
-    58: "Semicolon",
-    34: "Apostrophe",
-    123: "BracketLeft",
-    125: "BracketRight",
-    124: "Backslash",
-    95: "Minus",
-    43: "Equal",
-    126: "grave",
     196: "Adiaeresis",
     214: "Odiaeresis",
     220: "Udiaeresis",
@@ -126,6 +105,56 @@ const KEY_MAP = {
     161: "exclamdown"
 };
 
+// Preserve unshifted symbols from the active layout
+const SYMBOL_KEYSYM = {
+    33: "exclam",
+    34: "quotedbl",
+    35: "numbersign",
+    36: "dollar",
+    37: "percent",
+    38: "ampersand",
+    40: "parenleft",
+    41: "parenright",
+    42: "asterisk",
+    43: "plus",
+    58: "colon",
+    60: "less",
+    62: "greater",
+    63: "question",
+    64: "at",
+    94: "asciicircum",
+    95: "underscore",
+    123: "braceleft",
+    124: "bar",
+    125: "braceright",
+    126: "asciitilde"
+};
+
+// Preserve the existing shifted-US physical-key mapping
+const SHIFTED_US_FALLBACK = {
+    33: "1",
+    34: "Apostrophe",
+    35: "3",
+    36: "4",
+    37: "5",
+    38: "7",
+    40: "9",
+    41: "0",
+    42: "8",
+    43: "Equal",
+    58: "Semicolon",
+    60: "Comma",
+    62: "Period",
+    63: "Slash",
+    64: "2",
+    94: "6",
+    95: "Minus",
+    123: "BracketLeft",
+    124: "Backslash",
+    125: "BracketRight",
+    126: "grave"
+};
+
 // Numpad (keypad) keys. Qt reuses the same Qt::Key_* values for the numpad and
 // the main rows/nav cluster; only Qt.KeypadModifier distinguishes them. niri and
 // the other compositors bind against the xkb KP_* keysym names, so we must emit
@@ -153,13 +182,17 @@ const KP_MAP = {
     46: "KP_Decimal"
 };
 
-function xkbKeyFromQtKey(qk, isKeypad) {
+function xkbKeyFromQtKey(qk, isKeypad, hasShift) {
     if (isKeypad) {
         if (qk >= 48 && qk <= 57)
             return "KP_" + (qk - 48);
         if (KP_MAP[qk])
             return KP_MAP[qk];
     }
+    if (!hasShift && SYMBOL_KEYSYM[qk])
+        return SYMBOL_KEYSYM[qk];
+    if (hasShift && SHIFTED_US_FALLBACK[qk])
+        return SHIFTED_US_FALLBACK[qk];
     if (qk >= 65 && qk <= 90)
         return String.fromCharCode(qk);
     if (qk >= 97 && qk <= 122)

@@ -725,10 +725,11 @@ Item {
                                 if (!mods.includes("Shift"))
                                     mods.push("Shift");
                             }
+                            const hasShift = mods.includes("Shift");
                             if (KeybindsService.currentProvider === "niri")
                                 mods = KeyUtils.withSymbolicMod(mods, KeybindsService.modKey);
 
-                            const key = KeyUtils.xkbKeyFromQtKey(qtKey, !!(event.modifiers & Qt.KeypadModifier));
+                            const key = KeyUtils.xkbKeyFromQtKey(qtKey, !!(event.modifiers & Qt.KeypadModifier), hasShift);
                             if (!key) {
                                 log.warn("Unknown key:", event.key, "mods:", event.modifiers);
                                 return;
