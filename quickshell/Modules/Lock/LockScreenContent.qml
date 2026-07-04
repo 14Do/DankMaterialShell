@@ -46,6 +46,7 @@ Item {
     }
 
     signal unlockRequested
+    signal passwordEdited(string text)
 
     function resetLockState() {
         lockerReadySent = false;
@@ -54,6 +55,12 @@ Item {
         pamState = "";
         if (pam)
             pam.lockMessage = "";
+    }
+
+    function focusPasswordField() {
+        if (demoMode || !passwordField)
+            return;
+        passwordField.forceActiveFocus();
     }
 
     function currentAuthFeedbackText() {
@@ -799,7 +806,7 @@ Item {
                     FocusScope {
                         id: passwordField
 
-                        property string text: root.passwordBuffer
+                        readonly property string text: root.passwordBuffer
                         property int cursorPosition: text.length
 
                         signal accepted
@@ -809,7 +816,7 @@ Item {
                         }
 
                         function clear() {
-                            text = "";
+                            root.passwordEdited("");
                             cursorPosition = 0;
                         }
 
@@ -817,23 +824,27 @@ Item {
                             if (value.length === 0)
                                 return;
                             clampCursorPosition();
-                            text = text.slice(0, cursorPosition) + value + text.slice(cursorPosition);
-                            cursorPosition += value.length;
+                            const pos = cursorPosition;
+                            root.passwordEdited(text.slice(0, pos) + value + text.slice(pos));
+                            cursorPosition = pos + value.length;
                         }
 
                         function backspace() {
                             clampCursorPosition();
                             if (cursorPosition === 0)
                                 return;
-                            text = text.slice(0, cursorPosition - 1) + text.slice(cursorPosition);
-                            cursorPosition -= 1;
+                            const pos = cursorPosition;
+                            root.passwordEdited(text.slice(0, pos - 1) + text.slice(pos));
+                            cursorPosition = pos - 1;
                         }
 
                         function deleteForward() {
                             clampCursorPosition();
                             if (cursorPosition === text.length)
                                 return;
-                            text = text.slice(0, cursorPosition) + text.slice(cursorPosition + 1);
+                            const pos = cursorPosition;
+                            root.passwordEdited(text.slice(0, pos) + text.slice(pos + 1));
+                            cursorPosition = pos;
                         }
 
                         function isPrintableText(value) {
@@ -868,11 +879,7 @@ Item {
                         focus: true
                         enabled: !demoMode
                         activeFocusOnTab: !demoMode
-                        onTextChanged: {
-                            if (!demoMode) {
-                                root.passwordBuffer = text;
-                            }
-                        }
+                        onTextChanged: cursorPosition = text.length
                         onAccepted: {
                             if (!demoMode && !root.unlocking && !pam.passwd.active && !pam.u2fPending) {
                                 pam.passwd.start();
@@ -958,7 +965,7 @@ Item {
                         }
 
                         onActiveFocusChanged: {
-                            if (!activeFocus && !demoMode && visible && passwordField && !powerMenu.isVisible) {
+                            if (!activeFocus && !demoMode && passwordField && !powerMenu.isVisible) {
                                 Qt.callLater(() => {
                                     if (passwordField && passwordField.forceActiveFocus) {
                                         passwordField.forceActiveFocus();
@@ -968,23 +975,12 @@ Item {
                         }
 
                         onEnabledChanged: {
-                            if (enabled && !demoMode && visible && passwordField && !powerMenu.isVisible) {
+                            if (enabled && !demoMode && passwordField && !powerMenu.isVisible) {
                                 Qt.callLater(() => {
                                     if (passwordField && passwordField.forceActiveFocus) {
                                         passwordField.forceActiveFocus();
                                     }
                                 });
-                            }
-                        }
-
-                        Connections {
-                            target: root
-
-                            function onPasswordBufferChanged() {
-                                if (passwordField.text === root.passwordBuffer)
-                                    return;
-                                passwordField.text = root.passwordBuffer;
-                                passwordField.cursorPosition = passwordField.text.length;
                             }
                         }
                     }
@@ -1121,8 +1117,7 @@ Item {
                         visible: root.canStartSecurityKeyUnlock()
                         enabled: visible
                         onClicked: {
-                            passwordField.text = "";
-                            root.passwordBuffer = "";
+                            passwordField.clear();
                             pam.u2f.startForAlternativeAuth();
                         }
                     }
@@ -1845,8 +1840,7 @@ Item {
         function onUnlockRequested() {
             root.unlocking = true;
             lockerReadyArmed = false;
-            passwordField.text = "";
-            root.passwordBuffer = "";
+            passwordField.clear();
             root.unlockRequested();
         }
 
@@ -1856,15 +1850,13 @@ Item {
                 return;
             root.unlocking = false;
             placeholderDelay.restart();
-            passwordField.text = "";
-            root.passwordBuffer = "";
+            passwordField.clear();
         }
 
         function onU2fPendingChanged() {
             if (!root.pam.u2fPending)
                 return;
-            passwordField.text = "";
-            root.passwordBuffer = "";
+            passwordField.clear();
             if (keyboardController.isKeyboardActive)
                 keyboardController.hide();
         }
