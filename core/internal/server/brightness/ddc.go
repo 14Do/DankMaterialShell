@@ -68,6 +68,12 @@ func (b *DDCBackend) scanI2CDevicesInternal(force bool) error {
 		activeBuses[i] = true
 		id := fmt.Sprintf("ddc:i2c-%d", i)
 
+		// Don't re-probe identified monitors: DDC traffic during a wake
+		// sequence can disturb some monitors' own brightness handling.
+		if _, ok := b.devices.Load(id); ok {
+			continue
+		}
+
 		dev, err := b.probeDDCDevice(i)
 		if err != nil || dev == nil {
 			continue
@@ -107,7 +113,8 @@ func (b *DDCBackend) probeDDCDevice(bus int) (*ddcDevice, error) {
 	dummy := make([]byte, 32)
 	syscall.Read(fd, dummy) //nolint:errcheck
 
-	writebuf := []byte{0x00}
+	writebuf := []byte{DDC_SOURCE_ADDR, 0x80}
+	writebuf = append(writebuf, ddcciChecksum(writebuf))
 	n, err := syscall.Write(fd, writebuf)
 	if err == nil && n == len(writebuf) {
 		name := b.getDDCName(bus)
