@@ -192,6 +192,19 @@ Singleton {
         return envObj;
     }
 
+    // Restore pre-wrap Qt paths (Nix) so launched apps use their own.
+    function restoreWrapperEnv(env) {
+        const restore = (target, snapshot) => {
+            const orig = Quickshell.env(snapshot);
+            if (orig === null)
+                return;
+            env[target] = orig.length > 0 ? orig : null;
+        };
+        restore("NIXPKGS_QT6_QML_IMPORT_PATH", "DMS_ORIG_NIXPKGS_QT6_QML_IMPORT_PATH");
+        restore("QT_PLUGIN_PATH", "DMS_ORIG_QT_PLUGIN_PATH");
+        return env;
+    }
+
     function launchDesktopEntry(desktopEntry, useNvidia) {
         if (!desktopEntry || !desktopEntry.command)
             return;
@@ -216,7 +229,7 @@ Singleton {
         const cursorEnv = typeof SettingsData.getCursorEnvironment === "function" ? SettingsData.getCursorEnvironment() : {};
 
         const overrideEnv = override?.envVars ? parseEnvVars(override.envVars) : {};
-        const finalEnv = Object.assign({}, cursorEnv, overrideEnv);
+        const finalEnv = restoreWrapperEnv(Object.assign({}, cursorEnv, overrideEnv));
 
         if (desktopEntry.runInTerminal) {
             const terminal = SessionData.resolveTerminal() || "xterm";
@@ -266,13 +279,14 @@ Singleton {
         const prefix = userPrefix.length > 0 ? userPrefix : defaultPrefix;
         const workDir = desktopEntry.workingDirectory || Quickshell.env("HOME");
         const cursorEnv = typeof SettingsData.getCursorEnvironment === "function" ? SettingsData.getCursorEnvironment() : {};
+        const finalEnv = restoreWrapperEnv(Object.assign({}, cursorEnv));
 
         if (prefix.length > 0 && needsShellExecution(prefix)) {
             const escapedCmd = cmd.map(arg => escapeShellArg(arg)).join(" ");
             Quickshell.execDetached({
                 command: ["sh", "-c", `${prefix} ${escapedCmd}`],
                 workingDirectory: workDir,
-                environment: cursorEnv
+                environment: finalEnv
             });
             return;
         }
@@ -283,7 +297,7 @@ Singleton {
         Quickshell.execDetached({
             command: cmd,
             workingDirectory: workDir,
-            environment: cursorEnv
+            environment: finalEnv
         });
     }
 
