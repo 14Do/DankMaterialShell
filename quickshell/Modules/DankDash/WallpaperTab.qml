@@ -20,12 +20,11 @@ Item {
     property int itemsPerPage: 16
     property int totalPages: Math.max(1, Math.ceil(wallpaperFolderModel.count / itemsPerPage))
     property bool active: false
-    property Item focusTarget: wallpaperGrid
+    property Item focusTarget: pager
     property Item tabBarItem: null
     property int gridIndex: 0
     property Item keyForwardTarget: null
     property var parentPopout: null
-    property int lastPage: 0
     property bool enableAnimation: false
     property string homeDir: StandardPaths.writableLocation(StandardPaths.HomeLocation)
     property string selectedFileName: ""
@@ -86,12 +85,12 @@ Item {
         }
     }
 
-    onCurrentPageChanged: {
-        if (currentPage !== lastPage) {
-            enableAnimation = false;
-            lastPage = currentPage;
+    onCurrentPageChanged: updateSelectedFileName()
+
+    onTotalPagesChanged: {
+        if (currentPage >= totalPages) {
+            currentPage = Math.max(0, totalPages - 1);
         }
-        updateSelectedFileName();
     }
 
     onGridIndexChanged: {
@@ -257,6 +256,7 @@ Item {
     }
 
     function setInitialSelection() {
+        enableAnimation = false;
         const currentWallpaper = getCurrentWallpaper();
         if (!currentWallpaper || wallpaperFolderModel.count === 0) {
             gridIndex = 0;
@@ -447,147 +447,176 @@ Item {
             width: parent.width
             height: parent.height - 50
 
-            GridView {
-                id: wallpaperGrid
+            ListView {
+                id: pager
                 anchors.centerIn: parent
                 width: parent.width - Theme.spacingS
                 height: parent.height - Theme.spacingS
-                cellWidth: width / 4
-                cellHeight: height / 4
+                orientation: ListView.Vertical
+                snapMode: ListView.SnapOneItem
+                highlightRangeMode: ListView.StrictlyEnforceRange
+                preferredHighlightBegin: 0
+                preferredHighlightEnd: height
+                highlightMoveDuration: root.enableAnimation ? Theme.mediumDuration : 0
+                boundsBehavior: Flickable.StopAtBounds
                 clip: true
                 enabled: root.active
                 interactive: root.active
-                boundsBehavior: Flickable.StopAtBounds
                 keyNavigationEnabled: false
                 activeFocusOnTab: false
-                highlightFollowsCurrentItem: true
-                highlightMoveDuration: enableAnimation ? Theme.shortDuration : 0
                 focus: false
+                cacheBuffer: Math.max(0, height * 2)
+                model: root.totalPages
 
-                highlight: Item {
-                    z: 1000
-                    Rectangle {
-                        anchors.fill: parent
-                        anchors.margins: Theme.spacingXS
-                        color: "transparent"
-                        border.width: 3
-                        border.color: Theme.primary
-                        radius: Theme.cornerRadius
+                onCurrentIndexChanged: {
+                    if (!moving) {
+                        return;
+                    }
+                    if (currentIndex >= 0 && currentIndex !== root.currentPage) {
+                        root.currentPage = currentIndex;
                     }
                 }
 
-                model: {
-                    root.gridRevision; // re-evaluate when sort order changes in place
-                    const startIndex = currentPage * itemsPerPage;
-                    const endIndex = Math.min(startIndex + itemsPerPage, wallpaperFolderModel.count);
-                    const items = [];
-                    for (var i = startIndex; i < endIndex; i++) {
-                        const filePath = wallpaperFolderModel.get(i, "filePath");
-                        if (filePath) {
-                            items.push(filePath.toString().replace(/^file:\/\//, ''));
-                        }
-                    }
-                    return items;
-                }
-
-                onModelChanged: {
-                    const clampedIndex = model.length > 0 ? Math.min(Math.max(0, gridIndex), model.length - 1) : 0;
-                    if (gridIndex !== clampedIndex) {
-                        gridIndex = clampedIndex;
-                    }
-                }
-
-                onCountChanged: {
-                    if (count > 0) {
-                        const clampedIndex = Math.min(gridIndex, count - 1);
-                        currentIndex = clampedIndex;
-                        positionViewAtIndex(clampedIndex, GridView.Contain);
-                    }
-                    Qt.callLater(() => {
-                        enableAnimation = true;
-                    });
-                }
+                Component.onCompleted: currentIndex = root.currentPage
 
                 Connections {
                     target: root
-                    function onGridIndexChanged() {
-                        if (wallpaperGrid.count > 0) {
-                            wallpaperGrid.currentIndex = gridIndex;
-                            if (!enableAnimation) {
-                                wallpaperGrid.positionViewAtIndex(gridIndex, GridView.Contain);
-                            }
+                    function onCurrentPageChanged() {
+                        if (pager.currentIndex !== root.currentPage) {
+                            pager.currentIndex = root.currentPage;
                         }
                     }
                 }
 
-                delegate: Item {
-                    width: wallpaperGrid.cellWidth
-                    height: wallpaperGrid.cellHeight
+                delegate: GridView {
+                    id: pageGrid
 
-                    property string wallpaperPath: modelData || ""
-                    property bool isSelected: getCurrentWallpaper() === modelData
+                    property int pageIndex: index
 
-                    Rectangle {
-                        id: wallpaperCard
-                        anchors.fill: parent
-                        anchors.margins: Theme.spacingXS
-                        color: Theme.withAlpha(Theme.surfaceContainerHighest, Theme.popupTransparency)
-                        radius: Theme.cornerRadius
-                        clip: true
+                    width: pager.width
+                    height: pager.height
+                    cellWidth: width / 4
+                    cellHeight: height / 4
+                    interactive: false
+                    keyNavigationEnabled: false
+                    activeFocusOnTab: false
+                    focus: false
+                    highlightFollowsCurrentItem: true
+                    highlightMoveDuration: root.enableAnimation ? Theme.shortDuration : 0
+                    currentIndex: root.currentPage === pageIndex ? root.gridIndex : -1
 
+                    highlight: Item {
+                        z: 1000
                         Rectangle {
                             anchors.fill: parent
-                            color: isSelected ? Theme.primaryPressed : Theme.withAlpha(Theme.primaryPressed, 0)
-                            radius: parent.radius
+                            anchors.margins: Theme.spacingXS
+                            color: "transparent"
+                            border.width: 3
+                            border.color: Theme.primary
+                            radius: Theme.cornerRadius
+                        }
+                    }
 
-                            Behavior on color {
-                                ColorAnimation {
-                                    duration: Theme.shortDuration
-                                    easing.type: Theme.standardEasing
+                    model: {
+                        root.gridRevision; // re-evaluate when sort order changes in place
+                        const startIndex = pageIndex * root.itemsPerPage;
+                        const endIndex = Math.min(startIndex + root.itemsPerPage, wallpaperFolderModel.count);
+                        const items = [];
+                        for (var i = startIndex; i < endIndex; i++) {
+                            const filePath = wallpaperFolderModel.get(i, "filePath");
+                            if (filePath) {
+                                items.push(filePath.toString().replace(/^file:\/\//, ''));
+                            }
+                        }
+                        return items;
+                    }
+
+                    onCountChanged: {
+                        if (root.currentPage !== pageIndex || count === 0) {
+                            return;
+                        }
+                        if (root.gridIndex >= count) {
+                            root.gridIndex = count - 1;
+                        }
+                    }
+
+                    delegate: Item {
+                        width: pageGrid.cellWidth
+                        height: pageGrid.cellHeight
+
+                        property string wallpaperPath: modelData || ""
+                        property bool isSelected: getCurrentWallpaper() === modelData
+
+                        Rectangle {
+                            id: wallpaperCard
+                            anchors.fill: parent
+                            anchors.margins: Theme.spacingXS
+                            color: Theme.withAlpha(Theme.surfaceContainerHighest, Theme.popupTransparency)
+                            radius: Theme.cornerRadius
+                            clip: true
+
+                            Rectangle {
+                                anchors.fill: parent
+                                color: isSelected ? Theme.primaryPressed : Theme.withAlpha(Theme.primaryPressed, 0)
+                                radius: parent.radius
+
+                                Behavior on color {
+                                    ColorAnimation {
+                                        duration: Theme.shortDuration
+                                        easing.type: Theme.standardEasing
+                                    }
                                 }
                             }
-                        }
 
-                        Rectangle {
-                            id: maskRect
-                            width: thumbnailImage.width
-                            height: thumbnailImage.height
-                            radius: Theme.cornerRadius
-                            visible: false
-                            layer.enabled: true
-                        }
-
-                        CachingImage {
-                            id: thumbnailImage
-                            anchors.fill: parent
-                            imagePath: modelData || ""
-                            maxCacheSize: 256
-
-                            layer.enabled: true
-                            layer.effect: MultiEffect {
-                                maskEnabled: true
-                                maskThresholdMin: 0.5
-                                maskSpreadAtMin: 1.0
-                                maskSource: maskRect
+                            Rectangle {
+                                id: maskRect
+                                width: thumbnailImage.width
+                                height: thumbnailImage.height
+                                radius: Theme.cornerRadius
+                                visible: false
+                                layer.enabled: true
                             }
-                        }
 
-                        StateLayer {
-                            anchors.fill: parent
-                            cornerRadius: parent.radius
-                            stateColor: Theme.primary
-                        }
+                            CachingImage {
+                                id: thumbnailImage
+                                anchors.fill: parent
+                                imagePath: modelData || ""
+                                maxCacheSize: 256
+                                opacity: status === Image.Ready ? 1 : 0
 
-                        MouseArea {
-                            id: wallpaperMouseArea
-                            anchors.fill: parent
-                            hoverEnabled: true
-                            cursorShape: Qt.PointingHandCursor
+                                layer.enabled: true
+                                layer.effect: MultiEffect {
+                                    maskEnabled: true
+                                    maskThresholdMin: 0.5
+                                    maskSpreadAtMin: 1.0
+                                    maskSource: maskRect
+                                }
 
-                            onClicked: {
-                                gridIndex = index;
-                                if (modelData) {
-                                    setCurrentWallpaper(modelData);
+                                Behavior on opacity {
+                                    NumberAnimation {
+                                        duration: Theme.shortDuration
+                                        easing.type: Theme.standardEasing
+                                    }
+                                }
+                            }
+
+                            StateLayer {
+                                anchors.fill: parent
+                                cornerRadius: parent.radius
+                                stateColor: Theme.primary
+                            }
+
+                            MouseArea {
+                                id: wallpaperMouseArea
+                                anchors.fill: parent
+                                hoverEnabled: true
+                                cursorShape: Qt.PointingHandCursor
+
+                                onClicked: {
+                                    gridIndex = index;
+                                    if (modelData) {
+                                        setCurrentWallpaper(modelData);
+                                    }
                                 }
                             }
                         }

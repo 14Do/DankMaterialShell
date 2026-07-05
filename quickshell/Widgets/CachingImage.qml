@@ -1,5 +1,4 @@
 import QtQuick
-import Quickshell.Io
 import qs.Common
 
 Item {
@@ -9,6 +8,7 @@ Item {
     property int maxCacheSize: 512
     property int status: isAnimated ? animatedImg.status : staticImg.status
     property int fillMode: Image.PreserveAspectCrop
+    property bool _fromCache: false
 
     readonly property bool isRemoteUrl: imagePath.startsWith("http://") || imagePath.startsWith("https://")
     readonly property bool isAnimated: {
@@ -69,58 +69,46 @@ Item {
         smooth: true
 
         onStatusChanged: {
-            if (source === root.cachePath && status === Image.Error) {
+            switch (status) {
+            case Image.Error:
+                if (!root._fromCache)
+                    return;
+                root._fromCache = false;
                 source = root.encodedImagePath;
                 return;
-            }
-            if (root.isRemoteUrl || source !== root.encodedImagePath || status !== Image.Ready || !root.cachePath)
-                return;
-            Paths.mkdir(Paths.imagecache);
-            const grabPath = root.cachePath;
-            if (visible && width > 0 && height > 0 && Window.window?.visible) {
+            case Image.Ready:
+                if (root._fromCache || root.isRemoteUrl || !root.cachePath)
+                    return;
+                if (!visible || width <= 0 || height <= 0 || !Window.window?.visible)
+                    return;
+                Paths.mkdir(Paths.imagecache);
+                const grabPath = root.cachePath;
                 grabToImage(res => res.saveToFile(grabPath));
-            }
-        }
-    }
-
-    Process {
-        id: cacheProbe
-
-        property string cachePath: ""
-        property string fallbackSource: ""
-
-        running: false
-        command: ["test", "-f", cachePath]
-
-        onExited: exitCode => {
-            if (cacheProbe.cachePath !== root.cachePath)
                 return;
-            staticImg.source = exitCode === 0 ? cacheProbe.cachePath : cacheProbe.fallbackSource;
+            }
         }
     }
 
     onImagePathChanged: {
         if (!imagePath) {
+            _fromCache = false;
             staticImg.source = "";
             return;
         }
         if (isAnimated)
             return;
         if (isRemoteUrl) {
+            _fromCache = false;
             staticImg.source = imagePath;
             return;
         }
-        Paths.mkdir(Paths.imagecache);
-        const hash = djb2Hash(normalizedPath);
-        const cPath = hash ? `${Paths.stringify(Paths.imagecache)}/${hash}@${maxCacheSize}x${maxCacheSize}.png` : "";
-        const encoded = "file://" + normalizedPath.split('/').map(s => encodeURIComponent(s)).join('/');
-        if (!cPath) {
-            staticImg.source = encoded;
+        if (!cachePath) {
+            _fromCache = false;
+            staticImg.source = encodedImagePath;
             return;
         }
-        cacheProbe.running = false;
-        cacheProbe.cachePath = cPath;
-        cacheProbe.fallbackSource = encoded;
-        cacheProbe.running = true;
+        Paths.mkdir(Paths.imagecache);
+        _fromCache = true;
+        staticImg.source = cachePath;
     }
 }

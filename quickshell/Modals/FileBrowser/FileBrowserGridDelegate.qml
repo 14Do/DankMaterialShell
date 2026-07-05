@@ -169,8 +169,6 @@ StyledRect {
                 property string imagePath: {
                     if (weMode && delegateRoot.fileIsDir)
                         return delegateRoot.filePath + "/preview" + weExtensions[weExtIndex];
-                    if (!delegateRoot.fileIsDir && isImage)
-                        return delegateRoot.filePath;
                     if (_videoThumb)
                         return _videoThumb;
                     return "";
@@ -192,13 +190,28 @@ StyledRect {
                 visible: false
             }
 
+            CachingImage {
+                anchors.fill: parent
+                anchors.margins: 2
+                imagePath: !delegateRoot.fileIsDir && isImage ? delegateRoot.filePath : ""
+                maxCacheSize: 256
+                visible: !delegateRoot.fileIsDir && isImage
+                layer.enabled: true
+                layer.effect: MultiEffect {
+                    maskEnabled: true
+                    maskSource: gridImageMask
+                    maskThresholdMin: 0.5
+                    maskSpreadAtMin: 1
+                }
+            }
+
             MultiEffect {
                 anchors.fill: parent
                 anchors.margins: 2
                 source: gridPreviewImage
                 maskEnabled: true
                 maskSource: gridImageMask
-                visible: gridPreviewImage.status === Image.Ready && ((!delegateRoot.fileIsDir && (isImage || isVideo)) || (weMode && delegateRoot.fileIsDir))
+                visible: gridPreviewImage.status === Image.Ready && ((!delegateRoot.fileIsDir && isVideo) || (weMode && delegateRoot.fileIsDir))
                 maskThresholdMin: 0.5
                 maskSpreadAtMin: 1
             }

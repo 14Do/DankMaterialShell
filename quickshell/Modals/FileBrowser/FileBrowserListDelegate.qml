@@ -168,13 +168,7 @@ StyledRect {
             Image {
                 id: listPreviewImage
                 anchors.fill: parent
-                property string imagePath: {
-                    if (!listDelegateRoot.fileIsDir && isImage)
-                        return listDelegateRoot.filePath;
-                    if (_videoThumb)
-                        return _videoThumb;
-                    return "";
-                }
+                property string imagePath: _videoThumb
                 source: imagePath ? "file://" + imagePath.split('/').map(s => encodeURIComponent(s)).join('/') : ""
                 fillMode: Image.PreserveAspectCrop
                 sourceSize.width: 32
@@ -183,12 +177,26 @@ StyledRect {
                 visible: false
             }
 
+            CachingImage {
+                anchors.fill: parent
+                imagePath: !listDelegateRoot.fileIsDir && isImage ? listDelegateRoot.filePath : ""
+                maxCacheSize: 256
+                visible: !listDelegateRoot.fileIsDir && isImage
+                layer.enabled: true
+                layer.effect: MultiEffect {
+                    maskEnabled: true
+                    maskSource: listImageMask
+                    maskThresholdMin: 0.5
+                    maskSpreadAtMin: 1
+                }
+            }
+
             MultiEffect {
                 anchors.fill: parent
                 source: listPreviewImage
                 maskEnabled: true
                 maskSource: listImageMask
-                visible: listPreviewImage.status === Image.Ready && !listDelegateRoot.fileIsDir && (isImage || isVideo)
+                visible: listPreviewImage.status === Image.Ready && !listDelegateRoot.fileIsDir && isVideo
                 maskThresholdMin: 0.5
                 maskSpreadAtMin: 1
             }
