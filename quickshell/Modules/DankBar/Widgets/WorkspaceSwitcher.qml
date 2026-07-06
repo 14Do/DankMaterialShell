@@ -111,6 +111,7 @@ Item {
         target: CompositorService
         function onCompositorChanged() {
             root._placeholderPool = [];
+            root._hyprSlotPool = {};
         }
     }
 
@@ -152,8 +153,7 @@ Item {
             baseList = getNiriWorkspaces();
             break;
         case "hyprland":
-            baseList = getHyprlandWorkspaces();
-            break;
+            return hyprlandSlotList(getHyprlandWorkspaces());
         case "mango":
             if (root.mangoOverviewActive)
                 return [];
@@ -462,6 +462,42 @@ Item {
                 "_placeholder": true
             };
         return -1;
+    }
+
+    // Hyprland creates/destroys workspaces on empty enter/leave; slots keyed by id keep delegate identity so pills animate instead of popping
+    property var _hyprSlotPool: ({})
+
+    Component {
+        id: hyprSlotComponent
+
+        QtObject {
+            property var ws: null
+            readonly property var id: ws ? ws.id : -1
+            readonly property string name: ws?.name ?? ""
+            readonly property bool urgent: ws?.urgent ?? false
+        }
+    }
+
+    function _hyprSlot(key, ws) {
+        let slot = _hyprSlotPool[key];
+        if (!slot) {
+            slot = hyprSlotComponent.createObject(root);
+            _hyprSlotPool[key] = slot;
+        }
+        if (slot.ws !== ws)
+            slot.ws = ws;
+        return slot;
+    }
+
+    function hyprlandSlotList(raw) {
+        const slots = raw.map(ws => _hyprSlot(ws.id > 0 ? ws.id : "name:" + (ws.name ?? ""), ws));
+        if (!SettingsData.showWorkspacePadding)
+            return slots;
+        // pad past the highest real id so a placeholder becomes that workspace's slot once created
+        let nextId = raw.reduce((max, ws) => Math.max(max, ws.id ?? 0), 0);
+        while (slots.length < 3)
+            slots.push(_hyprSlot(++nextId, null));
+        return slots;
     }
 
     // Stable placeholder instances so ScriptModel (identity-diffed) reuses padding delegates instead of recreating them on workspace churn
