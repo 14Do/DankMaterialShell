@@ -736,7 +736,7 @@ Item {
         case "music":
         case "weather":
             {
-                const tabIndex = widgetId === "clock" ? 0 : SettingsData.dashTabIndexForId(widgetId === "music" ? "media" : "weather");
+                const tabIndex = SettingsData.dashTabIndexForId(widgetId === "clock" ? "overview" : (widgetId === "music" ? "media" : "weather"));
                 return barContent.openWidgetPopout(Object.assign({}, base, {
                     loader,
                     tabIndex,

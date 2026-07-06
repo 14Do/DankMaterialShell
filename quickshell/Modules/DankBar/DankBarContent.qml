@@ -1105,12 +1105,13 @@ Item {
 
             onClockClicked: {
                 const section = topBarContent.getWidgetSection(parent) || "center";
+                const tabIndex = SettingsData.dashTabIndexForId("overview");
                 topBarContent.openWidgetPopout({
                     loader: dankDashPopoutLoader,
                     widgetItem: clockWidget,
                     section,
-                    tabIndex: 0,
-                    triggerSource: topBarContent._dashTriggerSource(section, 0),
+                    tabIndex,
+                    triggerSource: topBarContent._dashTriggerSource(section, tabIndex),
                     mode: "click",
                     useCenterSection: true,
                     setTriggerScreen: true
