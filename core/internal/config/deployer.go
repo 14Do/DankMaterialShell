@@ -880,8 +880,9 @@ func (cd *ConfigDeployer) transformNiriConfigForNonSystemd(config, terminalComma
 
 	config = regexp.MustCompile(`environment \{[^}]*\}`).ReplaceAllString(config, envVars)
 
-	spawnDms := `spawn-at-startup "dms" "run"`
-	if !strings.Contains(config, spawnDms) {
+	// Watcher spawns first so it owns the SNI name before dms/tray apps start.
+	spawnDms := "spawn-at-startup \"dms\" \"tray-watcher\"\nspawn-at-startup \"dms\" \"run\""
+	if !strings.Contains(config, `spawn-at-startup "dms" "run"`) {
 		// Insert spawn-at-startup for dms after the environment block
 		envBlockEnd := regexp.MustCompile(`environment \{[^}]*\}`)
 		if loc := envBlockEnd.FindStringIndex(config); loc != nil {

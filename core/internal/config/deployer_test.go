@@ -520,9 +520,21 @@ func TestHyprlandConfigStructure(t *testing.T) {
 	assert.Contains(t, HyprlandLuaConfig, "input =")
 }
 
+// In non-systemd mode dms is launched from the compositor config, so the tray
+// watcher must be launched there too, before dms, to own the SNI name first.
+func TestNonSystemdLaunchesTrayWatcherBeforeShell(t *testing.T) {
+	hypr := transformHyprlandLuaForNonSystemd(HyprlandLuaConfig, "ghostty")
+	assert.Contains(t, hypr, "hl.exec_cmd(\"dms tray-watcher\")\n\thl.exec_cmd(\"dms run\")")
+
+	niri := (&ConfigDeployer{}).transformNiriConfigForNonSystemd(NiriConfig, "ghostty")
+	assert.Contains(t, niri, "spawn-at-startup \"dms\" \"tray-watcher\"\nspawn-at-startup \"dms\" \"run\"")
+}
+
 func TestMangoConfigStructure(t *testing.T) {
 	assert.Contains(t, MangoConfig, "exec-once=dms run")
 	assert.NotContains(t, MangoConfig, "exec_once=dms run")
+	// Tray watcher must start before the shell so it owns the SNI name first.
+	assert.Contains(t, MangoConfig, "exec-once=dms tray-watcher\nexec-once=dms run")
 	assert.Contains(t, MangoConfig, "source=./dms/binds.conf")
 	assert.Contains(t, MangoBindsConfig, "bind=SUPER,H,focusdir,left")
 	assert.Contains(t, MangoBindsConfig, "bind=SUPER,J,focusdir,down")

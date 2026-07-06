@@ -774,5 +774,6 @@ func getCommonCommands() []*cobra.Command {
 		trashCmd,
 		systemCmd,
 		switchUserCmd,
+		trayWatcherCmd,
 	}
 }

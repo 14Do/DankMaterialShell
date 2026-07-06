@@ -39,6 +39,24 @@ in
       };
     };
 
+    # Early SNI watcher so autostart tray apps register before the shell loads.
+    systemd.user.services.dms-tray-watcher = lib.mkIf cfg.systemd.enable {
+      description = "DMS Status Notifier Watcher (early tray)";
+      path = lib.mkForce [ ];
+
+      partOf = [ cfg.systemd.target ];
+      before = [ cfg.systemd.target ];
+      wantedBy = [ cfg.systemd.target ];
+      restartIfChanged = cfg.systemd.restartIfChanged;
+
+      serviceConfig = {
+        Type = "dbus";
+        BusName = "org.kde.StatusNotifierWatcher";
+        ExecStart = lib.getExe cfg.package + " tray-watcher";
+        Restart = "on-failure";
+      };
+    };
+
     environment.systemPackages = [ cfg.quickshell.package ] ++ common.packages;
 
     environment.etc = lib.mapAttrs' (name: value: {

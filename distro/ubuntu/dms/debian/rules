@@ -50,6 +50,8 @@ override_dh_auto_install:
 	# Install systemd user service (before copying everything else)
 	install -Dm644 DankMaterialShell-$(BASE_VERSION)/assets/systemd/dms.service \
 		debian/dms/usr/lib/systemd/user/dms.service
+	install -Dm644 DankMaterialShell-$(BASE_VERSION)/assets/systemd/dms-tray-watcher.service \
+		debian/dms/usr/lib/systemd/user/dms-tray-watcher.service
 
 	# Install desktop file and icon
 	install -Dm644 DankMaterialShell-$(BASE_VERSION)/assets/dms-open.desktop \

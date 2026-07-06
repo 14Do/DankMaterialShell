@@ -1,0 +1,17 @@
+[Unit]
+Description=DMS Status Notifier Watcher (early tray)
+# The tray watcher starts in parallel with the compositor and owns org.kde.StatusNotifierWatcher before
+# graphical-session.target, i.e. before any XDG autostart app launches.
+PartOf=graphical-session.target
+Before=graphical-session.target
+
+[Service]
+Type=dbus
+BusName=org.kde.StatusNotifierWatcher
+ExecStart=/usr/bin/dms tray-watcher
+Restart=on-failure
+RestartSec=1
+Slice=session.slice
+
+[Install]
+WantedBy=graphical-session.target

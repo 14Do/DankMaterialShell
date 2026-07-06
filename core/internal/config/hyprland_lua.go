@@ -116,6 +116,7 @@ func transformHyprlandLuaForNonSystemd(config, terminalCommand string) string {
 		`hl.env("QT_QPA_PLATFORMTHEME_QT6", "gtk3")` + "\n" +
 		fmt.Sprintf(`hl.env("TERMINAL", %s)`, strconv.Quote(terminalCommand)) + "\n\n" +
 		`hl.on("hyprland.start", function()` + "\n" +
+		`	hl.exec_cmd("dms tray-watcher")` + "\n" +
 		`	hl.exec_cmd("dms run")` + "\n" +
 		`end)` + "\n" +
 		hyprlandStartupEnd

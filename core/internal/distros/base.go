@@ -587,13 +587,15 @@ TERMINAL=%s
 }
 
 func (b *BaseDistribution) EnableDMSService(ctx context.Context, wm deps.WindowManager) error {
+	// Pull in the tray watcher alongside dms; its Before=graphical-session.target
+	// ordering makes it claim the SNI name before autostart apps start.
 	switch wm {
 	case deps.WindowManagerNiri:
-		if err := exec.CommandContext(ctx, "systemctl", "--user", "add-wants", "niri.service", "dms").Run(); err != nil {
+		if err := exec.CommandContext(ctx, "systemctl", "--user", "add-wants", "niri.service", "dms", "dms-tray-watcher").Run(); err != nil {
 			b.log("Warning: failed to add dms as a want for niri.service")
 		}
 	case deps.WindowManagerHyprland:
-		if err := exec.CommandContext(ctx, "systemctl", "--user", "add-wants", "hyprland-session.target", "dms").Run(); err != nil {
+		if err := exec.CommandContext(ctx, "systemctl", "--user", "add-wants", "hyprland-session.target", "dms", "dms-tray-watcher").Run(); err != nil {
 			b.log("Warning: failed to add dms as a want for hyprland-session.target")
 		}
 	}

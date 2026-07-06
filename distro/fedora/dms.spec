@@ -87,6 +87,7 @@ install -d %{buildroot}%{_datadir}/fish/vendor_completions.d
 %{_builddir}/dms-cli completion fish > %{buildroot}%{_datadir}/fish/vendor_completions.d/dms.fish || :
 
 install -Dm644 %{_builddir}/dms-qml/assets/systemd/dms.service %{buildroot}%{_userunitdir}/dms.service
+install -Dm644 %{_builddir}/dms-qml/assets/systemd/dms-tray-watcher.service %{buildroot}%{_userunitdir}/dms-tray-watcher.service
 
 install -Dm644 %{_builddir}/dms-qml/assets/dms-open.desktop %{buildroot}%{_datadir}/applications/dms-open.desktop
 install -Dm644 %{_builddir}/dms-qml/assets/com.danklinux.dms.desktop %{buildroot}%{_datadir}/applications/com.danklinux.dms.desktop
@@ -112,6 +113,7 @@ pkill -USR1 -x dms >/dev/null 2>&1 || :
 %doc README.md CONTRIBUTING.md
 %{_datadir}/quickshell/dms/
 %{_userunitdir}/dms.service
+%{_userunitdir}/dms-tray-watcher.service
 %{_datadir}/applications/dms-open.desktop
 %{_datadir}/applications/com.danklinux.dms.desktop
 %{_datadir}/applications/com.danklinux.dms.notepad.desktop

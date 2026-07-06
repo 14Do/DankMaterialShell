@@ -101,6 +101,24 @@ in
       Install.WantedBy = [ cfg.systemd.target ];
     };
 
+    # Early SNI watcher so autostart tray apps register before the shell loads.
+    systemd.user.services.dms-tray-watcher = lib.mkIf cfg.systemd.enable {
+      Unit = {
+        Description = "DMS Status Notifier Watcher (early tray)";
+        PartOf = [ cfg.systemd.target ];
+        Before = [ cfg.systemd.target ];
+      };
+
+      Service = {
+        Type = "dbus";
+        BusName = "org.kde.StatusNotifierWatcher";
+        ExecStart = lib.getExe cfg.package + " tray-watcher";
+        Restart = "on-failure";
+      };
+
+      Install.WantedBy = [ cfg.systemd.target ];
+    };
+
     xdg.stateFile."DankMaterialShell/session.json" = lib.mkIf (cfg.session != { }) {
       source = jsonFormat.generate "session.json" cfg.session;
     };
