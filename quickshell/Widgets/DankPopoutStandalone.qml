@@ -847,7 +847,7 @@ Item {
                         x: Theme.snap(contentContainer.animX + (rollOutAdjuster.baseWidth - width) * (1 - contentContainer.scaleValue) * 0.5, root.dpr)
                         y: Theme.snap(contentContainer.animY + (rollOutAdjuster.baseHeight - height) * (1 - contentContainer.scaleValue) * 0.5, root.dpr)
 
-                        layer.enabled: !Theme.isDirectionalEffect && publishedOpacity < 1
+                        layer.enabled: !Theme.isDirectionalEffect && _renderActive
                         layer.smooth: false
                         layer.textureSize: Qt.size(0, 0)
 
