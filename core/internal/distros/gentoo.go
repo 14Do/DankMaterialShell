@@ -113,6 +113,7 @@ func (g *GentooDistribution) DetectDependenciesWithTerminal(ctx context.Context,
 
 	dependencies = append(dependencies, g.detectMatugen())
 	dependencies = append(dependencies, g.detectDgop())
+	dependencies = append(dependencies, g.detectDanksearch())
 
 	return dependencies, nil
 }
@@ -171,6 +172,7 @@ func (g *GentooDistribution) GetPackageMappingWithVariants(wm deps.WindowManager
 		"matugen":                 {Name: "x11-misc/matugen", Repository: RepoTypeGURU, AcceptKeywords: archKeyword},
 		"dms (DankMaterialShell)": g.getDmsMapping(),
 		"dgop":                    {Name: "gui-apps/dgop", Repository: RepoTypeGURU, AcceptKeywords: archKeyword},
+		"danksearch":              {Name: "gui-apps/danksearch", Repository: RepoTypeGURU, AcceptKeywords: archKeyword},
 	}
 
 	switch wm {

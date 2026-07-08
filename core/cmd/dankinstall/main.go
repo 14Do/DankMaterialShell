@@ -23,6 +23,8 @@ var (
 	replaceConfigs    []string
 	replaceConfigsAll bool
 	yes               bool
+	danksearch        bool
+	dankcalendar      bool
 )
 
 var rootCmd = &cobra.Command{
@@ -49,6 +51,8 @@ func init() {
 	rootCmd.Flags().StringSliceVar(&replaceConfigs, "replace-configs", []string{}, "Deploy only named configs (e.g. niri,ghostty)")
 	rootCmd.Flags().BoolVar(&replaceConfigsAll, "replace-configs-all", false, "Deploy and replace all configurations")
 	rootCmd.Flags().BoolVarP(&yes, "yes", "y", false, "Auto-confirm all prompts")
+	rootCmd.Flags().BoolVar(&danksearch, "danksearch", false, "Install danksearch and enable its user indexing service")
+	rootCmd.Flags().BoolVar(&dankcalendar, "dankcalendar", false, "Install dankcalendar")
 }
 
 func main() {
@@ -74,6 +78,8 @@ func runDankinstall(cmd *cobra.Command, args []string) error {
 			"replace-configs",
 			"replace-configs-all",
 			"yes",
+			"danksearch",
+			"dankcalendar",
 		}
 		var set []string
 		for _, name := range headlessOnly {
@@ -109,6 +115,8 @@ func runHeadless() error {
 		ReplaceConfigs:    replaceConfigs,
 		ReplaceConfigsAll: replaceConfigsAll,
 		Yes:               yes,
+		DankSearch:        danksearch,
+		DankCalendar:      dankcalendar,
 	}
 
 	runner := headless.NewRunner(cfg)

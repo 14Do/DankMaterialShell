@@ -886,6 +886,7 @@ func checkOptionalDependencies() []checkResult {
 		{"cava", "cava", "Audio visualizer", true},
 		{"khal", "khal", "Calendar events", false},
 		{"danksearch", "dsearch", "File search", false},
+		{"dankcalendar", "dcal", "Calendar app", false},
 		{"fprintd", "fprintd-list", "Fingerprint auth", false},
 	}
 

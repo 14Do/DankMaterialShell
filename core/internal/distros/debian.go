@@ -71,6 +71,8 @@ func (d *DebianDistribution) DetectDependenciesWithTerminal(ctx context.Context,
 
 	dependencies = append(dependencies, d.detectMatugen())
 	dependencies = append(dependencies, d.detectDgop())
+	dependencies = append(dependencies, d.detectDanksearch())
+	dependencies = append(dependencies, d.detectDankCalendar())
 
 	return dependencies, nil
 }
@@ -135,6 +137,8 @@ func (d *DebianDistribution) GetPackageMappingWithVariants(wm deps.WindowManager
 		"matugen":                 {Name: "matugen", Repository: RepoTypeOBS, RepoURL: "home:AvengeMedia:danklinux"},
 		"dgop":                    {Name: "dgop", Repository: RepoTypeOBS, RepoURL: "home:AvengeMedia:danklinux"},
 		"ghostty":                 {Name: "ghostty", Repository: RepoTypeOBS, RepoURL: "home:AvengeMedia:danklinux"},
+		"danksearch":              {Name: "danksearch", Repository: RepoTypeOBS, RepoURL: "home:AvengeMedia:danklinux"},
+		"dankcalendar":            {Name: "dankcalendar-git", Repository: RepoTypeOBS, RepoURL: "home:AvengeMedia:danklinux"},
 	}
 
 	if wm == deps.WindowManagerNiri {

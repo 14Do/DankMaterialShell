@@ -107,6 +107,14 @@ func (b *BaseDistribution) detectDgop() deps.Dependency {
 	return b.detectCommand("dgop", "Desktop portal management tool")
 }
 
+func (b *BaseDistribution) detectDanksearch() deps.Dependency {
+	return b.detectOptionalPackage("danksearch", "File indexing and search service", b.commandExists("dsearch") || b.commandExists("danksearch"))
+}
+
+func (b *BaseDistribution) detectDankCalendar() deps.Dependency {
+	return b.detectOptionalPackage("dankcalendar", "Calendar application", b.commandExists("dcal") || b.commandExists("dankcalendar"))
+}
+
 func (b *BaseDistribution) detectDMS() deps.Dependency {
 	dmsPath := filepath.Join(os.Getenv("HOME"), ".config/quickshell/dms")
 

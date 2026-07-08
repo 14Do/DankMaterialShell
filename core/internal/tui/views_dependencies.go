@@ -28,6 +28,21 @@ func (m Model) viewDetectingDeps() string {
 	return b.String()
 }
 
+func partitionOptionalLast(dependencies []deps.Dependency) []deps.Dependency {
+	ordered := make([]deps.Dependency, 0, len(dependencies))
+	for _, dep := range dependencies {
+		if dep.Required {
+			ordered = append(ordered, dep)
+		}
+	}
+	for _, dep := range dependencies {
+		if !dep.Required {
+			ordered = append(ordered, dep)
+		}
+	}
+	return ordered
+}
+
 func (m Model) viewDependencyReview() string {
 	var b strings.Builder
 
@@ -39,7 +54,15 @@ func (m Model) viewDependencyReview() string {
 	b.WriteString("\n\n")
 
 	if len(m.dependencies) > 0 {
+		optionalHeaderShown := false
 		for i, dep := range m.dependencies {
+			if !dep.Required && !optionalHeaderShown {
+				b.WriteString("\n")
+				b.WriteString(m.styles.Subtle.Render("Optional (space to enable)"))
+				b.WriteString("\n")
+				optionalHeaderShown = true
+			}
+
 			var status string
 			var reinstallMarker string
 			var variantMarker string
@@ -82,8 +105,13 @@ func (m Model) viewDependencyReview() string {
 			}
 
 			note := ""
-			if dep.Name == "dms-greeter" {
+			switch dep.Name {
+			case "dms-greeter":
 				note = m.styles.Subtle.Render(" (selection replaces your current display manager)")
+			case "danksearch":
+				note = m.styles.Subtle.Render(" (file search; enables dsearch.service)")
+			case "dankcalendar":
+				note = m.styles.Subtle.Render(" (autostart managed in dankcalendar settings)")
 			}
 
 			var line string
@@ -120,13 +148,13 @@ func (m Model) updateDetectingDepsState(msg tea.Msg) (tea.Model, tea.Cmd) {
 			m.err = depsMsg.err
 			m.state = StateError
 		} else {
-			m.dependencies = depsMsg.deps
-			// dms-greeter is opt-in skipped by default
-			for _, dep := range depsMsg.deps {
-				if dep.Name == "dms-greeter" {
-					m.disabledItems["dms-greeter"] = true
-					break
+			m.dependencies = partitionOptionalLast(depsMsg.deps)
+			// Optional components are opt-in, skipped by default
+			for _, dep := range m.dependencies {
+				if dep.Required {
+					continue
 				}
+				m.disabledItems[dep.Name] = true
 			}
 			m.state = StateDependencyReview
 		}
@@ -231,14 +259,7 @@ func (m Model) installPackages() tea.Cmd {
 			for msg := range installerProgressChan {
 				// Run optional greeter setup
 				if msg.Phase == distros.PhaseComplete && msg.IsComplete && msg.Error == nil {
-					greeterSelected := false
-					for _, dep := range m.dependencies {
-						if dep.Name == "dms-greeter" && !m.disabledItems["dms-greeter"] {
-							greeterSelected = true
-							break
-						}
-					}
-					if greeterSelected {
+					if m.optionalDepSelected("dms-greeter") {
 						compositorName := "niri"
 						switch m.selectedWindowManager() {
 						case deps.WindowManagerHyprland:
@@ -263,6 +284,28 @@ func (m Model) installPackages() tea.Cmd {
 								progress:  0.96,
 								step:      "Greeter setup warning",
 								logOutput: fmt.Sprintf("⚠ Greeter auto-setup warning (non-fatal): %v", err),
+							}
+						}
+
+						if m.useSystemdConfig() && m.optionalDepSelected("danksearch") {
+							m.packageProgressChan <- packageInstallProgressMsg{
+								progress:  0.97,
+								step:      "Enabling danksearch service...",
+								logOutput: "Setting up dsearch.service...",
+							}
+							dsearchLogFunc := func(line string) {
+								m.packageProgressChan <- packageInstallProgressMsg{
+									progress:  0.97,
+									step:      "Enabling danksearch service...",
+									logOutput: line,
+								}
+							}
+							if err := distros.SetupDsearchService(context.Background(), dsearchLogFunc); err != nil {
+								m.packageProgressChan <- packageInstallProgressMsg{
+									progress:  0.98,
+									step:      "danksearch service warning",
+									logOutput: fmt.Sprintf("danksearch service setup warning (non-fatal): %v", err),
+								}
 							}
 						}
 					}

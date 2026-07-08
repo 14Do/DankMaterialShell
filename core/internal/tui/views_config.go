@@ -139,6 +139,18 @@ func (m Model) deployConfigurations() tea.Cmd {
 	}
 }
 
+func (m Model) optionalDepSelected(name string) bool {
+	if m.disabledItems[name] {
+		return false
+	}
+	for _, dep := range m.dependencies {
+		if dep.Name == name {
+			return true
+		}
+	}
+	return false
+}
+
 func (m Model) useSystemdConfig() bool {
 	if m.osInfo == nil {
 		return true

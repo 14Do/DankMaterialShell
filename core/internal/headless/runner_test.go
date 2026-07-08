@@ -342,17 +342,21 @@ func TestConfigReplaceConfigsStoredCorrectly(t *testing.T) {
 
 func TestBuildDisabledItems(t *testing.T) {
 	dependencies := []deps.Dependency{
-		{Name: "niri", Status: deps.StatusInstalled},
-		{Name: "ghostty", Status: deps.StatusMissing},
-		{Name: "dms (DankMaterialShell)", Status: deps.StatusInstalled},
+		{Name: "niri", Status: deps.StatusInstalled, Required: true},
+		{Name: "ghostty", Status: deps.StatusMissing, Required: true},
+		{Name: "dms (DankMaterialShell)", Status: deps.StatusInstalled, Required: true},
 		{Name: "dms-greeter", Status: deps.StatusMissing},
-		{Name: "waybar", Status: deps.StatusMissing},
+		{Name: "danksearch", Status: deps.StatusMissing},
+		{Name: "dankcalendar", Status: deps.StatusMissing},
+		{Name: "waybar", Status: deps.StatusMissing, Required: true},
 	}
 
 	tests := []struct {
 		name         string
 		includeDeps  []string
 		excludeDeps  []string
+		dankSearch   bool
+		dankCalendar bool
 		deps         []deps.Dependency // nil means use the shared fixture
 		wantErr      bool
 		errContains  string   // substring expected in error message
@@ -360,19 +364,20 @@ func TestBuildDisabledItems(t *testing.T) {
 		wantEnabled  []string // dep names that should NOT be in disabledItems (extra check)
 	}{
 		{
-			name:         "no flags set, dms-greeter disabled by default",
-			wantDisabled: []string{"dms-greeter"},
+			name:         "no flags set, optional deps disabled by default",
+			wantDisabled: []string{"dms-greeter", "danksearch", "dankcalendar"},
 			wantEnabled:  []string{"niri", "ghostty", "waybar"},
 		},
 		{
-			name:        "include dms-greeter enables it",
-			includeDeps: []string{"dms-greeter"},
-			wantEnabled: []string{"dms-greeter"},
+			name:         "include dms-greeter enables it",
+			includeDeps:  []string{"dms-greeter"},
+			wantEnabled:  []string{"dms-greeter"},
+			wantDisabled: []string{"danksearch", "dankcalendar"},
 		},
 		{
 			name:         "exclude a regular dep",
 			excludeDeps:  []string{"waybar"},
-			wantDisabled: []string{"dms-greeter", "waybar"},
+			wantDisabled: []string{"dms-greeter", "danksearch", "dankcalendar", "waybar"},
 		},
 		{
 			name:        "include unknown dep returns error",
@@ -399,24 +404,53 @@ func TestBuildDisabledItems(t *testing.T) {
 			wantDisabled: []string{"dms-greeter"},
 		},
 		{
-			name:        "whitespace entries are skipped",
-			includeDeps: []string{"  ", "dms-greeter"},
-			wantEnabled: []string{"dms-greeter"},
+			name:         "whitespace entries are skipped",
+			includeDeps:  []string{"  ", "dms-greeter"},
+			wantEnabled:  []string{"dms-greeter"},
+			wantDisabled: []string{"danksearch", "dankcalendar"},
 		},
 		{
-			name: "no dms-greeter in deps, nothing disabled by default",
+			name: "no optional deps present, nothing disabled by default",
 			deps: []deps.Dependency{
-				{Name: "niri", Status: deps.StatusInstalled},
+				{Name: "niri", Status: deps.StatusInstalled, Required: true},
 			},
 			wantEnabled: []string{"niri"},
+		},
+		{
+			name:         "danksearch flag enables it",
+			dankSearch:   true,
+			wantEnabled:  []string{"danksearch"},
+			wantDisabled: []string{"dms-greeter", "dankcalendar"},
+		},
+		{
+			name:         "dankcalendar flag enables it",
+			dankCalendar: true,
+			wantEnabled:  []string{"dankcalendar"},
+			wantDisabled: []string{"dms-greeter", "danksearch"},
+		},
+		{
+			name:        "danksearch flag when unavailable errors",
+			dankSearch:  true,
+			deps:        []deps.Dependency{{Name: "niri", Status: deps.StatusInstalled, Required: true}},
+			wantErr:     true,
+			errContains: "--danksearch",
+		},
+		{
+			name:         "dankcalendar flag when unavailable errors",
+			dankCalendar: true,
+			deps:         []deps.Dependency{{Name: "niri", Status: deps.StatusInstalled, Required: true}},
+			wantErr:      true,
+			errContains:  "--dankcalendar",
 		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			r := NewRunner(Config{
-				IncludeDeps: tt.includeDeps,
-				ExcludeDeps: tt.excludeDeps,
+				IncludeDeps:  tt.includeDeps,
+				ExcludeDeps:  tt.excludeDeps,
+				DankSearch:   tt.dankSearch,
+				DankCalendar: tt.dankCalendar,
 			})
 			d := tt.deps
 			if d == nil {

@@ -41,6 +41,8 @@ type Config struct {
 	ReplaceConfigs    []string // specific configs to deploy (e.g. "niri", "ghostty")
 	ReplaceConfigsAll bool     // deploy/replace all configurations
 	Yes               bool
+	DankSearch        bool // install danksearch and enable its user service
+	DankCalendar      bool // install dankcalendar
 }
 
 // Runner orchestrates unattended (headless) installation.
@@ -214,6 +216,11 @@ func (r *Runner) Run() error {
 		return fmt.Errorf("package installation failed: %w", err)
 	}
 
+	useSystemd := true
+	if distroConfig, exists := distros.Registry[osInfo.Distribution.ID]; exists && distroConfig.Family == distros.FamilyVoid {
+		useSystemd = false
+	}
+
 	// 9. Greeter setup (if dms-greeter was included)
 	if !disabledItems["dms-greeter"] && r.depExists(dependencies, "dms-greeter") {
 		compositorName := "niri"
@@ -231,15 +238,24 @@ func (r *Runner) Run() error {
 		}
 	}
 
+	// 9b. danksearch service setup (if danksearch was included)
+	if useSystemd && !disabledItems["danksearch"] && r.depExists(dependencies, "danksearch") {
+		fmt.Fprintln(os.Stdout, "Enabling danksearch service...")
+		logFunc := func(line string) {
+			r.log(line)
+			fmt.Fprintf(os.Stdout, "  danksearch: %s\n", line)
+		}
+		if err := distros.SetupDsearchService(context.Background(), logFunc); err != nil {
+			// Non-fatal, matching greeter behavior
+			fmt.Fprintf(os.Stderr, "Warning: danksearch service setup issue (non-fatal): %v\n", err)
+		}
+	}
+
 	// 10. Deploy configurations
 	fmt.Fprintln(os.Stdout, "Deploying configurations...")
 	r.log("Starting configuration deployment")
 
 	deployer := config.NewConfigDeployer(r.logChan)
-	useSystemd := true
-	if distroConfig, exists := distros.Registry[osInfo.Distribution.ID]; exists && distroConfig.Family == distros.FamilyVoid {
-		useSystemd = false
-	}
 	results, err := deployer.DeployConfigurationsSelectiveWithReinstallsAndSystemd(
 		context.Background(),
 		wm,
@@ -272,17 +288,29 @@ func (r *Runner) Run() error {
 }
 
 // buildDisabledItems computes the set of dependencies that should be skipped
-// during installation, applying the --include-deps and --exclude-deps filters.
-// dms-greeter is disabled by default (opt-in), matching TUI behavior.
+// during installation. Optional components are opt-in (disabled by default),
+// then re-enabled by the dedicated flags and --include-deps.
 func (r *Runner) buildDisabledItems(dependencies []deps.Dependency) (map[string]bool, error) {
 	disabledItems := make(map[string]bool)
 
-	// dms-greeter is opt-in (disabled by default), matching TUI behavior
 	for i := range dependencies {
-		if dependencies[i].Name == "dms-greeter" {
-			disabledItems["dms-greeter"] = true
-			break
+		if !dependencies[i].Required {
+			disabledItems[dependencies[i].Name] = true
 		}
+	}
+
+	// Dedicated flags resolve before include/exclude
+	if r.cfg.DankSearch {
+		if !r.depExists(dependencies, "danksearch") {
+			return nil, fmt.Errorf("--danksearch: not available on this distribution")
+		}
+		delete(disabledItems, "danksearch")
+	}
+	if r.cfg.DankCalendar {
+		if !r.depExists(dependencies, "dankcalendar") {
+			return nil, fmt.Errorf("--dankcalendar: not available on this distribution")
+		}
+		delete(disabledItems, "dankcalendar")
 	}
 
 	// Process --include-deps (enable items that are disabled by default)
