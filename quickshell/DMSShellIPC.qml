@@ -1793,8 +1793,8 @@ Item {
         }
 
         function open(): string {
-            if (!CompositorService.isNiri)
-                return "WINDOW_RULES_NIRI_ONLY";
+            if (!CompositorService.isNiri && !CompositorService.isHyprland && !CompositorService.isMango)
+                return "WINDOW_RULES_UNSUPPORTED_COMPOSITOR";
             root.windowRuleModalLoader.active = true;
             if (root.windowRuleModalLoader.item) {
                 root.windowRuleModalLoader.item.show(getFocusedWindow());
@@ -1812,8 +1812,8 @@ Item {
         }
 
         function toggle(): string {
-            if (!CompositorService.isNiri)
-                return "WINDOW_RULES_NIRI_ONLY";
+            if (!CompositorService.isNiri && !CompositorService.isHyprland && !CompositorService.isMango)
+                return "WINDOW_RULES_UNSUPPORTED_COMPOSITOR";
             root.windowRuleModalLoader.active = true;
             if (root.windowRuleModalLoader.item) {
                 if (root.windowRuleModalLoader.item.visible) {
