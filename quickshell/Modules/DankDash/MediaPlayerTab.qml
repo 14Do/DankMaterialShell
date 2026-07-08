@@ -294,7 +294,19 @@ Item {
         id: bgContainer
         anchors.fill: parent
 
-        readonly property string curArt: TrackArtService.resolvedArtUrl
+        // Fall back to the live mpris url so the background is never blank.
+        readonly property string curArt: {
+            const resolved = TrackArtService.resolvedArtUrl;
+            if (resolved !== "")
+                return resolved;
+            const p = root.activePlayer;
+            if (!p)
+                return "";
+            if (p.trackArtUrl)
+                return p.trackArtUrl;
+            const m = p.metadata;
+            return m && m["mpris:artUrl"] ? m["mpris:artUrl"].toString() : "";
+        }
         // Two layers crossfade: new art loads into the hidden one and fades in once decoded.
         property bool _showA: true
         visible: layerA.ready || layerB.ready
@@ -305,18 +317,29 @@ Item {
         function syncArt() {
             if (curArt === "")
                 return;
-            const frontArt = _showA ? layerA.art : layerB.art;
-            const backArt = _showA ? layerB.art : layerA.art;
-            if (frontArt == curArt)
+            const front = _showA ? layerA : layerB;
+            const back = _showA ? layerB : layerA;
+            if (front.art == curArt)
                 return;
-            if (backArt == curArt) {
-                _showA = !_showA;
+            if (back.art == curArt) {
+                // Already decoded in the hidden layer; flip once ready (else promote() does).
+                if (back.ready)
+                    _showA = !_showA;
                 return;
             }
-            if (_showA)
-                layerB.art = curArt;
-            else
-                layerA.art = curArt;
+            back.art = curArt;
+        }
+
+        // Flip to the hidden layer only when it holds the current art, ignoring stale
+        // Ready re-emits (e.g. popout re-expose) that would otherwise ping-pong _showA.
+        function promote(layer) {
+            const back = _showA ? layerB : layerA;
+            if (layer !== back)
+                return;
+            if (layer.art != curArt)
+                return;
+            _showA = (layer === layerA);
+            root.maybeFinishSwitch();
         }
 
         component BgBlurLayer: ClippingRectangle {
@@ -370,23 +393,13 @@ Item {
         BgBlurLayer {
             id: layerA
             front: bgContainer._showA
-            onLoaded: {
-                if (!bgContainer._showA) {
-                    bgContainer._showA = true;
-                    root.maybeFinishSwitch();
-                }
-            }
+            onLoaded: bgContainer.promote(layerA)
         }
 
         BgBlurLayer {
             id: layerB
             front: !bgContainer._showA
-            onLoaded: {
-                if (bgContainer._showA) {
-                    bgContainer._showA = false;
-                    root.maybeFinishSwitch();
-                }
-            }
+            onLoaded: bgContainer.promote(layerB)
         }
 
         Rectangle {

@@ -13,6 +13,8 @@ Singleton {
     property string resolvedArtUrl: ""
     property alias _bgArtSource: root.resolvedArtUrl
     property bool loading: false
+    // sha1s of placeholder art to reject (Chrome's own logo, shown before real cover).
+    readonly property var _artHashDenylist: ["764a730860c5b8a7bbee690ee5a443672ae37dc8"]
 
     function djb2Hash(str) {
         if (!str) return "";
@@ -54,6 +56,11 @@ Singleton {
         return "";
     }
 
+    function _commit(u) {
+        resolvedArtUrl = u;
+        _committedArtKey = u !== "" ? _pendingArtKey : "";
+    }
+
     function loadArtwork(url) {
         if (!url || url === "") {
             // Keep stale art; only blank once the empty url debounce settles.
@@ -81,7 +88,7 @@ Singleton {
                     return;
 
                 if (exitCode === 0) {
-                    resolvedArtUrl = localFileUrl;
+                    _commit(localFileUrl);
                     loading = false;
                 } else {
                     const dlCmd = "mkdir -p \"$(dirname \"$1\")\" && curl -f -s -L -o \"$1\" \"$2\" && mv \"$1\" \"$3\" || { rm -f \"$1\"; exit 1; }";
@@ -98,18 +105,14 @@ Singleton {
                                 return;
 
                             if (maxExitCode === 0) {
-                                resolvedArtUrl = localFileUrl;
+                                _commit(localFileUrl);
                                 loading = false;
                             } else {
                                 Proc.runCommand(null, ["sh", "-c", dlCmd, "sh", tmpPath, mqUrl, filePath], (mqOutput, mqExitCode) => {
                                     if (_lastArtUrl !== targetUrl)
                                         return;
 
-                                    if (mqExitCode === 0) {
-                                        resolvedArtUrl = localFileUrl;
-                                    } else {
-                                        resolvedArtUrl = targetUrl; // Ultimate fallback
-                                    }
+                                    _commit(mqExitCode === 0 ? localFileUrl : targetUrl);
                                     loading = false;
                                 }, 50, 15000);
                             }
@@ -121,11 +124,7 @@ Singleton {
                             if (_lastArtUrl !== targetUrl)
                                 return;
 
-                            if (dlExitCode === 0) {
-                                resolvedArtUrl = localFileUrl;
-                            } else {
-                                resolvedArtUrl = targetUrl; // Fallback to raw URL
-                            }
+                            _commit(dlExitCode === 0 ? localFileUrl : targetUrl);
                             loading = false;
                         }, 50, 15000);
                     }
@@ -137,11 +136,22 @@ Singleton {
         loading = true;
         const localUrl = url;
         const filePath = url.startsWith("file://") ? url.substring(7) : url;
-        // Cover file often lands after the metadata update, so poll briefly.
-        Proc.runCommand(null, ["sh", "-c", "for i in $(seq 20); do [ -f \"$1\" ] && exit 0; sleep 0.15; done; exit 1", "sh", filePath], (output, exitCode) => {
+        // Cover lands after metadata, so poll; hash only to reject placeholder art.
+        const script = "f=\"$1\"; for i in $(seq 20); do [ -f \"$f\" ] && break; sleep 0.15; done; [ -f \"$f\" ] || exit 1; sha1sum \"$f\" | cut -c1-40";
+        Proc.runCommand(null, ["sh", "-c", script, "sh", filePath], (output, exitCode) => {
             if (_lastArtUrl !== localUrl)
                 return;
-            resolvedArtUrl = exitCode === 0 ? localUrl : "";
+            if (exitCode !== 0) {
+                // Keep current art rather than blanking (avoids an accent/art flash).
+                loading = false;
+                return;
+            }
+            // Placeholder (Chrome logo): skip without committing so the real cover still resolves.
+            if (_artHashDenylist.indexOf((output || "").trim()) !== -1) {
+                loading = false;
+                return;
+            }
+            _commit(localUrl);
             loading = false;
         }, 50, 5000);
     }
@@ -151,13 +161,14 @@ Singleton {
         interval: 800
         onTriggered: {
             if (root._lastArtUrl === "")
-                root.resolvedArtUrl = "";
+                root._commit("");
         }
     }
 
     property MprisPlayer activePlayer: MprisController.activePlayer
 
-    property string _resolvedTrackKey: ""
+    property string _committedArtKey: ""
+    property string _pendingArtKey: ""
 
     onActivePlayerChanged: _updateArtUrl()
 
@@ -173,17 +184,21 @@ Singleton {
         const p = activePlayer;
         if (!p)
             return "";
+        // Prefer the stable track id; title/artist/album fill in progressively (Chrome).
+        const tid = p.metadata && p.metadata["mpris:trackid"] ? p.metadata["mpris:trackid"].toString() : "";
+        if (tid !== "")
+            return tid;
         return (p.trackTitle || "") + "" + (p.trackArtist || "") + "" + (p.trackAlbum || "");
     }
 
     function _updateArtUrl() {
-        const url = getArtworkUrl(activePlayer);
         const key = _trackKey();
-        // Ignore metadata jitter once resolved, but only when the url still matches
-        // (trackArtUrl can update before the title, and skipping then wedges old art).
-        if (key !== "" && key === _resolvedTrackKey && url === _lastArtUrl && resolvedArtUrl !== "")
+        // Skip once real art is committed for this track (dedup Chrome's multi-size
+        // re-publish). The lock is set in _commit(), never optimistically, so a rejected
+        // placeholder or a short-circuited duplicate url can't wedge the real cover out.
+        if (key !== "" && key === _committedArtKey)
             return;
-        _resolvedTrackKey = key;
-        loadArtwork(url);
+        _pendingArtKey = key;
+        loadArtwork(getArtworkUrl(activePlayer));
     }
 }

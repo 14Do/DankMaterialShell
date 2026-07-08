@@ -9,7 +9,22 @@ Item {
     property MprisPlayer activePlayer
     property string artUrl: TrackArtService.resolvedArtUrl
     property string lastValidArtUrl: ""
-    property alias albumArtStatus: albumArt.imageStatus
+    // Live mpris url — always valid for the current track; fallback so art is never blank.
+    readonly property string rawArtUrl: {
+        const p = activePlayer;
+        if (!p)
+            return "";
+        if (p.trackArtUrl)
+            return p.trackArtUrl;
+        const m = p.metadata;
+        return m && m["mpris:artUrl"] ? m["mpris:artUrl"].toString() : "";
+    }
+    readonly property string curArt: artUrl || lastValidArtUrl || rawArtUrl
+    property string _prevArt: ""
+    property bool _fadePending: false
+    property string _srcOverride: "" // forces the live url when the resolved one fails
+    readonly property string _mainSrc: _srcOverride !== "" ? _srcOverride : curArt
+    readonly property int albumArtStatus: mainArt.imageStatus
     property real albumSize: Math.min(width, height) * 0.88
     property bool showAnimation: true
     property real animationScale: 1.0
@@ -48,10 +63,49 @@ Item {
         lastValidArtUrl = "";
     }
 
-    onArtUrlChanged: {
-        if (artUrl && albumArtStatus !== Image.Error) {
-            lastValidArtUrl = artUrl;
+    onCurArtChanged: {
+        _srcOverride = "";
+        // Keep the outgoing art covering mainArt until the new art decodes, then fade —
+        // hides mainArt's placeholder base so no primary circle flashes mid-load.
+        if (_prevArt !== "" && _prevArt !== curArt) {
+            fadeArt.imageSource = _prevArt;
+            fadeArt.opacity = 1;
+            _fadePending = true;
+            fadeSafety.restart();
+            Qt.callLater(_maybeStartFade); // catch cached (synchronous) loads
         }
+        _prevArt = curArt;
+    }
+
+    function _maybeStartFade() {
+        if (!_fadePending)
+            return;
+        if (mainArt.imageStatus !== Image.Ready && mainArt.imageStatus !== Image.Error)
+            return;
+        _fadePending = false;
+        fadeSafety.stop();
+        fadeOut.restart();
+    }
+
+    Timer {
+        id: fadeSafety
+        interval: 1200
+        onTriggered: {
+            if (root._fadePending) {
+                root._fadePending = false;
+                fadeOut.restart();
+            }
+        }
+    }
+
+    NumberAnimation {
+        id: fadeOut
+        target: fadeArt
+        property: "opacity"
+        from: 1
+        to: 0
+        duration: 300
+        easing.type: Easing.InOutQuad
     }
 
     function updateBands() {
@@ -166,21 +220,36 @@ Item {
     }
 
     DankCircularImage {
-        id: albumArt
+        id: mainArt
         width: albumSize
         height: albumSize
         anchors.centerIn: parent
         z: 1
-
-        imageSource: artUrl || lastValidArtUrl || ""
+        imageSource: root._mainSrc
         fallbackIcon: "album"
         border.color: MediaAccentService.accent
         border.width: 2
 
-        onImageSourceChanged: {
-            if (imageSource && imageStatus !== Image.Error) {
-                lastValidArtUrl = imageSource;
-            }
+        onImageStatusChanged: {
+            if (imageStatus === Image.Ready && imageSource !== "")
+                root.lastValidArtUrl = imageSource;
+            else if (imageStatus === Image.Error && root._srcOverride === "" && root.rawArtUrl !== "" && root.rawArtUrl !== imageSource)
+                root._srcOverride = root.rawArtUrl; // resolved url dead → use live mpris url
+            root._maybeStartFade();
         }
+    }
+
+    // Outgoing art, shown on top only while fading out over the new mainArt.
+    DankCircularImage {
+        id: fadeArt
+        width: albumSize
+        height: albumSize
+        anchors.centerIn: parent
+        z: 2
+        fallbackIcon: ""
+        border.color: MediaAccentService.accent
+        border.width: 2
+        opacity: 0
+        visible: opacity > 0
     }
 }

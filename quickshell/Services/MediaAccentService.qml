@@ -26,13 +26,9 @@ Singleton {
     readonly property color accentTrack: Theme.withAlpha(accent, 0.28)
     readonly property color accentSubtle: Theme.withAlpha(accent, 0.55)
 
-    // Plain-named alias: underscore-prefixed props with onChanged handlers crash config load.
     readonly property string artUrl: TrackArtService.resolvedArtUrl
-    onArtUrlChanged: {
-        if (artUrl === "")
-            _accent = null;
-    }
 
+    // Hold the last accent across the brief artUrl blank between tracks; never reset to primary.
     property var _accent: null
 
     ColorQuantizer {
@@ -40,7 +36,11 @@ Singleton {
         source: root.artUrl
         depth: 4
         rescaleSize: 64
-        onColorsChanged: root._accent = root._pickAccent(colors)
+        onColorsChanged: {
+            const a = root._pickAccent(colors);
+            if (a !== null)
+                root._accent = a;
+        }
     }
 
     function _pickAccent(colors) {
