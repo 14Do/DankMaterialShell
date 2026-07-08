@@ -6,8 +6,8 @@
 let
   homeManagerNixosModule =
     (fetchTarball {
-      url = "https://github.com/nix-community/home-manager/archive/e82d4a4ecd18363aa2054cbaa3e32e4134c3dbf4.tar.gz";
-      sha256 = "sha256-ZTYDofOM3/PJhRF1EuBh6uibm+DmkhU7Wor6mMN7YTc=";
+      url = "https://github.com/nix-community/home-manager/archive/53ebbdc405acc04acd9bb73ccca462b51ddb8c6d.tar.gz";
+      sha256 = "1cqmfgwb3jac2zzv82bwvgypxff1z30xkz9j6qcinkmqf58j3k3b";
     })
     + "/nixos";
 
@@ -76,8 +76,8 @@ pkgs.testers.runNixOSTest {
     machine.wait_for_unit("multi-user.target")
 
     machine.succeed("su -- danklinux -c 'test -f ~/.config/niri/config.kdl'")
-    machine.succeed("su -- danklinux -c 'grep -F \"include \\\"dms/binds.kdl\\\"\" ~/.config/niri/config.kdl'")
-    machine.succeed("su -- danklinux -c 'grep -F \"include \\\"hm.kdl\\\"\" ~/.config/niri/config.kdl'")
+    machine.succeed("su -- danklinux -c 'grep -F \"include optional=true \\\"dms/binds.kdl\\\"\" ~/.config/niri/config.kdl'")
+    machine.succeed("su -- danklinux -c 'grep -F \"include optional=true \\\"hm.kdl\\\"\" ~/.config/niri/config.kdl'")
     machine.succeed("su -- danklinux -c 'grep -F \"spawn-at-startup\" ~/.config/niri/hm.kdl'")
     machine.succeed("su -- danklinux -c 'grep -F \"\\\"dms\\\" \\\"run\\\"\" ~/.config/niri/hm.kdl'")
   '';
