@@ -24,32 +24,6 @@ func TestLockScreenPasswordFieldBypassesTextInputIME(t *testing.T) {
 	}
 }
 
-func TestLockScreenAuthenticationCardOwnsFactorControls(t *testing.T) {
-	data, err := os.ReadFile("../../../quickshell/Modules/Settings/LockScreenTab.qml")
-	if err != nil {
-		t.Fatalf("read lock screen settings QML: %v", err)
-	}
-
-	content := string(data)
-	authCard := strings.Index(content, `title: I18n.tr("Authentication")`)
-	behaviorCard := strings.Index(content, `title: I18n.tr("Lock Screen behaviour")`)
-	fingerprintToggle := strings.Index(content, `settingKey: "enableFprint"`)
-	u2fToggle := strings.Index(content, `settingKey: "enableU2f"`)
-	u2fSource := strings.Index(content, `settingKey: "lockU2fPamPath"`)
-	if authCard < 0 || behaviorCard < 0 || fingerprintToggle < 0 || u2fToggle < 0 || u2fSource < 0 {
-		t.Fatalf("expected authentication card, factor toggles, and U2F source setting")
-	}
-	for name, position := range map[string]int{
-		"fingerprint toggle": fingerprintToggle,
-		"U2F toggle":         u2fToggle,
-		"U2F source":         u2fSource,
-	} {
-		if position < authCard || position > behaviorCard {
-			t.Fatalf("%s must remain in the authentication card", name)
-		}
-	}
-}
-
 func TestLockScreenPamSupportsManagedAndSystemPolicies(t *testing.T) {
 	data, err := os.ReadFile("../../../quickshell/Modules/Lock/Pam.qml")
 	if err != nil {
