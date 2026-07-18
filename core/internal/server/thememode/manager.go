@@ -174,6 +174,13 @@ func (m *Manager) SetUseIPLocation(use bool) {
 		go func() {
 			if use {
 				dc.Acquire("theme")
+				// Clear again after Acquire, mirroring SetGeoClient: a recompute
+				// racing the acquisition window reads the facade's idle 0,0 fix
+				// and caches it, and nothing else ever invalidates the cache.
+				m.locationMutex.Lock()
+				m.cachedIPLat = nil
+				m.cachedIPLon = nil
+				m.locationMutex.Unlock()
 			} else {
 				dc.Release("theme")
 			}
