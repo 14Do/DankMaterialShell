@@ -1,14 +1,12 @@
 package apppicker
 
 import (
-	"net"
-
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/desktop"
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/log"
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
 )
 
-func HandleRequest(conn net.Conn, req models.Request, manager *Manager) {
+func HandleRequest(conn *models.Conn, req models.Request, manager *Manager) {
 	switch req.Method {
 	case "apppicker.open", "browser.open":
 		handleOpen(conn, req, manager)
@@ -17,7 +15,7 @@ func HandleRequest(conn net.Conn, req models.Request, manager *Manager) {
 	}
 }
 
-func handleOpen(conn net.Conn, req models.Request, manager *Manager) {
+func handleOpen(conn *models.Conn, req models.Request, manager *Manager) {
 	log.Infof("AppPicker: Received %s request with params: %+v", req.Method, req.Params)
 
 	target, ok := models.Get[string](req, "target")

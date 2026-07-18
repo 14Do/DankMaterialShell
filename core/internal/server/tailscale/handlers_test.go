@@ -47,7 +47,7 @@ func TestHandleGetStatus(t *testing.T) {
 	defer m.Close()
 
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{ID: 1, Method: "tailscale.getStatus"}
 	handleGetStatus(conn, req, m)
@@ -66,7 +66,7 @@ func TestHandleRefresh(t *testing.T) {
 	defer m.Close()
 
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{ID: 1, Method: "tailscale.refresh"}
 	handleRefresh(conn, req, m)
@@ -98,7 +98,7 @@ func TestHandleActions(t *testing.T) {
 			defer m.Close()
 
 			buf := &bytes.Buffer{}
-			conn := &mockConn{Buffer: buf}
+			conn := models.NewConn(&mockConn{Buffer: buf})
 
 			req := models.Request{ID: 1, Method: tc.method, Params: tc.params}
 			HandleRequest(conn, req, m)
@@ -125,7 +125,7 @@ func TestHandleAction_BackendError(t *testing.T) {
 	defer m.Close()
 
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{ID: 1, Method: "tailscale.connect"}
 	HandleRequest(conn, req, m)
@@ -141,7 +141,7 @@ func TestHandleRequest_UnknownMethod(t *testing.T) {
 	defer m.Close()
 
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{ID: 1, Method: "tailscale.unknownMethod"}
 	HandleRequest(conn, req, m)

@@ -2,7 +2,6 @@ package server
 
 import (
 	"context"
-	"net"
 	"time"
 
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/matugen"
@@ -14,7 +13,7 @@ type MatugenQueueResult struct {
 	Message string `json:"message,omitempty"`
 }
 
-func handleMatugenQueue(conn net.Conn, req models.Request) {
+func handleMatugenQueue(conn *models.Conn, req models.Request) {
 	opts := matugen.Options{
 		StateDir:            models.GetOr(req, "stateDir", ""),
 		ShellDir:            models.GetOr(req, "shellDir", ""),
@@ -70,7 +69,7 @@ func handleMatugenQueue(conn net.Conn, req models.Request) {
 	}
 }
 
-func handleMatugenStatus(conn net.Conn, req models.Request) {
+func handleMatugenStatus(conn *models.Conn, req models.Request) {
 	queue := matugen.GetQueue()
 	models.Respond(conn, req.ID, map[string]bool{
 		"running": queue.IsRunning(),

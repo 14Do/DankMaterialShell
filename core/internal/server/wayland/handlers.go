@@ -1,16 +1,14 @@
 package wayland
 
 import (
-	"encoding/json"
 	"fmt"
-	"net"
 	"time"
 
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/params"
+	"github.com/AvengeMedia/dankgo/ipc/params"
 )
 
-func HandleRequest(conn net.Conn, req models.Request, manager *Manager) {
+func HandleRequest(conn *models.Conn, req models.Request, manager *Manager) {
 	if manager == nil {
 		models.RespondError(conn, req.ID, "wayland manager not initialized")
 		return
@@ -38,11 +36,11 @@ func HandleRequest(conn net.Conn, req models.Request, manager *Manager) {
 	}
 }
 
-func handleGetState(conn net.Conn, req models.Request, manager *Manager) {
+func handleGetState(conn *models.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, manager.GetState())
 }
 
-func handleSetTemperature(conn net.Conn, req models.Request, manager *Manager) {
+func handleSetTemperature(conn *models.Conn, req models.Request, manager *Manager) {
 	var lowTemp, highTemp int
 
 	if temp, ok := models.Get[float64](req, "temp"); ok {
@@ -71,7 +69,7 @@ func handleSetTemperature(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "temperature set"})
 }
 
-func handleSetLocation(conn net.Conn, req models.Request, manager *Manager) {
+func handleSetLocation(conn *models.Conn, req models.Request, manager *Manager) {
 	lat, err := params.Float(req.Params, "latitude")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -92,7 +90,7 @@ func handleSetLocation(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "location set"})
 }
 
-func handleSetManualTimes(conn net.Conn, req models.Request, manager *Manager) {
+func handleSetManualTimes(conn *models.Conn, req models.Request, manager *Manager) {
 	sunriseStr, sunriseOK := models.Get[string](req, "sunrise")
 	sunsetStr, sunsetOK := models.Get[string](req, "sunset")
 
@@ -122,7 +120,7 @@ func handleSetManualTimes(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "manual times set"})
 }
 
-func handleSetUseIPLocation(conn net.Conn, req models.Request, manager *Manager) {
+func handleSetUseIPLocation(conn *models.Conn, req models.Request, manager *Manager) {
 	use, err := params.Bool(req.Params, "use")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -133,7 +131,7 @@ func handleSetUseIPLocation(conn net.Conn, req models.Request, manager *Manager)
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "IP location preference set"})
 }
 
-func handleSetGamma(conn net.Conn, req models.Request, manager *Manager) {
+func handleSetGamma(conn *models.Conn, req models.Request, manager *Manager) {
 	gamma, err := params.Float(req.Params, "gamma")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -148,7 +146,7 @@ func handleSetGamma(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "gamma set"})
 }
 
-func handleSetEnabled(conn net.Conn, req models.Request, manager *Manager) {
+func handleSetEnabled(conn *models.Conn, req models.Request, manager *Manager) {
 	enabled, err := params.Bool(req.Params, "enabled")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -159,13 +157,13 @@ func handleSetEnabled(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "enabled state set"})
 }
 
-func handleSubscribe(conn net.Conn, req models.Request, manager *Manager) {
+func handleSubscribe(conn *models.Conn, req models.Request, manager *Manager) {
 	clientID := fmt.Sprintf("client-%p", conn)
 	stateChan := manager.Subscribe(clientID)
 	defer manager.Unsubscribe(clientID)
 
 	initialState := manager.GetState()
-	if err := json.NewEncoder(conn).Encode(models.Response[State]{
+	if err := conn.WriteResponse(models.Response[State]{
 		ID:     req.ID,
 		Result: &initialState,
 	}); err != nil {
@@ -173,7 +171,7 @@ func handleSubscribe(conn net.Conn, req models.Request, manager *Manager) {
 	}
 
 	for state := range stateChan {
-		if err := json.NewEncoder(conn).Encode(models.Response[State]{
+		if err := conn.WriteResponse(models.Response[State]{
 			Result: &state,
 		}); err != nil {
 			return

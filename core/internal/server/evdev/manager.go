@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/log"
-	"github.com/AvengeMedia/DankMaterialShell/core/pkg/syncmap"
+	"github.com/AvengeMedia/dankgo/syncmap"
 	"github.com/fsnotify/fsnotify"
 	evdev "github.com/holoplot/go-evdev"
 )

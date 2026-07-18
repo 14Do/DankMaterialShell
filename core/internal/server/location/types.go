@@ -4,7 +4,7 @@ import (
 	"sync"
 
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/geolocation"
-	"github.com/AvengeMedia/DankMaterialShell/core/pkg/syncmap"
+	"github.com/AvengeMedia/dankgo/syncmap"
 )
 
 type State struct {

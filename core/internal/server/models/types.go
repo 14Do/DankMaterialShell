@@ -1,12 +1,16 @@
 package models
 
 import (
-	"encoding/json"
 	"net"
 
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/log"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/params"
+	"github.com/AvengeMedia/dankgo/ipc"
+	"github.com/AvengeMedia/dankgo/ipc/params"
 )
+
+type Conn = ipc.ConnWriter
+
+func NewConn(c net.Conn) *Conn { return ipc.NewConnWriter(c) }
 
 type Request struct {
 	ID     int            `json:"id,omitempty"`
@@ -29,15 +33,13 @@ type Response[T any] struct {
 	Error  string `json:"error,omitempty"`
 }
 
-func RespondError(conn net.Conn, id int, errMsg string) {
+func RespondError(conn *Conn, id int, errMsg string) {
 	log.Errorf("DMS API Error: id=%d error=%s", id, errMsg)
-	resp := Response[any]{ID: id, Error: errMsg}
-	json.NewEncoder(conn).Encode(resp)
+	_ = conn.WriteResponse(Response[any]{ID: id, Error: errMsg})
 }
 
-func Respond[T any](conn net.Conn, id int, result T) {
-	resp := Response[T]{ID: id, Result: &result}
-	json.NewEncoder(conn).Encode(resp)
+func Respond[T any](conn *Conn, id int, result T) {
+	_ = conn.WriteResponse(Response[T]{ID: id, Result: &result})
 }
 
 type SuccessResult struct {

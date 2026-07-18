@@ -39,11 +39,12 @@ func (m *mockNetConn) Close() error {
 }
 
 func TestRespondError_Network(t *testing.T) {
-	conn := newMockNetConn()
+	mc := newMockNetConn()
+	conn := models.NewConn(mc)
 	models.RespondError(conn, 123, "test error")
 
 	var resp models.Response[any]
-	err := json.NewDecoder(conn.writeBuf).Decode(&resp)
+	err := json.NewDecoder(mc.writeBuf).Decode(&resp)
 	require.NoError(t, err)
 
 	assert.Equal(t, 123, resp.ID)
@@ -52,12 +53,13 @@ func TestRespondError_Network(t *testing.T) {
 }
 
 func TestRespond_Network(t *testing.T) {
-	conn := newMockNetConn()
+	mc := newMockNetConn()
+	conn := models.NewConn(mc)
 	result := models.SuccessResult{Success: true, Message: "test"}
 	models.Respond(conn, 123, result)
 
 	var resp models.Response[models.SuccessResult]
-	err := json.NewDecoder(conn.writeBuf).Decode(&resp)
+	err := json.NewDecoder(mc.writeBuf).Decode(&resp)
 	require.NoError(t, err)
 
 	assert.Equal(t, 123, resp.ID)
@@ -76,13 +78,14 @@ func TestHandleGetState(t *testing.T) {
 		},
 	}
 
-	conn := newMockNetConn()
+	mc := newMockNetConn()
+	conn := models.NewConn(mc)
 	req := models.Request{ID: 123, Method: "network.getState"}
 
 	handleGetState(conn, req, manager)
 
 	var resp models.Response[NetworkState]
-	err := json.NewDecoder(conn.writeBuf).Decode(&resp)
+	err := json.NewDecoder(mc.writeBuf).Decode(&resp)
 	require.NoError(t, err)
 
 	assert.Equal(t, 123, resp.ID)
@@ -102,13 +105,14 @@ func TestHandleGetWiFiNetworks(t *testing.T) {
 		},
 	}
 
-	conn := newMockNetConn()
+	mc := newMockNetConn()
+	conn := models.NewConn(mc)
 	req := models.Request{ID: 123, Method: "network.wifi.networks"}
 
 	handleGetWiFiNetworks(conn, req, manager)
 
 	var resp models.Response[[]WiFiNetwork]
-	err := json.NewDecoder(conn.writeBuf).Decode(&resp)
+	err := json.NewDecoder(mc.writeBuf).Decode(&resp)
 	require.NoError(t, err)
 
 	assert.Equal(t, 123, resp.ID)
@@ -124,7 +128,8 @@ func TestHandleConnectWiFi(t *testing.T) {
 			state: &NetworkState{},
 		}
 
-		conn := newMockNetConn()
+		mc := newMockNetConn()
+		conn := models.NewConn(mc)
 		req := models.Request{
 			ID:     123,
 			Method: "network.wifi.connect",
@@ -134,7 +139,7 @@ func TestHandleConnectWiFi(t *testing.T) {
 		handleConnectWiFi(conn, req, manager)
 
 		var resp models.Response[any]
-		err := json.NewDecoder(conn.writeBuf).Decode(&resp)
+		err := json.NewDecoder(mc.writeBuf).Decode(&resp)
 		require.NoError(t, err)
 
 		assert.Equal(t, 123, resp.ID)
@@ -148,7 +153,8 @@ func TestHandleSetPreference(t *testing.T) {
 			state: &NetworkState{},
 		}
 
-		conn := newMockNetConn()
+		mc := newMockNetConn()
+		conn := models.NewConn(mc)
 		req := models.Request{
 			ID:     123,
 			Method: "network.preference.set",
@@ -158,7 +164,7 @@ func TestHandleSetPreference(t *testing.T) {
 		handleSetPreference(conn, req, manager)
 
 		var resp models.Response[any]
-		err := json.NewDecoder(conn.writeBuf).Decode(&resp)
+		err := json.NewDecoder(mc.writeBuf).Decode(&resp)
 		require.NoError(t, err)
 
 		assert.Equal(t, 123, resp.ID)
@@ -172,7 +178,8 @@ func TestHandleGetNetworkInfo(t *testing.T) {
 			state: &NetworkState{},
 		}
 
-		conn := newMockNetConn()
+		mc := newMockNetConn()
+		conn := models.NewConn(mc)
 		req := models.Request{
 			ID:     123,
 			Method: "network.info",
@@ -182,7 +189,7 @@ func TestHandleGetNetworkInfo(t *testing.T) {
 		handleGetNetworkInfo(conn, req, manager)
 
 		var resp models.Response[any]
-		err := json.NewDecoder(conn.writeBuf).Decode(&resp)
+		err := json.NewDecoder(mc.writeBuf).Decode(&resp)
 		require.NoError(t, err)
 
 		assert.Equal(t, 123, resp.ID)
@@ -198,7 +205,8 @@ func TestHandleRequest(t *testing.T) {
 	}
 
 	t.Run("unknown method", func(t *testing.T) {
-		conn := newMockNetConn()
+		mc := newMockNetConn()
+		conn := models.NewConn(mc)
 		req := models.Request{
 			ID:     123,
 			Method: "network.unknown",
@@ -207,7 +215,7 @@ func TestHandleRequest(t *testing.T) {
 		HandleRequest(conn, req, manager)
 
 		var resp models.Response[any]
-		err := json.NewDecoder(conn.writeBuf).Decode(&resp)
+		err := json.NewDecoder(mc.writeBuf).Decode(&resp)
 		require.NoError(t, err)
 
 		assert.Equal(t, 123, resp.ID)
@@ -215,7 +223,8 @@ func TestHandleRequest(t *testing.T) {
 	})
 
 	t.Run("valid method - getState", func(t *testing.T) {
-		conn := newMockNetConn()
+		mc := newMockNetConn()
+		conn := models.NewConn(mc)
 		req := models.Request{
 			ID:     123,
 			Method: "network.getState",
@@ -224,7 +233,7 @@ func TestHandleRequest(t *testing.T) {
 		HandleRequest(conn, req, manager)
 
 		var resp models.Response[NetworkState]
-		err := json.NewDecoder(conn.writeBuf).Decode(&resp)
+		err := json.NewDecoder(mc.writeBuf).Decode(&resp)
 		require.NoError(t, err)
 
 		assert.Equal(t, 123, resp.ID)

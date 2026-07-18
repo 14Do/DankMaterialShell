@@ -1,9 +1,15 @@
 package errdefs
 
-type ErrorType int
+import (
+	dankerrdefs "github.com/AvengeMedia/dankgo/errdefs"
+)
+
+type ErrorType = dankerrdefs.ErrorType
+
+type CustomError = dankerrdefs.CustomError
 
 const (
-	ErrTypeNotLinux ErrorType = iota
+	ErrTypeNotLinux ErrorType = dankerrdefs.AppErrorBase + iota
 	ErrTypeInvalidArchitecture
 	ErrTypeUnsupportedDistribution
 	ErrTypeUnsupportedVersion
@@ -22,20 +28,8 @@ const (
 	ErrTypeGeneric
 )
 
-type CustomError struct {
-	Type    ErrorType
-	Message string
-}
-
-func (e *CustomError) Error() string {
-	return e.Message
-}
-
 func NewCustomError(errType ErrorType, message string) error {
-	return &CustomError{
-		Type:    errType,
-		Message: message,
-	}
+	return dankerrdefs.NewCustomError(errType, message)
 }
 
 const (

@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/log"
-	"github.com/AvengeMedia/DankMaterialShell/core/pkg/syncmap"
+	"github.com/AvengeMedia/dankgo/syncmap"
 	"tailscale.com/client/local"
 	"tailscale.com/ipn"
 	"tailscale.com/ipn/ipnstate"
@@ -133,7 +133,7 @@ func (m *Manager) watchLoop(ctx context.Context) {
 				break
 			}
 
-			if notify.State == nil && notify.NetMap == nil {
+			if notify.State == nil && notify.NetMap == nil { //nolint:staticcheck // NetMap is deprecated upstream but still the only activity signal on some platforms
 				continue
 			}
 			select {

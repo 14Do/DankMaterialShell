@@ -1,12 +1,10 @@
 package evdev
 
 import (
-	"net"
-
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
 )
 
-func HandleRequest(conn net.Conn, req models.Request, m *Manager) {
+func HandleRequest(conn *models.Conn, req models.Request, m *Manager) {
 	switch req.Method {
 	case "evdev.getState":
 		handleGetState(conn, req, m)
@@ -15,6 +13,6 @@ func HandleRequest(conn net.Conn, req models.Request, m *Manager) {
 	}
 }
 
-func handleGetState(conn net.Conn, req models.Request, m *Manager) {
+func handleGetState(conn *models.Conn, req models.Request, m *Manager) {
 	models.Respond(conn, req.ID, m.GetState())
 }

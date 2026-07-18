@@ -74,6 +74,9 @@ jobs:
           gzip -9 -k dankinstall-${{ matrix.arch }}
           sha256sum dankinstall-${{ matrix.arch }}.gz > dankinstall-${{ matrix.arch }}.gz.sha256
 
+      - name: Sync embedded shell
+        run: make sync-shell
+
       - name: Build dms (${{ matrix.arch }})
         env:
           GOOS: linux
@@ -82,7 +85,7 @@ jobs:
         run: |
           set -eux
           cd cmd/dms
-          go build -trimpath -ldflags "-s -w -X main.Version=${TAG}" \
+          go build -trimpath -tags withshell -ldflags "-s -w -X main.Version=${TAG}" \
             -o ../../dms-${{ matrix.arch }}
           cd ../..
           gzip -9 -k dms-${{ matrix.arch }}
@@ -105,7 +108,7 @@ jobs:
         run: |
           set -eux
           cd cmd/dms
-          go build -trimpath -tags distro_binary -ldflags "-s -w -X main.Version=${TAG}" \
+          go build -trimpath -tags 'distro_binary withshell' -ldflags "-s -w -X main.Version=${TAG}" \
             -o ../../dms-distropkg-${{ matrix.arch }}
           cd ../..
           gzip -9 -k dms-distropkg-${{ matrix.arch }}
@@ -379,18 +382,16 @@ jobs:
 
           ## Installation Steps
 
-          1. **Install quickshell assets:**
-             ```bash
-             mkdir -p ~/.config/quickshell
-             cp -r dms ~/.config/quickshell/
-             ```
+          The Quickshell UI is embedded in the `dms` binary. The bundled `dms/`
+          tree is optional — pass it with `-c` or `DMS_SHELL_DIR` to run a
+          modified copy instead of the embedded UI.
 
-          2. **Install the DMS CLI binaries:**
+          1. **Install the DMS CLI binaries:**
              ```bash
              sudo install -m 755 bin/dms /usr/local/bin/dms
              ```
 
-          3. **Install shell completions (optional):**
+          2. **Install shell completions (optional):**
              ```bash
              # Bash
              sudo install -m 644 completions/completion.bash /usr/share/bash-completion/completions/dms
@@ -402,7 +403,7 @@ jobs:
              sudo install -m 644 completions/completion.zsh /usr/share/zsh/site-functions/_dms
              ```
 
-          4. **Start the shell:**
+          3. **Start the shell:**
              ```bash
              dms run
              ```

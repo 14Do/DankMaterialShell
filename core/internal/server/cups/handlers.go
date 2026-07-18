@@ -1,12 +1,10 @@
 package cups
 
 import (
-	"encoding/json"
 	"fmt"
-	"net"
 
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/params"
+	"github.com/AvengeMedia/dankgo/ipc/params"
 )
 
 type CUPSEvent struct {
@@ -20,7 +18,7 @@ type TestPageResult struct {
 	Message string `json:"message"`
 }
 
-func HandleRequest(conn net.Conn, req models.Request, manager *Manager) {
+func HandleRequest(conn *models.Conn, req models.Request, manager *Manager) {
 	switch req.Method {
 	case "cups.subscribe":
 		handleSubscribe(conn, req, manager)
@@ -77,7 +75,7 @@ func HandleRequest(conn net.Conn, req models.Request, manager *Manager) {
 	}
 }
 
-func handleGetPrinters(conn net.Conn, req models.Request, manager *Manager) {
+func handleGetPrinters(conn *models.Conn, req models.Request, manager *Manager) {
 	printers, err := manager.GetPrinters()
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -86,7 +84,7 @@ func handleGetPrinters(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, printers)
 }
 
-func handleGetJobs(conn net.Conn, req models.Request, manager *Manager) {
+func handleGetJobs(conn *models.Conn, req models.Request, manager *Manager) {
 	printerName, err := params.String(req.Params, "printerName")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -101,7 +99,7 @@ func handleGetJobs(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, jobs)
 }
 
-func handlePausePrinter(conn net.Conn, req models.Request, manager *Manager) {
+func handlePausePrinter(conn *models.Conn, req models.Request, manager *Manager) {
 	printerName, err := params.String(req.Params, "printerName")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -115,7 +113,7 @@ func handlePausePrinter(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "paused"})
 }
 
-func handleResumePrinter(conn net.Conn, req models.Request, manager *Manager) {
+func handleResumePrinter(conn *models.Conn, req models.Request, manager *Manager) {
 	printerName, err := params.String(req.Params, "printerName")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -129,7 +127,7 @@ func handleResumePrinter(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "resumed"})
 }
 
-func handleCancelJob(conn net.Conn, req models.Request, manager *Manager) {
+func handleCancelJob(conn *models.Conn, req models.Request, manager *Manager) {
 	jobID, err := params.Int(req.Params, "jobID")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -143,7 +141,7 @@ func handleCancelJob(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "job canceled"})
 }
 
-func handlePurgeJobs(conn net.Conn, req models.Request, manager *Manager) {
+func handlePurgeJobs(conn *models.Conn, req models.Request, manager *Manager) {
 	printerName, err := params.String(req.Params, "printerName")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -157,7 +155,7 @@ func handlePurgeJobs(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "jobs canceled"})
 }
 
-func handleSubscribe(conn net.Conn, req models.Request, manager *Manager) {
+func handleSubscribe(conn *models.Conn, req models.Request, manager *Manager) {
 	clientID := fmt.Sprintf("client-%p", conn)
 	stateChan := manager.Subscribe(clientID)
 	defer manager.Unsubscribe(clientID)
@@ -168,7 +166,7 @@ func handleSubscribe(conn net.Conn, req models.Request, manager *Manager) {
 		Data: initialState,
 	}
 
-	if err := json.NewEncoder(conn).Encode(models.Response[CUPSEvent]{
+	if err := conn.WriteResponse(models.Response[CUPSEvent]{
 		ID:     req.ID,
 		Result: &event,
 	}); err != nil {
@@ -180,7 +178,7 @@ func handleSubscribe(conn net.Conn, req models.Request, manager *Manager) {
 			Type: "state_changed",
 			Data: state,
 		}
-		if err := json.NewEncoder(conn).Encode(models.Response[CUPSEvent]{
+		if err := conn.WriteResponse(models.Response[CUPSEvent]{
 			Result: &event,
 		}); err != nil {
 			return
@@ -188,7 +186,7 @@ func handleSubscribe(conn net.Conn, req models.Request, manager *Manager) {
 	}
 }
 
-func handleGetDevices(conn net.Conn, req models.Request, manager *Manager) {
+func handleGetDevices(conn *models.Conn, req models.Request, manager *Manager) {
 	devices, err := manager.GetDevices()
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -197,7 +195,7 @@ func handleGetDevices(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, devices)
 }
 
-func handleGetPPDs(conn net.Conn, req models.Request, manager *Manager) {
+func handleGetPPDs(conn *models.Conn, req models.Request, manager *Manager) {
 	ppds, err := manager.GetPPDs()
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -206,7 +204,7 @@ func handleGetPPDs(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, ppds)
 }
 
-func handleGetClasses(conn net.Conn, req models.Request, manager *Manager) {
+func handleGetClasses(conn *models.Conn, req models.Request, manager *Manager) {
 	classes, err := manager.GetClasses()
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -215,7 +213,7 @@ func handleGetClasses(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, classes)
 }
 
-func handleCreatePrinter(conn net.Conn, req models.Request, manager *Manager) {
+func handleCreatePrinter(conn *models.Conn, req models.Request, manager *Manager) {
 	name, err := params.StringNonEmpty(req.Params, "name")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -246,7 +244,7 @@ func handleCreatePrinter(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "printer created"})
 }
 
-func handleDeletePrinter(conn net.Conn, req models.Request, manager *Manager) {
+func handleDeletePrinter(conn *models.Conn, req models.Request, manager *Manager) {
 	printerName, err := params.StringNonEmpty(req.Params, "printerName")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -260,7 +258,7 @@ func handleDeletePrinter(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "printer deleted"})
 }
 
-func handleAcceptJobs(conn net.Conn, req models.Request, manager *Manager) {
+func handleAcceptJobs(conn *models.Conn, req models.Request, manager *Manager) {
 	printerName, err := params.StringNonEmpty(req.Params, "printerName")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -274,7 +272,7 @@ func handleAcceptJobs(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "accepting jobs"})
 }
 
-func handleRejectJobs(conn net.Conn, req models.Request, manager *Manager) {
+func handleRejectJobs(conn *models.Conn, req models.Request, manager *Manager) {
 	printerName, err := params.StringNonEmpty(req.Params, "printerName")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -288,7 +286,7 @@ func handleRejectJobs(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "rejecting jobs"})
 }
 
-func handleSetPrinterShared(conn net.Conn, req models.Request, manager *Manager) {
+func handleSetPrinterShared(conn *models.Conn, req models.Request, manager *Manager) {
 	printerName, err := params.StringNonEmpty(req.Params, "printerName")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -308,7 +306,7 @@ func handleSetPrinterShared(conn net.Conn, req models.Request, manager *Manager)
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "sharing updated"})
 }
 
-func handleSetPrinterLocation(conn net.Conn, req models.Request, manager *Manager) {
+func handleSetPrinterLocation(conn *models.Conn, req models.Request, manager *Manager) {
 	printerName, err := params.StringNonEmpty(req.Params, "printerName")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -328,7 +326,7 @@ func handleSetPrinterLocation(conn net.Conn, req models.Request, manager *Manage
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "location updated"})
 }
 
-func handleSetPrinterInfo(conn net.Conn, req models.Request, manager *Manager) {
+func handleSetPrinterInfo(conn *models.Conn, req models.Request, manager *Manager) {
 	printerName, err := params.StringNonEmpty(req.Params, "printerName")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -348,7 +346,7 @@ func handleSetPrinterInfo(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "info updated"})
 }
 
-func handleMoveJob(conn net.Conn, req models.Request, manager *Manager) {
+func handleMoveJob(conn *models.Conn, req models.Request, manager *Manager) {
 	jobID, err := params.Int(req.Params, "jobID")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -368,7 +366,7 @@ func handleMoveJob(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "job moved"})
 }
 
-func handlePrintTestPage(conn net.Conn, req models.Request, manager *Manager) {
+func handlePrintTestPage(conn *models.Conn, req models.Request, manager *Manager) {
 	printerName, err := params.StringNonEmpty(req.Params, "printerName")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -383,7 +381,7 @@ func handlePrintTestPage(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, TestPageResult{Success: true, JobID: jobID, Message: "test page queued"})
 }
 
-func handleAddPrinterToClass(conn net.Conn, req models.Request, manager *Manager) {
+func handleAddPrinterToClass(conn *models.Conn, req models.Request, manager *Manager) {
 	className, err := params.StringNonEmpty(req.Params, "className")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -403,7 +401,7 @@ func handleAddPrinterToClass(conn net.Conn, req models.Request, manager *Manager
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "printer added to class"})
 }
 
-func handleRemovePrinterFromClass(conn net.Conn, req models.Request, manager *Manager) {
+func handleRemovePrinterFromClass(conn *models.Conn, req models.Request, manager *Manager) {
 	className, err := params.StringNonEmpty(req.Params, "className")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -423,7 +421,7 @@ func handleRemovePrinterFromClass(conn net.Conn, req models.Request, manager *Ma
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "printer removed from class"})
 }
 
-func handleDeleteClass(conn net.Conn, req models.Request, manager *Manager) {
+func handleDeleteClass(conn *models.Conn, req models.Request, manager *Manager) {
 	className, err := params.StringNonEmpty(req.Params, "className")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -437,7 +435,7 @@ func handleDeleteClass(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "class deleted"})
 }
 
-func handleRestartJob(conn net.Conn, req models.Request, manager *Manager) {
+func handleRestartJob(conn *models.Conn, req models.Request, manager *Manager) {
 	jobID, err := params.Int(req.Params, "jobID")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -451,7 +449,7 @@ func handleRestartJob(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "job restarted"})
 }
 
-func handleHoldJob(conn net.Conn, req models.Request, manager *Manager) {
+func handleHoldJob(conn *models.Conn, req models.Request, manager *Manager) {
 	jobID, err := params.Int(req.Params, "jobID")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -467,7 +465,7 @@ func handleHoldJob(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "job held"})
 }
 
-func handleTestConnection(conn net.Conn, req models.Request, manager *Manager) {
+func handleTestConnection(conn *models.Conn, req models.Request, manager *Manager) {
 	host, err := params.StringNonEmpty(req.Params, "host")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())

@@ -2,13 +2,12 @@ package plugins
 
 import (
 	"fmt"
-	"net"
 
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/plugins"
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
 )
 
-func HandleListInstalled(conn net.Conn, req models.Request) {
+func HandleListInstalled(conn *models.Conn, req models.Request) {
 	manager, err := plugins.NewManager()
 	if err != nil {
 		models.RespondError(conn, req.ID, fmt.Sprintf("failed to create manager: %v", err))

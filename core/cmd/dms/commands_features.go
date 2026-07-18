@@ -26,7 +26,7 @@ var updateCmd = &cobra.Command{
 	Use:     "update",
 	Short:   "Update DankMaterialShell to the latest version",
 	Long:    "Update DankMaterialShell to the latest version using the appropriate package manager for your distribution",
-	PreRunE: findConfig,
+	PreRunE: shellApp.ResolveConfig,
 	Run: func(cmd *cobra.Command, args []string) {
 		runUpdate()
 	},
@@ -98,7 +98,7 @@ func runUpdate() {
 	}
 
 	log.Info("Update complete! Restarting DMS...")
-	restartShell()
+	shellApp.Restart()
 }
 
 func updateArchLinux() error {

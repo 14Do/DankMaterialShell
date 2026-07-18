@@ -231,16 +231,16 @@ func setPopoutScreenshotMode(begin bool) {
 		fn = "begin"
 	}
 	cmdArgs := []string{"ipc"}
-	if pid, ok := getFirstDMSPID(); ok {
+	if pid, ok := shellApp.SessionPID(); ok {
 		cmdArgs = append(cmdArgs, "--pid", strconv.Itoa(pid))
 	} else {
-		if err := findConfig(nil, nil); err != nil {
+		if err := shellApp.ResolveConfig(nil, nil); err != nil {
 			return
 		}
 		if qsHasAnyDisplay() {
 			cmdArgs = append(cmdArgs, "--any-display")
 		}
-		cmdArgs = append(cmdArgs, "-p", configPath)
+		cmdArgs = append(cmdArgs, "-p", shellApp.ConfigPath())
 	}
 	cmdArgs = append(cmdArgs, "call", "screenshot", fn)
 	_ = exec.Command("qs", cmdArgs...).Run()

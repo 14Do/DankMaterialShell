@@ -1,13 +1,11 @@
 package sysupdate
 
 import (
-	"net"
-
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/params"
+	"github.com/AvengeMedia/dankgo/ipc/params"
 )
 
-func HandleRequest(conn net.Conn, req models.Request, m *Manager) {
+func HandleRequest(conn *models.Conn, req models.Request, m *Manager) {
 	switch req.Method {
 	case "sysupdate.getState":
 		models.Respond(conn, req.ID, m.GetState())
@@ -39,7 +37,7 @@ func HandleRequest(conn net.Conn, req models.Request, m *Manager) {
 	}
 }
 
-func handleUpgrade(conn net.Conn, req models.Request, m *Manager) {
+func handleUpgrade(conn *models.Conn, req models.Request, m *Manager) {
 	opts := UpgradeOptions{
 		IncludeFlatpak: params.BoolOpt(req.Params, "includeFlatpak", true),
 		IncludeAUR:     params.BoolOpt(req.Params, "includeAUR", true),

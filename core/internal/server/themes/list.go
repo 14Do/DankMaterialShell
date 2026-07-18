@@ -2,14 +2,13 @@ package themes
 
 import (
 	"fmt"
-	"net"
 	"strings"
 
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/themes"
 )
 
-func HandleList(conn net.Conn, req models.Request) {
+func HandleList(conn *models.Conn, req models.Request) {
 	registry, err := themes.NewRegistry()
 	if err != nil {
 		models.RespondError(conn, req.ID, fmt.Sprintf("failed to create registry: %v", err))

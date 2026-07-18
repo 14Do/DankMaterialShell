@@ -34,7 +34,7 @@ import (
 	"unsafe"
 
 	"github.com/AvengeMedia/DankMaterialShell/core/pkg/go-wayland/wayland/client"
-	"github.com/AvengeMedia/DankMaterialShell/core/pkg/syncmap"
+	"github.com/AvengeMedia/dankgo/syncmap"
 )
 
 func registerServerProxy(ctx *client.Context, proxy client.Proxy, serverID uint32) {

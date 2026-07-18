@@ -2,13 +2,12 @@ package plugins
 
 import (
 	"fmt"
-	"net"
 
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/plugins"
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
 )
 
-func HandleUpdate(conn net.Conn, req models.Request) {
+func HandleUpdate(conn *models.Conn, req models.Request) {
 	name, ok := models.Get[string](req, "name")
 	if !ok {
 		models.RespondError(conn, req.ID, "missing or invalid 'name' parameter")

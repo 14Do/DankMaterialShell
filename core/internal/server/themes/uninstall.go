@@ -2,13 +2,12 @@ package themes
 
 import (
 	"fmt"
-	"net"
 
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/themes"
 )
 
-func HandleUninstall(conn net.Conn, req models.Request) {
+func HandleUninstall(conn *models.Conn, req models.Request) {
 	idOrName, ok := models.Get[string](req, "name")
 	if !ok {
 		models.RespondError(conn, req.ID, "missing or invalid 'name' parameter")

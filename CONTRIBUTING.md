@@ -36,6 +36,29 @@ This will provide:
 
 The dev shell automatically creates the `.qmlls.ini` file in the `quickshell/` directory.
 
+## Building and running
+
+The Quickshell UI is embedded into the `dms` binary at build time. `make build` copies `quickshell/` into `core/internal/shellembed/dist/` (generated, never committed) and compiles with the `withshell` tag. `make dev` builds without the tag — that binary carries no UI and requires an explicit config dir.
+
+```bash
+make build   # embedded binary at core/bin/dms
+make dev     # untagged development build
+make run     # dev build, then launch against the live quickshell/ tree
+```
+
+The UI config dir resolves in order: `-c <dir>`, `DMS_SHELL_DIR`, the dir a running instance is using, then the embedded UI. Each candidate must contain `shell.qml`. `make run` uses `-c $(pwd)/quickshell`, so QML edits hot-reload from the working tree.
+
+The Go core depends on [dankgo](https://github.com/AvengeMedia/dankgo) for logging, XDG paths, the IPC transport, and the quickshell process lifecycle. To develop against a local dankgo checkout, create a gitignored `go.work` at the repo root:
+
+```
+go 1.26.1
+
+use (
+	./core
+	../dankgo
+)
+```
+
 ## Shared widgets (dank-qml-common)
 
 Everything under `quickshell/DankCommon/` (core widgets, the file browser, scroll physics, bundled fonts) is shared across the DMS suite and lives in the `dank-qml-common` submodule. It is a normal git worktree:

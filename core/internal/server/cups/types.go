@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/AvengeMedia/DankMaterialShell/core/pkg/ipp"
-	"github.com/AvengeMedia/DankMaterialShell/core/pkg/syncmap"
+	"github.com/AvengeMedia/dankgo/syncmap"
 )
 
 type CUPSState struct {

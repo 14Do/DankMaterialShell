@@ -18,7 +18,7 @@ SHELL_INSTALL_DIR=$(DATA_DIR)/quickshell/dms
 ASSETS_DIR=assets
 APPLICATIONS_DIR=$(DATA_DIR)/applications
 
-.PHONY: all build clean lint-qml install install-bin install-shell install-completions install-systemd install-icon install-desktop uninstall uninstall-bin uninstall-shell uninstall-completions uninstall-systemd uninstall-icon uninstall-desktop help
+.PHONY: all build dev run clean lint-qml install install-bin install-shell install-completions install-systemd install-icon install-desktop uninstall uninstall-bin uninstall-shell uninstall-completions uninstall-systemd uninstall-icon uninstall-desktop help
 
 all: build
 
@@ -26,6 +26,12 @@ build:
 	@echo "Building $(BINARY_NAME)..."
 	@$(MAKE) -C $(CORE_DIR) build
 	@echo "Build complete"
+
+dev:
+	@$(MAKE) -C $(CORE_DIR) dev
+
+run: dev
+	@$(BUILD_DIR)/$(BINARY_NAME) run -c $(CURDIR)/$(SHELL_DIR)
 
 clean:
 	@echo "Cleaning build artifacts..."

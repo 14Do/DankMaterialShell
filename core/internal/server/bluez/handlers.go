@@ -1,12 +1,10 @@
 package bluez
 
 import (
-	"encoding/json"
 	"fmt"
-	"net"
 
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/params"
+	"github.com/AvengeMedia/dankgo/ipc/params"
 )
 
 type BluetoothEvent struct {
@@ -14,7 +12,7 @@ type BluetoothEvent struct {
 	Data BluetoothState `json:"data"`
 }
 
-func HandleRequest(conn net.Conn, req models.Request, manager *Manager) {
+func HandleRequest(conn *models.Conn, req models.Request, manager *Manager) {
 	switch req.Method {
 	case "bluetooth.getState":
 		handleGetState(conn, req, manager)
@@ -47,11 +45,11 @@ func HandleRequest(conn net.Conn, req models.Request, manager *Manager) {
 	}
 }
 
-func handleGetState(conn net.Conn, req models.Request, manager *Manager) {
+func handleGetState(conn *models.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, manager.GetState())
 }
 
-func handleStartDiscovery(conn net.Conn, req models.Request, manager *Manager) {
+func handleStartDiscovery(conn *models.Conn, req models.Request, manager *Manager) {
 	if err := manager.StartDiscovery(); err != nil {
 		models.RespondError(conn, req.ID, err.Error())
 		return
@@ -59,7 +57,7 @@ func handleStartDiscovery(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "discovery started"})
 }
 
-func handleStopDiscovery(conn net.Conn, req models.Request, manager *Manager) {
+func handleStopDiscovery(conn *models.Conn, req models.Request, manager *Manager) {
 	if err := manager.StopDiscovery(); err != nil {
 		models.RespondError(conn, req.ID, err.Error())
 		return
@@ -67,7 +65,7 @@ func handleStopDiscovery(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "discovery stopped"})
 }
 
-func handleSetPowered(conn net.Conn, req models.Request, manager *Manager) {
+func handleSetPowered(conn *models.Conn, req models.Request, manager *Manager) {
 	powered, err := params.Bool(req.Params, "powered")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -82,7 +80,7 @@ func handleSetPowered(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "powered state updated"})
 }
 
-func handlePairDevice(conn net.Conn, req models.Request, manager *Manager) {
+func handlePairDevice(conn *models.Conn, req models.Request, manager *Manager) {
 	devicePath, err := params.String(req.Params, "device")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -97,7 +95,7 @@ func handlePairDevice(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "pairing initiated"})
 }
 
-func handleConnectDevice(conn net.Conn, req models.Request, manager *Manager) {
+func handleConnectDevice(conn *models.Conn, req models.Request, manager *Manager) {
 	devicePath, err := params.String(req.Params, "device")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -112,7 +110,7 @@ func handleConnectDevice(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "connecting"})
 }
 
-func handleDisconnectDevice(conn net.Conn, req models.Request, manager *Manager) {
+func handleDisconnectDevice(conn *models.Conn, req models.Request, manager *Manager) {
 	devicePath, err := params.String(req.Params, "device")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -127,7 +125,7 @@ func handleDisconnectDevice(conn net.Conn, req models.Request, manager *Manager)
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "disconnected"})
 }
 
-func handleRemoveDevice(conn net.Conn, req models.Request, manager *Manager) {
+func handleRemoveDevice(conn *models.Conn, req models.Request, manager *Manager) {
 	devicePath, err := params.String(req.Params, "device")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -142,7 +140,7 @@ func handleRemoveDevice(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "device removed"})
 }
 
-func handleTrustDevice(conn net.Conn, req models.Request, manager *Manager) {
+func handleTrustDevice(conn *models.Conn, req models.Request, manager *Manager) {
 	devicePath, err := params.String(req.Params, "device")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -157,7 +155,7 @@ func handleTrustDevice(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "device trusted"})
 }
 
-func handleUntrustDevice(conn net.Conn, req models.Request, manager *Manager) {
+func handleUntrustDevice(conn *models.Conn, req models.Request, manager *Manager) {
 	devicePath, err := params.String(req.Params, "device")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -172,7 +170,7 @@ func handleUntrustDevice(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "device untrusted"})
 }
 
-func handlePairingSubmit(conn net.Conn, req models.Request, manager *Manager) {
+func handlePairingSubmit(conn *models.Conn, req models.Request, manager *Manager) {
 	token, err := params.String(req.Params, "token")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -190,7 +188,7 @@ func handlePairingSubmit(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "pairing response submitted"})
 }
 
-func handlePairingCancel(conn net.Conn, req models.Request, manager *Manager) {
+func handlePairingCancel(conn *models.Conn, req models.Request, manager *Manager) {
 	token, err := params.String(req.Params, "token")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -205,7 +203,7 @@ func handlePairingCancel(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "pairing cancelled"})
 }
 
-func handleSubscribe(conn net.Conn, req models.Request, manager *Manager) {
+func handleSubscribe(conn *models.Conn, req models.Request, manager *Manager) {
 	clientID := fmt.Sprintf("client-%p", conn)
 	stateChan := manager.Subscribe(clientID)
 	defer manager.Unsubscribe(clientID)
@@ -216,7 +214,7 @@ func handleSubscribe(conn net.Conn, req models.Request, manager *Manager) {
 		Data: initialState,
 	}
 
-	if err := json.NewEncoder(conn).Encode(models.Response[BluetoothEvent]{
+	if err := conn.WriteResponse(models.Response[BluetoothEvent]{
 		ID:     req.ID,
 		Result: &event,
 	}); err != nil {
@@ -228,7 +226,7 @@ func handleSubscribe(conn net.Conn, req models.Request, manager *Manager) {
 			Type: "state_changed",
 			Data: state,
 		}
-		if err := json.NewEncoder(conn).Encode(models.Response[BluetoothEvent]{
+		if err := conn.WriteResponse(models.Response[BluetoothEvent]{
 			Result: &event,
 		}); err != nil {
 			return

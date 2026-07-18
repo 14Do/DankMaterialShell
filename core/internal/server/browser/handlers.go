@@ -1,12 +1,10 @@
 package browser
 
 import (
-	"net"
-
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
 )
 
-func HandleRequest(conn net.Conn, req models.Request, manager *Manager) {
+func HandleRequest(conn *models.Conn, req models.Request, manager *Manager) {
 	switch req.Method {
 	case "browser.open":
 		url, ok := models.Get[string](req, "url")

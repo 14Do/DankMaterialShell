@@ -2,12 +2,11 @@ package themes
 
 import (
 	"fmt"
-	"net"
 
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
 )
 
-func HandleRequest(conn net.Conn, req models.Request) {
+func HandleRequest(conn *models.Conn, req models.Request) {
 	switch req.Method {
 	case "themes.list":
 		HandleList(conn, req)

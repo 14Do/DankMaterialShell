@@ -52,7 +52,8 @@ func TestHandleRequest(t *testing.T) {
 			closeChan: make(chan struct{}),
 		}
 
-		conn := newMockNetConn()
+		mc := newMockNetConn()
+		conn := models.NewConn(mc)
 		req := models.Request{
 			ID:     123,
 			Method: "evdev.getState",
@@ -62,7 +63,7 @@ func TestHandleRequest(t *testing.T) {
 		HandleRequest(conn, req, m)
 
 		var resp models.Response[State]
-		err := json.NewDecoder(conn.writeBuf).Decode(&resp)
+		err := json.NewDecoder(mc.writeBuf).Decode(&resp)
 		require.NoError(t, err)
 
 		assert.Equal(t, 123, resp.ID)
@@ -81,7 +82,8 @@ func TestHandleRequest(t *testing.T) {
 			closeChan: make(chan struct{}),
 		}
 
-		conn := newMockNetConn()
+		mc := newMockNetConn()
+		conn := models.NewConn(mc)
 		req := models.Request{
 			ID:     456,
 			Method: "evdev.unknownMethod",
@@ -91,7 +93,7 @@ func TestHandleRequest(t *testing.T) {
 		HandleRequest(conn, req, m)
 
 		var resp models.Response[any]
-		err := json.NewDecoder(conn.writeBuf).Decode(&resp)
+		err := json.NewDecoder(mc.writeBuf).Decode(&resp)
 		require.NoError(t, err)
 
 		assert.Equal(t, 456, resp.ID)
@@ -110,7 +112,8 @@ func TestHandleGetState(t *testing.T) {
 		closeChan: make(chan struct{}),
 	}
 
-	conn := newMockNetConn()
+	mc := newMockNetConn()
+	conn := models.NewConn(mc)
 	req := models.Request{
 		ID:     789,
 		Method: "evdev.getState",
@@ -120,7 +123,7 @@ func TestHandleGetState(t *testing.T) {
 	handleGetState(conn, req, m)
 
 	var resp models.Response[State]
-	err := json.NewDecoder(conn.writeBuf).Decode(&resp)
+	err := json.NewDecoder(mc.writeBuf).Decode(&resp)
 	require.NoError(t, err)
 
 	assert.Equal(t, 789, resp.ID)

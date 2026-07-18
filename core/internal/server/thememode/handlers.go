@@ -1,15 +1,13 @@
 package thememode
 
 import (
-	"encoding/json"
 	"fmt"
-	"net"
 
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/params"
+	"github.com/AvengeMedia/dankgo/ipc/params"
 )
 
-func HandleRequest(conn net.Conn, req models.Request, manager *Manager) {
+func HandleRequest(conn *models.Conn, req models.Request, manager *Manager) {
 	if manager == nil {
 		models.RespondError(conn, req.ID, "theme mode manager not initialized")
 		return
@@ -37,11 +35,11 @@ func HandleRequest(conn net.Conn, req models.Request, manager *Manager) {
 	}
 }
 
-func handleGetState(conn net.Conn, req models.Request, manager *Manager) {
+func handleGetState(conn *models.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, manager.GetState())
 }
 
-func handleSetEnabled(conn net.Conn, req models.Request, manager *Manager) {
+func handleSetEnabled(conn *models.Conn, req models.Request, manager *Manager) {
 	enabled, err := params.Bool(req.Params, "enabled")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -52,7 +50,7 @@ func handleSetEnabled(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "theme auto enabled set"})
 }
 
-func handleSetMode(conn net.Conn, req models.Request, manager *Manager) {
+func handleSetMode(conn *models.Conn, req models.Request, manager *Manager) {
 	mode, err := params.String(req.Params, "mode")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -68,7 +66,7 @@ func handleSetMode(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "theme auto mode set"})
 }
 
-func handleSetSchedule(conn net.Conn, req models.Request, manager *Manager) {
+func handleSetSchedule(conn *models.Conn, req models.Request, manager *Manager) {
 	startHour, err := params.Int(req.Params, "startHour")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -99,7 +97,7 @@ func handleSetSchedule(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, manager.GetState())
 }
 
-func handleSetLocation(conn net.Conn, req models.Request, manager *Manager) {
+func handleSetLocation(conn *models.Conn, req models.Request, manager *Manager) {
 	lat, err := params.Float(req.Params, "latitude")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -115,7 +113,7 @@ func handleSetLocation(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "theme auto location set"})
 }
 
-func handleSetUseIPLocation(conn net.Conn, req models.Request, manager *Manager) {
+func handleSetUseIPLocation(conn *models.Conn, req models.Request, manager *Manager) {
 	use, err := params.Bool(req.Params, "use")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -126,18 +124,18 @@ func handleSetUseIPLocation(conn net.Conn, req models.Request, manager *Manager)
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "theme auto IP location set"})
 }
 
-func handleTrigger(conn net.Conn, req models.Request, manager *Manager) {
+func handleTrigger(conn *models.Conn, req models.Request, manager *Manager) {
 	manager.TriggerUpdate()
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "theme auto update triggered"})
 }
 
-func handleSubscribe(conn net.Conn, req models.Request, manager *Manager) {
+func handleSubscribe(conn *models.Conn, req models.Request, manager *Manager) {
 	clientID := fmt.Sprintf("client-%p", conn)
 	stateChan := manager.Subscribe(clientID)
 	defer manager.Unsubscribe(clientID)
 
 	initialState := manager.GetState()
-	if err := json.NewEncoder(conn).Encode(models.Response[State]{
+	if err := conn.WriteResponse(models.Response[State]{
 		ID:     req.ID,
 		Result: &initialState,
 	}); err != nil {
@@ -145,7 +143,7 @@ func handleSubscribe(conn net.Conn, req models.Request, manager *Manager) {
 	}
 
 	for state := range stateChan {
-		if err := json.NewEncoder(conn).Encode(models.Response[State]{
+		if err := conn.WriteResponse(models.Response[State]{
 			Result: &state,
 		}); err != nil {
 			return

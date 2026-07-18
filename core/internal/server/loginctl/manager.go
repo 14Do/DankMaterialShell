@@ -7,7 +7,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/pkg/dbusutil"
+	"github.com/AvengeMedia/dankgo/dbusutil"
 	"github.com/godbus/dbus/v5"
 )
 

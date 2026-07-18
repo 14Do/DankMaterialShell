@@ -1,5 +1,5 @@
 %global debug_package %{nil}
-%global go_toolchain_version 1.26.1
+%global go_toolchain_version 1.26.4
 
 Name:           dms-git
 Version:        1.4.0+git2528.d336866f
@@ -38,7 +38,7 @@ DankMaterialShell (DMS) is a modern Wayland desktop shell built with Quickshell
 and optimized for niri, Hyprland, Sway, and other wlroots compositors.
 
 This git version tracks the master branch and includes the latest features
-and fixes. Includes pre-built dms CLI binary and QML shell files.
+and fixes. The Quickshell UI is embedded in the dms binary.
 
 %prep
 %setup -q -n dms-git-source
@@ -120,15 +120,6 @@ install -Dm644 assets/com.danklinux.dms.desktop %{buildroot}%{_datadir}/applicat
 install -Dm644 assets/com.danklinux.dms.notepad.desktop %{buildroot}%{_datadir}/applications/com.danklinux.dms.notepad.desktop
 install -Dm644 assets/danklogo.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/danklogo.svg
 
-install -dm755 %{buildroot}%{_datadir}/quickshell/dms
-cp -r quickshell/* %{buildroot}%{_datadir}/quickshell/dms/
-
-rm -rf %{buildroot}%{_datadir}/quickshell/dms/.git*
-rm -f %{buildroot}%{_datadir}/quickshell/dms/.gitignore
-rm -rf %{buildroot}%{_datadir}/quickshell/dms/.github
-rm -rf %{buildroot}%{_datadir}/quickshell/dms/distro
-rm -rf %{buildroot}%{_datadir}/quickshell/dms/core
-
 %posttrans
 if [ -d "%{_sysconfdir}/xdg/quickshell/dms" ]; then
     rmdir "%{_sysconfdir}/xdg/quickshell/dms" 2>/dev/null || true
@@ -149,8 +140,6 @@ pkill -USR1 -x dms >/dev/null 2>&1 || :
 %dir %{_datadir}/zsh/site-functions
 %{_datadir}/zsh/site-functions/_dms
 %{_datadir}/bash-completion/completions/dms
-%dir %{_datadir}/quickshell
-%{_datadir}/quickshell/dms/
 %{_userunitdir}/dms.service
 %{_datadir}/applications/dms-open.desktop
 %{_datadir}/applications/com.danklinux.dms.desktop

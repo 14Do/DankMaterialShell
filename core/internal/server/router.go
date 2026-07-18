@@ -2,7 +2,6 @@ package server
 
 import (
 	"fmt"
-	"net"
 	"strings"
 
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/apppicker"
@@ -28,7 +27,7 @@ import (
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/wlroutput"
 )
 
-func RouteRequest(conn net.Conn, req models.Request) {
+func RouteRequest(conn *models.Conn, req models.Request) {
 	if strings.HasPrefix(req.Method, "network.") {
 		if networkManager == nil {
 			models.RespondError(conn, req.ID, "network manager not initialized")
@@ -223,7 +222,7 @@ func RouteRequest(conn net.Conn, req models.Request) {
 	}
 }
 
-func handleClipboardSetConfig(conn net.Conn, req models.Request) {
+func handleClipboardSetConfig(conn *models.Conn, req models.Request) {
 	cfg := clipboard.LoadConfig()
 
 	if v, ok := models.Get[float64](req, "maxHistory"); ok {

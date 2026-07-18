@@ -4,39 +4,19 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/AvengeMedia/dankgo/paths"
 )
 
-func XDGStateHome() string {
-	if dir := os.Getenv("XDG_STATE_HOME"); dir != "" {
-		return dir
-	}
-	home, _ := os.UserHomeDir()
-	return filepath.Join(home, ".local", "state")
-}
+func XDGStateHome() string { return paths.XDGStateHome() }
 
-func XDGDataHome() string {
-	if dir := os.Getenv("XDG_DATA_HOME"); dir != "" {
-		return dir
-	}
-	home, _ := os.UserHomeDir()
-	return filepath.Join(home, ".local", "share")
-}
+func XDGDataHome() string { return paths.XDGDataHome() }
 
-func XDGCacheHome() string {
-	if dir, err := os.UserCacheDir(); err == nil {
-		return dir
-	}
-	home, _ := os.UserHomeDir()
-	return filepath.Join(home, ".cache")
-}
+func XDGCacheHome() string { return paths.XDGCacheHome() }
 
-func XDGConfigHome() string {
-	if dir, err := os.UserConfigDir(); err == nil {
-		return dir
-	}
-	home, _ := os.UserHomeDir()
-	return filepath.Join(home, ".config")
-}
+func XDGConfigHome() string { return paths.XDGConfigHome() }
+
+func ExpandPath(path string) (string, error) { return paths.ExpandPath(path) }
 
 func XDGPicturesDir() string {
 	if dir := os.Getenv("XDG_PICTURES_DIR"); dir != "" {
@@ -82,19 +62,4 @@ func EmacsConfigDir() string {
 	}
 
 	return ""
-}
-
-func ExpandPath(path string) (string, error) {
-	expanded := os.ExpandEnv(path)
-	expanded = filepath.Clean(expanded)
-
-	if strings.HasPrefix(expanded, "~") {
-		home, err := os.UserHomeDir()
-		if err != nil {
-			return "", err
-		}
-		expanded = filepath.Join(home, expanded[1:])
-	}
-
-	return expanded, nil
 }

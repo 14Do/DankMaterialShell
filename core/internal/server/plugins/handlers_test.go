@@ -12,8 +12,9 @@ import (
 )
 
 func TestHandleList(t *testing.T) {
-	conn := net.NewMockConn(t)
-	conn.EXPECT().Write(mock.Anything).Return(0, nil).Maybe()
+	mc := net.NewMockConn(t)
+	conn := models.NewConn(mc)
+	mc.EXPECT().Write(mock.Anything).Return(0, nil).Maybe()
 
 	req := models.Request{
 		ID:     123,
@@ -25,8 +26,9 @@ func TestHandleList(t *testing.T) {
 }
 
 func TestHandleListInstalled(t *testing.T) {
-	conn := net.NewMockConn(t)
-	conn.EXPECT().Write(mock.Anything).Return(0, nil).Maybe()
+	mc := net.NewMockConn(t)
+	conn := models.NewConn(mc)
+	mc.EXPECT().Write(mock.Anything).Return(0, nil).Maybe()
 
 	req := models.Request{
 		ID:     123,
@@ -38,9 +40,10 @@ func TestHandleListInstalled(t *testing.T) {
 }
 
 func TestHandleInstallMissingName(t *testing.T) {
-	conn := net.NewMockConn(t)
+	mc := net.NewMockConn(t)
+	conn := models.NewConn(mc)
 	var written []byte
-	conn.EXPECT().Write(mock.Anything).RunAndReturn(func(b []byte) (int, error) {
+	mc.EXPECT().Write(mock.Anything).RunAndReturn(func(b []byte) (int, error) {
 		written = b
 		return len(b), nil
 	}).Maybe()
@@ -61,9 +64,10 @@ func TestHandleInstallMissingName(t *testing.T) {
 }
 
 func TestHandleInstallInvalidName(t *testing.T) {
-	conn := net.NewMockConn(t)
+	mc := net.NewMockConn(t)
+	conn := models.NewConn(mc)
 	var written []byte
-	conn.EXPECT().Write(mock.Anything).RunAndReturn(func(b []byte) (int, error) {
+	mc.EXPECT().Write(mock.Anything).RunAndReturn(func(b []byte) (int, error) {
 		written = b
 		return len(b), nil
 	}).Maybe()
@@ -85,9 +89,10 @@ func TestHandleInstallInvalidName(t *testing.T) {
 }
 
 func TestHandleUninstallMissingName(t *testing.T) {
-	conn := net.NewMockConn(t)
+	mc := net.NewMockConn(t)
+	conn := models.NewConn(mc)
 	var written []byte
-	conn.EXPECT().Write(mock.Anything).RunAndReturn(func(b []byte) (int, error) {
+	mc.EXPECT().Write(mock.Anything).RunAndReturn(func(b []byte) (int, error) {
 		written = b
 		return len(b), nil
 	}).Maybe()
@@ -107,9 +112,10 @@ func TestHandleUninstallMissingName(t *testing.T) {
 }
 
 func TestHandleUpdateMissingName(t *testing.T) {
-	conn := net.NewMockConn(t)
+	mc := net.NewMockConn(t)
+	conn := models.NewConn(mc)
 	var written []byte
-	conn.EXPECT().Write(mock.Anything).RunAndReturn(func(b []byte) (int, error) {
+	mc.EXPECT().Write(mock.Anything).RunAndReturn(func(b []byte) (int, error) {
 		written = b
 		return len(b), nil
 	}).Maybe()
@@ -129,9 +135,10 @@ func TestHandleUpdateMissingName(t *testing.T) {
 }
 
 func TestHandleSearchMissingQuery(t *testing.T) {
-	conn := net.NewMockConn(t)
+	mc := net.NewMockConn(t)
+	conn := models.NewConn(mc)
 	var written []byte
-	conn.EXPECT().Write(mock.Anything).RunAndReturn(func(b []byte) (int, error) {
+	mc.EXPECT().Write(mock.Anything).RunAndReturn(func(b []byte) (int, error) {
 		written = b
 		return len(b), nil
 	}).Maybe()

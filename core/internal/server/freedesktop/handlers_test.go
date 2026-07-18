@@ -60,11 +60,12 @@ func mockGetAllAccountsProperties() *dbus.Call {
 }
 
 func TestRespondError_Freedesktop(t *testing.T) {
-	conn := newMockNetConn()
+	mc := newMockNetConn()
+	conn := models.NewConn(mc)
 	models.RespondError(conn, 123, "test error")
 
 	var resp models.Response[any]
-	err := json.NewDecoder(conn.writeBuf).Decode(&resp)
+	err := json.NewDecoder(mc.writeBuf).Decode(&resp)
 	require.NoError(t, err)
 
 	assert.Equal(t, 123, resp.ID)
@@ -73,12 +74,13 @@ func TestRespondError_Freedesktop(t *testing.T) {
 }
 
 func TestRespond_Freedesktop(t *testing.T) {
-	conn := newMockNetConn()
+	mc := newMockNetConn()
+	conn := models.NewConn(mc)
 	result := models.SuccessResult{Success: true, Message: "test"}
 	models.Respond(conn, 123, result)
 
 	var resp models.Response[models.SuccessResult]
-	err := json.NewDecoder(conn.writeBuf).Decode(&resp)
+	err := json.NewDecoder(mc.writeBuf).Decode(&resp)
 	require.NoError(t, err)
 
 	assert.Equal(t, 123, resp.ID)
@@ -105,13 +107,14 @@ func TestHandleGetState(t *testing.T) {
 		stateMutex: sync.RWMutex{},
 	}
 
-	conn := newMockNetConn()
+	mc := newMockNetConn()
+	conn := models.NewConn(mc)
 	req := models.Request{ID: 123, Method: "freedesktop.getState"}
 
 	handleGetState(conn, req, manager)
 
 	var resp models.Response[FreedeskState]
-	err := json.NewDecoder(conn.writeBuf).Decode(&resp)
+	err := json.NewDecoder(mc.writeBuf).Decode(&resp)
 	require.NoError(t, err)
 
 	assert.Equal(t, 123, resp.ID)
@@ -130,7 +133,8 @@ func TestHandleSetIconFile(t *testing.T) {
 			stateMutex: sync.RWMutex{},
 		}
 
-		conn := newMockNetConn()
+		mc := newMockNetConn()
+		conn := models.NewConn(mc)
 		req := models.Request{
 			ID:     123,
 			Method: "freedesktop.accounts.setIconFile",
@@ -140,7 +144,7 @@ func TestHandleSetIconFile(t *testing.T) {
 		handleSetIconFile(conn, req, manager)
 
 		var resp models.Response[any]
-		err := json.NewDecoder(conn.writeBuf).Decode(&resp)
+		err := json.NewDecoder(mc.writeBuf).Decode(&resp)
 		require.NoError(t, err)
 
 		assert.Equal(t, 123, resp.ID)
@@ -163,7 +167,8 @@ func TestHandleSetIconFile(t *testing.T) {
 			accountsObj: mockAccountsObj,
 		}
 
-		conn := newMockNetConn()
+		mc := newMockNetConn()
+		conn := models.NewConn(mc)
 		req := models.Request{
 			ID:     123,
 			Method: "freedesktop.accounts.setIconFile",
@@ -175,7 +180,7 @@ func TestHandleSetIconFile(t *testing.T) {
 		handleSetIconFile(conn, req, manager)
 
 		var resp models.Response[models.SuccessResult]
-		err := json.NewDecoder(conn.writeBuf).Decode(&resp)
+		err := json.NewDecoder(mc.writeBuf).Decode(&resp)
 		require.NoError(t, err)
 
 		assert.Equal(t, 123, resp.ID)
@@ -195,7 +200,8 @@ func TestHandleSetIconFile(t *testing.T) {
 			stateMutex: sync.RWMutex{},
 		}
 
-		conn := newMockNetConn()
+		mc := newMockNetConn()
+		conn := models.NewConn(mc)
 		req := models.Request{
 			ID:     123,
 			Method: "freedesktop.accounts.setIconFile",
@@ -207,7 +213,7 @@ func TestHandleSetIconFile(t *testing.T) {
 		handleSetIconFile(conn, req, manager)
 
 		var resp models.Response[models.SuccessResult]
-		err := json.NewDecoder(conn.writeBuf).Decode(&resp)
+		err := json.NewDecoder(mc.writeBuf).Decode(&resp)
 		require.NoError(t, err)
 
 		assert.Equal(t, 123, resp.ID)
@@ -222,7 +228,8 @@ func TestHandleSetRealName(t *testing.T) {
 			stateMutex: sync.RWMutex{},
 		}
 
-		conn := newMockNetConn()
+		mc := newMockNetConn()
+		conn := models.NewConn(mc)
 		req := models.Request{
 			ID:     123,
 			Method: "freedesktop.accounts.setRealName",
@@ -232,7 +239,7 @@ func TestHandleSetRealName(t *testing.T) {
 		handleSetRealName(conn, req, manager)
 
 		var resp models.Response[any]
-		err := json.NewDecoder(conn.writeBuf).Decode(&resp)
+		err := json.NewDecoder(mc.writeBuf).Decode(&resp)
 		require.NoError(t, err)
 
 		assert.Equal(t, 123, resp.ID)
@@ -255,7 +262,8 @@ func TestHandleSetRealName(t *testing.T) {
 			accountsObj: mockAccountsObj,
 		}
 
-		conn := newMockNetConn()
+		mc := newMockNetConn()
+		conn := models.NewConn(mc)
 		req := models.Request{
 			ID:     123,
 			Method: "freedesktop.accounts.setRealName",
@@ -267,7 +275,7 @@ func TestHandleSetRealName(t *testing.T) {
 		handleSetRealName(conn, req, manager)
 
 		var resp models.Response[models.SuccessResult]
-		err := json.NewDecoder(conn.writeBuf).Decode(&resp)
+		err := json.NewDecoder(mc.writeBuf).Decode(&resp)
 		require.NoError(t, err)
 
 		assert.Equal(t, 123, resp.ID)
@@ -285,7 +293,8 @@ func TestHandleSetEmail(t *testing.T) {
 			stateMutex: sync.RWMutex{},
 		}
 
-		conn := newMockNetConn()
+		mc := newMockNetConn()
+		conn := models.NewConn(mc)
 		req := models.Request{
 			ID:     123,
 			Method: "freedesktop.accounts.setEmail",
@@ -295,7 +304,7 @@ func TestHandleSetEmail(t *testing.T) {
 		handleSetEmail(conn, req, manager)
 
 		var resp models.Response[any]
-		err := json.NewDecoder(conn.writeBuf).Decode(&resp)
+		err := json.NewDecoder(mc.writeBuf).Decode(&resp)
 		require.NoError(t, err)
 
 		assert.Equal(t, 123, resp.ID)
@@ -318,7 +327,8 @@ func TestHandleSetEmail(t *testing.T) {
 			accountsObj: mockAccountsObj,
 		}
 
-		conn := newMockNetConn()
+		mc := newMockNetConn()
+		conn := models.NewConn(mc)
 		req := models.Request{
 			ID:     123,
 			Method: "freedesktop.accounts.setEmail",
@@ -330,7 +340,7 @@ func TestHandleSetEmail(t *testing.T) {
 		handleSetEmail(conn, req, manager)
 
 		var resp models.Response[models.SuccessResult]
-		err := json.NewDecoder(conn.writeBuf).Decode(&resp)
+		err := json.NewDecoder(mc.writeBuf).Decode(&resp)
 		require.NoError(t, err)
 
 		assert.Equal(t, 123, resp.ID)
@@ -348,7 +358,8 @@ func TestHandleSetLanguage(t *testing.T) {
 			stateMutex: sync.RWMutex{},
 		}
 
-		conn := newMockNetConn()
+		mc := newMockNetConn()
+		conn := models.NewConn(mc)
 		req := models.Request{
 			ID:     123,
 			Method: "freedesktop.accounts.setLanguage",
@@ -358,7 +369,7 @@ func TestHandleSetLanguage(t *testing.T) {
 		handleSetLanguage(conn, req, manager)
 
 		var resp models.Response[any]
-		err := json.NewDecoder(conn.writeBuf).Decode(&resp)
+		err := json.NewDecoder(mc.writeBuf).Decode(&resp)
 		require.NoError(t, err)
 
 		assert.Equal(t, 123, resp.ID)
@@ -373,7 +384,8 @@ func TestHandleSetLocation(t *testing.T) {
 			stateMutex: sync.RWMutex{},
 		}
 
-		conn := newMockNetConn()
+		mc := newMockNetConn()
+		conn := models.NewConn(mc)
 		req := models.Request{
 			ID:     123,
 			Method: "freedesktop.accounts.setLocation",
@@ -383,7 +395,7 @@ func TestHandleSetLocation(t *testing.T) {
 		handleSetLocation(conn, req, manager)
 
 		var resp models.Response[any]
-		err := json.NewDecoder(conn.writeBuf).Decode(&resp)
+		err := json.NewDecoder(mc.writeBuf).Decode(&resp)
 		require.NoError(t, err)
 
 		assert.Equal(t, 123, resp.ID)
@@ -398,7 +410,8 @@ func TestHandleGetUserIconFile(t *testing.T) {
 			stateMutex: sync.RWMutex{},
 		}
 
-		conn := newMockNetConn()
+		mc := newMockNetConn()
+		conn := models.NewConn(mc)
 		req := models.Request{
 			ID:     123,
 			Method: "freedesktop.accounts.getUserIconFile",
@@ -408,7 +421,7 @@ func TestHandleGetUserIconFile(t *testing.T) {
 		handleGetUserIconFile(conn, req, manager)
 
 		var resp models.Response[any]
-		err := json.NewDecoder(conn.writeBuf).Decode(&resp)
+		err := json.NewDecoder(mc.writeBuf).Decode(&resp)
 		require.NoError(t, err)
 
 		assert.Equal(t, 123, resp.ID)
@@ -425,7 +438,8 @@ func TestHandleGetUserIconFile(t *testing.T) {
 			stateMutex: sync.RWMutex{},
 		}
 
-		conn := newMockNetConn()
+		mc := newMockNetConn()
+		conn := models.NewConn(mc)
 		req := models.Request{
 			ID:     123,
 			Method: "freedesktop.accounts.getUserIconFile",
@@ -437,7 +451,7 @@ func TestHandleGetUserIconFile(t *testing.T) {
 		handleGetUserIconFile(conn, req, manager)
 
 		var resp models.Response[models.SuccessResult]
-		err := json.NewDecoder(conn.writeBuf).Decode(&resp)
+		err := json.NewDecoder(mc.writeBuf).Decode(&resp)
 		require.NoError(t, err)
 
 		assert.Equal(t, 123, resp.ID)
@@ -456,13 +470,14 @@ func TestHandleGetColorScheme(t *testing.T) {
 			stateMutex: sync.RWMutex{},
 		}
 
-		conn := newMockNetConn()
+		mc := newMockNetConn()
+		conn := models.NewConn(mc)
 		req := models.Request{ID: 123, Method: "freedesktop.settings.getColorScheme"}
 
 		handleGetColorScheme(conn, req, manager)
 
 		var resp models.Response[map[string]uint32]
-		err := json.NewDecoder(conn.writeBuf).Decode(&resp)
+		err := json.NewDecoder(mc.writeBuf).Decode(&resp)
 		require.NoError(t, err)
 
 		assert.Equal(t, 123, resp.ID)
@@ -487,13 +502,14 @@ func TestHandleGetColorScheme(t *testing.T) {
 			settingsObj: mockSettingsObj,
 		}
 
-		conn := newMockNetConn()
+		mc := newMockNetConn()
+		conn := models.NewConn(mc)
 		req := models.Request{ID: 123, Method: "freedesktop.settings.getColorScheme"}
 
 		handleGetColorScheme(conn, req, manager)
 
 		var resp models.Response[map[string]uint32]
-		err := json.NewDecoder(conn.writeBuf).Decode(&resp)
+		err := json.NewDecoder(mc.writeBuf).Decode(&resp)
 		require.NoError(t, err)
 
 		assert.Equal(t, 123, resp.ID)
@@ -515,7 +531,8 @@ func TestHandleRequest(t *testing.T) {
 	}
 
 	t.Run("unknown method", func(t *testing.T) {
-		conn := newMockNetConn()
+		mc := newMockNetConn()
+		conn := models.NewConn(mc)
 		req := models.Request{
 			ID:     123,
 			Method: "freedesktop.unknown",
@@ -524,7 +541,7 @@ func TestHandleRequest(t *testing.T) {
 		HandleRequest(conn, req, manager)
 
 		var resp models.Response[any]
-		err := json.NewDecoder(conn.writeBuf).Decode(&resp)
+		err := json.NewDecoder(mc.writeBuf).Decode(&resp)
 		require.NoError(t, err)
 
 		assert.Equal(t, 123, resp.ID)
@@ -532,7 +549,8 @@ func TestHandleRequest(t *testing.T) {
 	})
 
 	t.Run("valid method - getState", func(t *testing.T) {
-		conn := newMockNetConn()
+		mc := newMockNetConn()
+		conn := models.NewConn(mc)
 		req := models.Request{
 			ID:     123,
 			Method: "freedesktop.getState",
@@ -541,7 +559,7 @@ func TestHandleRequest(t *testing.T) {
 		HandleRequest(conn, req, manager)
 
 		var resp models.Response[FreedeskState]
-		err := json.NewDecoder(conn.writeBuf).Decode(&resp)
+		err := json.NewDecoder(mc.writeBuf).Decode(&resp)
 		require.NoError(t, err)
 
 		assert.Equal(t, 123, resp.ID)
@@ -560,7 +578,8 @@ func TestHandleRequest(t *testing.T) {
 		}
 
 		for _, method := range tests {
-			conn := newMockNetConn()
+			mc := newMockNetConn()
+			conn := models.NewConn(mc)
 			req := models.Request{
 				ID:     123,
 				Method: method,
@@ -570,7 +589,7 @@ func TestHandleRequest(t *testing.T) {
 			HandleRequest(conn, req, manager)
 
 			var resp models.Response[any]
-			err := json.NewDecoder(conn.writeBuf).Decode(&resp)
+			err := json.NewDecoder(mc.writeBuf).Decode(&resp)
 			require.NoError(t, err)
 
 			assert.Equal(t, 123, resp.ID)

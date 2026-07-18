@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"net"
 	"os"
-	"path/filepath"
 	"testing"
 
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
@@ -13,32 +12,6 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
-
-func TestGetSocketDir(t *testing.T) {
-	tests := []struct {
-		name           string
-		xdgRuntimeDir  string
-		uid            int
-		expectedSubstr string
-	}{
-		{
-			name:           "uses XDG_RUNTIME_DIR when set",
-			xdgRuntimeDir:  "/run/user/1000",
-			expectedSubstr: "/run/user/1000",
-		},
-	}
-
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if tt.xdgRuntimeDir != "" {
-				t.Setenv("XDG_RUNTIME_DIR", tt.xdgRuntimeDir)
-			}
-
-			result := getSocketDir()
-			assert.Contains(t, result, tt.expectedSubstr)
-		})
-	}
-}
 
 func TestGetSocketPath(t *testing.T) {
 	path := GetSocketPath()
@@ -81,11 +54,11 @@ func (m *mockConn) Close() error {
 }
 
 func TestRespondError(t *testing.T) {
-	conn := &mockConn{}
-	models.RespondError(conn, 123, "test error")
+	mc := &mockConn{}
+	models.RespondError(models.NewConn(mc), 123, "test error")
 
 	var resp models.Response[any]
-	err := json.Unmarshal(conn.written, &resp)
+	err := json.Unmarshal(mc.written, &resp)
 	require.NoError(t, err)
 
 	assert.Equal(t, 123, resp.ID)
@@ -94,12 +67,12 @@ func TestRespondError(t *testing.T) {
 }
 
 func TestRespond(t *testing.T) {
-	conn := &mockConn{}
+	mc := &mockConn{}
 	result := map[string]string{"foo": "bar"}
-	models.Respond(conn, 123, result)
+	models.Respond(models.NewConn(mc), 123, result)
 
 	var resp models.Response[map[string]string]
-	err := json.Unmarshal(conn.written, &resp)
+	err := json.Unmarshal(mc.written, &resp)
 	require.NoError(t, err)
 
 	assert.Equal(t, 123, resp.ID)
@@ -156,25 +129,4 @@ func TestResponse_JSON(t *testing.T) {
 		assert.Equal(t, "test error", decoded.Error)
 		assert.Nil(t, decoded.Result)
 	})
-}
-
-func TestCleanupStaleSockets(t *testing.T) {
-	tempDir := t.TempDir()
-	t.Setenv("XDG_RUNTIME_DIR", tempDir)
-
-	staleSocket := filepath.Join(tempDir, "danklinux-4194305.sock")
-	err := os.WriteFile(staleSocket, []byte{}, 0o600)
-	require.NoError(t, err)
-
-	activeSocket := filepath.Join(tempDir, fmt.Sprintf("danklinux-%d.sock", os.Getpid()))
-	err = os.WriteFile(activeSocket, []byte{}, 0o600)
-	require.NoError(t, err)
-
-	cleanupStaleSockets()
-
-	_, err = os.Stat(staleSocket)
-	assert.True(t, os.IsNotExist(err))
-
-	_, err = os.Stat(activeSocket)
-	assert.NoError(t, err)
 }

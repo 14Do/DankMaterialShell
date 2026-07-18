@@ -1,15 +1,13 @@
 package brightness
 
 import (
-	"encoding/json"
 	"fmt"
-	"net"
 
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/params"
+	"github.com/AvengeMedia/dankgo/ipc/params"
 )
 
-func HandleRequest(conn net.Conn, req models.Request, m *Manager) {
+func HandleRequest(conn *models.Conn, req models.Request, m *Manager) {
 	switch req.Method {
 	case "brightness.getState":
 		handleGetState(conn, req, m)
@@ -28,11 +26,11 @@ func HandleRequest(conn net.Conn, req models.Request, m *Manager) {
 	}
 }
 
-func handleGetState(conn net.Conn, req models.Request, m *Manager) {
+func handleGetState(conn *models.Conn, req models.Request, m *Manager) {
 	models.Respond(conn, req.ID, m.GetState())
 }
 
-func handleSetBrightness(conn net.Conn, req models.Request, m *Manager) {
+func handleSetBrightness(conn *models.Conn, req models.Request, m *Manager) {
 	device, err := params.String(req.Params, "device")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -56,7 +54,7 @@ func handleSetBrightness(conn net.Conn, req models.Request, m *Manager) {
 	models.Respond(conn, req.ID, m.GetState())
 }
 
-func handleIncrement(conn net.Conn, req models.Request, m *Manager) {
+func handleIncrement(conn *models.Conn, req models.Request, m *Manager) {
 	device, err := params.String(req.Params, "device")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -75,7 +73,7 @@ func handleIncrement(conn net.Conn, req models.Request, m *Manager) {
 	models.Respond(conn, req.ID, m.GetState())
 }
 
-func handleDecrement(conn net.Conn, req models.Request, m *Manager) {
+func handleDecrement(conn *models.Conn, req models.Request, m *Manager) {
 	device, err := params.String(req.Params, "device")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -94,19 +92,19 @@ func handleDecrement(conn net.Conn, req models.Request, m *Manager) {
 	models.Respond(conn, req.ID, m.GetState())
 }
 
-func handleRescan(conn net.Conn, req models.Request, m *Manager) {
+func handleRescan(conn *models.Conn, req models.Request, m *Manager) {
 	m.Rescan()
 	models.Respond(conn, req.ID, m.GetState())
 }
 
-func handleSubscribe(conn net.Conn, req models.Request, m *Manager) {
+func handleSubscribe(conn *models.Conn, req models.Request, m *Manager) {
 	clientID := fmt.Sprintf("brightness-%d", req.ID)
 
 	ch := m.Subscribe(clientID)
 	defer m.Unsubscribe(clientID)
 
 	initialState := m.GetState()
-	if err := json.NewEncoder(conn).Encode(models.Response[State]{
+	if err := conn.WriteResponse(models.Response[State]{
 		ID:     req.ID,
 		Result: &initialState,
 	}); err != nil {
@@ -114,7 +112,7 @@ func handleSubscribe(conn net.Conn, req models.Request, m *Manager) {
 	}
 
 	for state := range ch {
-		if err := json.NewEncoder(conn).Encode(models.Response[State]{
+		if err := conn.WriteResponse(models.Response[State]{
 			ID:     req.ID,
 			Result: &state,
 		}); err != nil {

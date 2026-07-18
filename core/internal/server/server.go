@@ -1,19 +1,12 @@
 package server
 
 import (
-	"bufio"
-	"encoding/json"
+	"context"
 	"errors"
 	"fmt"
-	"net"
-	"os"
-	"path/filepath"
 	"runtime/debug"
-	"strconv"
-	"strings"
 	"sync"
 	"sync/atomic"
-	"syscall"
 	"time"
 
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/geolocation"
@@ -39,7 +32,9 @@ import (
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/wayland"
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/wlcontext"
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/wlroutput"
-	"github.com/AvengeMedia/DankMaterialShell/core/pkg/syncmap"
+	"github.com/AvengeMedia/dankgo/ipc"
+	"github.com/AvengeMedia/dankgo/paths"
+	"github.com/AvengeMedia/dankgo/syncmap"
 )
 
 const APIVersion = 28
@@ -88,74 +83,10 @@ var capabilitySubscribers syncmap.Map[string, chan ServerInfo]
 var cupsSubscribers syncmap.Map[string, bool]
 var cupsSubscriberCount atomic.Int32
 
-func getSocketDir() string {
-	if runtime := os.Getenv("XDG_RUNTIME_DIR"); runtime != "" {
-		return runtime
-	}
-
-	if os.Getuid() == 0 {
-		if _, err := os.Stat("/run"); err == nil {
-			return "/run/dankdots"
-		}
-		return "/var/run/dankdots"
-	}
-
-	return os.TempDir()
-}
+var appPaths = paths.New("danklinux")
 
 func GetSocketPath() string {
-	return filepath.Join(getSocketDir(), fmt.Sprintf("danklinux-%d.sock", os.Getpid()))
-}
-
-func FindSocket() (string, error) {
-	dir := getSocketDir()
-	entries, err := os.ReadDir(dir)
-	if err != nil {
-		return "", err
-	}
-
-	for _, entry := range entries {
-		if strings.HasPrefix(entry.Name(), "danklinux-") && strings.HasSuffix(entry.Name(), ".sock") {
-			return filepath.Join(dir, entry.Name()), nil
-		}
-	}
-	return "", fmt.Errorf("no dms socket found")
-}
-
-func cleanupStaleSockets() {
-	dir := getSocketDir()
-	entries, err := os.ReadDir(dir)
-	if err != nil {
-		return
-	}
-
-	for _, entry := range entries {
-		if !strings.HasPrefix(entry.Name(), "danklinux-") || !strings.HasSuffix(entry.Name(), ".sock") {
-			continue
-		}
-
-		pidStr := strings.TrimPrefix(entry.Name(), "danklinux-")
-		pidStr = strings.TrimSuffix(pidStr, ".sock")
-		pid, err := strconv.Atoi(pidStr)
-		if err != nil {
-			continue
-		}
-
-		process, err := os.FindProcess(pid)
-		if err != nil {
-			socketPath := filepath.Join(dir, entry.Name())
-			os.Remove(socketPath)
-			log.Debugf("Removed stale socket: %s", socketPath)
-			continue
-		}
-
-		err = process.Signal(syscall.Signal(0))
-		if err != nil {
-			socketPath := filepath.Join(dir, entry.Name())
-			os.Remove(socketPath)
-			log.Debugf("Removed stale socket: %s", socketPath)
-		}
-	}
+	return appPaths.SocketPath()
 }
 
 func InitializeNetworkManager() error {
@@ -397,36 +328,21 @@ func InitializeSysUpdateManager() error {
 	return nil
 }
 
-func handleConnection(conn net.Conn) {
-	defer conn.Close()
-	defer func() {
-		if r := recover(); r != nil {
-			log.Errorf("handleConnection panic recovered: panic=%v\n%s", r, debug.Stack())
-		}
-	}()
+func routeHandler(_ context.Context, conn *models.Conn, req ipc.Request, _ *ipc.Subscriber) {
+	routeRequestRecovered(conn, models.Request(req))
+}
 
-	caps := getCapabilities()
-	capsData, _ := json.Marshal(caps)
-	conn.Write(capsData)
-	conn.Write([]byte("\n"))
-	scanner := bufio.NewScanner(conn)
-	scanner.Buffer(make([]byte, bufio.MaxScanTokenSize), 64*1024*1024) // grow up to 64 MB for large clipboard payloads
-	for scanner.Scan() {
-		line := scanner.Bytes()
-
-		var req models.Request
-		if err := json.Unmarshal(line, &req); err != nil {
-			log.Warnf("handleConnection: Failed to unmarshal JSON: %v, line: %s", err, string(line))
-			models.RespondError(conn, 0, "invalid json")
-			continue
-		}
-
-		go routeRequestRecovered(conn, req)
+func subscribeHandler(_ context.Context, conn *models.Conn, req ipc.Request, _ *ipc.Subscriber) {
+	switch req.Method {
+	case "subscribe":
+		routeRequestRecovered(conn, models.Request(req))
+	default:
+		models.RespondError(conn, req.ID, fmt.Sprintf("unknown method: %s", req.Method))
 	}
 }
 
 // routeRequestRecovered keeps a panicking handler from taking down the whole daemon
-func routeRequestRecovered(conn net.Conn, req models.Request) {
+func routeRequestRecovered(conn *models.Conn, req models.Request) {
 	defer func() {
 		if r := recover(); r != nil {
 			log.Errorf("RouteRequest panic recovered: method=%s panic=%v\n%s", req.Method, r, debug.Stack())
@@ -595,7 +511,7 @@ func notifyCapabilityChange() {
 	})
 }
 
-func handleSubscribe(conn net.Conn, req models.Request) {
+func handleSubscribe(conn *models.Conn, req models.Request) {
 	clientID := fmt.Sprintf("meta-client-%p", conn)
 
 	dbusClient := dbusClientID
@@ -1300,7 +1216,7 @@ func handleSubscribe(conn net.Conn, req models.Request) {
 	}()
 
 	info := getServerInfo()
-	if err := json.NewEncoder(conn).Encode(models.Response[ServiceEvent]{
+	if err := conn.WriteResponse(models.Response[ServiceEvent]{
 		ID:     req.ID,
 		Result: &ServiceEvent{Service: "server", Data: info},
 	}); err != nil {
@@ -1309,7 +1225,7 @@ func handleSubscribe(conn net.Conn, req models.Request) {
 	}
 
 	for event := range eventChan {
-		if err := json.NewEncoder(conn).Encode(models.Response[ServiceEvent]{
+		if err := conn.WriteResponse(models.Response[ServiceEvent]{
 			ID:     req.ID,
 			Result: &event,
 		}); err != nil {
@@ -1382,8 +1298,39 @@ func cleanupManagers() {
 	}
 }
 
+type Server struct {
+	ipc *ipc.Server
+}
+
+func New() *Server {
+	return &Server{ipc: ipc.NewServer(ipc.Config{
+		AppName:          appPaths.Name,
+		APIVersion:       APIVersion,
+		CapabilitiesFunc: func() []string { return getCapabilities().Capabilities },
+		MaxLineSize:      64 * 1024 * 1024, // large clipboard payloads
+		SubscribeHandler: subscribeHandler,
+	}, routeHandler)}
+}
+
+func (s *Server) Listen() error { return s.ipc.Listen() }
+
+func (s *Server) SocketPath() string { return s.ipc.SocketPath() }
+
+func (s *Server) Close() {
+	s.ipc.Close()
+}
+
 func Start(printDocs bool) error {
-	cleanupStaleSockets()
+	s := New()
+	if err := s.Listen(); err != nil {
+		return err
+	}
+	return s.Serve(printDocs)
+}
+
+func (s *Server) Serve(printDocs bool) error {
+	defer s.ipc.Close()
+	defer cleanupManagers()
 
 	// Tailscale manager always starts — reconnects internally via WatchIPNBus.
 	// The capability is only advertised once tailscaled is reachable; the
@@ -1393,17 +1340,7 @@ func Start(printDocs bool) error {
 		notifyCapabilityChange()
 	})
 
-	socketPath := GetSocketPath()
-	os.Remove(socketPath)
-
-	listener, err := net.Listen("unix", socketPath)
-	if err != nil {
-		return err
-	}
-	defer listener.Close()
-	defer cleanupManagers()
-
-	log.Infof("DMS API Server listening on: %s", socketPath)
+	log.Infof("DMS API Server listening on: %s", s.ipc.SocketPath())
 	log.Infof("API Version: %d", APIVersion)
 	log.Info("Protocol: JSON over Unix socket")
 	log.Info("Request format: {\"id\": <any>, \"method\": \"...\", \"params\": {...}}")
@@ -1768,21 +1705,16 @@ func Start(printDocs bool) error {
 	log.Info("")
 	log.Infof("Ready! Capabilities: %v", getCapabilities().Capabilities)
 
-	listenerErrChan := make(chan error, 1)
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
 
+	serveErrChan := make(chan error, 1)
 	go func() {
-		for {
-			conn, err := listener.Accept()
-			if err != nil {
-				listenerErrChan <- err
-				return
-			}
-			go handleConnection(conn)
-		}
+		serveErrChan <- s.ipc.Serve(ctx)
 	}()
 
 	select {
-	case err := <-listenerErrChan:
+	case err := <-serveErrChan:
 		return err
 	case err := <-fatalErrChan:
 		return err

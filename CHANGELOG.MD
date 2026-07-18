@@ -1,5 +1,13 @@
 This file is more of a quick reference so I know what to account for before next releases.
 
+# Next
+- Go core migrated to dankgo (shared log/paths/errdefs/ipc/shellapp)
+- Quickshell UI embedded in the dms binary, -c / DMS_SHELL_DIR override - breaking for setups relying on ~/.config/quickshell/dms auto-discovery (XDG search removed)
+- release binaries + all -git packages build with withshell; sockets/pidfiles/env names unchanged, IPC APIVersion 28 wire-compatible
+- -git packages (AUR dms-shell-git, fedora, opensuse, void, debian, ubuntu) no longer install /usr/share/quickshell/dms; dms greeter install falls back to the embedded UI when the greeter package is present
+- ping over the socket returns {"pong":true} instead of "pong"
+- startup: embedded UI resolution is keyed by build-time .dankrev (no per-start content hashing)
+
 # 1.5.0
 - Overhauled shadows
 - App ID changed to com.danklinux.dms - breaking for window rules

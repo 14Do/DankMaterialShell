@@ -68,24 +68,11 @@ override_dh_auto_build:
 override_dh_auto_install:
 	install -Dm755 dms debian/dms-git/usr/bin/dms
 
-	mkdir -p debian/dms-git/usr/share/quickshell/dms debian/dms-git/usr/lib/systemd/user
-	if [ -d quickshell ]; then \
-		cp -rL quickshell/* debian/dms-git/usr/share/quickshell/dms/; \
-		install -Dm644 assets/systemd/dms.service debian/dms-git/usr/lib/systemd/user/dms.service; \
-		install -Dm644 assets/dms-open.desktop debian/dms-git/usr/share/applications/dms-open.desktop; \
-		install -Dm644 assets/com.danklinux.dms.desktop debian/dms-git/usr/share/applications/com.danklinux.dms.desktop; \
-		install -Dm644 assets/com.danklinux.dms.notepad.desktop debian/dms-git/usr/share/applications/com.danklinux.dms.notepad.desktop; \
-		install -Dm644 assets/danklogo.svg debian/dms-git/usr/share/icons/hicolor/scalable/apps/danklogo.svg; \
-	else \
-		echo "ERROR: quickshell directory not found!" && \
-		echo "Contents of current directory:" && ls -la && \
-		exit 1; \
-	fi
-
-	rm -rf debian/dms-git/usr/share/quickshell/dms/core \
-		debian/dms-git/usr/share/quickshell/dms/distro
-
-	echo "$(UPSTREAM_VERSION)" > debian/dms-git/usr/share/quickshell/dms/VERSION
+	install -Dm644 assets/systemd/dms.service debian/dms-git/usr/lib/systemd/user/dms.service
+	install -Dm644 assets/dms-open.desktop debian/dms-git/usr/share/applications/dms-open.desktop
+	install -Dm644 assets/com.danklinux.dms.desktop debian/dms-git/usr/share/applications/com.danklinux.dms.desktop
+	install -Dm644 assets/com.danklinux.dms.notepad.desktop debian/dms-git/usr/share/applications/com.danklinux.dms.notepad.desktop
+	install -Dm644 assets/danklogo.svg debian/dms-git/usr/share/icons/hicolor/scalable/apps/danklogo.svg
 
 override_dh_auto_clean:
 	# Clean up build artifacts

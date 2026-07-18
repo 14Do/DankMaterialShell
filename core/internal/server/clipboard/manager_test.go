@@ -311,14 +311,15 @@ func TestHandleGetEntry_ReturnsExistingEntry(t *testing.T) {
 	history := m.GetHistory()
 	require.Len(t, history, 1)
 
-	conn := newClipboardTestConn()
+	mc := newClipboardTestConn()
+	conn := models.NewConn(mc)
 	handleGetEntry(conn, models.Request{
 		ID:     1,
 		Params: map[string]any{"id": float64(history[0].ID)},
 	}, m)
 
 	var resp models.Response[Entry]
-	require.NoError(t, json.NewDecoder(conn.writeBuf).Decode(&resp))
+	require.NoError(t, json.NewDecoder(mc.writeBuf).Decode(&resp))
 	assert.Empty(t, resp.Error)
 	require.NotNil(t, resp.Result)
 	assert.Equal(t, history[0].ID, resp.Result.ID)
@@ -327,7 +328,8 @@ func TestHandleGetEntry_ReturnsExistingEntry(t *testing.T) {
 
 func TestHandleGetEntry_MissingIDReturnsNullResult(t *testing.T) {
 	m := newTestManagerWithDB(t)
-	conn := newClipboardTestConn()
+	mc := newClipboardTestConn()
+	conn := models.NewConn(mc)
 
 	handleGetEntry(conn, models.Request{
 		ID:     1,
@@ -335,7 +337,7 @@ func TestHandleGetEntry_MissingIDReturnsNullResult(t *testing.T) {
 	}, m)
 
 	var resp models.Response[any]
-	require.NoError(t, json.NewDecoder(conn.writeBuf).Decode(&resp))
+	require.NoError(t, json.NewDecoder(mc.writeBuf).Decode(&resp))
 	assert.Empty(t, resp.Error)
 	assert.Nil(t, resp.Result)
 }

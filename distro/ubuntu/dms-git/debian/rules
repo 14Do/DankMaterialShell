@@ -58,14 +58,6 @@ override_dh_auto_install:
 	# Install binary
 	install -Dm755 dms debian/dms-git/usr/bin/dms
 
-	# Install QML files from git clone
-	mkdir -p debian/dms-git/usr/share/quickshell/dms
-	cp -rL dms-git-repo/* debian/dms-git/usr/share/quickshell/dms/
-
-	# Remove unnecessary directories
-	rm -rf debian/dms-git/usr/share/quickshell/dms/core
-	rm -rf debian/dms-git/usr/share/quickshell/dms/distro
-
 	# Install systemd user service
 	install -Dm644 dms-git-repo/assets/systemd/dms.service \
 		debian/dms-git/usr/lib/systemd/user/dms.service
@@ -79,14 +71,6 @@ override_dh_auto_install:
 		debian/dms-git/usr/share/applications/com.danklinux.dms.notepad.desktop
 	install -Dm644 dms-git-repo/assets/danklogo.svg \
 		debian/dms-git/usr/share/icons/hicolor/scalable/apps/danklogo.svg
-
-	# Create DMS Version file
-	@if [ -f dms-git-repo/.dms-version ]; then \
-		. dms-git-repo/.dms-version; \
-		echo "$$VERSION" > debian/dms-git/usr/share/quickshell/dms/VERSION; \
-	else \
-		echo "dev" > debian/dms-git/usr/share/quickshell/dms/VERSION; \
-	fi
 
 override_dh_auto_clean:
 	# Don't delete dms-git-repo directory - it's part of the source package (native format)

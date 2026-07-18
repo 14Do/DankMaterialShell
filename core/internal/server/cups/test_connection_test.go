@@ -302,7 +302,7 @@ func TestHandleTestConnection_Success(t *testing.T) {
 	}
 
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{
 		ID:     1,
@@ -325,7 +325,7 @@ func TestHandleTestConnection_Success(t *testing.T) {
 func TestHandleTestConnection_MissingHost(t *testing.T) {
 	m := NewTestManager(nil, nil)
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{
 		ID:     1,
@@ -351,7 +351,7 @@ func TestHandleTestConnection_CustomPortAndProtocol(t *testing.T) {
 	}
 
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{
 		ID:     1,
@@ -379,7 +379,7 @@ func TestHandleRequest_TestConnection(t *testing.T) {
 	}
 
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{
 		ID:     1,

@@ -6,7 +6,6 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/config"
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/log"
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/plugins"
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/server"
@@ -17,63 +16,6 @@ var versionCmd = &cobra.Command{
 	Use:   "version",
 	Short: "Show version information",
 	Run:   runVersion,
-}
-
-var runCmd = &cobra.Command{
-	Use:     "run",
-	Short:   "Launch quickshell with DMS configuration",
-	Long:    "Launch quickshell with DMS configuration (qs -c dms)",
-	PreRunE: findConfig,
-	Run: func(cmd *cobra.Command, args []string) {
-		daemon, _ := cmd.Flags().GetBool("daemon")
-		session, _ := cmd.Flags().GetBool("session")
-		if v, _ := cmd.Flags().GetString("log-level"); v != "" {
-			if err := os.Setenv("DMS_LOG_LEVEL", v); err != nil {
-				log.Fatalf("Failed to set DMS_LOG_LEVEL: %v", err)
-			}
-		}
-		if v, _ := cmd.Flags().GetString("log-file"); v != "" {
-			if err := os.Setenv("DMS_LOG_FILE", v); err != nil {
-				log.Fatalf("Failed to set DMS_LOG_FILE: %v", err)
-			}
-		}
-		log.ApplyEnvOverrides()
-		config.CleanupStrayHyprlandConfFile(log.Infof)
-		if daemon {
-			runShellDaemon(session)
-		} else {
-			runShellInteractive(session)
-		}
-	},
-}
-
-var restartCmd = &cobra.Command{
-	Use:     "restart",
-	Short:   "Restart quickshell with DMS configuration",
-	Long:    "Kill existing DMS shell processes and restart quickshell with DMS configuration",
-	PreRunE: findConfig,
-	Run: func(cmd *cobra.Command, args []string) {
-		restartShell()
-	},
-}
-
-var restartDetachedCmd = &cobra.Command{
-	Use:     "restart-detached <pid>",
-	Hidden:  true,
-	Args:    cobra.ExactArgs(1),
-	PreRunE: findConfig,
-	Run: func(cmd *cobra.Command, args []string) {
-		runDetachedRestart(args[0])
-	},
-}
-
-var killCmd = &cobra.Command{
-	Use:   "kill",
-	Short: "Kill running DMS shell processes",
-	Long:  "Kill all running quickshell processes with DMS configuration",
-	Run: func(cmd *cobra.Command, args []string) {
-		killShell()
-	},
 }
 
 var ipcCmd = &cobra.Command{
@@ -743,12 +685,9 @@ func checkAllPluginsCLI() error {
 }
 
 func getCommonCommands() []*cobra.Command {
-	return []*cobra.Command{
+	commands := shellApp.Commands()
+	return append(commands, []*cobra.Command{
 		versionCmd,
-		runCmd,
-		restartCmd,
-		restartDetachedCmd,
-		killCmd,
 		ipcCmd,
 		debugSrvCmd,
 		pluginsCmd,
@@ -775,5 +714,5 @@ func getCommonCommands() []*cobra.Command {
 		trashCmd,
 		systemCmd,
 		switchUserCmd,
-	}
+	}...)
 }

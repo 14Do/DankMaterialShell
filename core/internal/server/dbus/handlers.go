@@ -2,10 +2,9 @@ package dbus
 
 import (
 	"fmt"
-	"net"
 
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/params"
+	"github.com/AvengeMedia/dankgo/ipc/params"
 )
 
 type objectParams struct {
@@ -43,7 +42,7 @@ func extractObjectParams(p map[string]any, requirePath bool) (objectParams, erro
 	return objectParams{bus: bus, dest: dest, path: path, iface: iface}, nil
 }
 
-func HandleRequest(conn net.Conn, req models.Request, m *Manager, clientID string) {
+func HandleRequest(conn *models.Conn, req models.Request, m *Manager, clientID string) {
 	switch req.Method {
 	case "dbus.call":
 		handleCall(conn, req, m)
@@ -66,7 +65,7 @@ func HandleRequest(conn net.Conn, req models.Request, m *Manager, clientID strin
 	}
 }
 
-func handleCall(conn net.Conn, req models.Request, m *Manager) {
+func handleCall(conn *models.Conn, req models.Request, m *Manager) {
 	op, err := extractObjectParams(req.Params, true)
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -95,7 +94,7 @@ func handleCall(conn net.Conn, req models.Request, m *Manager) {
 	models.Respond(conn, req.ID, result)
 }
 
-func handleGetProperty(conn net.Conn, req models.Request, m *Manager) {
+func handleGetProperty(conn *models.Conn, req models.Request, m *Manager) {
 	op, err := extractObjectParams(req.Params, true)
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -117,7 +116,7 @@ func handleGetProperty(conn net.Conn, req models.Request, m *Manager) {
 	models.Respond(conn, req.ID, result)
 }
 
-func handleSetProperty(conn net.Conn, req models.Request, m *Manager) {
+func handleSetProperty(conn *models.Conn, req models.Request, m *Manager) {
 	op, err := extractObjectParams(req.Params, true)
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -144,7 +143,7 @@ func handleSetProperty(conn net.Conn, req models.Request, m *Manager) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true})
 }
 
-func handleGetAllProperties(conn net.Conn, req models.Request, m *Manager) {
+func handleGetAllProperties(conn *models.Conn, req models.Request, m *Manager) {
 	op, err := extractObjectParams(req.Params, true)
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -160,7 +159,7 @@ func handleGetAllProperties(conn net.Conn, req models.Request, m *Manager) {
 	models.Respond(conn, req.ID, result)
 }
 
-func handleIntrospect(conn net.Conn, req models.Request, m *Manager) {
+func handleIntrospect(conn *models.Conn, req models.Request, m *Manager) {
 	bus, err := params.String(req.Params, "bus")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -184,7 +183,7 @@ func handleIntrospect(conn net.Conn, req models.Request, m *Manager) {
 	models.Respond(conn, req.ID, result)
 }
 
-func handleListNames(conn net.Conn, req models.Request, m *Manager) {
+func handleListNames(conn *models.Conn, req models.Request, m *Manager) {
 	bus, err := params.String(req.Params, "bus")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -200,7 +199,7 @@ func handleListNames(conn net.Conn, req models.Request, m *Manager) {
 	models.Respond(conn, req.ID, result)
 }
 
-func handleSubscribe(conn net.Conn, req models.Request, m *Manager, clientID string) {
+func handleSubscribe(conn *models.Conn, req models.Request, m *Manager, clientID string) {
 	if id := params.StringOpt(req.Params, "clientId", ""); id != "" {
 		clientID = id
 	}
@@ -225,7 +224,7 @@ func handleSubscribe(conn net.Conn, req models.Request, m *Manager, clientID str
 	models.Respond(conn, req.ID, result)
 }
 
-func handleUnsubscribe(conn net.Conn, req models.Request, m *Manager) {
+func handleUnsubscribe(conn *models.Conn, req models.Request, m *Manager) {
 	subID, err := params.String(req.Params, "subscriptionId")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())

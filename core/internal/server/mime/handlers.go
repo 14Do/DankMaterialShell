@@ -2,11 +2,10 @@ package mime
 
 import (
 	"fmt"
-	"net"
 
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/desktop"
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/params"
+	"github.com/AvengeMedia/dankgo/ipc/params"
 )
 
 type defaultResult struct {
@@ -23,7 +22,7 @@ type queryResult struct {
 	Defaults map[string]string `json:"defaults"`
 }
 
-func HandleRequest(conn net.Conn, req models.Request) {
+func HandleRequest(conn *models.Conn, req models.Request) {
 	switch req.Method {
 	case "mime.getDefault":
 		handleGetDefault(conn, req)
@@ -43,7 +42,7 @@ func HandleRequest(conn net.Conn, req models.Request) {
 	}
 }
 
-func handleGetDefault(conn net.Conn, req models.Request) {
+func handleGetDefault(conn *models.Conn, req models.Request) {
 	mimeType, err := mimeParam(req.Params, "mimeType")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -55,7 +54,7 @@ func handleGetDefault(conn net.Conn, req models.Request) {
 	})
 }
 
-func handleSetDefault(conn net.Conn, req models.Request) {
+func handleSetDefault(conn *models.Conn, req models.Request) {
 	mimeType, err := mimeParam(req.Params, "mimeType")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -73,7 +72,7 @@ func handleSetDefault(conn net.Conn, req models.Request) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true})
 }
 
-func handleSetDefaults(conn net.Conn, req models.Request) {
+func handleSetDefaults(conn *models.Conn, req models.Request) {
 	desktopID, err := params.StringNonEmpty(req.Params, "desktopId")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -91,7 +90,7 @@ func handleSetDefaults(conn net.Conn, req models.Request) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true})
 }
 
-func handleAppsForMime(conn net.Conn, req models.Request) {
+func handleAppsForMime(conn *models.Conn, req models.Request) {
 	mimeType, err := mimeParam(req.Params, "mimeType")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())
@@ -107,7 +106,7 @@ func handleAppsForMime(conn net.Conn, req models.Request) {
 	})
 }
 
-func handleQueryDefaults(conn net.Conn, req models.Request) {
+func handleQueryDefaults(conn *models.Conn, req models.Request) {
 	mimeTypes, err := mimeListParam(req, "mimeTypes")
 	if err != nil {
 		models.RespondError(conn, req.ID, err.Error())

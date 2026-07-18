@@ -278,7 +278,7 @@ func installGreeter(nonInteractive bool) error {
 	}
 
 	fmt.Println("\nDetecting DMS installation...")
-	dmsPath, err := greeter.DetectDMSPath()
+	dmsPath, err := detectDMSPath()
 	if err != nil {
 		return err
 	}
@@ -708,7 +708,7 @@ func syncGreeter(nonInteractive bool, forceAuth bool, local bool, profileOnly bo
 			fmt.Printf("✓ Using local DMS path: %s\n", dmsPath)
 		}
 	} else {
-		dmsPath, err = greeter.DetectDMSPath()
+		dmsPath, err = detectDMSPath()
 		if err != nil {
 			return err
 		}
@@ -942,6 +942,24 @@ func resolveDMSLocalCandidate(path string) (string, bool) {
 	}
 
 	return "", false
+}
+
+// detectDMSPath finds the QML tree the greeter copies from. On-disk installs
+// win; with a packaged greeter the embedded UI is a valid copy source, but an
+// extraction path must never be persisted into greetd config, so unpackaged
+// setups still require a real install.
+func detectDMSPath() (string, error) {
+	path, err := greeter.DetectDMSPath()
+	if err == nil {
+		return path, nil
+	}
+	if !greeter.IsGreeterPackaged() {
+		return "", err
+	}
+	if resolveErr := shellApp.ResolveConfig(nil, nil); resolveErr != nil {
+		return "", err
+	}
+	return shellApp.ConfigPath(), nil
 }
 
 func resolveLocalDMSPath() (string, error) {

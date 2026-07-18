@@ -401,12 +401,12 @@ func checkVersions(qsMissingFeatures bool) []checkResult {
 }
 
 func getDMSShellVersion() (version, path string) {
-	if err := findConfig(nil, nil); err == nil && configPath != "" {
-		versionFile := filepath.Join(configPath, "VERSION")
+	if err := shellApp.ResolveConfig(nil, nil); err == nil && shellApp.ConfigPath() != "" {
+		versionFile := filepath.Join(shellApp.ConfigPath(), "VERSION")
 		if data, err := os.ReadFile(versionFile); err == nil {
-			return strings.TrimSpace(string(data)), configPath
+			return strings.TrimSpace(string(data)), shellApp.ConfigPath()
 		}
-		return "installed", configPath
+		return "installed", shellApp.ConfigPath()
 	}
 
 	if dmsPath, err := config.LocateDMSConfig(); err == nil {
@@ -450,8 +450,8 @@ func checkDMSInstallation() []checkResult {
 	var results []checkResult
 
 	dmsPath := ""
-	if err := findConfig(nil, nil); err == nil && configPath != "" {
-		dmsPath = configPath
+	if err := shellApp.ResolveConfig(nil, nil); err == nil && shellApp.ConfigPath() != "" {
+		dmsPath = shellApp.ConfigPath()
 	} else if path, err := config.LocateDMSConfig(); err == nil {
 		dmsPath = path
 	}

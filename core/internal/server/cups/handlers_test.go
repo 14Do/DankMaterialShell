@@ -41,7 +41,7 @@ func TestHandleGetPrinters(t *testing.T) {
 	}
 
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{
 		ID:     1,
@@ -66,7 +66,7 @@ func TestHandleGetPrinters_Error(t *testing.T) {
 	}
 
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{
 		ID:     1,
@@ -98,7 +98,7 @@ func TestHandleGetJobs(t *testing.T) {
 	}
 
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{
 		ID:     1,
@@ -125,7 +125,7 @@ func TestHandleGetJobs_MissingParam(t *testing.T) {
 	}
 
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{
 		ID:     1,
@@ -150,7 +150,7 @@ func TestHandlePausePrinter(t *testing.T) {
 	m := NewTestManager(mockClient, nil)
 
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{
 		ID:     1,
@@ -177,7 +177,7 @@ func TestHandleResumePrinter(t *testing.T) {
 	m := NewTestManager(mockClient, nil)
 
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{
 		ID:     1,
@@ -204,7 +204,7 @@ func TestHandleCancelJob(t *testing.T) {
 	m := NewTestManager(mockClient, nil)
 
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{
 		ID:     1,
@@ -231,7 +231,7 @@ func TestHandlePurgeJobs(t *testing.T) {
 	m := NewTestManager(mockClient, nil)
 
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{
 		ID:     1,
@@ -258,7 +258,7 @@ func TestHandleRequest_UnknownMethod(t *testing.T) {
 	}
 
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{
 		ID:     1,
@@ -285,7 +285,7 @@ func TestHandleGetDevices(t *testing.T) {
 
 	m := &Manager{client: mockClient}
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{ID: 1, Method: "cups.getDevices"}
 	handleGetDevices(conn, req, m)
@@ -307,7 +307,7 @@ func TestHandleGetPPDs(t *testing.T) {
 
 	m := &Manager{client: mockClient}
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{ID: 1, Method: "cups.getPPDs"}
 	handleGetPPDs(conn, req, m)
@@ -330,7 +330,7 @@ func TestHandleGetClasses(t *testing.T) {
 
 	m := &Manager{client: mockClient}
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{ID: 1, Method: "cups.getClasses"}
 	handleGetClasses(conn, req, m)
@@ -351,7 +351,7 @@ func TestHandleCreatePrinter(t *testing.T) {
 
 	m := NewTestManager(mockClient, nil)
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{
 		ID:     1,
@@ -375,7 +375,7 @@ func TestHandleCreatePrinter_MissingParams(t *testing.T) {
 	mockClient := mocks_cups.NewMockCUPSClientInterface(t)
 	m := &Manager{client: mockClient}
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{ID: 1, Method: "cups.createPrinter", Params: map[string]any{}}
 	handleCreatePrinter(conn, req, m)
@@ -394,7 +394,7 @@ func TestHandleDeletePrinter(t *testing.T) {
 
 	m := NewTestManager(mockClient, nil)
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{
 		ID:     1,
@@ -417,7 +417,7 @@ func TestHandleAcceptJobs(t *testing.T) {
 
 	m := NewTestManager(mockClient, nil)
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{
 		ID:     1,
@@ -440,7 +440,7 @@ func TestHandleRejectJobs(t *testing.T) {
 
 	m := NewTestManager(mockClient, nil)
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{
 		ID:     1,
@@ -463,7 +463,7 @@ func TestHandleSetPrinterShared(t *testing.T) {
 
 	m := NewTestManager(mockClient, nil)
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{
 		ID:     1,
@@ -486,7 +486,7 @@ func TestHandleSetPrinterLocation(t *testing.T) {
 
 	m := NewTestManager(mockClient, nil)
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{
 		ID:     1,
@@ -509,7 +509,7 @@ func TestHandleSetPrinterInfo(t *testing.T) {
 
 	m := NewTestManager(mockClient, nil)
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{
 		ID:     1,
@@ -532,7 +532,7 @@ func TestHandleMoveJob(t *testing.T) {
 
 	m := NewTestManager(mockClient, nil)
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{
 		ID:     1,
@@ -555,7 +555,7 @@ func TestHandlePrintTestPage(t *testing.T) {
 
 	m := NewTestManager(mockClient, nil)
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{
 		ID:     1,
@@ -579,7 +579,7 @@ func TestHandleAddPrinterToClass(t *testing.T) {
 
 	m := NewTestManager(mockClient, nil)
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{
 		ID:     1,
@@ -602,7 +602,7 @@ func TestHandleRemovePrinterFromClass(t *testing.T) {
 
 	m := NewTestManager(mockClient, nil)
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{
 		ID:     1,
@@ -625,7 +625,7 @@ func TestHandleDeleteClass(t *testing.T) {
 
 	m := NewTestManager(mockClient, nil)
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{
 		ID:     1,
@@ -648,7 +648,7 @@ func TestHandleRestartJob(t *testing.T) {
 
 	m := NewTestManager(mockClient, nil)
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{
 		ID:     1,
@@ -671,7 +671,7 @@ func TestHandleHoldJob(t *testing.T) {
 
 	m := NewTestManager(mockClient, nil)
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{
 		ID:     1,
@@ -694,7 +694,7 @@ func TestHandleHoldJob_WithHoldUntil(t *testing.T) {
 
 	m := NewTestManager(mockClient, nil)
 	buf := &bytes.Buffer{}
-	conn := &mockConn{Buffer: buf}
+	conn := models.NewConn(&mockConn{Buffer: buf})
 
 	req := models.Request{
 		ID:     1,

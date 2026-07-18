@@ -2,13 +2,12 @@ package plugins
 
 import (
 	"fmt"
-	"net"
 
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/plugins"
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
 )
 
-func HandleList(conn net.Conn, req models.Request) {
+func HandleList(conn *models.Conn, req models.Request) {
 	registry, err := plugins.NewRegistry()
 	if err != nil {
 		models.RespondError(conn, req.ID, fmt.Sprintf("failed to create registry: %v", err))

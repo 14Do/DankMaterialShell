@@ -3,13 +3,12 @@ package wallpaper
 import (
 	"encoding/json"
 	"fmt"
-	"net"
 
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/params"
+	"github.com/AvengeMedia/dankgo/ipc/params"
 )
 
-func HandleRequest(conn net.Conn, req models.Request, manager *Manager) {
+func HandleRequest(conn *models.Conn, req models.Request, manager *Manager) {
 	if manager == nil {
 		models.RespondError(conn, req.ID, "wallpaper manager not initialized")
 		return
@@ -29,11 +28,11 @@ func HandleRequest(conn net.Conn, req models.Request, manager *Manager) {
 	}
 }
 
-func handleGetState(conn net.Conn, req models.Request, manager *Manager) {
+func handleGetState(conn *models.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, manager.GetState())
 }
 
-func handleSetConfig(conn net.Conn, req models.Request, manager *Manager) {
+func handleSetConfig(conn *models.Conn, req models.Request, manager *Manager) {
 	raw, ok := params.Any(req.Params, "config")
 	if !ok {
 		models.RespondError(conn, req.ID, "missing or invalid 'config' parameter")
@@ -56,18 +55,18 @@ func handleSetConfig(conn net.Conn, req models.Request, manager *Manager) {
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "wallpaper schedule set"})
 }
 
-func handleTrigger(conn net.Conn, req models.Request, manager *Manager) {
+func handleTrigger(conn *models.Conn, req models.Request, manager *Manager) {
 	manager.ResetSchedule(params.StringOpt(req.Params, "target", ""))
 	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "wallpaper schedule reset"})
 }
 
-func handleSubscribe(conn net.Conn, req models.Request, manager *Manager) {
+func handleSubscribe(conn *models.Conn, req models.Request, manager *Manager) {
 	clientID := fmt.Sprintf("client-%p", conn)
 	stateChan := manager.Subscribe(clientID)
 	defer manager.Unsubscribe(clientID)
 
 	initialState := manager.GetState()
-	if err := json.NewEncoder(conn).Encode(models.Response[State]{
+	if err := conn.WriteResponse(models.Response[State]{
 		ID:     req.ID,
 		Result: &initialState,
 	}); err != nil {
@@ -75,7 +74,7 @@ func handleSubscribe(conn net.Conn, req models.Request, manager *Manager) {
 	}
 
 	for state := range stateChan {
-		if err := json.NewEncoder(conn).Encode(models.Response[State]{
+		if err := conn.WriteResponse(models.Response[State]{
 			Result: &state,
 		}); err != nil {
 			return
