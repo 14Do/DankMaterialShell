@@ -48,7 +48,7 @@ func handleSetAutoEnabled(conn *models.Conn, req models.Request, manager *Manage
 }
 
 func handleGetState(conn *models.Conn, req models.Request, manager *Manager) {
-	models.Respond(conn, req.ID, manager.GetState())
+	models.Respond(conn, req.ID, manager.CurrentState())
 }
 
 func handleSubscribe(conn *models.Conn, req models.Request, manager *Manager) {
@@ -56,7 +56,7 @@ func handleSubscribe(conn *models.Conn, req models.Request, manager *Manager) {
 	stateChan := manager.Subscribe(clientID)
 	defer manager.Unsubscribe(clientID)
 
-	initialState := manager.GetState()
+	initialState := manager.CurrentState()
 	event := LocationEvent{
 		Type: "state_changed",
 		Data: initialState,

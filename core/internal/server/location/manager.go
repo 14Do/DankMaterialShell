@@ -107,6 +107,22 @@ func (m *Manager) notifySubscribers() {
 	}
 }
 
+// CurrentState returns the cached state, reading through to the client when the
+// cache is empty. SeedLocation writes the client's fix silently (no subscriber
+// event), so after an on-demand Acquire the seed is only visible by asking the
+// client directly - the cache stays 0,0 until a real LocationUpdated arrives.
+func (m *Manager) CurrentState() State {
+	state := m.GetState()
+	if state.Latitude != 0 || state.Longitude != 0 {
+		return state
+	}
+	loc, err := m.client.GetLocation()
+	if err != nil {
+		return state
+	}
+	return State{Latitude: loc.Latitude, Longitude: loc.Longitude}
+}
+
 func (m *Manager) GetState() State {
 	m.stateMutex.RLock()
 	defer m.stateMutex.RUnlock()

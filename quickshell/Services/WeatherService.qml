@@ -1078,7 +1078,14 @@ Singleton {
         const enabled = SessionData.isGreeterMode ? GreetdSettings.useAutoLocation : SettingsData.useAutoLocation;
         DMSService.sendRequest("location.setAutoEnabled", {
             "enabled": enabled
-        }, () => {});
+        }, () => {
+            // The daemon responds only after acquisition completes, so pulling
+            // here deterministically sees the freshly seeded fix. The initial
+            // capability-triggered pull races ahead of this request and reads
+            // 0,0 - without this re-pull the fix never reaches weather.
+            if (enabled)
+                LocationService.getState();
+        });
     }
 
     Connections {
