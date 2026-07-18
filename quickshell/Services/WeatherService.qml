@@ -1071,7 +1071,11 @@ Singleton {
         target: LocationService
 
         function onLocationChanged(data) {
-            if (!SettingsData.useAutoLocation)
+            // Same per-mode gate as updateLocation: in greeter mode the demand
+            // binding acquires via GreetdSettings, so delivery must not drop
+            // the fix through the normal-session setting.
+            const useAuto = SessionData.isGreeterMode ? GreetdSettings.useAutoLocation : SettingsData.useAutoLocation;
+            if (!useAuto)
                 return;
             if (data.latitude === 0 && data.longitude === 0) {
                 root.getLocationFromIP();
