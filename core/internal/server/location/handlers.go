@@ -3,7 +3,9 @@ package location
 import (
 	"fmt"
 
+	"github.com/AvengeMedia/DankMaterialShell/core/internal/geolocation"
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
+	"github.com/AvengeMedia/dankgo/ipc/params"
 )
 
 type LocationEvent struct {
@@ -17,10 +19,32 @@ func HandleRequest(conn *models.Conn, req models.Request, manager *Manager) {
 		handleGetState(conn, req, manager)
 	case "location.subscribe":
 		handleSubscribe(conn, req, manager)
+	case "location.setAutoEnabled":
+		handleSetAutoEnabled(conn, req, manager)
 
 	default:
 		models.RespondError(conn, req.ID, fmt.Sprintf("unknown method: %s", req.Method))
 	}
+}
+
+// handleSetAutoEnabled toggles the weather consumer's demand for location. Enabling
+// it acquires the location client (if not already held by another consumer);
+// disabling it releases the weather hold. Mirrors the gamma/thememode
+// setUseIPLocation demand so acquisition only runs when something wants it.
+func handleSetAutoEnabled(conn *models.Conn, req models.Request, manager *Manager) {
+	enabled, err := params.Bool(req.Params, "enabled")
+	if err != nil {
+		models.RespondError(conn, req.ID, err.Error())
+		return
+	}
+	if dc, ok := manager.Client().(geolocation.DemandController); ok {
+		if enabled {
+			dc.Acquire("weather")
+		} else {
+			dc.Release("weather")
+		}
+	}
+	models.Respond(conn, req.ID, models.SuccessResult{Success: true, Message: "auto location preference set"})
 }
 
 func handleGetState(conn *models.Conn, req models.Request, manager *Manager) {

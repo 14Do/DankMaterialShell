@@ -415,7 +415,6 @@
     "tabIndex": 1,
     "category": "Time & Weather",
     "keywords": [
-      "address",
       "auto",
       "automatically",
       "clock",
@@ -427,7 +426,7 @@
       "time",
       "weather"
     ],
-    "description": "Automatically determine your location using your IP address"
+    "description": "Automatically determine your location using GeoClue2 (Wi-Fi and IP)"
   },
   {
     "section": "calendarBackend",

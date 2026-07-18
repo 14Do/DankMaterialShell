@@ -1070,6 +1070,26 @@ Singleton {
         }
     }
 
+    // Tell the daemon whether the weather consumer wants location, so it only
+    // acquires (GeoClue2 / IP) on demand instead of unconditionally at startup.
+    function pushAutoLocationDemand() {
+        if (!DMSService.isConnected || !DMSService.capabilities.includes("location"))
+            return;
+        const enabled = SessionData.isGreeterMode ? GreetdSettings.useAutoLocation : SettingsData.useAutoLocation;
+        DMSService.sendRequest("location.setAutoEnabled", {
+            "enabled": enabled
+        }, () => {});
+    }
+
+    Connections {
+        target: DMSService
+
+        // Re-assert the current preference whenever the daemon (re)connects.
+        function onCapabilitiesReceived() {
+            root.pushAutoLocationDemand();
+        }
+    }
+
     Component.onCompleted: {
         SettingsData.weatherCoordinatesChanged.connect(() => {
             root.location = null;
@@ -1104,6 +1124,7 @@ Singleton {
         });
 
         SettingsData.useAutoLocationChanged.connect(() => {
+            root.pushAutoLocationDemand();
             root.location = null;
             root.weather = {
                 "available": false,
@@ -1141,5 +1162,9 @@ Singleton {
                 }
             }
         });
+
+        // If the daemon is already connected, assert the current preference now;
+        // otherwise onCapabilitiesReceived will do it on connect.
+        root.pushAutoLocationDemand();
     }
 }

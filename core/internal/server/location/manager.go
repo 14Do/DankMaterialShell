@@ -34,6 +34,12 @@ func NewManager(client geolocation.Client) (*Manager, error) {
 	return m, nil
 }
 
+// Client exposes the underlying geolocation client so request handlers can drive
+// demand (see geolocation.DemandController).
+func (m *Manager) Client() geolocation.Client {
+	return m.client
+}
+
 func (m *Manager) Close() {
 	close(m.stopChan)
 	m.notifierWg.Wait()

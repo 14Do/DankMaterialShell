@@ -166,6 +166,16 @@ func (m *Manager) SetUseIPLocation(use bool) {
 		m.locationMutex.Unlock()
 	}
 
+	// Drive location acquisition: acquire before TriggerUpdate so the (async)
+	// recompute reads a seeded fix. Release when auto theme stops wanting it.
+	if dc, ok := m.geoClient.(geolocation.DemandController); ok {
+		if use {
+			dc.Acquire("theme")
+		} else {
+			dc.Release("theme")
+		}
+	}
+
 	m.TriggerUpdate()
 }
 
@@ -316,6 +326,24 @@ func (m *Manager) getConfig() Config {
 
 func (m *Manager) SetGeoClient(client geolocation.Client) {
 	m.geoClient = client
+
+	// If IP location was already enabled before the client was wired (boot
+	// ordering), (re)assert demand and recompute once a fix can be acquired.
+	m.configMutex.RLock()
+	use := m.config.UseIPLocation
+	m.configMutex.RUnlock()
+	if use {
+		if dc, ok := client.(geolocation.DemandController); ok {
+			go func() {
+				dc.Acquire("theme")
+				m.locationMutex.Lock()
+				m.cachedIPLat = nil
+				m.cachedIPLon = nil
+				m.locationMutex.Unlock()
+				m.TriggerUpdate()
+			}()
+		}
+	}
 }
 
 func (m *Manager) getLocation(config Config) (*float64, *float64) {

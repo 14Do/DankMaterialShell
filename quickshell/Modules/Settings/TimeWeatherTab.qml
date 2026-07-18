@@ -505,7 +505,7 @@ Item {
                         tags: ["weather", "location", "auto", "gps"]
                         settingKey: "useAutoLocation"
                         text: I18n.tr("Auto Location")
-                        description: I18n.tr("Automatically determine your location using your IP address")
+                        description: I18n.tr("Automatically determine your location using GeoClue2 (Wi-Fi and IP)")
                         checked: SettingsData.useAutoLocation
                         onToggled: checked => SettingsData.set("useAutoLocation", checked)
                     }
