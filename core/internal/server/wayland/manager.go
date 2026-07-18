@@ -1188,14 +1188,20 @@ func (m *Manager) SetUseIPLocation(use bool) {
 		m.locationMutex.Unlock()
 	}
 
-	// Drive location acquisition: acquire before triggerUpdate so the (async)
-	// recompute reads a seeded fix. Release when night light stops wanting it.
+	// Drive location acquisition off the caller: Acquire can block up to the IP
+	// seed's HTTP timeout (~10s) behind acqMu, and this runs on an IPC handler
+	// goroutine, so a slow ip-api would stall the toggle RPC. Acquire-then-
+	// recompute ordering is preserved inside the goroutine, matching SetGeoClient.
 	if dc, ok := m.geoClient.(geolocation.DemandController); ok {
-		if use {
-			dc.Acquire("nightlight")
-		} else {
-			dc.Release("nightlight")
-		}
+		go func() {
+			if use {
+				dc.Acquire("nightlight")
+			} else {
+				dc.Release("nightlight")
+			}
+			m.triggerUpdate()
+		}()
+		return
 	}
 
 	m.triggerUpdate()
