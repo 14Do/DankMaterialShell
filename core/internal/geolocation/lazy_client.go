@@ -131,10 +131,12 @@ func (l *lazyClient) teardown() {
 	if stop != nil {
 		close(stop) // stops the forwarder even for IpClient, whose channel never closes
 	}
+	// Join the forwarder before closing the inner client: its deferred Unsubscribe
+	// and Close's subscriber sweep would otherwise race to close the same channel.
+	l.fwdWG.Wait()
 	if inner != nil {
 		inner.Close()
 	}
-	l.fwdWG.Wait()
 }
 
 // forward fans the inner client's updates out to the facade's own subscribers, so a

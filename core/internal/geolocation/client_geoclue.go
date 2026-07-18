@@ -6,7 +6,6 @@ import (
 
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/log"
 	"github.com/AvengeMedia/dankgo/dbusutil"
-	"github.com/AvengeMedia/dankgo/syncmap"
 	"github.com/godbus/dbus/v5"
 )
 
@@ -42,7 +41,12 @@ type GeoClueClient struct {
 	stopChan chan struct{}
 	sigWG    sync.WaitGroup
 
-	subscribers syncmap.Map[string, chan Location]
+	// subMu excludes notifySubscribers' sends from Unsubscribe/Close closing a
+	// channel mid-send, mirroring the facade's guard. The facade's forwarder
+	// unsubscribes on every demand teardown, so the race is routine, not a
+	// shutdown-only corner.
+	subMu       sync.RWMutex
+	subscribers map[string]chan Location
 }
 
 func newGeoClueClient() (*GeoClueClient, error) {
@@ -52,9 +56,10 @@ func newGeoClueClient() (*GeoClueClient, error) {
 	}
 
 	c := &GeoClueClient{
-		dbusConn: dbusConn,
-		stopChan: make(chan struct{}),
-		signals:  make(chan *dbus.Signal, 256),
+		dbusConn:    dbusConn,
+		stopChan:    make(chan struct{}),
+		signals:     make(chan *dbus.Signal, 256),
+		subscribers: make(map[string]chan Location),
 
 		currLocation: &Location{
 			Latitude:  0.0,
@@ -84,11 +89,12 @@ func (c *GeoClueClient) Close() {
 		close(c.signals)
 	}
 
-	c.subscribers.Range(func(key string, ch chan Location) bool {
+	c.subMu.Lock()
+	for id, ch := range c.subscribers {
+		delete(c.subscribers, id)
 		close(ch)
-		c.subscribers.Delete(key)
-		return true
-	})
+	}
+	c.subMu.Unlock()
 
 	if c.dbusConn != nil {
 		c.dbusConn.Close()
@@ -97,12 +103,17 @@ func (c *GeoClueClient) Close() {
 
 func (c *GeoClueClient) Subscribe(id string) chan Location {
 	ch := make(chan Location, 64)
-	c.subscribers.Store(id, ch)
+	c.subMu.Lock()
+	c.subscribers[id] = ch
+	c.subMu.Unlock()
 	return ch
 }
 
 func (c *GeoClueClient) Unsubscribe(id string) {
-	if ch, ok := c.subscribers.LoadAndDelete(id); ok {
+	c.subMu.Lock()
+	defer c.subMu.Unlock()
+	if ch, ok := c.subscribers[id]; ok {
+		delete(c.subscribers, id)
 		close(ch)
 	}
 }
@@ -212,14 +223,15 @@ func (c *GeoClueClient) notifySubscribers() {
 		return
 	}
 
-	c.subscribers.Range(func(key string, ch chan Location) bool {
+	c.subMu.RLock()
+	defer c.subMu.RUnlock()
+	for _, ch := range c.subscribers {
 		select {
 		case ch <- currentLocation:
 		default:
 			log.Warn("GeoClue: subscriber channel full, dropping update")
 		}
-		return true
-	})
+	}
 }
 
 func (c *GeoClueClient) SeedLocation(loc Location) {

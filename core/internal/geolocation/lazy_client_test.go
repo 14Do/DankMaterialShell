@@ -17,6 +17,7 @@ type fakeInner struct {
 	loc    Location
 	subs   map[string]chan Location
 	closed bool
+	log    []string // teardown-order log: "unsubscribe:<id>" and "close" entries
 }
 
 func newFakeInner(loc Location) *fakeInner {
@@ -40,6 +41,7 @@ func (f *fakeInner) Subscribe(id string) chan Location {
 func (f *fakeInner) Unsubscribe(id string) {
 	f.mu.Lock()
 	defer f.mu.Unlock()
+	f.log = append(f.log, "unsubscribe:"+id)
 	if ch, ok := f.subs[id]; ok {
 		delete(f.subs, id)
 		close(ch)
@@ -49,6 +51,7 @@ func (f *fakeInner) Unsubscribe(id string) {
 func (f *fakeInner) Close() {
 	f.mu.Lock()
 	defer f.mu.Unlock()
+	f.log = append(f.log, "close")
 	if f.closed {
 		return
 	}
@@ -57,6 +60,12 @@ func (f *fakeInner) Close() {
 		delete(f.subs, id)
 		close(ch)
 	}
+}
+
+func (f *fakeInner) events() []string {
+	f.mu.Lock()
+	defer f.mu.Unlock()
+	return append([]string(nil), f.log...)
 }
 
 func (f *fakeInner) isClosed() bool {
@@ -223,6 +232,25 @@ func TestLazyClient_UnsubscribeDuringForwardDoesNotPanic(t *testing.T) {
 
 	<-done
 	lc.Release("weather")
+}
+
+// Teardown must join the forwarder before closing the inner client: forward's
+// deferred Unsubscribe (LoadAndDelete+close) and Close's subscriber sweep
+// (load+close) otherwise race to close the same channel - a double close that
+// panics the daemon on the last consumer's toggle-off.
+func TestLazyClient_TeardownJoinsForwarderBeforeClosingInner(t *testing.T) {
+	inner := newFakeInner(Location{Latitude: 1, Longitude: 1})
+	lc, _ := newTestLazyClient(inner)
+
+	lc.Acquire("weather")
+	require.Eventually(t, func() bool { return inner.hasSub("lazy-forward") },
+		time.Second, 5*time.Millisecond)
+
+	lc.Release("weather")
+
+	require.True(t, inner.isClosed())
+	assert.Equal(t, []string{"unsubscribe:lazy-forward", "close"}, inner.events(),
+		"forwarder's deferred Unsubscribe must complete before inner.Close")
 }
 
 func TestLazyClient_CloseTearsDownAndClosesSubscribers(t *testing.T) {
