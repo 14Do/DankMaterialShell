@@ -274,6 +274,35 @@ func TestLazyClient_TeardownJoinsForwarderBeforeClosingInner(t *testing.T) {
 		"forwarder's deferred Unsubscribe must complete before inner.Close")
 }
 
+// A same-id re-subscribe overwrote the map entry and leaked the old channel:
+// never closed, never fanned out to, so its reader blocked forever.
+func TestLazyClient_ResubscribeSameIDClosesReplacedChannel(t *testing.T) {
+	lc, _ := newTestLazyClient(newFakeInner(Location{}))
+
+	old := lc.Subscribe("locationManager")
+	repl := lc.Subscribe("locationManager")
+
+	select {
+	case _, ok := <-old:
+		require.False(t, ok, "replaced channel must be closed, not sent to")
+	default:
+		t.Fatal("replaced channel left open (leaked)")
+	}
+
+	want := Location{Latitude: 50.08, Longitude: 14.43}
+	lc.fanOut(want)
+	select {
+	case got := <-repl:
+		assert.Equal(t, want, got, "replacement subscriber receives fan-outs")
+	default:
+		t.Fatal("replacement subscriber not receiving")
+	}
+
+	lc.Unsubscribe("locationManager")
+	_, ok := <-repl
+	assert.False(t, ok, "Unsubscribe closes the replacement channel")
+}
+
 func TestLazyClient_CloseTearsDownAndClosesSubscribers(t *testing.T) {
 	inner := newFakeInner(Location{Latitude: 1, Longitude: 1})
 	lc, _ := newTestLazyClient(inner)

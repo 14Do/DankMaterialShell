@@ -195,6 +195,12 @@ func (l *lazyClient) GetLocation() (Location, error) {
 func (l *lazyClient) Subscribe(id string) chan Location {
 	ch := make(chan Location, 64)
 	l.subMu.Lock()
+	// A same-id re-subscribe replaces the stream: close the old channel so its
+	// reader unblocks instead of waiting forever on an orphan that nothing fans
+	// out to anymore. Safe against a concurrent fanOut send - it holds subMu.
+	if old, ok := l.subscribers[id]; ok {
+		close(old)
+	}
 	l.subscribers[id] = ch
 	l.subMu.Unlock()
 	return ch
