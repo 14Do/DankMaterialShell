@@ -33,7 +33,11 @@ type Manager struct {
 	cachedIPLat   *float64
 	cachedIPLon   *float64
 
-	geoClient geolocation.Client
+	// geoClientMutex guards geoClient: SetGeoClient writes it from the boot
+	// goroutine while the scheduler loop and IPC handlers read it concurrently,
+	// and an interface write is not atomic.
+	geoClientMutex sync.RWMutex
+	geoClient      geolocation.Client
 
 	stopChan      chan struct{}
 	updateTrigger chan struct{}
@@ -170,7 +174,7 @@ func (m *Manager) SetUseIPLocation(use bool) {
 	// seed's HTTP timeout (~10s) behind acqMu, and this runs on an IPC handler
 	// goroutine, so a slow ip-api would stall the toggle RPC. Acquire-then-
 	// recompute ordering is preserved inside the goroutine, matching SetGeoClient.
-	if dc, ok := m.geoClient.(geolocation.DemandController); ok {
+	if dc, ok := m.getGeoClient().(geolocation.DemandController); ok {
 		go func() {
 			if use {
 				dc.Acquire("theme")
@@ -338,7 +342,9 @@ func (m *Manager) getConfig() Config {
 }
 
 func (m *Manager) SetGeoClient(client geolocation.Client) {
+	m.geoClientMutex.Lock()
 	m.geoClient = client
+	m.geoClientMutex.Unlock()
 
 	// If IP location was already enabled before the client was wired (boot
 	// ordering), (re)assert demand and recompute once a fix can be acquired.
@@ -359,6 +365,12 @@ func (m *Manager) SetGeoClient(client geolocation.Client) {
 	}
 }
 
+func (m *Manager) getGeoClient() geolocation.Client {
+	m.geoClientMutex.RLock()
+	defer m.geoClientMutex.RUnlock()
+	return m.geoClient
+}
+
 func (m *Manager) getLocation(config Config) (*float64, *float64) {
 	if config.Latitude != nil && config.Longitude != nil {
 		return config.Latitude, config.Longitude
@@ -366,7 +378,8 @@ func (m *Manager) getLocation(config Config) (*float64, *float64) {
 	if !config.UseIPLocation {
 		return nil, nil
 	}
-	if m.geoClient == nil {
+	client := m.getGeoClient()
+	if client == nil {
 		return nil, nil
 	}
 
@@ -378,7 +391,7 @@ func (m *Manager) getLocation(config Config) (*float64, *float64) {
 	}
 	m.locationMutex.RUnlock()
 
-	location, err := m.geoClient.GetLocation()
+	location, err := client.GetLocation()
 	if err != nil {
 		return nil, nil
 	}

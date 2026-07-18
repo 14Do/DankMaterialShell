@@ -101,7 +101,11 @@ type Manager struct {
 	dbusConn   *dbus.Conn
 	dbusSignal chan *dbus.Signal
 
-	geoClient geolocation.Client
+	// geoClientMutex guards geoClient: SetGeoClient writes it from the boot
+	// goroutine while the scheduler loop and IPC handlers read it concurrently,
+	// and an interface write is not atomic.
+	geoClientMutex sync.RWMutex
+	geoClient      geolocation.Client
 }
 
 type outputState struct {
