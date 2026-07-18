@@ -4,7 +4,6 @@ import (
 	"sync"
 
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/log"
-	"github.com/AvengeMedia/dankgo/syncmap"
 )
 
 // DemandController lets consumers signal whether they currently need location.
@@ -40,18 +39,20 @@ type lazyClient struct {
 
 	acquire func() Client // builds the real client; overridable in tests
 
-	// subMu excludes forward's sends from Unsubscribe/Close closing a channel
-	// mid-send. Shutdown closes the location manager (whose signal pump defer
-	// unsubscribes here) before the facade, so without this a LocationUpdated in
-	// that window panics on a send to the just-closed channel.
+	// subMu guards subscribers and excludes forward's sends from Unsubscribe/
+	// Close closing a channel mid-send. Shutdown closes the location manager
+	// (whose signal pump defer unsubscribes here) before the facade, so without
+	// this a LocationUpdated in that window panics on a send to the just-closed
+	// channel.
 	subMu       sync.RWMutex
-	subscribers syncmap.Map[string, chan Location]
+	subscribers map[string]chan Location
 }
 
 func newLazyClient() *lazyClient {
 	return &lazyClient{
-		demand:  make(map[string]struct{}),
-		acquire: acquireClient,
+		demand:      make(map[string]struct{}),
+		subscribers: make(map[string]chan Location),
+		acquire:     acquireClient,
 	}
 }
 
@@ -154,14 +155,13 @@ func (l *lazyClient) forward(inner Client, stop chan struct{}) {
 				return
 			}
 			l.subMu.RLock()
-			l.subscribers.Range(func(_ string, out chan Location) bool {
+			for _, out := range l.subscribers {
 				select {
 				case out <- loc:
 				default:
 					log.Warn("Location: facade subscriber channel full, dropping update")
 				}
-				return true
-			})
+			}
 			l.subMu.RUnlock()
 		}
 	}
@@ -181,14 +181,17 @@ func (l *lazyClient) GetLocation() (Location, error) {
 
 func (l *lazyClient) Subscribe(id string) chan Location {
 	ch := make(chan Location, 64)
-	l.subscribers.Store(id, ch)
+	l.subMu.Lock()
+	l.subscribers[id] = ch
+	l.subMu.Unlock()
 	return ch
 }
 
 func (l *lazyClient) Unsubscribe(id string) {
 	l.subMu.Lock()
 	defer l.subMu.Unlock()
-	if ch, ok := l.subscribers.LoadAndDelete(id); ok {
+	if ch, ok := l.subscribers[id]; ok {
+		delete(l.subscribers, id)
 		close(ch)
 	}
 }
@@ -201,9 +204,8 @@ func (l *lazyClient) Close() {
 
 	l.subMu.Lock()
 	defer l.subMu.Unlock()
-	l.subscribers.Range(func(id string, ch chan Location) bool {
+	for id, ch := range l.subscribers {
+		delete(l.subscribers, id)
 		close(ch)
-		l.subscribers.Delete(id)
-		return true
-	})
+	}
 }
