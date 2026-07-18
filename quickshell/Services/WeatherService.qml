@@ -1075,7 +1075,11 @@ Singleton {
     function pushAutoLocationDemand() {
         if (!DMSService.isConnected || !DMSService.capabilities.includes("location"))
             return;
-        const enabled = SessionData.isGreeterMode ? GreetdSettings.useAutoLocation : SettingsData.useAutoLocation;
+        // Gate on weatherEnabled too: auto-location left on with weather off
+        // must not hold the daemon's location acquisition.
+        const enabled = SessionData.isGreeterMode
+            ? (GreetdSettings.weatherEnabled && GreetdSettings.useAutoLocation)
+            : (SettingsData.weatherEnabled && SettingsData.useAutoLocation);
         DMSService.sendRequest("location.setAutoEnabled", {
             "enabled": enabled
         }, () => {
@@ -1158,6 +1162,7 @@ Singleton {
         });
 
         SettingsData.weatherEnabledChanged.connect(() => {
+            root.pushAutoLocationDemand();
             if (SettingsData.weatherEnabled && root.refCount > 0 && !root.weather.available) {
                 root.forceRefresh();
             } else if (!SettingsData.weatherEnabled) {
@@ -1168,6 +1173,14 @@ Singleton {
                     weatherFetcher.running = false;
                 }
             }
+        });
+
+        // Greeter settings drive the same demand when in greeter mode.
+        GreetdSettings.useAutoLocationChanged.connect(() => {
+            root.pushAutoLocationDemand();
+        });
+        GreetdSettings.weatherEnabledChanged.connect(() => {
+            root.pushAutoLocationDemand();
         });
 
         // If the daemon is already connected, assert the current preference now;
