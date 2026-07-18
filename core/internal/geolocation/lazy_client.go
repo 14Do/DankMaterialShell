@@ -146,6 +146,15 @@ func (l *lazyClient) forward(inner Client, stop chan struct{}) {
 	defer l.fwdWG.Done()
 	ch := inner.Subscribe("lazy-forward")
 	defer inner.Unsubscribe("lazy-forward")
+
+	// One-shot prime: the IP seed is written silently (SeedLocation emits no
+	// event) and an update that fired before the Subscribe above landed on an
+	// empty subscriber map, so fan out the fix the inner client already holds -
+	// otherwise a stream subscriber that predates acquisition never sees it.
+	if loc, err := inner.GetLocation(); err == nil && (loc.Latitude != 0 || loc.Longitude != 0) {
+		l.fanOut(loc)
+	}
+
 	for {
 		select {
 		case <-stop:
@@ -154,15 +163,19 @@ func (l *lazyClient) forward(inner Client, stop chan struct{}) {
 			if !ok {
 				return
 			}
-			l.subMu.RLock()
-			for _, out := range l.subscribers {
-				select {
-				case out <- loc:
-				default:
-					log.Warn("Location: facade subscriber channel full, dropping update")
-				}
-			}
-			l.subMu.RUnlock()
+			l.fanOut(loc)
+		}
+	}
+}
+
+func (l *lazyClient) fanOut(loc Location) {
+	l.subMu.RLock()
+	defer l.subMu.RUnlock()
+	for _, out := range l.subscribers {
+		select {
+		case out <- loc:
+		default:
+			log.Warn("Location: facade subscriber channel full, dropping update")
 		}
 	}
 }

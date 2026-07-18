@@ -234,6 +234,27 @@ func TestLazyClient_UnsubscribeDuringForwardDoesNotPanic(t *testing.T) {
 	lc.Release("weather")
 }
 
+// SeedLocation writes silently and a LocationUpdated that fires before the
+// forwarder attaches lands on an empty subscriber map, so without the one-shot
+// prime a stream subscriber that predates acquisition never sees the initial
+// fix on a stationary machine (no DistanceThreshold, nothing re-emits).
+func TestLazyClient_PrimesSubscribersWithExistingFix(t *testing.T) {
+	inner := newFakeInner(Location{Latitude: 50.08, Longitude: 14.43})
+	lc, _ := newTestLazyClient(inner)
+
+	sub := lc.Subscribe("locationManager") // stream subscriber predates acquisition
+
+	lc.Acquire("weather")
+
+	select {
+	case got := <-sub:
+		assert.Equal(t, Location{Latitude: 50.08, Longitude: 14.43}, got,
+			"the inner client's existing fix must reach pre-existing subscribers without a push")
+	case <-time.After(time.Second):
+		t.Fatal("facade never primed the subscriber with the acquired fix")
+	}
+}
+
 // Teardown must join the forwarder before closing the inner client: forward's
 // deferred Unsubscribe (LoadAndDelete+close) and Close's subscriber sweep
 // (load+close) otherwise race to close the same channel - a double close that
@@ -264,11 +285,17 @@ func TestLazyClient_CloseTearsDownAndClosesSubscribers(t *testing.T) {
 
 	assert.True(t, inner.isClosed(), "Close tears down the inner client")
 
-	// The facade subscriber channel must be closed by Close.
-	select {
-	case _, ok := <-sub:
-		assert.False(t, ok, "subscriber channel closed on Close")
-	case <-time.After(time.Second):
-		t.Fatal("subscriber channel not closed")
+	// The facade subscriber channel must be closed by Close. The prime may have
+	// delivered the inner client's fix first, so drain through to the close.
+	deadline := time.After(time.Second)
+	for {
+		select {
+		case _, ok := <-sub:
+			if !ok {
+				return
+			}
+		case <-deadline:
+			t.Fatal("subscriber channel not closed")
+		}
 	}
 }
