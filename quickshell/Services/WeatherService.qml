@@ -13,6 +13,17 @@ Singleton {
 
     property int refCount: 0
 
+    // Whether the weather consumer currently wants the daemon holding location
+    // acquisition. Gated on weatherEnabled too: auto-location left on with
+    // weather off must not hold GeoClue2 / IP egress open.
+    readonly property bool autoLocationDemand: SessionData.isGreeterMode
+        ? (GreetdSettings.weatherEnabled && GreetdSettings.useAutoLocation)
+        : (SettingsData.weatherEnabled && SettingsData.useAutoLocation)
+
+    // The binding dedupes by value, so this only fires on real policy changes;
+    // reconnects are re-asserted explicitly in onCapabilitiesReceived below.
+    onAutoLocationDemandChanged: LocationService.setAutoEnabled(autoLocationDemand)
+
     property var selectedDate: new Date()
     property var weather: ({
             "available": false,
@@ -1070,34 +1081,12 @@ Singleton {
         }
     }
 
-    // Tell the daemon whether the weather consumer wants location, so it only
-    // acquires (GeoClue2 / IP) on demand instead of unconditionally at startup.
-    function pushAutoLocationDemand() {
-        if (!DMSService.isConnected || !DMSService.capabilities.includes("location"))
-            return;
-        // Gate on weatherEnabled too: auto-location left on with weather off
-        // must not hold the daemon's location acquisition.
-        const enabled = SessionData.isGreeterMode
-            ? (GreetdSettings.weatherEnabled && GreetdSettings.useAutoLocation)
-            : (SettingsData.weatherEnabled && SettingsData.useAutoLocation);
-        DMSService.sendRequest("location.setAutoEnabled", {
-            "enabled": enabled
-        }, () => {
-            // The daemon responds only after acquisition completes, so pulling
-            // here deterministically sees the freshly seeded fix. The initial
-            // capability-triggered pull races ahead of this request and reads
-            // 0,0 - without this re-pull the fix never reaches weather.
-            if (enabled)
-                LocationService.getState();
-        });
-    }
-
     Connections {
         target: DMSService
 
         // Re-assert the current preference whenever the daemon (re)connects.
         function onCapabilitiesReceived() {
-            root.pushAutoLocationDemand();
+            LocationService.setAutoEnabled(root.autoLocationDemand);
         }
     }
 
@@ -1135,7 +1124,6 @@ Singleton {
         });
 
         SettingsData.useAutoLocationChanged.connect(() => {
-            root.pushAutoLocationDemand();
             root.location = null;
             root.weather = {
                 "available": false,
@@ -1162,7 +1150,6 @@ Singleton {
         });
 
         SettingsData.weatherEnabledChanged.connect(() => {
-            root.pushAutoLocationDemand();
             if (SettingsData.weatherEnabled && root.refCount > 0 && !root.weather.available) {
                 root.forceRefresh();
             } else if (!SettingsData.weatherEnabled) {
@@ -1175,16 +1162,8 @@ Singleton {
             }
         });
 
-        // Greeter settings drive the same demand when in greeter mode.
-        GreetdSettings.useAutoLocationChanged.connect(() => {
-            root.pushAutoLocationDemand();
-        });
-        GreetdSettings.weatherEnabledChanged.connect(() => {
-            root.pushAutoLocationDemand();
-        });
-
         // If the daemon is already connected, assert the current preference now;
         // otherwise onCapabilitiesReceived will do it on connect.
-        root.pushAutoLocationDemand();
+        LocationService.setAutoEnabled(root.autoLocationDemand);
     }
 }
