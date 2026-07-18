@@ -5,10 +5,15 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"sync"
 	"time"
 )
 
 type IpClient struct {
+	// mu guards the check-fetch-store in GetLocation. Holding it across the
+	// fetch also single-flights concurrent zero-fix callers, so a burst of
+	// getState requests while offline costs one HTTP round-trip, not one each.
+	mu           sync.Mutex
 	currLocation *Location
 }
 
@@ -43,6 +48,8 @@ func (c *IpClient) Unsubscribe(id string) {}
 func (c *IpClient) Close() {}
 
 func (c *IpClient) GetLocation() (Location, error) {
+	c.mu.Lock()
+	defer c.mu.Unlock()
 	if c.currLocation.Latitude != 0 || c.currLocation.Longitude != 0 {
 		return *c.currLocation, nil
 	}
@@ -57,7 +64,8 @@ func (c *IpClient) GetLocation() (Location, error) {
 	return *c.currLocation, nil
 }
 
-func fetchIPLocation() (ipLocationResult, error) {
+// fetchIPLocation is a var so tests can stub the network round-trip.
+var fetchIPLocation = func() (ipLocationResult, error) {
 	client := &http.Client{Timeout: 10 * time.Second}
 
 	resp, err := client.Get("http://ip-api.com/json/")
