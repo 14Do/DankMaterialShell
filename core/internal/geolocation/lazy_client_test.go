@@ -192,6 +192,39 @@ func TestLazyClient_ForwardsUpdatesToSubscribers(t *testing.T) {
 	}
 }
 
+// Reproduces the shutdown ordering: the location manager closes first and its
+// signal pump's deferred Unsubscribe closes the facade channel while the
+// forwarder may still be delivering an inner update. Without subMu this is a
+// send on a closed channel (panic) and a -race report.
+func TestLazyClient_UnsubscribeDuringForwardDoesNotPanic(t *testing.T) {
+	inner := newFakeInner(Location{})
+	lc, _ := newTestLazyClient(inner)
+
+	lc.Acquire("weather")
+	require.Eventually(t, func() bool { return inner.hasSub("lazy-forward") },
+		time.Second, 5*time.Millisecond)
+
+	done := make(chan struct{})
+	go func() {
+		defer close(done)
+		for i := 0; i < 200; i++ {
+			inner.push(Location{Latitude: float64(i), Longitude: 1})
+		}
+	}()
+
+	for i := 0; i < 200; i++ {
+		sub := lc.Subscribe("locationManager")
+		go func() { //nolint:staticcheck // drain so pushes don't hit the full-channel path only
+			for range sub {
+			}
+		}()
+		lc.Unsubscribe("locationManager")
+	}
+
+	<-done
+	lc.Release("weather")
+}
+
 func TestLazyClient_CloseTearsDownAndClosesSubscribers(t *testing.T) {
 	inner := newFakeInner(Location{Latitude: 1, Longitude: 1})
 	lc, _ := newTestLazyClient(inner)

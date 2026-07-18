@@ -40,6 +40,11 @@ type lazyClient struct {
 
 	acquire func() Client // builds the real client; overridable in tests
 
+	// subMu excludes forward's sends from Unsubscribe/Close closing a channel
+	// mid-send. Shutdown closes the location manager (whose signal pump defer
+	// unsubscribes here) before the facade, so without this a LocationUpdated in
+	// that window panics on a send to the just-closed channel.
+	subMu       sync.RWMutex
 	subscribers syncmap.Map[string, chan Location]
 }
 
@@ -146,6 +151,7 @@ func (l *lazyClient) forward(inner Client, stop chan struct{}) {
 			if !ok {
 				return
 			}
+			l.subMu.RLock()
 			l.subscribers.Range(func(_ string, out chan Location) bool {
 				select {
 				case out <- loc:
@@ -154,6 +160,7 @@ func (l *lazyClient) forward(inner Client, stop chan struct{}) {
 				}
 				return true
 			})
+			l.subMu.RUnlock()
 		}
 	}
 }
@@ -177,6 +184,8 @@ func (l *lazyClient) Subscribe(id string) chan Location {
 }
 
 func (l *lazyClient) Unsubscribe(id string) {
+	l.subMu.Lock()
+	defer l.subMu.Unlock()
 	if ch, ok := l.subscribers.LoadAndDelete(id); ok {
 		close(ch)
 	}
@@ -188,6 +197,8 @@ func (l *lazyClient) Close() {
 	l.mu.Unlock()
 	l.teardown()
 
+	l.subMu.Lock()
+	defer l.subMu.Unlock()
 	l.subscribers.Range(func(id string, ch chan Location) bool {
 		close(ch)
 		l.subscribers.Delete(id)
