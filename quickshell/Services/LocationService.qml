@@ -7,6 +7,8 @@ import Quickshell
 Singleton {
     id: root
 
+    readonly property var log: Log.scoped("LocationService")
+
     readonly property bool locationAvailable: DMSService.isConnected && DMSService.capabilities.includes("location")
     readonly property bool valid: latitude !== 0 || longitude !== 0
 
@@ -59,7 +61,12 @@ Singleton {
 
         DMSService.sendRequest("location.setAutoEnabled", {
             "enabled": enabled
-        }, () => {
+        }, response => {
+            // Warn but never fail on error: an old daemon has no
+            // location.setAutoEnabled (it acquired eagerly at boot anyway), so
+            // version skew must stay tolerated.
+            if (response.error)
+                log.warn("setAutoEnabled failed:", response.error);
             // The daemon responds only after acquisition completes, so pulling
             // here deterministically sees the freshly seeded fix. The initial
             // capability-triggered pull races ahead of this request and reads
