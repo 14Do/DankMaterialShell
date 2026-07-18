@@ -274,6 +274,58 @@ func TestLazyClient_TeardownJoinsForwarderBeforeClosingInner(t *testing.T) {
 		"forwarder's deferred Unsubscribe must complete before inner.Close")
 }
 
+// Bounded stress over the refcount interleavings: goroutines hammer
+// Acquire/Release on shared and distinct sources with GetLocation readers mixed
+// in. Invariants under -race: no panic, the facade lands idle once every source
+// has released (each goroutine's final op is a Release, so the globally last op
+// per source is one), and every inner client the factory ever built is closed -
+// whether it was installed and torn down or abandoned mid-acquisition.
+func TestLazyClient_ConcurrentDemandStress(t *testing.T) {
+	var builtMu sync.Mutex
+	var built []*fakeInner
+	lc := newLazyClient()
+	lc.acquire = func() Client {
+		f := newFakeInner(Location{Latitude: 1, Longitude: 1})
+		builtMu.Lock()
+		built = append(built, f)
+		builtMu.Unlock()
+		return f
+	}
+
+	sources := []string{"weather", "nightlight", "theme"}
+	var wg sync.WaitGroup
+	start := make(chan struct{})
+	for g := 0; g < 12; g++ {
+		src := sources[g%len(sources)]
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			<-start
+			for i := 0; i < 50; i++ {
+				lc.Acquire(src)
+				if i%3 == 0 {
+					_, _ = lc.GetLocation()
+				}
+				lc.Release(src)
+			}
+		}()
+	}
+	close(start)
+	wg.Wait()
+
+	lc.mu.Lock()
+	assert.Empty(t, lc.demand, "all sources released, demand must be empty")
+	assert.Nil(t, lc.inner, "idle facade must hold no inner client")
+	lc.mu.Unlock()
+
+	builtMu.Lock()
+	defer builtMu.Unlock()
+	require.NotEmpty(t, built, "stress never acquired - vacuous run")
+	for i, f := range built {
+		require.True(t, f.isClosed(), "inner client %d leaked open", i)
+	}
+}
+
 // A same-id re-subscribe overwrote the map entry and leaked the old channel:
 // never closed, never fanned out to, so its reader blocked forever.
 func TestLazyClient_ResubscribeSameIDClosesReplacedChannel(t *testing.T) {
