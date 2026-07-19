@@ -9,7 +9,6 @@ rec {
     paths = [
       nixos-module
       nixos-service-start-module
-      greeter-niri-module
       niri-home-module
       home-manager-module
     ];
@@ -23,13 +22,6 @@ rec {
   };
 
   nixos-service-start-module = import ./nixos-service-start-module.nix {
-    inherit
-      self
-      pkgs
-      ;
-  };
-
-  greeter-niri-module = import ./greeter-niri-module.nix {
     inherit
       self
       pkgs

@@ -27,11 +27,6 @@ on:
         type: boolean
         required: false
         default: true
-      build_greeter:
-        description: 'Build stable dms-greeter package'
-        type: boolean
-        required: false
-        default: true
 
 permissions:
   contents: read
@@ -106,7 +101,6 @@ jobs:
       - name: Inject templates
         run: |
           cp -R distro/void/srcpkgs/dms void-packages/srcpkgs/
-          cp -R distro/void/srcpkgs/dms-greeter void-packages/srcpkgs/
           cp -R distro/void/srcpkgs/dms-git void-packages/srcpkgs/
 
       - name: Enable unprivileged user namespaces (Ubuntu 24.04)
@@ -180,19 +174,16 @@ jobs:
           mkdir -p r2-repo/current
 
           BUILD_DMS="${{ github.event.inputs.build_dms || 'true' }}"
-          BUILD_GREETER="${{ github.event.inputs.build_greeter || 'true' }}"
           BUILD_GIT="${{ github.event.inputs.build_git || 'true' }}"
           FORCE_REBUILD="${{ github.event.inputs.force_rebuild || 'false' }}"
 
           if [ "${{ github.event_name }}" = "schedule" ]; then
             BUILD_DMS="false"
-            BUILD_GREETER="false"
             BUILD_GIT="true"
           fi
 
           if [ "${{ github.event_name }}" = "release" ]; then
             BUILD_DMS="true"
-            BUILD_GREETER="true"
             BUILD_GIT="false"
           fi
 
@@ -217,23 +208,20 @@ jobs:
 
           echo "=== Starting Builds ==="
           echo "DMS stable build enabled:     $BUILD_DMS"
-          echo "Greeter stable build enabled: $BUILD_GREETER"
           echo "Git build enabled:            $BUILD_GIT"
           echo "Force rebuild:                $FORCE_REBUILD"
 
           cd void-packages
 
-          if [ -n "$RELEASE_VER" ] && { [ "$BUILD_DMS" = "true" ] || [ "$BUILD_GREETER" = "true" ]; }; then
-            echo "🔧 Updating stable templates for $ARCHIVE_TAG"
+          if [ -n "$RELEASE_VER" ] && [ "$BUILD_DMS" = "true" ]; then
+            echo "🔧 Updating stable template for $ARCHIVE_TAG"
             TARBALL="$(mktemp)"
             curl -fsSL -o "$TARBALL" "https://github.com/${{ github.repository }}/releases/download/${ARCHIVE_TAG}/dms-source.tar.gz"
             RELEASE_CHECKSUM="$(sha256sum "$TARBALL" | cut -d' ' -f1)"
             rm -f "$TARBALL"
 
-            for pkg in dms dms-greeter; do
-              sed -i "s/^version=.*/version=${RELEASE_VER}/" "srcpkgs/${pkg}/template"
-              sed -i "s/^checksum=.*/checksum=${RELEASE_CHECKSUM}/" "srcpkgs/${pkg}/template"
-            done
+            sed -i "s/^version=.*/version=${RELEASE_VER}/" srcpkgs/dms/template
+            sed -i "s/^checksum=.*/checksum=${RELEASE_CHECKSUM}/" srcpkgs/dms/template
           fi
 
           # 1. Build dms-git (development package)
@@ -286,22 +274,6 @@ jobs:
               ./xbps-src pkg dms
               rm -f "../r2-repo/current/${EXPECTED_DMS_FILE}"
               cp -L hostdir/binpkgs/dms-${STABLE_VER}_${STABLE_REV}.x86_64.xbps ../r2-repo/current/
-            fi
-          fi
-
-          # 3. Build stable dms-greeter package
-          if [ "$BUILD_GREETER" = "true" ]; then
-            GREETER_VER=$(grep -E '^version=' srcpkgs/dms-greeter/template | cut -d= -f2 | tr -d '"')
-            GREETER_REV=$(grep -E '^revision=' srcpkgs/dms-greeter/template | cut -d= -f2 | tr -d '"')
-
-            EXPECTED_GREETER_FILE="dms-greeter-${GREETER_VER}_${GREETER_REV}.x86_64.xbps"
-            if [ -f "../r2-repo/current/$EXPECTED_GREETER_FILE" ] && [ "$FORCE_REBUILD" != "true" ]; then
-              echo "✅ $EXPECTED_GREETER_FILE already exists, skipping build."
-            else
-              echo "🔨 Compiling dms-greeter ($GREETER_VER)..."
-              ./xbps-src pkg dms-greeter
-              rm -f "../r2-repo/current/${EXPECTED_GREETER_FILE}"
-              cp -L hostdir/binpkgs/dms-greeter-${GREETER_VER}_${GREETER_REV}.x86_64.xbps ../r2-repo/current/
             fi
           fi
 

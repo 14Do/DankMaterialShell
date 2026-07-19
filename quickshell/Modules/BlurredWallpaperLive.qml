@@ -144,7 +144,7 @@ Item {
         smooth: true
         cache: true
         sourceSize: root.blurTextureSize
-        fillMode: root.getFillMode(SessionData.isGreeterMode ? GreetdSettings.wallpaperFillMode : SessionData.getMonitorWallpaperFillMode(root.screenName))
+        fillMode: root.getFillMode(SessionData.getMonitorWallpaperFillMode(root.screenName))
 
         onStatusChanged: {
             if (status === Image.Error) {
@@ -166,7 +166,7 @@ Item {
         smooth: true
         cache: true
         sourceSize: root.blurTextureSize
-        fillMode: root.getFillMode(SessionData.isGreeterMode ? GreetdSettings.wallpaperFillMode : SessionData.getMonitorWallpaperFillMode(root.screenName))
+        fillMode: root.getFillMode(SessionData.getMonitorWallpaperFillMode(root.screenName))
 
         onStatusChanged: {
             if (status === Image.Error) {

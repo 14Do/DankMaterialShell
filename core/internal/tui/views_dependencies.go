@@ -7,7 +7,7 @@ import (
 
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/deps"
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/distros"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/greeter"
+	"github.com/AvengeMedia/DankMaterialShell/core/internal/utils"
 	tea "github.com/charmbracelet/bubbletea"
 )
 
@@ -260,13 +260,6 @@ func (m Model) installPackages() tea.Cmd {
 				// Run optional greeter setup
 				if msg.Phase == distros.PhaseComplete && msg.IsComplete && msg.Error == nil {
 					if m.optionalDepSelected("dms-greeter") {
-						compositorName := "niri"
-						switch m.selectedWindowManager() {
-						case deps.WindowManagerHyprland:
-							compositorName = "Hyprland"
-						case deps.WindowManagerMango:
-							compositorName = "mango"
-						}
 						m.packageProgressChan <- packageInstallProgressMsg{
 							progress:  0.92,
 							step:      "Configuring DMS greeter...",
@@ -279,7 +272,7 @@ func (m Model) installPackages() tea.Cmd {
 								logOutput: line,
 							}
 						}
-						if err := greeter.AutoSetupGreeter(compositorName, m.sudoPassword, greeterLogFunc); err != nil {
+						if err := utils.RunDmsGreeterInstall(m.sudoPassword, greeterLogFunc); err != nil {
 							m.packageProgressChan <- packageInstallProgressMsg{
 								progress:  0.96,
 								step:      "Greeter setup warning",

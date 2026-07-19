@@ -12,7 +12,8 @@ import qs.Common
 import qs.Modals
 import qs.Services
 import qs.Widgets
-import "../../Common/LayoutCodes.js" as LayoutCodes
+import qs.DankCommon.Session
+import "../../DankCommon/Common/LayoutCodes.js" as LayoutCodes
 
 Item {
     id: root

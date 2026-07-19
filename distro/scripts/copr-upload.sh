@@ -5,7 +5,6 @@ set -euo pipefail
 # Usage: ./copr-upload.sh [PACKAGE] [VERSION] [RELEASE]
 # Examples:
 #   ./copr-upload.sh dms 1.0.3 1
-#   ./copr-upload.sh dms-greeter 1.0.3 1
 
 PACKAGE="${1:-dms}"
 VERSION="${2:-}"
@@ -17,11 +16,9 @@ REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 # Determine Copr project based on package
 if [ "$PACKAGE" = "dms" ]; then
     COPR_PROJECT="avengemedia/dms"
-elif [ "$PACKAGE" = "dms-greeter" ]; then
-    COPR_PROJECT="avengemedia/danklinux"
 else
     echo "❌ Unknown package: $PACKAGE"
-    echo "Supported packages: dms, dms-greeter"
+    echo "Supported packages: dms"
     exit 1
 fi
 

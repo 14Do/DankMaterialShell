@@ -42,7 +42,6 @@ make lint-qml  # Run from repo root; requires quickshell/.qmlls.ini (generated b
 **System Controls**
 - `Modules/ControlCenter/` - WiFi, Bluetooth, audio, display settings
 - `Modules/Notifications/` - Notification center with popups
-- `Modules/Greetd/` - Login greeter interface
 
 **Overlays**
 - `Modules/Spotlight/` - Application and file launcher

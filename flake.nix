@@ -159,9 +159,6 @@
                   --replace-fail /usr/bin/dms $out/bin/dms \
                   --replace-fail /usr/bin/pkill ${pkgs.procps}/bin/pkill
 
-                substituteInPlace $out/share/quickshell/dms/Modules/Greetd/assets/dms-greeter \
-                  --replace-fail /bin/bash ${pkgs.bashInteractive}/bin/bash
-
                 substituteInPlace $out/share/quickshell/dms/assets/pam/fprint \
                   --replace-fail pam_fprintd.so ${pkgs.fprintd}/lib/security/pam_fprintd.so \
                   --replace-fail pam_deny.so ${pkgs.pam}/lib/security/pam_deny.so \
@@ -222,7 +219,7 @@
 
       nixosModules.default = self.nixosModules.dank-material-shell;
 
-      nixosModules.greeter = mkModuleWithDmsPkgs ./distro/nix/greeter.nix;
+      nixosModules.greeter = builtins.warn "dank-material-shell: the greeter moved to the dank-greeter repo; use `inputs.dank-greeter.nixosModules.default` and `programs.dms-greeter` (https://github.com/AvengeMedia/dank-greeter)" { };
 
       nixosModules.dankMaterialShell = builtins.warn "dank-material-shell: flake output `nixosModules.dankMaterialShell` has been renamed to `nixosModules.dank-material-shell`" self.nixosModules.dank-material-shell;
 

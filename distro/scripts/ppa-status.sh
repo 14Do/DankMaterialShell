@@ -14,7 +14,7 @@ LAUNCHPAD_API="https://api.launchpad.net/1.0"
 DISTRO_SERIES_LIST=(resolute stonking)
 
 # Define packages (sync with ppa-upload.sh)
-ALL_PACKAGES=(dms dms-git dms-greeter)
+ALL_PACKAGES=(dms dms-git)
 
 # Function to get PPA name for a package
 get_ppa_name() {
@@ -22,7 +22,6 @@ get_ppa_name() {
     case "$pkg" in
         dms) echo "dms" ;;
         dms-git) echo "dms-git" ;;
-        dms-greeter) echo "danklinux" ;;
         *) echo "" ;;
     esac
 }
@@ -72,7 +71,7 @@ elif [[ -n "$PPA_INPUT" ]]; then
 else
     # Check all packages in all PPAs
     PACKAGES=("${ALL_PACKAGES[@]}")
-    PPAS=("dms" "dms-git" "danklinux")
+    PPAS=("dms" "dms-git")
 fi
 
 # Function to get build status color and symbol

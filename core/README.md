@@ -78,7 +78,7 @@ Custom IPC via unix socket (JSON API) for shell communication.
 - `dms brightness [list|set]` - Control display/monitor brightness
 - `dms color pick` - Native color picker (see below)
 - `dms update` - Update DMS and dependencies (disabled in distro packages)
-- `dms greeter install` - Install greetd greeter (disabled in distro packages)
+- `dms greeter` - Deprecated; forwards to the standalone [dms-greeter](https://github.com/AvengeMedia/dank-greeter) binary
 
 ### Color Picker
 
@@ -109,7 +109,7 @@ make test         # Run tests
 **Distribution build:**
 
 ```bash
-make dist         # Build without update/greeter features
+make dist         # Build without update features
 ```
 
 Produces `bin/dms-linux-amd64` and `bin/dms-linux-arm64`
@@ -170,7 +170,7 @@ sudo -v && curl -fsSL https://install.danklinux.com | sh -s -- -c hyprland -t ki
 | `--exclude-deps <name,...>` | | Skip specific dependencies |
 | `--replace-configs <name,...>` | | Replace specific configuration files (mutually exclusive with `--replace-configs-all`) |
 | `--replace-configs-all` | | Replace all configuration files (mutually exclusive with `--replace-configs`) |
-| `--yes` | `-y` | Required for headless mode — confirms installation without interactive prompts |
+| `--yes` | `-y` | Required for headless mode - confirms installation without interactive prompts |
 
 Headless mode requires `--yes` to proceed; without it, the installer exits with an error.
 Configuration files are not replaced by default unless `--replace-configs` or `--replace-configs-all` is specified.

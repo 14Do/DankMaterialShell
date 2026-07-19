@@ -13,14 +13,14 @@ Singleton {
     property var settingsRoot: null
 
     onSettingsRootChanged: {
-        if (settingsRoot && !settingsRoot.isGreeterMode)
+        if (settingsRoot)
             consumeGreeterAutoLoginPendingSync();
     }
 
     readonly property string greeterAutoLoginPendingSyncPath: (Quickshell.env("DMS_GREET_CFG_DIR") || "/var/cache/dms-greeter") + "/.local/state/auto-login-sync-pending"
 
     function consumeGreeterAutoLoginPendingSync() {
-        if (!settingsRoot || settingsRoot.isGreeterMode)
+        if (!settingsRoot)
             return;
         greeterAutoLoginPendingCheckProcess.running = true;
     }
@@ -287,7 +287,7 @@ Singleton {
     property string authApplyTerminalFallbackStderr: ""
 
     function scheduleAuthApply() {
-        if (!settingsRoot || settingsRoot.isGreeterMode)
+        if (!settingsRoot)
             return;
 
         authApplyQueued = true;
@@ -300,7 +300,7 @@ Singleton {
     }
 
     function beginAuthApply() {
-        if (!authApplyQueued || authApplyRunning || !settingsRoot || settingsRoot.isGreeterMode)
+        if (!authApplyQueued || authApplyRunning || !settingsRoot)
             return;
 
         authApplyQueued = false;
@@ -339,7 +339,7 @@ Singleton {
     property string greeterAutoLoginSyncStderr: ""
 
     function scheduleGreeterAutoLoginSync() {
-        if (!settingsRoot || settingsRoot.isGreeterMode)
+        if (!settingsRoot)
             return;
 
         greeterAutoLoginSyncQueued = true;
@@ -352,7 +352,7 @@ Singleton {
     }
 
     function beginGreeterAutoLoginSync() {
-        if (!greeterAutoLoginSyncQueued || greeterAutoLoginSyncRunning || !settingsRoot || settingsRoot.isGreeterMode)
+        if (!greeterAutoLoginSyncQueued || greeterAutoLoginSyncRunning || !settingsRoot)
             return;
 
         greeterAutoLoginSyncQueued = false;

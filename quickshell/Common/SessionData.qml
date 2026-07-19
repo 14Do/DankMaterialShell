@@ -16,7 +16,6 @@ Singleton {
 
     readonly property int sessionConfigVersion: 3
 
-    readonly property bool isGreeterMode: Quickshell.env("DMS_RUN_GREETER") === "1" || Quickshell.env("DMS_RUN_GREETER") === "true"
     property bool _parseError: false
     property bool _hasLoaded: false
     property bool _isReadOnly: false
@@ -227,9 +226,7 @@ Singleton {
     property string settingsSidebarCollapsedIds: ","
 
     Component.onCompleted: {
-        if (!isGreeterMode) {
-            loadSettings();
-        }
+        loadSettings();
     }
 
     property var _pendingMigration: null
@@ -237,11 +234,6 @@ Singleton {
     function loadSettings() {
         _hasUnsavedChanges = false;
         _pendingMigration = null;
-
-        if (isGreeterMode) {
-            parseSettings(greeterSessionFile.text());
-            return;
-        }
 
         try {
             const txt = settingsFile.text();
@@ -280,7 +272,7 @@ Singleton {
             _loadedSessionSnapshot = getCurrentSessionJson();
             _hasLoaded = true;
 
-            if (!isGreeterMode && typeof Theme !== "undefined")
+            if (typeof Theme !== "undefined")
                 Theme.generateSystemThemesFromCurrentTheme();
 
             if (typeof WallpaperCyclingService !== "undefined")
@@ -362,7 +354,7 @@ Singleton {
             _loadedSessionSnapshot = getCurrentSessionJson();
             _hasLoaded = true;
 
-            if (!isGreeterMode && typeof Theme !== "undefined")
+            if (typeof Theme !== "undefined")
                 Theme.generateSystemThemesFromCurrentTheme();
 
             if (typeof WallpaperCyclingService !== "undefined")
@@ -386,7 +378,7 @@ Singleton {
     }
 
     function saveSettings() {
-        if (isGreeterMode || _parseError || !_hasLoaded)
+        if (_parseError || !_hasLoaded)
             return;
         settingsFile.setText(getCurrentSessionJson());
         if (_isReadOnly)
@@ -1394,53 +1386,18 @@ Singleton {
     FileView {
         id: settingsFile
 
-        path: isGreeterMode ? "" : StandardPaths.writableLocation(StandardPaths.GenericStateLocation) + "/DankMaterialShell/session.json"
+        path: StandardPaths.writableLocation(StandardPaths.GenericStateLocation) + "/DankMaterialShell/session.json"
         blockLoading: true
         blockWrites: true
         atomicWrites: true
-        watchChanges: !isGreeterMode
+        watchChanges: true
         onLoaded: {
-            if (!isGreeterMode) {
-                _hasUnsavedChanges = false;
-                parseSettings(settingsFile.text());
-            }
+            _hasUnsavedChanges = false;
+            parseSettings(settingsFile.text());
         }
         onSaveFailed: error => {
             root._isReadOnly = true;
             root._hasUnsavedChanges = root._checkForUnsavedChanges();
-        }
-    }
-
-    readonly property string _greeterCacheDir: Quickshell.env("DMS_GREET_CFG_DIR") || "/var/cache/dms-greeter"
-
-    property string greeterSessionBaseDir: root._greeterCacheDir
-
-    function setGreeterSessionBaseDir(dir) {
-        const next = dir || root._greeterCacheDir;
-        if (greeterSessionBaseDir === next)
-            return;
-        greeterSessionBaseDir = next;
-        if (isGreeterMode)
-            greeterSessionFile.reload();
-    }
-
-    function resetGreeterSessionBaseDir() {
-        setGreeterSessionBaseDir(root._greeterCacheDir);
-    }
-
-    FileView {
-        id: greeterSessionFile
-
-        path: root.greeterSessionBaseDir ? (root.greeterSessionBaseDir + "/session.json") : ""
-        preload: isGreeterMode
-        blockLoading: false
-        blockWrites: true
-        watchChanges: false
-        printErrors: true
-        onLoaded: {
-            if (isGreeterMode) {
-                parseSettings(greeterSessionFile.text());
-            }
         }
     }
 

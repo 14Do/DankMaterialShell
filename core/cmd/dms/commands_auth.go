@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"strings"
 
@@ -15,7 +16,7 @@ import (
 var authCmd = &cobra.Command{
 	Use:   "auth",
 	Short: "Manage DMS authentication sync",
-	Long:  "Manage shared PAM/authentication setup for DMS greeter and lock screen",
+	Long:  "Manage PAM/authentication setup for the DMS lock screen",
 }
 
 var authSyncCmd = &cobra.Command{
@@ -210,4 +211,32 @@ func syncAuthInTerminal(nonInteractive bool) error {
 	}
 	shellCmd := shellSyncCmd + `; echo; echo "Authentication sync finished. Closing in 3 seconds..."; sleep 3`
 	return runCommandInTerminal(shellCmd)
+}
+func runCommandInTerminal(shellCmd string) error {
+	terminals := []struct {
+		name string
+		args []string
+	}{
+		{"gnome-terminal", []string{"--", "bash", "-c", shellCmd}},
+		{"konsole", []string{"-e", "bash", "-c", shellCmd}},
+		{"xfce4-terminal", []string{"-e", "bash -c \"" + strings.ReplaceAll(shellCmd, `"`, `\"`) + "\""}},
+		{"ghostty", []string{"-e", "bash", "-c", shellCmd}},
+		{"wezterm", []string{"start", "--", "bash", "-c", shellCmd}},
+		{"alacritty", []string{"-e", "bash", "-c", shellCmd}},
+		{"kitty", []string{"bash", "-c", shellCmd}},
+		{"xterm", []string{"-e", "bash -c \"" + strings.ReplaceAll(shellCmd, `"`, `\"`) + "\""}},
+	}
+	for _, t := range terminals {
+		if _, err := exec.LookPath(t.name); err != nil {
+			continue
+		}
+		cmd := exec.Command(t.name, t.args...)
+		cmd.Stdout = os.Stdout
+		cmd.Stderr = os.Stderr
+		if err := cmd.Run(); err != nil {
+			return err
+		}
+		return nil
+	}
+	return fmt.Errorf("no terminal emulator found (tried: gnome-terminal, konsole, xfce4-terminal, ghostty, wezterm, alacritty, kitty, xterm)")
 }

@@ -104,6 +104,26 @@ def load_common_entries():
         entries = json.load(f)
     return [{**e, "tags": sorted(set(e.get("tags", [])) | {"dank-qml-common"})} for e in entries]
 
+# dms-greeter terms live in this POEditor project but are owned by the
+# dank-greeter repo. They must ride along in every upload so prune
+# (sync_terms) does not delete them and tag-less uploads do not strip
+# their tag.
+GREETER_TAG = "dms-greeter"
+
+def load_greeter_entries(api_token, project_id):
+    resp = poeditor_request('terms/list', {
+        'api_token': api_token,
+        'id': project_id
+    })
+    if resp.get('response', {}).get('status') != 'success':
+        error(f"POEditor terms list failed: {resp}")
+    terms = resp.get('result', {}).get('terms', [])
+    return [
+        {'term': t['term'], 'context': t.get('context', ''), 'tags': sorted(set(t.get('tags', [])))}
+        for t in terms
+        if GREETER_TAG in t.get('tags', [])
+    ]
+
 def entry_keys(entries):
     return {(e.get('context') or e['term'], e['term']) for e in entries}
 
@@ -118,14 +138,15 @@ def combine_entries(app_entries, common_entries):
         combined.append(entry)
     return combined + list(common_by_key.values())
 
-def split_export(data, common_keys):
+def split_export(data, common_keys, greeter_keys):
     app_part = {}
     common_part = {}
     for context, terms in data.items():
         if not isinstance(terms, dict):
             continue
         common_terms = {t: v for t, v in terms.items() if (context, t) in common_keys}
-        app_terms = {t: v for t, v in terms.items() if (context, t) not in common_keys}
+        app_terms = {t: v for t, v in terms.items()
+                     if (context, t) not in common_keys and (context, t) not in greeter_keys}
         if common_terms:
             common_part[context] = common_terms
         if app_terms:
@@ -197,7 +218,7 @@ def write_if_changed(repo_file, new_data):
         f.write('\n')
     return True
 
-def download_translations(api_token, project_id, common_keys):
+def download_translations(api_token, project_id, common_keys, greeter_keys):
     info("Downloading translations from POEditor...")
 
     POEXPORTS_DIR.mkdir(parents=True, exist_ok=True)
@@ -234,7 +255,7 @@ def download_translations(api_token, project_id, common_keys):
             warn(f"Failed to download {po_lang}: {e}")
             continue
 
-        app_part, common_part = split_export(new_data, common_keys)
+        app_part, common_part = split_export(new_data, common_keys, greeter_keys)
 
         if write_if_changed(repo_file, app_part):
             success(f"Updated {filename}")
@@ -257,6 +278,7 @@ def check_sync_status():
     current_en = normalize_json(EN_JSON)
     common_entries = load_common_entries()
     common_keys = entry_keys(common_entries)
+    greeter_keys = entry_keys(load_greeter_entries(api_token, project_id))
 
     if not SYNC_STATE.exists():
         return True
@@ -294,7 +316,7 @@ def check_sync_status():
             try:
                 with request.urlopen(url) as response:
                     remote_data = json.loads(response.read().decode())
-                    app_part, common_part = split_export(remote_data, common_keys)
+                    app_part, common_part = split_export(remote_data, common_keys, greeter_keys)
                     first_file = LANGUAGES[list(LANGUAGES.keys())[0]]
 
                     if json_changed(POEXPORTS_DIR / first_file, app_part):
@@ -366,9 +388,12 @@ def main():
             warn("--prune deletes every POEditor term missing from the local en.json, including its translations.")
             warn("Terms from dms-plugins/ are machine-dependent: make sure all official plugins are present before pruning.")
             warn("dank-qml-common terms are included from the submodule, so pruning keeps them as long as the submodule is current.")
+            warn("dms-greeter terms are fetched from POEditor and re-included, so pruning keeps them.")
 
         common_entries = load_common_entries()
         common_keys = entry_keys(common_entries)
+        greeter_entries = load_greeter_entries(api_token, project_id)
+        greeter_keys = entry_keys(greeter_entries)
 
         extract_strings()
 
@@ -396,11 +421,13 @@ def main():
         common_changed = json.dumps(common_entries, sort_keys=True) != json.dumps(last_common_en, sort_keys=True)
 
         if strings_changed or common_changed or prune:
-            upload_source_strings(api_token, project_id, combine_entries(current_en, common_entries), prune)
+            combined = combine_entries(current_en, common_entries)
+            combined = combine_entries(combined, greeter_entries)
+            upload_source_strings(api_token, project_id, combined, prune)
         else:
             info("No changes in source strings")
 
-        translations_changed, common_files_changed = download_translations(api_token, project_id, common_keys)
+        translations_changed, common_files_changed = download_translations(api_token, project_id, common_keys, greeter_keys)
 
         if strings_changed or translations_changed:
             subprocess.run(['git', 'add', 'translations/'], cwd=REPO_ROOT)

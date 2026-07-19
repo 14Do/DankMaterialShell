@@ -33,8 +33,6 @@ jobs:
       - name: Run NixOS service start test
         run: nix build .#nixosTests.x86_64-linux.nixos-service-start-module -L
 
-      - name: Run greeter niri test
-        run: nix build .#nixosTests.x86_64-linux.greeter-niri-module -L
 
       - name: Run home-manager module test
         run: nix build .#nixosTests.x86_64-linux.home-manager-module -L

@@ -9,8 +9,8 @@ import (
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/config"
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/deps"
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/distros"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/greeter"
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/privesc"
+	"github.com/AvengeMedia/DankMaterialShell/core/internal/utils"
 )
 
 // ErrConfirmationRequired is returned when --yes is not set and the user
@@ -223,16 +223,12 @@ func (r *Runner) Run() error {
 
 	// 9. Greeter setup (if dms-greeter was included)
 	if !disabledItems["dms-greeter"] && r.depExists(dependencies, "dms-greeter") {
-		compositorName := "niri"
-		if wm == deps.WindowManagerHyprland {
-			compositorName = "Hyprland"
-		}
 		fmt.Fprintln(os.Stdout, "Configuring DMS greeter...")
 		logFunc := func(line string) {
 			r.log(line)
 			fmt.Fprintf(os.Stdout, "  greeter: %s\n", line)
 		}
-		if err := greeter.AutoSetupGreeter(compositorName, sudoPassword, logFunc); err != nil {
+		if err := utils.RunDmsGreeterInstall(sudoPassword, logFunc); err != nil {
 			// Non-fatal, matching TUI behavior
 			fmt.Fprintf(os.Stderr, "Warning: greeter setup issue (non-fatal): %v\n", err)
 		}

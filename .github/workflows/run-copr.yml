@@ -4,14 +4,12 @@ on:
   workflow_dispatch:
     inputs:
       package:
-        description: 'Package to build (dms, dms-greeter, or both)'
+        description: 'Package to build'
         required: false
         default: 'dms'
         type: choice
         options:
           - dms
-          - dms-greeter
-          - both
       version:
         description: 'Versioning (e.g., 1.0.3, leave empty for latest release)'
         required: false
@@ -31,11 +29,7 @@ jobs:
         id: set-packages
         run: |
           PACKAGE_INPUT="${{ github.event.inputs.package || 'dms' }}"
-          if [ "$PACKAGE_INPUT" = "both" ]; then
-            echo 'packages=["dms","dms-greeter"]' >> $GITHUB_OUTPUT
-          else
-            echo "packages=[\"$PACKAGE_INPUT\"]" >> $GITHUB_OUTPUT
-          fi
+          echo "packages=[\"$PACKAGE_INPUT\"]" >> $GITHUB_OUTPUT
 
   build-and-upload:
     needs: determine-packages
@@ -163,8 +157,6 @@ jobs:
           PACKAGE="${{ matrix.package }}"
           if [ "$PACKAGE" = "dms" ]; then
             COPR_PROJECT="avengemedia/dms"
-          elif [ "$PACKAGE" = "dms-greeter" ]; then
-            COPR_PROJECT="avengemedia/danklinux"
           else
             echo "❌ Unknown package: $PACKAGE"
             exit 1

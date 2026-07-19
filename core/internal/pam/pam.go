@@ -5,30 +5,20 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"strings"
-	"time"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/distros"
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/privesc"
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/utils"
 )
 
 const (
-	GreeterPamManagedBlockStart = "# BEGIN DMS GREETER AUTH (managed by dms greeter sync)"
-	GreeterPamManagedBlockEnd   = "# END DMS GREETER AUTH"
-
 	LockscreenPamManagedBlockStart = "# BEGIN DMS LOCKSCREEN AUTH (managed by dms greeter sync)"
 	LockscreenPamManagedBlockEnd   = "# END DMS LOCKSCREEN AUTH"
 
 	LockscreenU2FPamManagedBlockStart = "# BEGIN DMS LOCKSCREEN U2F AUTH (managed by dms auth sync)"
 	LockscreenU2FPamManagedBlockEnd   = "# END DMS LOCKSCREEN U2F AUTH"
 
-	legacyGreeterPamFprintComment = "# DMS greeter fingerprint"
-	legacyGreeterPamU2FComment    = "# DMS greeter U2F"
-
-	GreetdPamPath       = "/etc/pam.d/greetd"
 	DankshellPamPath    = "/etc/pam.d/dankshell"
 	DankshellU2FPamPath = "/etc/pam.d/dankshell-u2f"
 )
@@ -74,31 +64,24 @@ var includedPamAuthFiles = []string{
 }
 
 type AuthSettings struct {
-	EnableFprint                bool `json:"enableFprint"`
-	EnableU2f                   bool `json:"enableU2f"`
-	GreeterEnableFprint         bool `json:"greeterEnableFprint"`
-	GreeterEnableU2f            bool `json:"greeterEnableU2f"`
-	GreeterPamExternallyManaged bool `json:"greeterPamExternallyManaged"`
+	EnableFprint bool `json:"enableFprint"`
+	EnableU2f    bool `json:"enableU2f"`
 }
 
 type SyncAuthOptions struct {
-	HomeDir          string
-	ForceGreeterAuth bool
+	HomeDir string
 }
 
 type syncDeps struct {
-	pamDir                             string
-	greetdPath                         string
-	dankshellPath                      string
-	dankshellU2fPath                   string
-	isNixOS                            func() bool
-	readFile                           func(string) ([]byte, error)
-	stat                               func(string) (os.FileInfo, error)
-	createTemp                         func(string, string) (*os.File, error)
-	removeFile                         func(string) error
-	runSudoCmd                         func(string, string, ...string) error
-	pamModuleExists                    func(string) bool
-	fingerprintAvailableForCurrentUser func() bool
+	pamDir           string
+	dankshellPath    string
+	dankshellU2fPath string
+	isNixOS          func() bool
+	readFile         func(string) ([]byte, error)
+	stat             func(string) (os.FileInfo, error)
+	createTemp       func(string, string) (*os.File, error)
+	removeFile       func(string) error
+	runSudoCmd       func(string, string, ...string) error
 }
 
 type lockscreenPamIncludeDirective struct {
@@ -154,7 +137,6 @@ func (r lockscreenPamResolver) locate(target string) (string, error) {
 func defaultSyncDeps() syncDeps {
 	return syncDeps{
 		pamDir:           "/etc/pam.d",
-		greetdPath:       GreetdPamPath,
 		dankshellPath:    DankshellPamPath,
 		dankshellU2fPath: DankshellU2FPamPath,
 		isNixOS:          IsNixOS,
@@ -165,8 +147,6 @@ func defaultSyncDeps() syncDeps {
 		runSudoCmd: func(password, command string, args ...string) error {
 			return privesc.Run(context.Background(), password, append([]string{command}, args...)...)
 		},
-		pamModuleExists:                    pamModuleExists,
-		fingerprintAvailableForCurrentUser: FingerprintAuthAvailableForCurrentUser,
 	}
 }
 
@@ -195,20 +175,8 @@ func ReadAuthSettings(homeDir string) (AuthSettings, error) {
 	return settings, nil
 }
 
-func ReadGreeterAuthToggles(homeDir string) (enableFprint bool, enableU2f bool, err error) {
-	settings, err := ReadAuthSettings(homeDir)
-	if err != nil {
-		return false, false, err
-	}
-	return settings.GreeterEnableFprint, settings.GreeterEnableU2f, nil
-}
-
 func SyncAuthConfig(logFunc func(string), sudoPassword string, options SyncAuthOptions) error {
 	return syncAuthConfigWithDeps(logFunc, sudoPassword, options, defaultSyncDeps())
-}
-
-func RemoveManagedGreeterPamBlock(logFunc func(string), sudoPassword string) error {
-	return removeManagedGreeterPamBlockWithDeps(logFunc, sudoPassword, defaultSyncDeps())
 }
 
 func syncAuthConfigWithDeps(logFunc func(string), sudoPassword string, options SyncAuthOptions, deps syncDeps) error {
@@ -233,97 +201,7 @@ func syncAuthConfigWithDeps(logFunc func(string), sudoPassword string, options S
 		return err
 	}
 
-	if _, err := deps.stat(deps.greetdPath); err != nil {
-		if os.IsNotExist(err) {
-			logFunc("ℹ /etc/pam.d/greetd not found. Skipping greeter PAM sync.")
-			return nil
-		}
-		return fmt.Errorf("failed to inspect %s: %w", deps.greetdPath, err)
-	}
-
-	if settings.GreeterPamExternallyManaged {
-		if err := removeManagedGreeterPamBlockWithDeps(logFunc, sudoPassword, deps); err != nil {
-			return err
-		}
-		logFunc("ℹ /etc/pam.d/greetd is externally managed. Skipping DMS greeter PAM sync.")
-		return nil
-	}
-
-	if err := syncGreeterPamConfigWithDeps(logFunc, sudoPassword, settings, options.ForceGreeterAuth, deps); err != nil {
-		return err
-	}
-
 	return nil
-}
-
-func removeManagedGreeterPamBlockWithDeps(logFunc func(string), sudoPassword string, deps syncDeps) error {
-	if deps.isNixOS() {
-		return nil
-	}
-
-	data, err := deps.readFile(deps.greetdPath)
-	if err != nil {
-		if os.IsNotExist(err) {
-			return nil
-		}
-		return fmt.Errorf("failed to read %s: %w", deps.greetdPath, err)
-	}
-
-	originalContent := string(data)
-	stripped, removed := stripManagedGreeterPamBlock(originalContent)
-	strippedAgain, removedLegacy := stripLegacyGreeterPamLines(stripped)
-	if !removed && !removedLegacy {
-		return nil
-	}
-
-	if err := writeManagedPamFile(strippedAgain, deps.greetdPath, sudoPassword, deps); err != nil {
-		return fmt.Errorf("failed to write %s: %w", deps.greetdPath, err)
-	}
-
-	logFunc("✓ Removed DMS managed PAM block from " + deps.greetdPath)
-	return nil
-}
-
-func ParseManagedGreeterPamAuth(pamText string) (managed bool, fingerprint bool, u2f bool, legacy bool) {
-	if pamText == "" {
-		return false, false, false, false
-	}
-
-	lines := strings.Split(pamText, "\n")
-	inManaged := false
-	for _, line := range lines {
-		trimmed := strings.TrimSpace(line)
-		switch trimmed {
-		case GreeterPamManagedBlockStart:
-			managed = true
-			inManaged = true
-			continue
-		case GreeterPamManagedBlockEnd:
-			inManaged = false
-			continue
-		}
-
-		if strings.HasPrefix(trimmed, legacyGreeterPamFprintComment) || strings.HasPrefix(trimmed, legacyGreeterPamU2FComment) {
-			legacy = true
-		}
-		if !inManaged {
-			continue
-		}
-		if strings.Contains(trimmed, "pam_fprintd") {
-			fingerprint = true
-		}
-		if strings.Contains(trimmed, "pam_u2f") {
-			u2f = true
-		}
-	}
-
-	return managed, fingerprint, u2f, legacy
-}
-
-func StripManagedGreeterPamContent(pamText string) (string, bool) {
-	stripped, removed := stripManagedGreeterPamBlock(pamText)
-	stripped, removedLegacy := stripLegacyGreeterPamLines(stripped)
-	return stripped, removed || removedLegacy
 }
 
 func PamTextIncludesFile(pamText, filename string) bool {
@@ -1034,186 +912,6 @@ func syncLockscreenU2FPamConfigWithDeps(logFunc func(string), sudoPassword strin
 	return nil
 }
 
-func stripManagedGreeterPamBlock(content string) (string, bool) {
-	lines := strings.Split(content, "\n")
-	filtered := make([]string, 0, len(lines))
-	inManagedBlock := false
-	removed := false
-
-	for _, line := range lines {
-		trimmed := strings.TrimSpace(line)
-		if trimmed == GreeterPamManagedBlockStart {
-			inManagedBlock = true
-			removed = true
-			continue
-		}
-		if trimmed == GreeterPamManagedBlockEnd {
-			inManagedBlock = false
-			removed = true
-			continue
-		}
-		if inManagedBlock {
-			removed = true
-			continue
-		}
-		filtered = append(filtered, line)
-	}
-
-	return strings.Join(filtered, "\n"), removed
-}
-
-func stripLegacyGreeterPamLines(content string) (string, bool) {
-	lines := strings.Split(content, "\n")
-	filtered := make([]string, 0, len(lines))
-	removed := false
-
-	for i := 0; i < len(lines); i++ {
-		trimmed := strings.TrimSpace(lines[i])
-		if strings.HasPrefix(trimmed, legacyGreeterPamFprintComment) || strings.HasPrefix(trimmed, legacyGreeterPamU2FComment) {
-			removed = true
-			if i+1 < len(lines) {
-				nextLine := strings.TrimSpace(lines[i+1])
-				if strings.HasPrefix(nextLine, "auth") &&
-					(strings.Contains(nextLine, "pam_fprintd") || strings.Contains(nextLine, "pam_u2f")) {
-					i++
-				}
-			}
-			continue
-		}
-		filtered = append(filtered, lines[i])
-	}
-
-	return strings.Join(filtered, "\n"), removed
-}
-
-func insertManagedGreeterPamBlock(content string, blockLines []string, greetdPamPath string) (string, error) {
-	lines := strings.Split(content, "\n")
-	for i, line := range lines {
-		trimmed := strings.TrimSpace(line)
-		if trimmed != "" && !strings.HasPrefix(trimmed, "#") && strings.HasPrefix(trimmed, "auth") {
-			block := strings.Join(blockLines, "\n")
-			prefix := strings.Join(lines[:i], "\n")
-			suffix := strings.Join(lines[i:], "\n")
-			switch {
-			case prefix == "":
-				return block + "\n" + suffix, nil
-			case suffix == "":
-				return prefix + "\n" + block, nil
-			default:
-				return prefix + "\n" + block + "\n" + suffix, nil
-			}
-		}
-	}
-	return "", fmt.Errorf("no auth directive found in %s", greetdPamPath)
-}
-
-func syncGreeterPamConfigWithDeps(logFunc func(string), sudoPassword string, settings AuthSettings, forceAuth bool, deps syncDeps) error {
-	var wantFprint, wantU2f bool
-	fprintToggleEnabled := forceAuth
-	u2fToggleEnabled := forceAuth
-	if forceAuth {
-		wantFprint = deps.pamModuleExists("pam_fprintd.so")
-		wantU2f = deps.pamModuleExists("pam_u2f.so")
-	} else {
-		fprintToggleEnabled = settings.GreeterEnableFprint
-		u2fToggleEnabled = settings.GreeterEnableU2f
-		fprintModule := deps.pamModuleExists("pam_fprintd.so")
-		u2fModule := deps.pamModuleExists("pam_u2f.so")
-		wantFprint = settings.GreeterEnableFprint && fprintModule
-		wantU2f = settings.GreeterEnableU2f && u2fModule
-		if settings.GreeterEnableFprint && !fprintModule {
-			logFunc("⚠ Warning: greeter fingerprint toggle is enabled, but pam_fprintd.so was not found.")
-		}
-		if settings.GreeterEnableU2f && !u2fModule {
-			logFunc("⚠ Warning: greeter security key toggle is enabled, but pam_u2f.so was not found.")
-		}
-	}
-
-	if deps.isNixOS() {
-		logFunc("ℹ NixOS detected: PAM config is managed by NixOS modules. Skipping DMS PAM block write.")
-		logFunc("  Configure fingerprint/U2F auth via your greetd NixOS module options (e.g. security.pam.services.greetd).")
-		return nil
-	}
-
-	pamData, err := deps.readFile(deps.greetdPath)
-	if err != nil {
-		return fmt.Errorf("failed to read %s: %w", deps.greetdPath, err)
-	}
-	originalContent := string(pamData)
-	content, _ := stripManagedGreeterPamBlock(originalContent)
-	content, _ = stripLegacyGreeterPamLines(content)
-
-	includedFprintFile := detectIncludedPamModule(content, "pam_fprintd.so", deps)
-	includedU2fFile := detectIncludedPamModule(content, "pam_u2f.so", deps)
-	fprintAvailableForCurrentUser := deps.fingerprintAvailableForCurrentUser()
-	if wantFprint && includedFprintFile != "" {
-		logFunc("⚠ pam_fprintd already present in included " + includedFprintFile + " (managed by authselect/pam-auth-update). Skipping DMS fprint block to avoid double-fingerprint auth.")
-		wantFprint = false
-	}
-	if wantU2f && includedU2fFile != "" {
-		logFunc("⚠ pam_u2f already present in included " + includedU2fFile + " (managed by authselect/pam-auth-update). Skipping DMS U2F block to avoid double security-key auth.")
-		wantU2f = false
-	}
-	if !wantFprint && includedFprintFile != "" {
-		if fprintToggleEnabled {
-			logFunc("ℹ Fingerprint auth is still enabled via included " + includedFprintFile + ".")
-			if fprintAvailableForCurrentUser {
-				logFunc("  DMS toggle is enabled, and effective auth is provided by the included PAM stack.")
-			} else {
-				logFunc("  No enrolled fingerprints detected for the current user; password auth remains the effective path.")
-			}
-		} else {
-			if fprintAvailableForCurrentUser {
-				logFunc("ℹ Fingerprint auth is active via included " + includedFprintFile + " while DMS fingerprint toggle is off.")
-				logFunc("  Password login will work but may be delayed while the fingerprint module runs first.")
-				logFunc("  To eliminate the delay, " + pamManagerHintForCurrentDistro())
-			} else {
-				logFunc("ℹ pam_fprintd is present via included " + includedFprintFile + ", but no enrolled fingerprints were detected for the current user.")
-				logFunc("  Password auth remains the effective login path.")
-			}
-		}
-	}
-	if !wantU2f && includedU2fFile != "" {
-		if u2fToggleEnabled {
-			logFunc("ℹ Security-key auth is still enabled via included " + includedU2fFile + ".")
-			logFunc("  DMS toggle is enabled, but effective auth is provided by the included PAM stack.")
-		} else {
-			logFunc("⚠ Security-key auth is active via included " + includedU2fFile + " while DMS security-key toggle is off.")
-			logFunc("  " + pamManagerHintForCurrentDistro())
-		}
-	}
-
-	if wantFprint || wantU2f {
-		blockLines := []string{GreeterPamManagedBlockStart}
-		if wantFprint {
-			blockLines = append(blockLines, "auth sufficient pam_fprintd.so max-tries=2 timeout=10")
-		}
-		if wantU2f {
-			blockLines = append(blockLines, "auth sufficient pam_u2f.so cue nouserok timeout=10")
-		}
-		blockLines = append(blockLines, GreeterPamManagedBlockEnd)
-
-		content, err = insertManagedGreeterPamBlock(content, blockLines, deps.greetdPath)
-		if err != nil {
-			return err
-		}
-	}
-
-	if content == originalContent {
-		return nil
-	}
-
-	if err := writeManagedPamFile(content, deps.greetdPath, sudoPassword, deps); err != nil {
-		return fmt.Errorf("failed to install updated PAM config at %s: %w", deps.greetdPath, err)
-	}
-	if wantFprint || wantU2f {
-		logFunc("✓ Configured greetd PAM for fingerprint/U2F")
-	} else {
-		logFunc("✓ Cleared DMS-managed greeter PAM auth block")
-	}
-	return nil
-}
-
 func writeManagedPamFile(content string, destPath string, sudoPassword string, deps syncDeps) error {
 	tmpFile, err := deps.createTemp("", "dms-pam-*.conf")
 	if err != nil {
@@ -1240,26 +938,6 @@ func writeManagedPamFile(content string, destPath string, sudoPassword string, d
 	return nil
 }
 
-func pamManagerHintForCurrentDistro() string {
-	osInfo, err := distros.GetOSInfo()
-	if err != nil {
-		return "Disable it in your PAM manager (authselect/pam-auth-update) or in the included PAM stack to force password-only greeter login."
-	}
-	config, exists := distros.Registry[osInfo.Distribution.ID]
-	if !exists {
-		return "Disable it in your PAM manager (authselect/pam-auth-update) or in the included PAM stack to force password-only greeter login."
-	}
-
-	switch config.Family {
-	case distros.FamilyFedora:
-		return "Disable it in authselect to force password-only greeter login."
-	case distros.FamilyDebian, distros.FamilyUbuntu:
-		return "Disable it in pam-auth-update to force password-only greeter login."
-	default:
-		return "Disable it in your distro PAM manager (authselect/pam-auth-update) or in the included PAM stack to force password-only greeter login."
-	}
-}
-
 func pamModuleExists(module string) bool {
 	for _, libDir := range []string{
 		"/usr/lib64/security",
@@ -1281,61 +959,4 @@ func pamModuleExists(module string) bool {
 		}
 	}
 	return false
-}
-
-func hasEnrolledFingerprintOutput(output string) bool {
-	lower := strings.ToLower(output)
-	if strings.Contains(lower, "no fingers enrolled") ||
-		strings.Contains(lower, "no fingerprints enrolled") ||
-		strings.Contains(lower, "no prints enrolled") {
-		return false
-	}
-	if strings.Contains(lower, "has fingers enrolled") ||
-		strings.Contains(lower, "has fingerprints enrolled") {
-		return true
-	}
-	for _, line := range strings.Split(lower, "\n") {
-		trimmed := strings.TrimSpace(line)
-		if strings.HasPrefix(trimmed, "finger:") {
-			return true
-		}
-		if strings.HasPrefix(trimmed, "- ") && strings.Contains(trimmed, "finger") {
-			return true
-		}
-	}
-	return false
-}
-
-func FingerprintAuthAvailableForCurrentUser() bool {
-	username := strings.TrimSpace(os.Getenv("SUDO_USER"))
-	if username == "" {
-		username = strings.TrimSpace(os.Getenv("USER"))
-	}
-	if username == "" {
-		out, err := exec.Command("id", "-un").Output()
-		if err == nil {
-			username = strings.TrimSpace(string(out))
-		}
-	}
-	return fingerprintAuthAvailableForUser(username)
-}
-
-func fingerprintAuthAvailableForUser(username string) bool {
-	username = strings.TrimSpace(username)
-	if username == "" {
-		return false
-	}
-	if !pamModuleExists("pam_fprintd.so") {
-		return false
-	}
-	if _, err := exec.LookPath("fprintd-list"); err != nil {
-		return false
-	}
-	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
-	defer cancel()
-	out, err := exec.CommandContext(ctx, "fprintd-list", username).CombinedOutput()
-	if err != nil {
-		return false
-	}
-	return hasEnrolledFingerprintOutput(string(out))
 }

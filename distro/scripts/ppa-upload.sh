@@ -27,7 +27,7 @@ success() { echo -e "${GREEN}[SUCCESS]${NC} $1"; }
 warn() { echo -e "${YELLOW}[WARN]${NC} $1"; }
 error() { echo -e "${RED}[ERROR]${NC} $1"; }
 
-AVAILABLE_PACKAGES=(dms dms-git dms-greeter)
+AVAILABLE_PACKAGES=(dms dms-git)
 
 KEEP_BUILDS=false
 REBUILD_RELEASE=""
@@ -101,7 +101,6 @@ get_ppa_name() {
     case "$pkg" in
         dms) echo "dms" ;;
         dms-git) echo "dms-git" ;;
-        dms-greeter) echo "danklinux" ;;
         *) echo "" ;;
     esac
 }
@@ -336,7 +335,7 @@ echo
 
 info "Step 2: Uploading to PPA..."
 
-if [ "$PPA_NAME" = "danklinux" ] || [ "$PPA_NAME" = "dms" ] || [ "$PPA_NAME" = "dms-git" ]; then
+if [ "$PPA_NAME" = "dms" ] || [ "$PPA_NAME" = "dms-git" ]; then
     warn "Using lftp for upload"
 
     BUILD_DIR=$(dirname "$CHANGES_FILE")
@@ -410,9 +409,9 @@ EOF
     fi
 else
     # This branch should not be reached for DMS packages
-    # All DMS packages (dms, dms-git, dms-greeter) use lftp
+    # All DMS packages (dms, dms-git) use lftp
     error "Unknown PPA: $PPA_NAME"
-    error "DMS packages use lftp for upload. Supported PPAs: dms, dms-git, danklinux"
+    error "DMS packages use lftp for upload. Supported PPAs: dms, dms-git"
     exit 1
 fi
 
@@ -481,13 +480,6 @@ if [ "$KEEP_BUILDS" = "false" ]; then
         # Remove git source directory binary
         if [ -d "$PACKAGE_DIR/dms-git-repo" ]; then
             rm -rf "$PACKAGE_DIR/dms-git-repo"
-            REMOVED=$((REMOVED + 1))
-        fi
-        ;;
-    dms-greeter)
-        # Remove downloaded source
-        if [ -f "$PACKAGE_DIR/dms-greeter-source.tar.gz" ]; then
-            rm -f "$PACKAGE_DIR/dms-greeter-source.tar.gz"
             REMOVED=$((REMOVED + 1))
         fi
         ;;

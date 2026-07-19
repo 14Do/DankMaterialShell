@@ -13,8 +13,6 @@ Singleton {
 
     readonly property int cacheConfigVersion: 1
 
-    readonly property bool isGreeterMode: Quickshell.env("DMS_RUN_GREETER") === "1" || Quickshell.env("DMS_RUN_GREETER") === "true"
-
     readonly property string _stateUrl: StandardPaths.writableLocation(StandardPaths.GenericCacheLocation)
     readonly property string _stateDir: Paths.strip(_stateUrl)
 
@@ -75,9 +73,7 @@ Singleton {
         })
 
     Component.onCompleted: {
-        if (!isGreeterMode) {
-            loadCache();
-        }
+        loadCache();
     }
 
     function loadCache() {
@@ -200,7 +196,7 @@ Singleton {
     FileView {
         id: launcherCacheFile
 
-        path: isGreeterMode ? "" : _stateDir + "/DankMaterialShell/launcher_cache.json"
+        path: _stateDir + "/DankMaterialShell/launcher_cache.json"
         blockLoading: true
         blockWrites: true
         atomicWrites: true
@@ -210,20 +206,16 @@ Singleton {
     FileView {
         id: cacheFile
 
-        path: isGreeterMode ? "" : _stateDir + "/DankMaterialShell/cache.json"
+        path: _stateDir + "/DankMaterialShell/cache.json"
         blockLoading: true
         blockWrites: true
         atomicWrites: true
-        watchChanges: !isGreeterMode
+        watchChanges: true
         onLoaded: {
-            if (!isGreeterMode) {
-                parseCache(cacheFile.text());
-            }
+            parseCache(cacheFile.text());
         }
         onLoadFailed: error => {
-            if (!isGreeterMode) {
-                log.info("No cache file found, starting fresh");
-            }
+            log.info("No cache file found, starting fresh");
         }
     }
 }

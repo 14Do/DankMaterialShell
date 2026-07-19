@@ -9,7 +9,6 @@ on:
         type: choice
         options:
           - dms
-          - dms-greeter
           - dms-git
           - all
         default: "dms"
@@ -75,27 +74,12 @@ jobs:
             fi
           }
 
-          # Helper function to check dms-greeter stable tag
-          check_dms_greeter_stable() {
-            LATEST_TAG=$(curl -s https://api.github.com/repos/AvengeMedia/DankMaterialShell/releases/latest | grep '"tag_name"' | sed 's/.*"tag_name": "\([^"]*\)".*/\1/' || echo "")
-            local OBS_SPEC=$(curl -s -u "$OBS_USERNAME:$OBS_PASSWORD" "https://api.opensuse.org/source/home:AvengeMedia:danklinux/dms-greeter/dms-greeter.spec" 2>/dev/null || echo "")
-            local OBS_VERSION=$(echo "$OBS_SPEC" | grep "^Version:" | awk '{print $2}' | xargs | sed 's/^v//')
-
-            if [[ -n "$LATEST_TAG" && "$LATEST_TAG" == "v$OBS_VERSION" ]]; then
-              echo "📋 dms-greeter: Tag $LATEST_TAG already exists, skipping"
-              return 1  # No update needed
-            else
-              echo "📋 dms-greeter: New tag ${LATEST_TAG:-unknown} (OBS has ${OBS_VERSION:-none})"
-              return 0  # Update needed
-            fi
-          }
-
           # Main logic
           REBUILD="${{ github.event.inputs.rebuild_release }}"
 
           if [[ "${{ github.ref }}" =~ ^refs/tags/ ]] && [[ -z "${{ github.event.inputs.package }}" ]]; then
-            # Run from tag with no package specified - update both stable packages
-            echo "packages=dms dms-greeter" >> $GITHUB_OUTPUT
+            # Run from tag with no package specified - update stable package
+            echo "packages=dms" >> $GITHUB_OUTPUT
             VERSION="${GITHUB_REF#refs/tags/}"
             echo "version=$VERSION" >> $GITHUB_OUTPUT
             echo "has_updates=true" >> $GITHUB_OUTPUT
@@ -121,17 +105,13 @@ jobs:
               echo "🔄 Manual rebuild requested: $PKG (db$REBUILD)"
 
             elif [[ "$PKG" == "all" ]]; then
-              # Check each stable package and build list of those needing updates
+              # Check the stable package and build list of those needing updates
               PACKAGES_TO_UPDATE=()
               if check_dms_stable; then
                 PACKAGES_TO_UPDATE+=("dms")
                 if [[ -n "$LATEST_TAG" ]]; then
                   echo "version=$LATEST_TAG" >> $GITHUB_OUTPUT
                 fi
-              fi
-              if check_dms_greeter_stable; then
-                PACKAGES_TO_UPDATE+=("dms-greeter")
-                [[ -n "$LATEST_TAG" ]] && echo "version=$LATEST_TAG" >> $GITHUB_OUTPUT
               fi
 
               if [[ ${#PACKAGES_TO_UPDATE[@]} -gt 0 ]]; then
@@ -141,7 +121,7 @@ jobs:
               else
                 echo "packages=" >> $GITHUB_OUTPUT
                 echo "has_updates=false" >> $GITHUB_OUTPUT
-                echo "✓ Both packages up to date"
+                echo "✓ All packages up to date"
               fi
 
             elif [[ "$PKG" == "dms-git" ]]; then
@@ -155,18 +135,6 @@ jobs:
 
             elif [[ "$PKG" == "dms" ]]; then
               if check_dms_stable; then
-                echo "packages=$PKG" >> $GITHUB_OUTPUT
-                echo "has_updates=true" >> $GITHUB_OUTPUT
-                if [[ -n "$LATEST_TAG" ]]; then
-                  echo "version=$LATEST_TAG" >> $GITHUB_OUTPUT
-                fi
-              else
-                echo "packages=" >> $GITHUB_OUTPUT
-                echo "has_updates=false" >> $GITHUB_OUTPUT
-              fi
-
-            elif [[ "$PKG" == "dms-greeter" ]]; then
-              if check_dms_greeter_stable; then
                 echo "packages=$PKG" >> $GITHUB_OUTPUT
                 echo "has_updates=true" >> $GITHUB_OUTPUT
                 if [[ -n "$LATEST_TAG" ]]; then
@@ -221,9 +189,9 @@ jobs:
           elif [[ -n "${{ github.event.inputs.package }}" ]]; then
             # Manual workflow dispatch
 
-            # Determine version for dms stable and dms-greeter using the API
+            # Determine version for dms stable using the API
             # GITHUB_REF is unreliable when "Use workflow from" a tag; API works from any ref
-            if [[ "${{ github.event.inputs.package }}" == "dms" ]] || [[ "${{ github.event.inputs.package }}" == "dms-greeter" ]] || [[ "${{ github.event.inputs.package }}" == "all" ]]; then
+            if [[ "${{ github.event.inputs.package }}" == "dms" ]] || [[ "${{ github.event.inputs.package }}" == "all" ]]; then
               LATEST_TAG=$(curl -s https://api.github.com/repos/AvengeMedia/DankMaterialShell/releases/latest | grep '"tag_name"' | sed 's/.*"tag_name": "\([^"]*\)".*/\1/' || echo "")
               if [[ -n "$LATEST_TAG" ]]; then
                 echo "version=$LATEST_TAG" >> $GITHUB_OUTPUT
@@ -289,7 +257,7 @@ jobs:
             echo " -- Avenge Media <AvengeMedia.US@gmail.com>  $CHANGELOG_DATE"
           } > "distro/debian/dms-git/debian/changelog"
 
-      - name: Update stable version (dms + dms-greeter)
+      - name: Update stable version (dms)
         if: steps.packages.outputs.version != ''
         run: |
           VERSION="${{ steps.packages.outputs.version }}"
@@ -325,25 +293,12 @@ jobs:
             fi
           fi
 
-          # Update dms-greeter changelog when dms-greeter is in the upload list
-          if [[ "$PACKAGES" == *"dms-greeter"* ]] && [[ -f "distro/debian/dms-greeter/debian/changelog" ]]; then
-            CHANGELOG_DATE=$(date -R)
-            {
-              echo "dms-greeter (${VERSION_NO_V}db1) unstable; urgency=medium"
-              echo ""
-              echo "  * Update to $VERSION stable release"
-              echo ""
-              echo " -- Avenge Media <AvengeMedia.US@gmail.com>  $CHANGELOG_DATE"
-            } > "distro/debian/dms-greeter/debian/changelog"
-            echo "✓ Updated dms-greeter changelog to ${VERSION_NO_V}db1"
-          fi
-
           # Update Debian _service files for packages in upload list (download_url paths)
           for service in distro/debian/*/_service; do
             if [[ -f "$service" ]]; then
               # Update tar_scm revision parameter (for dms-git)
               sed -i "s|<param name=\"revision\">v[0-9.]*</param>|<param name=\"revision\">$VERSION</param>|" "$service"
-              # Update download_url paths (for dms, dms-greeter stable)
+              # Update download_url paths (for dms stable)
               sed -i "s|/v[0-9.]\+/|/$VERSION/|g" "$service"
               sed -i "s|/tags/v[0-9.]\+\.tar\.gz|/tags/$VERSION.tar.gz|g" "$service"
             fi
@@ -404,7 +359,7 @@ jobs:
           UPLOADED_PACKAGES=()
           SKIPPED_PACKAGES=()
 
-          # PACKAGES can be space-separated list (e.g., "dms dms-greeter" from "all" check)
+          # PACKAGES can be a space-separated list (from the "all" check)
           # Loop through each package and upload
           for PKG in $PACKAGES; do
             echo ""
@@ -506,9 +461,6 @@ jobs:
                   ;;
                 dms-git)
                   echo "- $STATUS_ICON **dms-git** ($STATUS_TEXT) → [View builds](https://build.opensuse.org/package/show/home:AvengeMedia:dms-git/dms-git)" >> $GITHUB_STEP_SUMMARY
-                  ;;
-                dms-greeter)
-                  echo "- $STATUS_ICON **dms-greeter** ($STATUS_TEXT) → [View builds](https://build.opensuse.org/package/show/home:AvengeMedia:danklinux/dms-greeter)" >> $GITHUB_STEP_SUMMARY
                   ;;
               esac
             done

@@ -5,7 +5,6 @@ XBPS templates for DankMaterialShell on [Void Linux](https://voidlinux.org).
 | Package | Source repo | Template |
 | --- | --- | --- |
 | `dms` | DankMaterialShell | [`srcpkgs/dms/template`](srcpkgs/dms/template) |
-| `dms-greeter` (optional) | DankMaterialShell | [`srcpkgs/dms-greeter/template`](srcpkgs/dms-greeter/template) |
 | `dgop` | AvengeMedia/dgop | maintained in the **danklinux** repo (`distro/void/srcpkgs/dgop`) |
 | `danksearch` | AvengeMedia/danksearch | maintained in the **danklinux** repo (`distro/void/srcpkgs/danksearch`) |
 
@@ -83,7 +82,6 @@ Inside a `void-packages` checkout (symlink or copy these `srcpkgs/<pkg>` dirs in
 ./xbps-src pkg dgop
 ./xbps-src pkg danksearch
 ./xbps-src pkg dms
-./xbps-src pkg dms-greeter      # optional
 
 # lint (xlint ships in the xtools package)
 xlint srcpkgs/dms/template
@@ -125,26 +123,3 @@ sudo ln -sf /etc/sv/elogind /var/service/elogind
 ```
 
 The `dankinstall` Void path enables both services after installing packages.
-
-## Greeter (optional)
-
-Install `dms-greeter`, then let the CLI do the setup:
-
-```sh
-dms greeter enable      # configures greetd + the Void seat/PAM bits below
-dms greeter sync        # optional: share theming with the shell
-```
-
-`dms-greeter` requires D-Bus and elogind. `dms greeter enable` enables the
-`dbus` and `elogind` runit services, configures greetd for elogind
-(`LIBSEAT_BACKEND=logind`), adds `_greeter` to the `video` and `input` groups,
-and adds `pam_rundir` to `/etc/pam.d/greetd` (so the post-login session gets an
-`XDG_RUNTIME_DIR`). It disables seatd if enabled: on Void, seatd is the
-alternative to elogind, and running both fights over the seat. Greeter sessions
-are launched through `dbus-run-session`. A Wayland compositor and a working DRM
-device (`/dev/dri/card*`) are required and not pulled in automatically.
-
-`dms greeter enable` also rewrites `/etc/sv/greetd/run` to wait for the `dbus`
-and `elogind` services, preventing a first-boot race that can leave the greeter
-on a black screen. greetd package updates restore the stock run script; re-run
-`dms greeter enable` afterwards.

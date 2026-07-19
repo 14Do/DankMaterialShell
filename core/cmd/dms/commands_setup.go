@@ -11,7 +11,6 @@ import (
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/config"
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/deps"
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/distros"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/greeter"
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/log"
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/privesc"
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/utils"
@@ -205,7 +204,12 @@ func detectTerminal() (string, error) {
 }
 
 func detectCompositorForSetup() (string, error) {
-	compositors := greeter.DetectCompositors()
+	var compositors []string
+	for _, candidate := range []string{"niri", "Hyprland", "mango"} {
+		if utils.CommandExists(candidate) {
+			compositors = append(compositors, candidate)
+		}
+	}
 
 	switch len(compositors) {
 	case 0:
@@ -214,11 +218,20 @@ func detectCompositorForSetup() (string, error) {
 		return strings.ToLower(compositors[0]), nil
 	}
 
-	selected, err := greeter.PromptCompositorChoice(compositors)
-	if err != nil {
-		return "", err
+	fmt.Println("Multiple compositors detected:")
+	for i, compositor := range compositors {
+		fmt.Printf("%d) %s\n", i+1, compositor)
 	}
-	return strings.ToLower(selected), nil
+	fmt.Printf("\nChoice (1-%d): ", len(compositors))
+
+	var response string
+	fmt.Scanln(&response)
+	choice := 0
+	fmt.Sscanf(strings.TrimSpace(response), "%d", &choice)
+	if choice < 1 || choice > len(compositors) {
+		return "", fmt.Errorf("invalid choice")
+	}
+	return strings.ToLower(compositors[choice-1]), nil
 }
 
 func runSetupDmsConfig(name string) error {

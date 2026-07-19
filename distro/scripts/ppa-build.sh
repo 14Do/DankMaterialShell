@@ -118,7 +118,6 @@ get_ppa_name() {
     case "$pkg" in
         dms) echo "dms" ;;
         dms-git) echo "dms-git" ;;
-        dms-greeter) echo "danklinux" ;;
         *) echo "" ;;
     esac
 }
@@ -225,9 +224,6 @@ dms-git)
     SOURCE_DIR="dms-git-repo"
     ;;
 dms)
-    GIT_REPO="AvengeMedia/DankMaterialShell"
-    ;;
-dms-greeter)
     GIT_REPO="AvengeMedia/DankMaterialShell"
     ;;
 danksearch)
@@ -348,18 +344,6 @@ EOF
                 success "source tarball downloaded"
             else
                 error "Failed to download dms-source.tar.gz"
-                exit 1
-            fi
-        fi
-        ;;
-    dms-greeter)
-        info "Downloading source for dms-greeter..."
-        if [ ! -f "dms-greeter-source.tar.gz" ]; then
-            info "Downloading dms-greeter source..."
-            if wget -O dms-greeter-source.tar.gz "https://github.com/AvengeMedia/DankMaterialShell/releases/download/v${VERSION}/dms-source.tar.gz"; then
-                success "source tarball downloaded"
-            else
-                error "Failed to download dms-greeter-source.tar.gz"
                 exit 1
             fi
         fi

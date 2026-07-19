@@ -16,7 +16,6 @@ import qs.Services
 ShellRoot {
     id: entrypoint
 
-    readonly property bool runGreeter: Quickshell.env("DMS_RUN_GREETER") === "1" || Quickshell.env("DMS_RUN_GREETER") === "true"
     readonly property bool disableHotReload: Quickshell.env("DMS_DISABLE_HOT_RELOAD") === "1" || Quickshell.env("DMS_DISABLE_HOT_RELOAD") === "true"
 
     Component.onCompleted: {
@@ -25,7 +24,6 @@ ShellRoot {
 
     Loader {
         id: wallpaperLoader
-        active: !entrypoint.runGreeter
         asynchronous: false
 
         sourceComponent: Scope {
@@ -41,7 +39,6 @@ ShellRoot {
 
     Loader {
         id: shellCoreLoader
-        active: !entrypoint.runGreeter
         asynchronous: true
         source: "ShellCore.qml"
         onLoaded: dmsShellLoader.setSource("DMSShell.qml", {
@@ -52,12 +49,5 @@ ShellRoot {
     Loader {
         id: dmsShellLoader
         asynchronous: true
-    }
-
-    Loader {
-        id: dmsGreeterLoader
-        active: entrypoint.runGreeter
-        asynchronous: false
-        source: "DMSGreeter.qml"
     }
 }

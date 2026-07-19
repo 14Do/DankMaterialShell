@@ -9,7 +9,6 @@ on:
         type: choice
         options:
           - dms
-          - dms-greeter
           - dms-git
           - all
         default: "dms"
@@ -135,7 +134,6 @@ jobs:
           case "$PACKAGE" in
             dms) PPA_NAME="dms" ;;
             dms-git) PPA_NAME="dms-git" ;;
-            dms-greeter) PPA_NAME="danklinux" ;;
             *) echo "::error::Unknown package $PACKAGE"; exit 1 ;;
           esac
 
@@ -150,4 +148,3 @@ jobs:
           echo "- **Target:** ${{ matrix.target }}" >> "$GITHUB_STEP_SUMMARY"
           echo "- **DMS PPA:** https://launchpad.net/~avengemedia/+archive/ubuntu/dms/+packages" >> "$GITHUB_STEP_SUMMARY"
           echo "- **DMS-Git PPA:** https://launchpad.net/~avengemedia/+archive/ubuntu/dms-git/+packages" >> "$GITHUB_STEP_SUMMARY"
-          echo "- **DankLinux PPA:** https://launchpad.net/~avengemedia/+archive/ubuntu/danklinux/+packages" >> "$GITHUB_STEP_SUMMARY"

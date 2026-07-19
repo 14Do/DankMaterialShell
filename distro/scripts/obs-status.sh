@@ -11,7 +11,7 @@
 OBS_BASE_PROJECT="home:AvengeMedia"
 OBS_BASE="$HOME/.cache/osc-checkouts"
 
-ALL_PACKAGES=(dms dms-git dms-greeter)
+ALL_PACKAGES=(dms dms-git)
 
 REPOS=("Debian_13" "openSUSE_Tumbleweed" "16.0")
 ARCHES=("x86_64" "aarch64")
@@ -40,9 +40,6 @@ for pkg in "${PACKAGES[@]}"; do
         ;;
     dms-git)
         PROJECT="$OBS_BASE_PROJECT:dms-git"
-        ;;
-    dms-greeter)
-        PROJECT="$OBS_BASE_PROJECT:danklinux"
         ;;
     *)
         echo "Error: Unknown package '$pkg'"

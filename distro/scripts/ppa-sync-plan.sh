@@ -13,7 +13,6 @@ JSON=false
 PACKAGES=(
     "dms:dms:release"
     "dms-git:dms-git:git"
-    "dms-greeter:danklinux:release"
 )
 
 while [[ $# -gt 0 ]]; do

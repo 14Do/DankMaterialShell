@@ -98,7 +98,7 @@ Notification center with grouping, rich text support, and keyboard navigation.
 MPRIS player controls, calendar sync, weather widgets, and clipboard history with image previews.
 
 **Session Management**
-Lock screen, idle detection, auto-lock/suspend with separate AC/battery settings, and greeter support.
+Lock screen, idle detection, auto-lock/suspend with separate AC/battery settings, and a settings front-end for [dank-greeter](https://github.com/AvengeMedia/dank-greeter).
 
 **Plugin System**
 Extend functionality with the [plugin registry](https://plugins.danklinux.com).
@@ -131,6 +131,17 @@ dms plugins search   # Browse plugin registry
 - **Theming:** [Application themes](https://danklinux.com/docs/dankmaterialshell/application-themes) | [Custom themes](https://danklinux.com/docs/dankmaterialshell/custom-themes)
 - **Plugins:** [Development guide](https://danklinux.com/docs/dankmaterialshell/plugins-overview)
 - **Support:** [Ko-fi](https://ko-fi.com/avengemediallc)
+
+## Dank Projects
+
+DMS is one piece of the suite. The rest lives in its own repos:
+
+- [dank-greeter](https://github.com/AvengeMedia/dank-greeter) - greetd login screen with the Dank Material aesthetic. The Greeter tab in DMS settings is the front-end for it.
+- [dankcalendar](https://github.com/AvengeMedia/dankcalendar) - Local, Google, Microsoft, and CalDAV calendars for the dank desktop.
+- [dgop](https://github.com/AvengeMedia/dgop) - System monitoring CLI and API that powers the process list and dashboard widgets.
+- [dsearch](https://github.com/AvengeMedia/danksearch) - Fast file search that powers file results in the launcher.
+- [dank-qml-common](https://github.com/AvengeMedia/dank-qml-common) - Shared QML widgets and components used by DMS, dank-greeter, and dankcalendar.
+- [dankgo](https://github.com/AvengeMedia/dankgo) - Common Go modules behind the single binary apps.
 
 ## Development
 

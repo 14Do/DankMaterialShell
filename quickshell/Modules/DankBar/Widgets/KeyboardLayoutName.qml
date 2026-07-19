@@ -6,7 +6,7 @@ import qs.Common
 import qs.Modules.Plugins
 import qs.Services
 import qs.Widgets
-import "../../../Common/LayoutCodes.js" as LayoutCodes
+import "../../../DankCommon/Common/LayoutCodes.js" as LayoutCodes
 
 BasePill {
     id: root

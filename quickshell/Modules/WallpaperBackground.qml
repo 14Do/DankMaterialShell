@@ -13,12 +13,7 @@ Variants {
     // An entry present in PanelWindow.onCompleted means we're recreating
     // after a wl_output rebind, not at initial startup.
     property var _seenScreens: ({})
-    model: {
-        if (SessionData.isGreeterMode) {
-            return Quickshell.screens;
-        }
-        return SettingsData.getFilteredScreens("wallpaper");
-    }
+    model: SettingsData.getFilteredScreens("wallpaper")
 
     PanelWindow {
         id: wallpaperWindow
