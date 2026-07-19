@@ -14,8 +14,7 @@ import (
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
 )
 
-// gatedDemandStub extends stubClient with a DemandController whose Acquire
-// blocks until the gate opens, standing in for the facade mid-acquisition.
+// gatedDemandStub blocks Acquire until the gate opens (facade mid-acquisition).
 type gatedDemandStub struct {
 	*stubClient
 	gate     chan struct{}
@@ -53,11 +52,8 @@ func (c *gatedDemandStub) demandCalls() []string {
 	return append([]string(nil), c.demand...)
 }
 
-// The handler must not respond until Acquire returns: responding after the
-// synchronous Acquire is the ordering guarantee the shell's re-pull relies on
-// to read the freshly seeded fix (see the G1 fix). net.Pipe is unbuffered, so
-// a response written early is observable as readable bytes while the stub
-// still holds the handler inside Acquire.
+// The handler must not respond until Acquire returns (the shell re-pull ordering).
+// net.Pipe is unbuffered, so an early response shows up as readable bytes.
 func TestHandleSetAutoEnabled_RespondsOnlyAfterAcquire(t *testing.T) {
 	stub := newGatedDemandStub()
 	m, err := NewManager(stub)

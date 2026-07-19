@@ -33,9 +33,8 @@ type Manager struct {
 	cachedIPLat   *float64
 	cachedIPLon   *float64
 
-	// geoClientMutex guards geoClient: SetGeoClient writes it from the boot
-	// goroutine while the scheduler loop and IPC handlers read it concurrently,
-	// and an interface write is not atomic.
+	// geoClientMutex guards geoClient: the boot goroutine writes it while the
+	// scheduler and IPC handlers read it (interface writes are not atomic).
 	geoClientMutex sync.RWMutex
 	geoClient      geolocation.Client
 
@@ -170,17 +169,14 @@ func (m *Manager) SetUseIPLocation(use bool) {
 		m.locationMutex.Unlock()
 	}
 
-	// Drive location acquisition off the caller: Acquire can block up to the IP
-	// seed's HTTP timeout (~10s) behind acqMu, and this runs on an IPC handler
-	// goroutine, so a slow ip-api would stall the toggle RPC. Acquire-then-
-	// recompute ordering is preserved inside the goroutine, matching SetGeoClient.
+	// Off the RPC goroutine: Acquire can block ~10s behind the IP seed's HTTP
+	// timeout. Acquire-then-recompute ordering is preserved inside the goroutine.
 	if dc, ok := m.getGeoClient().(geolocation.DemandController); ok {
 		go func() {
 			if use {
 				dc.Acquire("theme")
-				// Clear again after Acquire, mirroring SetGeoClient: a recompute
-				// racing the acquisition window reads the facade's idle 0,0 fix
-				// and caches it, and nothing else ever invalidates the cache.
+				// Clear again after Acquire - a recompute racing the acquisition
+				// window caches the facade's idle 0,0 fix.
 				m.locationMutex.Lock()
 				m.cachedIPLat = nil
 				m.cachedIPLon = nil

@@ -10,9 +10,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-// stubClient stands in for the geolocation facade: GetLocation returns whatever
-// fix it currently holds, and push delivers an update through the subscription
-// like a real LocationUpdated would.
+// stubClient returns whatever fix it holds; push delivers a subscriber update.
 type stubClient struct {
 	mu   sync.Mutex
 	loc  geolocation.Location
@@ -70,9 +68,8 @@ func (s *stubClient) push(loc geolocation.Location) {
 	}
 }
 
-// The manager is constructed against the idle facade (0,0). A demand-driven
-// Acquire seeds the client silently - no subscriber event - so the cache stays
-// 0,0. CurrentState must read through to the client; GetState alone must not.
+// An Acquire seeds the client silently, so the manager cache stays 0,0.
+// CurrentState must read through to the client; GetState alone must not.
 func TestManager_CurrentStateReadsThroughToSeededClient(t *testing.T) {
 	stub := newStubClient()
 	m, err := NewManager(stub)
@@ -81,8 +78,7 @@ func TestManager_CurrentStateReadsThroughToSeededClient(t *testing.T) {
 
 	assert.Equal(t, State{}, m.CurrentState(), "no fix anywhere yet")
 
-	// Simulate SeedLocation after an on-demand Acquire: client has a fix,
-	// nothing was pushed to subscribers.
+	// Seed after Acquire: the client has a fix, nothing pushed to subscribers.
 	stub.setLocation(geolocation.Location{Latitude: 50.08, Longitude: 14.43})
 
 	assert.Equal(t, State{}, m.GetState(), "cache untouched by a silent seed")

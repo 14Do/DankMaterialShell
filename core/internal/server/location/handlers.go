@@ -27,14 +27,9 @@ func HandleRequest(conn *models.Conn, req models.Request, manager *Manager) {
 	}
 }
 
-// handleSetAutoEnabled toggles the weather consumer's demand for location. Enabling
-// it acquires the location client (if not already held by another consumer);
-// disabling it releases the weather hold. Mirrors the gamma/thememode
-// setUseIPLocation demand so acquisition only runs when something wants it.
-//
-// Acquire deliberately blocks this handler (each request runs on its own
-// goroutine): responding only after acquisition is the ordering guarantee the
-// shell's re-pull relies on to read the freshly seeded fix. Do not offload it.
+// handleSetAutoEnabled acquires/releases the weather demand for location.
+// Deliberately blocking: responding only after Acquire is the ordering the
+// shell's re-pull relies on to read the seeded fix. Do not offload it.
 func handleSetAutoEnabled(conn *models.Conn, req models.Request, manager *Manager) {
 	enabled, err := params.Bool(req.Params, "enabled")
 	if err != nil {

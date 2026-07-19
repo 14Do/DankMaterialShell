@@ -10,8 +10,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-// fakeInner is a controllable Client used to drive the lazyClient facade without
-// touching real D-Bus / GeoClue2 / ip-api.
+// fakeInner is a controllable Client standing in for GeoClue2/IP.
 type fakeInner struct {
 	mu     sync.Mutex
 	loc    Location
@@ -90,8 +89,7 @@ func (f *fakeInner) push(loc Location) {
 	}
 }
 
-// newTestLazyClient returns a facade whose factory hands out the given inner
-// clients in order, counting how many times it was called.
+// newTestLazyClient hands out the given inner clients in order, counting calls.
 func newTestLazyClient(inners ...*fakeInner) (*lazyClient, *int32) {
 	var calls int32
 	lc := newLazyClient()
@@ -201,10 +199,8 @@ func TestLazyClient_ForwardsUpdatesToSubscribers(t *testing.T) {
 	}
 }
 
-// Reproduces the shutdown ordering: the location manager closes first and its
-// signal pump's deferred Unsubscribe closes the facade channel while the
-// forwarder may still be delivering an inner update. Without subMu this is a
-// send on a closed channel (panic) and a -race report.
+// Shutdown closes the manager (and its deferred Unsubscribe) while the forwarder
+// may still deliver - without subMu this is a send on a closed channel.
 func TestLazyClient_UnsubscribeDuringForwardDoesNotPanic(t *testing.T) {
 	inner := newFakeInner(Location{})
 	lc, _ := newTestLazyClient(inner)
@@ -234,10 +230,8 @@ func TestLazyClient_UnsubscribeDuringForwardDoesNotPanic(t *testing.T) {
 	lc.Release("weather")
 }
 
-// SeedLocation writes silently and a LocationUpdated that fires before the
-// forwarder attaches lands on an empty subscriber map, so without the one-shot
-// prime a stream subscriber that predates acquisition never sees the initial
-// fix on a stationary machine (no DistanceThreshold, nothing re-emits).
+// SeedLocation writes silently, so without the prime a subscriber that predates
+// acquisition never sees the initial fix on a stationary machine.
 func TestLazyClient_PrimesSubscribersWithExistingFix(t *testing.T) {
 	inner := newFakeInner(Location{Latitude: 50.08, Longitude: 14.43})
 	lc, _ := newTestLazyClient(inner)
@@ -255,10 +249,8 @@ func TestLazyClient_PrimesSubscribersWithExistingFix(t *testing.T) {
 	}
 }
 
-// Teardown must join the forwarder before closing the inner client: forward's
-// deferred Unsubscribe (LoadAndDelete+close) and Close's subscriber sweep
-// (load+close) otherwise race to close the same channel - a double close that
-// panics the daemon on the last consumer's toggle-off.
+// Teardown must join the forwarder before closing the inner client - otherwise
+// their two closes of the same channel race (double close panics).
 func TestLazyClient_TeardownJoinsForwarderBeforeClosingInner(t *testing.T) {
 	inner := newFakeInner(Location{Latitude: 1, Longitude: 1})
 	lc, _ := newTestLazyClient(inner)
@@ -274,12 +266,8 @@ func TestLazyClient_TeardownJoinsForwarderBeforeClosingInner(t *testing.T) {
 		"forwarder's deferred Unsubscribe must complete before inner.Close")
 }
 
-// Bounded stress over the refcount interleavings: goroutines hammer
-// Acquire/Release on shared and distinct sources with GetLocation readers mixed
-// in. Invariants under -race: no panic, the facade lands idle once every source
-// has released (each goroutine's final op is a Release, so the globally last op
-// per source is one), and every inner client the factory ever built is closed -
-// whether it was installed and torn down or abandoned mid-acquisition.
+// Goroutines hammer Acquire/Release with GetLocation readers mixed in.
+// Invariants: no panic, idle once every source released, every inner closed.
 func TestLazyClient_ConcurrentDemandStress(t *testing.T) {
 	var builtMu sync.Mutex
 	var built []*fakeInner
@@ -366,8 +354,7 @@ func TestLazyClient_CloseTearsDownAndClosesSubscribers(t *testing.T) {
 
 	assert.True(t, inner.isClosed(), "Close tears down the inner client")
 
-	// The facade subscriber channel must be closed by Close. The prime may have
-	// delivered the inner client's fix first, so drain through to the close.
+	// The prime may deliver the fix first - drain through to Close's close.
 	deadline := time.After(time.Second)
 	for {
 		select {

@@ -4,10 +4,8 @@ import (
 	"testing"
 )
 
-// The dbus pump's notifySubscribers and the facade forwarder's Unsubscribe run
-// concurrently on every demand teardown. Without subMu excluding the send from
-// the close, this is a send on a closed channel (panic) and a -race report -
-// the same race the facade guards against on its own subscriber set.
+// The pump's notifySubscribers and the forwarder's Unsubscribe run concurrently
+// on every demand teardown - without subMu this is a send on a closed channel.
 func TestGeoClueClient_UnsubscribeDuringNotifyDoesNotPanic(t *testing.T) {
 	c := &GeoClueClient{
 		currLocation: &Location{Latitude: 50.08, Longitude: 14.43},

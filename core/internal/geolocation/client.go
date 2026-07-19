@@ -2,18 +2,14 @@ package geolocation
 
 import "github.com/AvengeMedia/DankMaterialShell/core/internal/log"
 
-// NewClient returns an idle, demand-driven location client. It performs NO network
-// egress until a consumer calls Acquire (see DemandController). This replaces the
-// old eager behaviour that started GeoClue2 and seeded a fix from http://ip-api.com
-// on every daemon start, regardless of user settings.
+// NewClient returns an idle facade: no network egress happens until a consumer
+// calls Acquire (see DemandController).
 func NewClient() Client {
 	return newLazyClient()
 }
 
-// acquireClient builds a real, active location client on demand: GeoClue2 when
-// available (seeded once from IP to get an immediate fix), falling back to an
-// IP-only client otherwise. Extracted verbatim from the old eager NewClient - the
-// fallback provider is unchanged and tracked separately.
+// acquireClient builds the real client: GeoClue2 seeded once from IP for an
+// immediate fix, or IP-only when GeoClue2 is unavailable.
 func acquireClient() Client {
 	geoclueClient, err := newGeoClueClient()
 	if err != nil {

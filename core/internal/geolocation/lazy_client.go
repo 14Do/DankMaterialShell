@@ -6,28 +6,15 @@ import (
 	"github.com/AvengeMedia/DankMaterialShell/core/internal/log"
 )
 
-// DemandController lets consumers signal whether they currently need location.
-// The lazy client acquires the underlying GeoClue2/IP client on the first demand
-// and releases it when the last consumer goes away.
-//
-// The concrete lazyClient returned by NewClient implements this alongside Client,
-// so consumers reach it with a type assertion:
-//
-//	if dc, ok := client.(geolocation.DemandController); ok { dc.Acquire("weather") }
+// DemandController lets consumers signal whether they need location. The facade
+// acquires the real client on the first demand and releases it on the last.
 type DemandController interface {
 	Acquire(source string)
 	Release(source string)
 }
 
-// lazyClient is a Client facade that owns the real location client on demand.
-//
-// It performs NO network egress until a consumer calls Acquire. This replaces the
-// previous behaviour where NewClient eagerly started GeoClue2 and seeded a fix from
-// http://ip-api.com on every daemon start, regardless of user settings.
-//
-// The facade holds one stable reference for the life of the process (handed to the
-// location manager, the gamma manager and the thememode manager at boot), so those
-// consumers never need re-wiring as the underlying client comes and goes.
+// lazyClient owns the real location client on demand: no egress while idle, and
+// one stable reference for consumers as the inner client comes and goes.
 type lazyClient struct {
 	mu      sync.Mutex          // guards demand, inner, fwdStop
 	demand  map[string]struct{} // sources that currently want location
@@ -39,11 +26,8 @@ type lazyClient struct {
 
 	acquire func() Client // builds the real client; overridable in tests
 
-	// subMu guards subscribers and excludes forward's sends from Unsubscribe/
-	// Close closing a channel mid-send. Shutdown closes the location manager
-	// (whose signal pump defer unsubscribes here) before the facade, so without
-	// this a LocationUpdated in that window panics on a send to the just-closed
-	// channel.
+	// subMu excludes forward's sends from Unsubscribe/Close closing a channel
+	// mid-send (the location manager closes before the facade at shutdown).
 	subMu       sync.RWMutex
 	subscribers map[string]chan Location
 }
@@ -56,8 +40,7 @@ func newLazyClient() *lazyClient {
 	}
 }
 
-// Acquire records that source needs location and ensures the underlying client
-// exists. It blocks until acquisition has been attempted, so a consumer that pulls
+// Acquire blocks until acquisition has been attempted, so a consumer that pulls
 // GetLocation immediately afterwards sees the seeded fix.
 func (l *lazyClient) Acquire(source string) {
 	l.mu.Lock()
@@ -66,8 +49,7 @@ func (l *lazyClient) Acquire(source string) {
 	l.ensureInner()
 }
 
-// Release records that source no longer needs location and tears the client down
-// once no consumer wants it.
+// Release tears the client down once no consumer wants location.
 func (l *lazyClient) Release(source string) {
 	l.mu.Lock()
 	if _, ok := l.demand[source]; !ok {
@@ -82,9 +64,8 @@ func (l *lazyClient) Release(source string) {
 	}
 }
 
-// ensureInner creates the inner client if there is demand and none exists yet.
-// acqMu serializes it so concurrent Acquire callers all return with a ready client
-// (only the first does the slow work; the rest wait and observe the result).
+// ensureInner creates the inner client if there is demand and none exists yet;
+// acqMu parks concurrent Acquire callers behind the first one's slow work.
 func (l *lazyClient) ensureInner() {
 	l.acqMu.Lock()
 	defer l.acqMu.Unlock()
@@ -140,17 +121,14 @@ func (l *lazyClient) teardown() {
 	}
 }
 
-// forward fans the inner client's updates out to the facade's own subscribers, so a
-// consumer that subscribed once (at boot) keeps receiving across acquire cycles.
+// forward fans inner updates out to the facade's subscribers across acquire cycles.
 func (l *lazyClient) forward(inner Client, stop chan struct{}) {
 	defer l.fwdWG.Done()
 	ch := inner.Subscribe("lazy-forward")
 	defer inner.Unsubscribe("lazy-forward")
 
-	// One-shot prime: the IP seed is written silently (SeedLocation emits no
-	// event) and an update that fired before the Subscribe above landed on an
-	// empty subscriber map, so fan out the fix the inner client already holds -
-	// otherwise a stream subscriber that predates acquisition never sees it.
+	// The seed is written silently and an update that beat the Subscribe above
+	// had no audience - fan out the fix the inner client already holds.
 	if loc, err := inner.GetLocation(); err == nil && (loc.Latitude != 0 || loc.Longitude != 0) {
 		l.fanOut(loc)
 	}
@@ -180,8 +158,6 @@ func (l *lazyClient) fanOut(loc Location) {
 	}
 }
 
-// --- Client interface ---
-
 func (l *lazyClient) GetLocation() (Location, error) {
 	l.mu.Lock()
 	inner := l.inner
@@ -195,9 +171,8 @@ func (l *lazyClient) GetLocation() (Location, error) {
 func (l *lazyClient) Subscribe(id string) chan Location {
 	ch := make(chan Location, 64)
 	l.subMu.Lock()
-	// A same-id re-subscribe replaces the stream: close the old channel so its
-	// reader unblocks instead of waiting forever on an orphan that nothing fans
-	// out to anymore. Safe against a concurrent fanOut send - it holds subMu.
+	// A same-id re-subscribe replaces the stream - close the old channel so its
+	// reader unblocks instead of waiting on an orphan.
 	if old, ok := l.subscribers[id]; ok {
 		close(old)
 	}

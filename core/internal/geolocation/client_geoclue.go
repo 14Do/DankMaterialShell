@@ -42,9 +42,7 @@ type GeoClueClient struct {
 	sigWG    sync.WaitGroup
 
 	// subMu excludes notifySubscribers' sends from Unsubscribe/Close closing a
-	// channel mid-send, mirroring the facade's guard. The facade's forwarder
-	// unsubscribes on every demand teardown, so the race is routine, not a
-	// shutdown-only corner.
+	// channel mid-send - the forwarder unsubscribes on every demand teardown.
 	subMu       sync.RWMutex
 	subscribers map[string]chan Location
 }

@@ -416,9 +416,8 @@ func TestNewManager_InvalidConfig(t *testing.T) {
 	assert.Error(t, err)
 }
 
-// gatedDemandClient stands in for the lazy facade mid-acquisition: Acquire
-// blocks until the gate opens, and GetLocation reports the idle 0,0 fix until
-// then - exactly what a recompute racing the acquisition window observes.
+// gatedDemandClient blocks Acquire until the gate opens and reports the idle
+// 0,0 fix until then.
 type gatedDemandClient struct {
 	gate     chan struct{}
 	acquired chan struct{}
@@ -462,8 +461,7 @@ func TestSetUseIPLocation_ClearsCachePoisonedDuringAcquire(t *testing.T) {
 	m.SetUseIPLocation(true)
 	<-fake.acquired // demand goroutine is now blocked inside Acquire
 
-	// A recompute lands in the acquisition window: getLocation reads the idle
-	// 0,0 fix through the facade and caches it.
+	// A recompute in the acquisition window caches the facade's idle 0,0 fix.
 	lat, lon := m.getLocation()
 	require.NotNil(t, lat)
 	require.Zero(t, *lat)
@@ -480,8 +478,7 @@ func TestSetUseIPLocation_ClearsCachePoisonedDuringAcquire(t *testing.T) {
 		"the post-Acquire clear must drop the 0,0 fix cached during the window")
 }
 
-// staticClient implements only Client (no DemandController) so handoff tests
-// exercise the geoClient read sites without spawning demand goroutines.
+// staticClient implements only Client, so handoff tests spawn no demand goroutines.
 type staticClient struct{}
 
 func (staticClient) GetLocation() (geolocation.Location, error) {
@@ -545,9 +542,8 @@ func TestSetGeoClient_NoDemandWhenIPLocationDisabled(t *testing.T) {
 		"wiring the client must not acquire without the persisted setting")
 }
 
-// SetGeoClient lands on the boot goroutine while the scheduler recomputes and
-// IPC handlers toggle concurrently. Run under -race: an unguarded handoff is a
-// torn interface write.
+// SetGeoClient lands on the boot goroutine while readers run concurrently -
+// under -race an unguarded handoff is a torn interface write.
 func TestSetGeoClient_ConcurrentWithReaders(t *testing.T) {
 	m := &Manager{}
 	m.config.UseIPLocation = true // getLocation must reach the client read

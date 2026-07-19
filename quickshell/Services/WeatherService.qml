@@ -13,15 +13,13 @@ Singleton {
 
     property int refCount: 0
 
-    // Whether the weather consumer currently wants the daemon holding location
-    // acquisition. Gated on weatherEnabled too: auto-location left on with
-    // weather off must not hold GeoClue2 / IP egress open.
+    // Weather's demand for daemon location acquisition - gated on weatherEnabled
+    // too, so auto-location with weather off does not hold acquisition open.
     readonly property bool autoLocationDemand: SessionData.isGreeterMode
         ? (GreetdSettings.weatherEnabled && GreetdSettings.useAutoLocation)
         : (SettingsData.weatherEnabled && SettingsData.useAutoLocation)
 
-    // The binding dedupes by value, so this only fires on real policy changes;
-    // reconnects are re-asserted explicitly in onCapabilitiesReceived below.
+    // Fires on real policy changes only - reconnects re-assert in onCapabilitiesReceived.
     onAutoLocationDemandChanged: LocationService.setAutoEnabled(autoLocationDemand)
 
     property var selectedDate: new Date()
@@ -1071,9 +1069,8 @@ Singleton {
         target: LocationService
 
         function onLocationChanged(data) {
-            // Same per-mode gate as updateLocation: in greeter mode the demand
-            // binding acquires via GreetdSettings, so delivery must not drop
-            // the fix through the normal-session setting.
+            // Same per-mode gate as updateLocation - greeter-mode demand acquires
+            // via GreetdSettings, so delivery must not gate on the user setting.
             const useAuto = SessionData.isGreeterMode ? GreetdSettings.useAutoLocation : SettingsData.useAutoLocation;
             if (!useAuto)
                 return;
@@ -1166,8 +1163,7 @@ Singleton {
             }
         });
 
-        // If the daemon is already connected, assert the current preference now;
-        // otherwise onCapabilitiesReceived will do it on connect.
+        // Already connected: assert now; otherwise onCapabilitiesReceived does it.
         LocationService.setAutoEnabled(root.autoLocationDemand);
     }
 }

@@ -10,9 +10,7 @@ import (
 )
 
 type IpClient struct {
-	// mu guards the check-fetch-store in GetLocation. Holding it across the
-	// fetch also single-flights concurrent zero-fix callers, so a burst of
-	// getState requests while offline costs one HTTP round-trip, not one each.
+	// mu guards GetLocation's check-fetch-store and single-flights concurrent fetches.
 	mu           sync.Mutex
 	currLocation *Location
 }

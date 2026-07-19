@@ -9,10 +9,8 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-// getState handlers reach IpClient.GetLocation concurrently through the
-// facade's read-through whenever the seed fetch failed. The check-fetch-store
-// must be guarded: unguarded it is a data race on currLocation, and every
-// caller fires its own 10s HTTP fetch.
+// Concurrent GetLocation callers with no fix yet: unguarded this is a data race
+// on currLocation and one 10s HTTP fetch per caller.
 func TestIpClient_ConcurrentGetLocationSingleFlights(t *testing.T) {
 	orig := fetchIPLocation
 	defer func() { fetchIPLocation = orig }()
