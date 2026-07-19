@@ -148,7 +148,7 @@ Item {
 
                 StyledText {
                     width: parent.width
-                    text: I18n.tr("Greeter group members can sync their login-screen theme with dms greeter sync --profile after logging out and back in.")
+                    text: I18n.tr("Greeter group members can sync their login-screen theme with dms-greeter sync --profile after logging out and back in.")
                     font.pixelSize: Theme.fontSizeSmall
                     color: Theme.surfaceVariantText
                     wrapMode: Text.Wrap
@@ -263,7 +263,7 @@ Item {
                                         const enableGreeter = !userRow.modelData.isGreeter;
                                         greeterToggleConfirm.showWithOptions({
                                             title: enableGreeter ? I18n.tr("Allow greeter access?") : I18n.tr("Remove greeter access?"),
-                                            message: enableGreeter ? I18n.tr("Add \"%1\" to the %2 group? They must log out and back in, then run dms greeter sync --profile to publish their login-screen theme.").arg(userRow.modelData.username).arg(UsersService.greeterGroup) : I18n.tr("Remove \"%1\" from the %2 group?").arg(userRow.modelData.username).arg(UsersService.greeterGroup),
+                                            message: enableGreeter ? I18n.tr("Add \"%1\" to the %2 group? They must log out and back in, then run dms-greeter sync --profile to publish their login-screen theme.").arg(userRow.modelData.username).arg(UsersService.greeterGroup) : I18n.tr("Remove \"%1\" from the %2 group?").arg(userRow.modelData.username).arg(UsersService.greeterGroup),
                                             confirmText: enableGreeter ? I18n.tr("Allow") : I18n.tr("Remove"),
                                             confirmColor: Theme.primary,
                                             onConfirm: () => {
@@ -464,7 +464,7 @@ Item {
                     settingKey: "createUserGreeter"
                     tags: ["user", "greeter", "login", "sync"]
                     text: I18n.tr("Allow greeter login access")
-                    description: I18n.tr("Add the new user to the %1 group so they can run dms greeter sync --profile.").arg(UsersService.greeterGroup)
+                    description: I18n.tr("Add the new user to the %1 group so they can run dms-greeter sync --profile.").arg(UsersService.greeterGroup)
                     checked: root.pendingGreeter
                     onToggled: checked => root.pendingGreeter = checked
                 }

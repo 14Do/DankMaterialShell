@@ -25,7 +25,7 @@ Item {
 
         switch (SettingsData.greeterFingerprintReason) {
         case "ready":
-            return I18n.tr("Authentication changes apply automatically", "greeter auth setting description");
+            return I18n.tr("Applies on the next greeter sync", "greeter auth setting description");
         case "missing_enrollment":
             return I18n.tr("Fingerprint reader detected, but no prints are enrolled yet. You can enable this now and run Sync later.", "greeter fingerprint login setting");
         case "missing_reader":
@@ -45,7 +45,7 @@ Item {
 
         switch (SettingsData.greeterU2fReason) {
         case "ready":
-            return I18n.tr("Authentication changes apply automatically", "greeter auth setting description");
+            return I18n.tr("Applies on the next greeter sync", "greeter auth setting description");
         case "missing_key_registration":
             return I18n.tr("Security-key support was detected, but no registered key was found yet. You can enable this now and register one later.", "security key setting status");
         case "missing_pam_support":
@@ -116,7 +116,7 @@ Item {
         case "install":
             return ["dms", "greeter", "install", "--terminal"];
         case "activate":
-            return ["dms", "greeter", "enable", "--terminal"];
+            return ["dms-greeter", "enable", "--terminal"];
         default:
             return [];
         }
@@ -217,7 +217,7 @@ Item {
 
     Process {
         id: greeterStatusProcess
-        command: ["dms", "greeter", "status"]
+        command: ["dms-greeter", "status"]
         running: false
 
         stdout: StdioCollector {
@@ -240,7 +240,7 @@ Item {
                     root.greeterStatusText = root.greeterStatusText + "\n\nstderr:\n" + err;
                 return;
             }
-            var failure = I18n.tr("Failed to run 'dms greeter status'. Ensure DMS is installed and dms is in PATH.", "greeter status error") + " (exit " + exitCode + ")";
+            var failure = I18n.tr("Failed to run 'dms-greeter status'. Ensure the dms-greeter package is installed.", "greeter status error") + " (exit " + exitCode + ")";
             if (out !== "")
                 failure = failure + "\n\n" + out;
             if (err !== "")
@@ -251,7 +251,7 @@ Item {
 
     Process {
         id: greeterSyncProcess
-        command: ["dms", "greeter", "sync", "--yes"]
+        command: ["dms-greeter", "sync", "--yes"]
         running: false
 
         stdout: StdioCollector {
@@ -314,7 +314,7 @@ Item {
 
     Process {
         id: greeterTerminalFallbackProcess
-        command: ["dms", "greeter", "sync", "--terminal", "--yes"]
+        command: ["dms-greeter", "sync", "--terminal", "--yes"]
         running: false
 
         stderr: StdioCollector {
@@ -329,7 +329,7 @@ Item {
                 SettingsData.clearGreeterSyncPending();
                 return;
             }
-            var fallback = I18n.tr("Terminal fallback failed. Install one of the supported terminal emulators or run 'dms greeter sync' manually.") + " (exit " + exitCode + ")";
+            var fallback = I18n.tr("Terminal fallback failed. Install one of the supported terminal emulators or run 'dms-greeter sync' manually.") + " (exit " + exitCode + ")";
             const err = (root.greeterTerminalFallbackStderr || "").trim();
             if (err !== "")
                 fallback = fallback + "\n\nstderr:\n" + err;
@@ -421,7 +421,7 @@ Item {
                 settingKey: "greeterStatus"
 
                 StyledText {
-                    text: I18n.tr("Sync applies your theme and settings to the login screen. Shared users should run dms greeter sync --profile instead of a primary user sync.")
+                    text: I18n.tr("Sync applies your theme and settings to the login screen. Shared users should run dms-greeter sync --profile instead of a primary user sync.")
                     font.pixelSize: Theme.fontSizeSmall
                     color: Theme.surfaceVariantText
                     width: parent.width
