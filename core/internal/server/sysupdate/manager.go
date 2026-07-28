@@ -306,16 +306,31 @@ func (m *Manager) runRefresh(parent context.Context, manual bool) {
 	m.state.Packages = next
 	m.state.Count = len(next)
 	m.state.NextCheckUnix = now + int64(m.state.IntervalSeconds)
+	// An upgrade can start while this check runs - the guard above only covers
+	// upgrades already in flight. From then the upgrade owns the phase: results
+	// still land, but reporting PhaseIdle would claim the upgrade had finished.
+	upgrading := m.state.Phase == PhaseUpgrading
 	switch {
 	case firstErr == nil:
-		m.state.Phase = PhaseIdle
+		if !upgrading {
+			m.state.Phase = PhaseIdle
+		}
 		m.state.LastSuccessUnix = now
 	case manual:
+		if upgrading {
+			// finishSuccessfulUpgrade resets Phase but not Error, so an
+			// ErrorInfo painted here would outlive the upgrade and leave the
+			// updater sitting idle showing an error.
+			log.Warnf("[sysupdate] manual check failed during an upgrade, not surfacing it: %v", firstErr)
+			break
+		}
 		m.state.Phase = PhaseError
 		m.state.Error = &ErrorInfo{Code: ErrCodeBackendFailed, Message: firstErr.Error()}
 	default:
 		// Background checks fail silently and retry sooner; only manual refreshes surface errors.
-		m.state.Phase = PhaseIdle
+		if !upgrading {
+			m.state.Phase = PhaseIdle
+		}
 		retry := min(int64(m.state.IntervalSeconds), retryIntervalSeconds)
 		m.state.NextCheckUnix = now + retry
 		log.Warnf("[sysupdate] background check failed, retrying in %ds: %v", retry, firstErr)
